@@ -1,28 +1,28 @@
 Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Start Time (24h),Latitude,Longitude,Cloud,Wind,Notes,Species before,Species After
-4/18/2014,Crystina,Sod Farms,2,,,7:28,35.14598,-97.45654,0,0 to 5,,,
-4/18/2014,Crystina,Sod Farms,5,,,7:46,35.13291,-97.44185,0,0 to 5,,,
-4/18/2014,Crystina,Sod Farms,8,,,8:13,35.13149,-97.41592,0,0 to 5,,,
-4/18/2014,Crystina,Sod Farms,11,,,8:58,35.11047,-97.42411,0,0 to 5,,,
-4/20/2014,Crystina,Caddo Co Center Pivots,2,,,7:58,35.31725,-98.48264,100,0 to 5,Sprinkling,,SCFL
-4/20/2014,Crystina,Caddo Co Center Pivots,6,,,8:28,35.34692,-98.48264,100,0 to 5,,,"HOLA, LASP, VESP"
-4/20/2014,Crystina,Caddo Co Center Pivots,10,,,8:53,35.374,-98.46503,100,0 to 5,,,"WCSP, SAVS"
-4/20/2014,Crystina,Caddo Co Center Pivots,14,,,9:17,35.40249,-98.46512,100,0 to 5,,,SAVS
-4/20/2014,Crystina,Caddo Co Center Pivots,18,,,9:42,35.42069,-98.44909,100,0 to 5,,,BARS
-4/20/2014,Crystina,Caddo Co Center Pivots,22,,,10:10,35.45182,-98.39453,100,0 to 5,,,"LASP, BHCO, KILL, AMCR"
-4/20/2014,Crystina,Caddo Co Center Pivots,26,,,10:33,35.47147,-98.37492,100,10 to 15,,,
-4/23/2014,Crystina,Tallgrass Prairie,28,,,7:19,36.75253,-96.35488,30,0 to 5,,,
-4/23/2014,Crystina,Tallgrass Prairie,27,,,7:34,36.75253,-96.36387,30,5 to 10,"wind started to pick up, some traffic on this road",,sparrow sp.
-4/23/2014,Crystina,Tallgrass Prairie,26,,,7:48,36.75252,-96.37285,30,5 to 10,,,
-4/23/2014,Crystina,Tallgrass Prairie,25,,,8:00,36.75508,-96.38123,30,5 to 10,,,
-4/23/2014,Crystina,Tallgrass Prairie,24,,,8:14,36.76161,-96.38493,30,5 to 10,,,
-4/23/2014,Crystina,Tallgrass Prairie,23,,,8:28,36.76789,-96.38971,30,10 to 15,,,
-4/23/2014,Crystina,Tallgrass Prairie,29,,,8:43,36.77458,-96.39303,30,10 to 15,,,
-4/23/2014,Crystina,Tallgrass Prairie,30,,,8:56,36.78169,-96.3946,30,10 to 15,,,
-4/23/2014,Crystina,Tallgrass Prairie,31,,,9:16,36.78801,-96.40009,30,10 to 15,,,
-4/23/2014,Crystina,Tallgrass Prairie,32,,,9:35,36.79193,-96.40765,30,10 to 15,,,
-4/23/2014,Crystina,Tallgrass Prairie,33,,,9:48,36.79782,-96.41283,30,15 to 20,,,
-4/23/2014,Crystina,Tallgrass Prairie,34,,,10:01,36.80275,-96.4194,10,15 to 20,,,
-4/23/2014,Crystina,Tallgrass Prairie,35,,,10:17,36.80453,-96.42822,10,15 to 20,,UPSA,
+4/18/2014,Crystina,Sod Farms,2,SOFA,SOFAPC2,7:28,35.14598,-97.45654,0,0 to 5,,,
+4/18/2014,Crystina,Sod Farms,5,SOFA,SOFAPC5,7:46,35.13291,-97.44185,0,0 to 5,,,
+4/18/2014,Crystina,Sod Farms,8,SOFA,SOFAPC8,8:13,35.13149,-97.41592,0,0 to 5,,,
+4/18/2014,Crystina,Sod Farms,11,SOFA,SOFAPC11,8:58,35.11047,-97.42411,0,0 to 5,,,
+4/20/2014,Crystina,Caddo Co Center Pivots,2,CADD,CADDPC02,7:58,35.31725,-98.48264,100,0 to 5,Sprinkling,,SCFL
+4/20/2014,Crystina,Caddo Co Center Pivots,6,CADD,CADDPC06,8:28,35.34692,-98.48264,100,0 to 5,,,"HOLA, LASP, VESP"
+4/20/2014,Crystina,Caddo Co Center Pivots,10,CADD,CADDPC10,8:53,35.374,-98.46503,100,0 to 5,,,"WCSP, SAVS"
+4/20/2014,Crystina,Caddo Co Center Pivots,14,CADD,CADDPC14,9:17,35.40249,-98.46512,100,0 to 5,,,SAVS
+4/20/2014,Crystina,Caddo Co Center Pivots,18,CADD,CADDPC18,9:42,35.42069,-98.44909,100,0 to 5,,,BARS
+4/20/2014,Crystina,Caddo Co Center Pivots,22,CADD,CADDPC22,10:10,35.45182,-98.39453,100,0 to 5,,,"LASP, BHCO, KILL, AMCR"
+4/20/2014,Crystina,Caddo Co Center Pivots,26,CADD,CADDPC26,10:33,35.47147,-98.37492,100,10 to 15,,,
+4/23/2014,Crystina,Tallgrass Prairie,28,TGPP,TGPP-PC28,7:19,36.75253,-96.35488,30,0 to 5,,,
+4/23/2014,Crystina,Tallgrass Prairie,27,TGPP,TGPP-PC27,7:34,36.75253,-96.36387,30,5 to 10,"wind started to pick up, some traffic on this road",,sparrow sp.
+4/23/2014,Crystina,Tallgrass Prairie,26,TGPP,TGPP-PC26,7:48,36.75252,-96.37285,30,5 to 10,,,
+4/23/2014,Crystina,Tallgrass Prairie,25,TGPP,TGPP-PC25,8:00,36.75508,-96.38123,30,5 to 10,,,
+4/23/2014,Crystina,Tallgrass Prairie,24,TGPP,TGPP-PC24,8:14,36.76161,-96.38493,30,5 to 10,,,
+4/23/2014,Crystina,Tallgrass Prairie,23,TGPP,TGPP-PC23,8:28,36.76789,-96.38971,30,10 to 15,,,
+4/23/2014,Crystina,Tallgrass Prairie,29,TGPP,,8:43,36.77458,-96.39303,30,10 to 15,,,
+4/23/2014,Crystina,Tallgrass Prairie,30,TGPP,,8:56,36.78169,-96.3946,30,10 to 15,,,
+4/23/2014,Crystina,Tallgrass Prairie,31,TGPP,,9:16,36.78801,-96.40009,30,10 to 15,,,
+4/23/2014,Crystina,Tallgrass Prairie,32,TGPP,,9:35,36.79193,-96.40765,30,10 to 15,,,
+4/23/2014,Crystina,Tallgrass Prairie,33,TGPP,,9:48,36.79782,-96.41283,30,15 to 20,,,
+4/23/2014,Crystina,Tallgrass Prairie,34,TGPP,,10:01,36.80275,-96.4194,10,15 to 20,,,
+4/23/2014,Crystina,Tallgrass Prairie,35,TGPP,,10:17,36.80453,-96.42822,10,15 to 20,,UPSA,
 4/25/2014,Crystina,Rita Blanca NG,12,,,12:15,36.5307,-102.73385,60,0 to 5,,,
 4/25/2014,Crystina,Rita Blanca NG,16,,,12:42,36.53065,-102.77064,60,0 to 5,,,"LASP, HOLA"
 4/25/2014,Crystina,Rita Blanca NG,22,,,13:31,36.53054,-102.91555,60,0 to 5,,,
@@ -81,10 +81,10 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Start Time
 4/17/2014,JDR,Grady Co WMA,2,,,10:39,34.79771,-97.83633,100,0 to 5,,,
 4/17/2014,JDR,Grady Co WMA,3,,,10:54,34.79776,-97.8252,100,0 to 5,,,
 4/17/2014,JDR,Grady Co WMA,4,,,11:18,34.80295,-97.84902,90,5 to 10,,CCSP,
-4/18/2014,JDR,Sod Farms,3,,,7:32,35.146,-97.44749,10,0 to 5,Interrupted by Sherriff for 2min,,
-4/18/2014,JDR,Sod Farms,6,,,7:51,35.13152,-97.43319,10,0 to 5,,,"NOHA, AMCR, CCSP"
-4/18/2014,JDR,Sod Farms,9,,,8:15,35.13155,-97.4108,10,0 to 5,,,
-4/18/2014,JDR,Sod Farms,12,,,9:01,35.10412,-97.4241,10,0 to 5,,,
+4/18/2014,JDR,Sod Farms,3,SOFA,SOFAPC3,7:32,35.146,-97.44749,10,0 to 5,Interrupted by Sherriff for 2min,,
+4/18/2014,JDR,Sod Farms,6,SOFA,SOFAPC6,7:51,35.13152,-97.43319,10,0 to 5,,,"NOHA, AMCR, CCSP"
+4/18/2014,JDR,Sod Farms,9,SOFA,SOFAPC9,8:15,35.13155,-97.4108,10,0 to 5,,,
+4/18/2014,JDR,Sod Farms,12,SOFA,SOFAPC12,9:01,35.10412,-97.4241,10,0 to 5,,,
 4/20/2014,JDR,Caddo Co Center Pivots,4,,,8:05,35.33178,-98.48265,100,5 to 10,,,
 4/20/2014,JDR,Caddo Co Center Pivots,8,,,8:35,35.35434,-98.46507,100,5 to 10,,,
 4/20/2014,JDR,Caddo Co Center Pivots,12,,,8:58,35.38858,-98.46501,100,5 to 10,,,
@@ -161,17 +161,17 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Start Time
 4/15/2014,Josh,Chickasaw NRA,5,,,10:00,34.46284,-97.09119,0,0 to 5,,,
 4/15/2014,Josh,Chickasaw NRA,6,,,10:24,34.47731,-97.09383,0,0 to 5,,KILL,"BEKI, GADW"
 4/15/2014,Josh,Chickasaw NRA,7,,,10:46,34.47719,-97.08397,0,0 to 5,,,
-4/18/2014,Josh,Sod Farms,1,,,7:21,35.1524,-97.4591,0,0 to 5,,,
-4/18/2014,Josh,Sod Farms,4,,,7:45,35.14001,-97.44194,0,0 to 5,,,
-4/18/2014,Josh,Sod Farms,7,,,8:06,35.13148,-97.42424,0,0 to 5,,,
-4/18/2014,Josh,Sod Farms,10,,,8:53,35.11693,-97.4266,0,0 to 5,,,"PUMA, SAVS, LISP"
-4/20/2014,Josh,Caddo Co Center Pivots,1,,,7:59,35.30999,-98.48266,100,0 to 5,Light rain,GRSP,
-4/20/2014,Josh,Caddo Co Center Pivots,5,,,8:27,35.33833,-98.4826,100,5 to 10,,"BHCO, MODO",NOCA
-4/20/2014,Josh,Caddo Co Center Pivots,9,,,8:53,35.36672,-98.46503,100,5 to 10,,,
-4/20/2014,Josh,Caddo Co Center Pivots,13,,,9:15,35.39586,-98.46503,100,5 to 10,,,
-4/20/2014,Josh,Caddo Co Center Pivots,17,,,9:42,35.4207,-98.45784,100,5 to 10,,,
-4/20/2014,Josh,Caddo Co Center Pivots,21,,,10:08,35.44144,-98.39451,100,5 to 10,,,"HOLA, NOFL"
-4/20/2014,Josh,Caddo Co Center Pivots,25,,,10:36,35.47143,-98.38363,100,10 to 15,,,
+4/18/2014,Josh,Sod Farms,1,SOFA,SOFAPC1,7:21,35.1524,-97.4591,0,0 to 5,,,
+4/18/2014,Josh,Sod Farms,4,SOFA,SOFAPC4,7:45,35.14001,-97.44194,0,0 to 5,,,
+4/18/2014,Josh,Sod Farms,7,SOFA,SOFAPC7,8:06,35.13148,-97.42424,0,0 to 5,,,
+4/18/2014,Josh,Sod Farms,10,SOFA,SOFAPC10,8:53,35.11693,-97.4266,0,0 to 5,,,"PUMA, SAVS, LISP"
+4/20/2014,Josh,Caddo Co Center Pivots,1,CADD,CADDPC01,7:59,35.30999,-98.48266,100,0 to 5,Light rain,GRSP,
+4/20/2014,Josh,Caddo Co Center Pivots,5,CADD,CADDPC05,8:27,35.33833,-98.4826,100,5 to 10,,"BHCO, MODO",NOCA
+4/20/2014,Josh,Caddo Co Center Pivots,9,CADD,CADDPC09,8:53,35.36672,-98.46503,100,5 to 10,,,
+4/20/2014,Josh,Caddo Co Center Pivots,13,CADD,CADDPC13,9:15,35.39586,-98.46503,100,5 to 10,,,
+4/20/2014,Josh,Caddo Co Center Pivots,17,CADD,CADDPC17,9:42,35.4207,-98.45784,100,5 to 10,,,
+4/20/2014,Josh,Caddo Co Center Pivots,21,CADD,CADDPC21,10:08,35.44144,-98.39451,100,5 to 10,,,"HOLA, NOFL"
+4/20/2014,Josh,Caddo Co Center Pivots,25,CADD,CADDPC25,10:36,35.47143,-98.38363,100,10 to 15,,,
 4/25/2014,Josh,Rita Blanca NG,13,,,12:14,36.53067,-102.74323,60,0 to 5,,,
 4/25/2014,Josh,Rita Blanca NG,17,,,12:43,36.53065,-102.77992,60,0 to 5,,,
 4/25/2014,Josh,Rita Blanca NG,21,,,13:31,36.53054,-102.92439,60,0 to 5,,,
@@ -275,17 +275,17 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Start Time
 5/8/2014,Randy,WMWR,6,,,10:47,34.696024,-98.826342,90,10 to 15,WXRA-6,CASP seen,"NOMO,TUVU"
 5/8/2014,Randy,WMWR,2,,,11:51,34.81683,-98.82602,40,10 to 15,WWMT-2,"GRSP,EAME",WEME
 5/8/2014,Randy,WMWR,6,,,12:14,34.84401,-98.82608,40,10 to 15,WWMT-6,"NOCA,PABU","PABU, NOCA FEMALE"
-5/21/2014,Randy,Sod Farms,1,,,8:28,35.1524,-97.45913,10,5 to 10,Tractor interupted,"FICR,NOMO",
-5/21/2014,Randy,Sod Farms,2,,,8:43,35.14605,-97.4565,10,5 to 10,Cars going by,NOMO,
-5/21/2014,Randy,Sod Farms,3,,,8:57,35.14599,-97.44749,10,5 to 10,,"LASP,BARS,NOMO, STFL",RWBL (F)
-5/21/2014,Randy,Sod Farms,4,,,9:12,35.1401,-97.44189,10,5 to 10,truck interupted,DICK,DICK
-5/21/2014,Randy,Sod Farms,5,,,9:27,35.13292,-97.44183,10,5 to 10,car interupted,,TUVU (F)
-5/21/2014,Randy,Sod Farms,6,,,9:45,35.13151,-97.43318,10,5 to 10,,WAVI,
-5/21/2014,Randy,Sod Farms,7,,,10:03,35.13152,-97.42443,10,10 to 15,,DICK,
-5/21/2014,Randy,Sod Farms,8,,,10:21,35.13154,-97.41078,10,10 to 15,,WEKI,WAVI
-5/21/2014,Randy,Sod Farms,9,,,10:44,35.11694,-97.42668,10,15 to 20,,,
-5/21/2014,Randy,Sod Farms,10,,,10:59,35.11048,-97.42406,10,15 to 20,tractor went by,,
-5/21/2014,Randy,Sod Farms,11,,,11:15,35.10405,-97.42411,10,15 to 20,could hear I-35 traffic during the whole period,LASP,"MIKI, Possible HOLA"
+5/21/2014,Randy,Sod Farms,1,SOFA,SOFAPC1,8:28,35.1524,-97.45913,10,5 to 10,Tractor interupted,"FICR,NOMO",
+5/21/2014,Randy,Sod Farms,2,SOFA,SOFAPC2,8:43,35.14605,-97.4565,10,5 to 10,Cars going by,NOMO,
+5/21/2014,Randy,Sod Farms,3,SOFA,SOFAPC3,8:57,35.14599,-97.44749,10,5 to 10,,"LASP,BARS,NOMO, STFL",RWBL (F)
+5/21/2014,Randy,Sod Farms,4,SOFA,SOFAPC4,9:12,35.1401,-97.44189,10,5 to 10,truck interupted,DICK,DICK
+5/21/2014,Randy,Sod Farms,5,SOFA,SOFAPC5,9:27,35.13292,-97.44183,10,5 to 10,car interupted,,TUVU (F)
+5/21/2014,Randy,Sod Farms,6,SOFA,SOFAPC6,9:45,35.13151,-97.43318,10,5 to 10,,WAVI,
+5/21/2014,Randy,Sod Farms,7,SOFA,SOFAPC7,10:03,35.13152,-97.42443,10,10 to 15,,DICK,
+5/21/2014,Randy,Sod Farms,8,SOFA,SOFAPC8,10:21,35.13154,-97.41078,10,10 to 15,,WEKI,WAVI
+5/21/2014,Randy,Sod Farms,9,SOFA,SOFAPC9,10:44,35.11694,-97.42668,10,15 to 20,,,
+5/21/2014,Randy,Sod Farms,10,SOFA,SOFAPC10,10:59,35.11048,-97.42406,10,15 to 20,tractor went by,,
+5/21/2014,Randy,Sod Farms,11,SOFA,SOFAPC11,11:15,35.10405,-97.42411,10,15 to 20,could hear I-35 traffic during the whole period,LASP,"MIKI, Possible HOLA"
 5/27/2014,Randy,Grady Co WMA,5,,,15:36,34.80908,-97.84669,90,5 to 10,Thunderstorm in vicinity,"COHA,EAME,DICK,GRSP,EAPH",GRSP (CF)
 5/27/2014,Randy,Grady Co WMA,6,,,16:25,34.7978,-97.8569,100,10 to 15,sprinkling,"FISP,DICK",
 5/27/2014,Randy,Grady Co WMA,9,,,17:14,34.7793,-97.87031,100,5 to 10,burned area to east of point count,"FISP,NOMO","KILL,RSHA (carrying food in talons), EABL,BEWR"
