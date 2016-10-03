@@ -12,7 +12,7 @@ pointcount.metadata<-read.csv(file="pointcount_metadata.csv")
 pointcount.metadata$Longitude<-ifelse(sign(pointcount.metadata$Longitude)>0, 
        pointcount.metadata$Longitude*-1, 
        pointcount.metadata$Longitude*1)
-
+pointcount.metadata$index<-rownames(pointcount.metadata)
 
 #merge the files so every row has all metadata attached.
 pointcount.complete<-left_join(pointcount.data,
@@ -126,9 +126,11 @@ coordinates(pointcount.metadata.clean) <- c("Longitude", "Latitude")
 proj4string(pointcount.metadata.clean)<-proj4string(point_counts)
 #use over() to take actual points (ptsrand) and join with vegmap/buffers
 pointcount.join <- sp::over(pointcount.metadata.clean, buf)
-# Integrate this vegetation data into the SpatialPoints object
 
-pointcount.metadata.clean$newnames<-pointcount.join$id
+#add column of new names back into original clean file.
+pointcount.metadata.clean$newspotnames<-pointcount.join$id
+
+#then use index (rownames) to join with original file.
 pointcount.metadata.newnames<-merge(x=pointcount.metadata,
                                         y=as.data.frame(pointcount.metadata.clean),
                                     all.x=TRUE,
@@ -146,8 +148,11 @@ pointcount.metadata.newnames<-merge(x=pointcount.metadata,
                                              "Wind",
                                              "Notes",
                                              "Species.before",
-                                             "Species.After"))
+                                             "Species.After",
+                                             "index"))
                                                     
 #Then the actual points should have the nearby names on them.
 
 #Export file, and correct any dubious ones manually in spreadsheet.
+write.csv(pointcount.metadata.newnames,
+          file="20161003_pointcount_metadata_newnames.csv")
