@@ -156,3 +156,7 @@ pointcount.metadata.newnames<-merge(x=pointcount.metadata,
 #Export file, and correct any dubious ones manually in spreadsheet.
 write.csv(pointcount.metadata.newnames,
           file="20161003_pointcount_metadata_newnames.csv")
+
+#Export dubious points to .gpx file.
+
+#add comments to newnames file, then send all to Jeremy.
