@@ -158,5 +158,11 @@ write.csv(pointcount.metadata.newnames,
           file="20161003_pointcount_metadata_newnames.csv")
 
 #Export dubious points to .gpx file.
+#requires "name" field, use "index" as this.
+pointcount.metadata.clean@data$name <- pointcount.metadata.clean@data$index  
+#get dubious points only.
+fix.pointcounts<-pointcount.metadata.clean[is.na(pointcount.metadata.clean$newspotnames),]
 
-#add comments to newnames file, then send all to Jeremy.
+writeOGR(fix.pointcounts["name"], driver="GPX", layer="waypoints", 
+         dsn="2016104_unnamed_points.gpx")
+
