@@ -285,20 +285,13 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 5/29/2014,Roy,SCHU,9,NA,NA,345,"CHECK, does not exist in map",,8:41,36.52942,-101.16054,0,10 to 15,Large truck drove through road at 2 minutes left,"LOSH, CASP",MODO
 5/29/2014,Roy,SCHU,11,NA,NA,346,"CHECK, does not exist in map",,9:04,36.52943,-101.14265,0,10 to 15,,"LASP, CASP","BHCO, LASP"
 5/29/2014,Roy,SCHU,13,NA,NA,347,"CHECK, does not exist in map",,9:36,36.53653,-101.15199,0,0 to 5,,,TUVU
-5/29/2014,Josh,Schultz WMA,2,NA,NA,206,"CHECK, does not exist in map",,7:04,36.54392,-101.1757,10,0 to 5,,,
 5/29/2014,Josh,Schultz WMA,2,NA,NA,207,"CHECK, does not exist in map",,7:04,36.54392,-101.1757,10,0 to 5,talked to landowner 7:06-7:08,,"CLSW, COGR"
 5/29/2014,Josh,Schultz WMA,4,NA,NA,208,"CHECK, does not exist in map",,7:32,36.52944,-101.18729,10,0 to 5,,,
-5/29/2014,Josh,Schultz WMA,4,NA,NA,209,"CHECK, does not exist in map",,7:32,36.52944,-101.18729,10,0 to 5,,YBCU,
 5/29/2014,Josh,Schultz WMA,6,NA,NA,210,"CHECK, does not exist in map",,7:56,36.52496,-101.20536,10,0 to 5,,,
-5/29/2014,Josh,Schultz WMA,6,NA,NA,211,"CHECK, does not exist in map",,7:56,36.52496,-101.20536,10,0 to 5,,,
 5/29/2014,Josh,Schultz WMA,8,NA,NA,212,"CHECK, does not exist in map",,8:20,36.52936,-101.16946,10,0 to 5,,,
-5/29/2014,Josh,Schultz WMA,8,NA,NA,213,"CHECK, does not exist in map",,8:20,36.52936,-101.16946,10,0 to 5,,,
 5/29/2014,Josh,Schultz WMA,10,NA,NA,214,"CHECK, does not exist in map",,8:46,36.52938,-101.15157,10,0 to 5,,,
-5/29/2014,Josh,Schultz WMA,10,NA,NA,215,"CHECK, does not exist in map",,8:46,NA,NA,10,0 to 5,,,
-5/29/2014,Josh,Schultz WMA,12,NA,NA,216,"CHECK, does not exist in map",,9:07,36.52945,-101.13374,0,0 to 5,,,
 5/29/2014,Josh,Schultz WMA,12,NA,NA,217,"CHECK, does not exist in map",,9:07,36.52945,-101.13374,10,0 to 5,,,
-5/29/2014,Josh,Schultz WMA,14,NA,NA,218,"CHECK, does not exist in map",,9:40,36.65056,-101.16216,0,0 to 5,,,
-5/29/2014,Josh,Schultz WMA,14,NA,NA,219,"CHECK, does not exist in map",,9:40,NA,NA,10,0 to 5,,,
+5/29/2014,Josh,Schultz WMA,14,NA,NA,218,"CHECK, does not exist in map",,9:40,36.65056,-101.16216,,,,,
 5/18/2014,JDR,Selman Ranch,2,SELM,SELMPC03,103,,,7:50,36.77757,-99.39109,100,5 to 10,,EAKI,
 5/18/2014,JDR,Selman Ranch,6,SELM,SELMPC06,102,,,7:30,36.79774,-99.39929,80,5 to 10,Spitting rain throughout,,
 5/18/2014,Kristen,Selman Ranch,2,SELM,SELMPC02,242,,,7:51,36.77,-99.39,100,0 to 5,,,"LASP, CASP"
@@ -460,7 +453,7 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 5/8/2014,Roy,WXRD,3,WXRD,WXRD-PC03,329,,,10:25,34.69618,-98.7909,90,10 to 15,WXRD-PC03,,
 5/8/2014,Roy,WWMT,3,WWMT,WWMT-PC03,331,,,11:51,34.81643,-98.8261,60,10 to 15,WWMT-PC03,,
 5/8/2014,Roy,WXRD,7,WXRD,WXRD-PC07,330,,,10:50,34.69611,-98.82617,80,10 to 15,WXRD-PC07,,
-5/8/2014,Roy,WXRD,7,NA,NA,332,WWMT-PC07 does not exist on map,,12:15,34.85255,-98.82603,40,10 to 15,"WWMT-PC07, point not in BC",,
+5/8/2014,Roy,WWMT,7,NA,NA,332,WWMT-PC07 does not exist on map,,12:15,34.85255,-98.82603,40,10 to 15,"WWMT-PC07, point not in BC",,
 6/12/2014,Crystina,WMWR,1,WMWR,WMWR-PC01,55,,,6:56,34.74809,-98.75363,0,0 to 5,,,AMRO
 6/12/2014,Crystina,WMWR,2,WMWR,WMWR-PC02,56,,,7:13,34.74478,-98.74531,0,0 to 5,,,"NOMO, AMRO"
 6/12/2014,Crystina,WMWR,3,WMWR,WMWR-PC03,57,,,7:28,34.74312,-98.73738,0,0 to 5,,,MODO
