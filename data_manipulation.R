@@ -1,38 +1,4 @@
 #libraries used in this file.
-library(dplyr)
-
-#import data from csv files.
-######
-#point counts
-
-#sightings
-pointcount.data<-
-#metadata
-pointcount.metadata<-read.csv(file="pointcount_metadata.csv")
-pointcount.metadata$Longitude<-ifelse(sign(pointcount.metadata$Longitude)>0, 
-       pointcount.metadata$Longitude*-1, 
-       pointcount.metadata$Longitude*1)
-pointcount.metadata$index<-rownames(pointcount.metadata)
-
-#merge the files so every row has all metadata attached.
-pointcount.complete<-left_join(pointcount.data,
-                               pointcount.metadata,
-                               by)
-
-
-#transects
-  
-#sightings
-transect.data<-read.csv()
-#metadata
-transect.metadata<-read.csv()
-#merge the files so every row has all metadata attached.
-transect.complete<-left_join(transect.data,
-                             transect.metadata,
-                             by)
-######
-
-#import gpx files of where transects and point counts should be
 library(tools)
 library(sp) # R's base package for vector data types
 library(raster) # better printing of spatial objects, export shapefiles
@@ -40,6 +6,21 @@ library(rgdal) # for reading different spatial file formats
 library(rgeos) # for spatial distance and topology operations
 library(dplyr) # data manipulation
 
+#import data from csv files.
+######
+#point counts
+#metadata
+pointcount.metadata<-read.csv(file="pointcount_metadata.csv")
+pointcount.metadata$Longitude<-ifelse(sign(pointcount.metadata$Longitude)>0, 
+       pointcount.metadata$Longitude*-1, 
+       pointcount.metadata$Longitude*1)
+pointcount.metadata$index<-rownames(pointcount.metadata)
+
+#####
+
+#import gpx files of where transects and point counts should be
+
+##this section of code/comments for importing gpx given by a friend of colleague's (do not know name)
 # Data Import
 # gpx files can store a combination of waypoints, routes, and tracks.
 # shapefiles, and R's native spatial formats, can only store one type of 
@@ -102,6 +83,8 @@ unique(tracks$type)
 # seperate out point counts, transect start/ends, and any transect tracks
 point_counts <- subset(waypoints, !type %in% c("Transect Start_End"))
 transect_startend <-  subset(waypoints, type %in% c("Transect Start_End"))
+##end borrowed
+
 
 #plotting gpx original points along with actual data points.
 #
@@ -165,4 +148,50 @@ fix.pointcounts<-pointcount.metadata.clean[is.na(pointcount.metadata.clean$newsp
 
 writeOGR(fix.pointcounts["name"], driver="GPX", layer="waypoints", 
          dsn="2016104_unnamed_points.gpx")
+#use this to compare original basecamp point list to where point counts conducted
 
+##sightings
+pointcount.data<-read.csv(file="pointcount_data.csv")
+#bring in the manually corrected file
+pointcount.metadata.manually.corrected<-read.csv(file="20161003_pointcount_metadata_newnames_manual_corrections.csv")
+#merge the files so every row has all metadata attached.
+pointcounts.complete<-left_join(pointcount.data,
+                                pointcount.metadata.manually.corrected,
+                                    by=c("Date",
+                                         "Observer",
+                                         "Location",
+                                         "Point"))
+#This adds an extra ca. 300 rows. 
+#Need to check which site/date/obs combos are identical but should not be.
+
+count.combos<-distinct(pointcount.metadata.manually.corrected,
+                       Date,
+                       Observer,
+                       Location,
+                       Point,
+                       newspotnames) #correct number
+distinct(pointcount.metadata.manually.corrected,
+         Date,
+         Observer,
+         Location,
+         Point)
+#need to find a way to compare the two distincts so I can pinpoint
+#which ones are non-unique keys and need modified.
+
+  group_by(pointcount.data,
+           Date,
+           Observer,
+           Location,
+           Point)%>%
+  summarize(sightingsperpointcount=length(Date))
+
+#transects
+
+#sightings
+transect.data<-read.csv()
+#metadata
+transect.metadata<-read.csv()
+#merge the files so every row has all metadata attached.
+transect.complete<-left_join(transect.data,
+                             transect.metadata,
+                             by)
