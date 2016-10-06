@@ -161,7 +161,8 @@ pointcounts.complete<-left_join(pointcount.data,
                                          "Observer",
                                          "Location",
                                          "Point"))
-#This adds an extra ca. 300 rows. 
+#Compare pointcounnts.complete row count vs pointcount.data.  
+#Pointcount.data is the standard, number should be same.
 #Need to check which site/date/obs combos are identical but should not be.
 
 count.combos<-distinct(pointcount.metadata.manually.corrected,
@@ -169,21 +170,39 @@ count.combos<-distinct(pointcount.metadata.manually.corrected,
                        Observer,
                        Location,
                        Point,
-                       newspotnames) #correct number
-distinct(pointcount.metadata.manually.corrected,
+                       newspotnames) #number of unique.
+#Should match number of rows in pointcount.metadata.manually.corrected
+#Use which.have.duplicates to see which have duplicate primary key columns.
+which.have.duplicates<-group_by(pointcount.metadata.manually.corrected,
+                                Date,
+                                Observer,
+                                Location,
+                                Point,
+                                newspotnames)%>%
+  summarize(duplicates=n())
+which.have.duplicates[which.have.duplicates$duplicates>1,]
+#after corrections for bad matches in primary key columns and duplicates, now only 6 rows apart.
+
+old.count.combos<-distinct(pointcount.metadata.manually.corrected,
          Date,
          Observer,
          Location,
          Point)
-#need to find a way to compare the two distincts so I can pinpoint
-#which ones are non-unique keys and need modified.
+#This one is one short.  So there is one lumped one left??
+#Check without the new unique sitenames (newspotnames).
+which.have.duplicates.old<-group_by(pointcount.metadata.manually.corrected,
+                                Date,
+                                Observer,
+                                Location,
+                                Point)%>%
+  summarize(duplicates=n())
+which.have.duplicates.old[which.have.duplicates.old$duplicates>1,]
+#One sighting (05/08/2014 Roy WXRD point 7 is duplicates).  Found mistaken naming in metadata file.
 
-  group_by(pointcount.data,
-           Date,
-           Observer,
-           Location,
-           Point)%>%
-  summarize(sightingsperpointcount=length(Date))
+#Now all numbers match!  number of distinct key columns/sites/observer/date and 
+#number of pointcount.metedata.manually.corrected rows are all same.
+#pointcount.data and pointcounts.complete also match because all primary keys unique.
+
 
 #transects
 
