@@ -126,13 +126,12 @@ tree.test<-rpart(response~bio1+
                    bio18+
                    bio19,
                  data=tree.data.dick,
-<<<<<<< HEAD
                  method="class",
                  control=rpart.control(cp=0.0000000000000000000000000001))
 summary(tree.test)
 plot(tree.test)
 
-tree.test3<-glm(response~bio1+
+tree.test2<-lm(response~bio1+
                                   bio2+
                                   bio3+
                                   bio4+
@@ -151,22 +150,14 @@ tree.test3<-glm(response~bio1+
                                   bio17+
                                   bio18+
                                   bio19,
-                                data=tree.data.dick,
-                family=binomial(link="logit"))
-=======
-                 method="class")
-tree.test.predict<-predict(tree.test)
-plot(tree.test)
+                                data=tree.data.dick)
 
-
->>>>>>> 12c726408078250246b51a5fc086f65db8bc99b0
 #check out Dobrowski et al. 2011; ecological monographs.
 
 #create prediction map for illustration purposes
 tree.test.raster.prediction<-raster::predict(object=studyarea.bioclim, #raster object, probably use bioclim.extent,
                   model=tree.test)
 plot(tree.test.raster.prediction)
-<<<<<<< HEAD
 points(subs)
 
 tree.test2.raster.prediction<-raster::predict(object=studyarea.bioclim, #raster object, probably use bioclim.extent,
@@ -187,12 +178,10 @@ points(subs)
 #Figure out how the overlapping support sets works to create mixture model.
 
 #possibly use raster::mosaic() function.
-=======
 
 
 #create a simple ensemble model.
 #used this: .
 
 #Figure out how the overlapping support sets works to create mixture model.
->>>>>>> 12c726408078250246b51a5fc086f65db8bc99b0
 #Do the randomized geographic sampling to get overlapping support sets.
