@@ -133,3 +133,41 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Start T
 5/27/2013,JDR,WMWR,D02,,,8:29,34.72472,98.59237,100,15-20 S,8:13,34.74212,98.59216,85,20-25 S,had to enter metadata from datasheet 09/28/2016 cmc,,
 6/24/2013,MAB,WMWR,E2,,,7:17,34.73512,-98.57405,20,10-20,7:52,34.72473,-98.57417,20,10-20,,,
 6/24/2013,MAB,WMWR ,E1,,,8:06,34.72477,-98.58017,40,5-15,8:48,34.74169,-98.58014,40,5-15,,,
+,,below these are from new sheets,,,,,,,,,,,,,,,,
+06/02/13,ESB,Chandler,CHND-A,,,7:08,35.73655,96.85200,0,0-5,7:56,35.74313,96.85167,0,0-5,Crossed road at 7:22. GPS batteries died at 7:45 (1min to change),,
+06/02/13,ESB,Chandler,CHND-B,,,8:13,35.74410,96.85664,0,0-5,9:00,35.73591,96.85586,5%,5- 10N,Crossed road at 8:46,,GRSP
+06/04/13,ESB,Drummond Flats WMA,DRMD-C,,,7:21,36.30397,98.04425,95%,15-20 NNE,9:32,36.32507,98.04634,85%,10-15 NNE,drifted off transect ca. 300 m.,,
+06/04/13,ESB,Drummond Flats WMA,DRMD-D,,,10:07,36.31825,98.05182,50%,0-5 NNE,10:54,36.30406,98.05145,10%,10-15 NNE,,,
+05/25/13,JDR,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:04,34.98164,97.52760,30%,0-5,7:47,34.98365,97.53217,30%,0-5,"BEKI, BGGN, PABU",Double-observer survey (with JGK).  Crossed fence at 7:23,YBCH
+05/25/13,JDR,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:21,34.98067,97.53633,50%,0-5,9:05,34.98606,97.53477,100%,5-10 (gusty),"RSHA, TUVU",Double-observer survey (with JGK),
+05/25/13,JDR,Kessler Atmospheric and Ecological Field Station,KAEF-B,,,10:28,34.97761,97.51875,85%,5-10,11:02,34.97704,97.52309,100%,10-15,,Multiple observers conversing,
+06/04/13,JDR,Cimmaron Hills WMA,CIMH-C,,,9:34,36.94197,99.36328,0%,10-15 SE,11:28,36.92644,99.38966,5%,10-15 SSW,,Skipped farmsite at 9:51.  Restarted transect at 9:54. Skirted around ditch at 9:59,
+06/04/13,JDR,Cimmaron Hills WMA,CIMH-D,,,7:17,36.93096,99.39963,20%,5-10 S,9:14,36.94407,99.37407,5%,10-15 SE,,,"NOLA, KILL, LETE"
+06/05/13,JDR,Rita Blanca National Grassland,RBNG-C,,,9:18,36.50487,102.64323,70%,15-20 N,10:56,36.50482,102.67889,100%,15-20 NNE,,,
+06/05/13,JDR,Rita Blanca National Grassland,RBNG-D,,,11:10,36.51222,102.67892,100%,15-20NNE,12:17,36.51270,102.65237,100%,10-15 NE,,,
+06/06/13,JDR,Optima NWR,OPTM-B,,,17:40,36.64761,101.21771,5%,0-5 E,19:40,36.66590,101.17803,2%,5-10 ESE,,,
+06/07/13,JDR,Packsaddle WMA,PACK-C,,,8:40,35.88306,99.68923,10%,0-5 SSE,9:20,35.87497,99.68903,10%,5-10 S,,,
+06/07/13,JDR,Packsaddle WMA,PACK-D,,,9:34,35.87677,99.68510,10%,5-10 S,9:58,35.88431,99.68634,5%,0-5 S,,,
+06/12/13,JDR,"Grimes Switchgrass, Garvin Co.",GRSG-B,,,6:43,34.79744,97.49248,0%,10-15 SSW,7:59,34.79732,97.48180,5%,10-15 S,"YBCU, FISP, YEWA",Road transect,
+06/24/13,JDR,Wichita Mountains Wildlife Refuge,WMWR-B,,,7:10,34.68984,98.70986,30%,5-10 S,8:35,34.68972,98.73701,30%,5-10 S,,,"TUVU (perched), BGGN, PABU (S), AMCR TUTI"
+5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-E,,,8:24,34.97741,97.51716,30%,0-5,9:25,34.98538,97.52023,100%,5-10,Double-observer survey with MAB,,"AMKE, LASP, GRSP, OROR"
+5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,6:45,34.98603,97.52280,30%,0-5,8:15,34.97889,97.51948,25%,0-5,Multiple observer (incl. ESB + MAB),,
+5/27/2013,MDF,Wichita Mountains Wildlife Refuge,WMWR-E,,,6:36,34.74155,98.58012,50%,20-25,7:27,34.72476,98.58013,100%,25-30,,CONI,BLGR
+5/27/2013,MDF,Wichita Mountains Wildlife Refuge,WMWR-I,,,7:45,34.72475,98.57418,100%,25-30,8:20,34.73515,98.57417,100%,25-30,,,"PABU,LASP, GRSP, CAEG"
+5/29/2013,MDF,Hackberry Flats WMA,HACK-B,,,6:50,34.29306,98.97556,100%,10 to 15,7:27,34.29286,98.96438,90%,15-20,,,
+5/29/2013,MDF,Hackberry Flats WMA,HACK-G,,,7:41,34.28777,98.96685,90%,15-20,9:00,34.28769,98.94085,90%,15-20,,,"KILL, HOLA"
+6/1/2013,MDF,Noble Foundation - Oswalt Road Ranch,OSWT-D,,,13:04,33.99313,97.21419,100%,10 to 15,14:00,34.00881,97.20889,90%,5 to 10,,"NOBO, GCFL","NOCA, DOWO, MODO"
+6/1/2013,MDF,Noble Foundation - Oswalt Road Ranch,OSWT-E,,,15:04,34.00921,97.19447,25%,0 to 5,15:25,34.00208,97.19447,10%,5 to 10,,"WEVI, NOPA, DOWO, CACH, CARW",
+6/1/2013,MDF ,Noble Foundation - Red River Farm,REDR-A,,,18:25,33.88691,97.29121,30%,5 to 10,19:47,33.88663,97.27824,0%,0 to 5,Johnsongrass ends at 19:14.  Wheat-like starts at 19:24. Switchgrass starts at 19:35,"FICR, GRSP(P)",
+6/3/2013,MDF,Cimmaron Bluff WMA,CIMB-C,,,6:47,36.79803,99.34174,75%,5 to 10,8:00,36.81494,99.34183,50%,10 to 15,,,
+6/3/2013,MDF,Cimmaron Bluff WMA,CIMB-D,,,8:47,36.80504,99.35366,30%,10 to 15,9:55,36.82676,99.35385,40%,15 to 20,,,
+6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:07,36.95102,99.36020,80%,5 to 10,8:35,36.92408,99.36005,50%,10 to 15,,,
+6/4/2013,MDF,Cimmaron Hills WMA,CIMH-B,,,8:57,36.91968,99.35989,10%,15 to 20,10:20,36.91963,99.39519,0%,10 to 15,,,
+6/4/2013,MDF,Hitch Switchgrass - Guymon,GUYS-A,,,19:41,36.62876,101.34964,30%,10 to 15,20:06,36.62873,101.35299,75%,15-20,,,"CONI, HOLA"
+6/7/2013,MDF,Packsaddle WMA,PACK-A,,,8:30,35.88662,99.68826,10%,0-5,9:13,35.88828,99.67474,0%,5 to 10,,,
+6/7/2013,MDF,Packsaddle WMA,PACK-B,,,9:35,35.89507,99.67764,0%,5 to 10,10:16,35.89442,99.68922,0%,5 to 10,,,
+6/24/2013,MDF,Wichita Mountains Wildlife Refuge,WMWR-A,,,6:45,34.69059,98.70187,80%,10 to 15,7:45,34.69063,98.68995,80%,10 to 15,,,
+6/24/2013,MDF,Wichita Mountains Wildlife Refuge,WMWR-F,,,7:52,34.69426,98.69102,40%,0 to 5,8:30,34.69431,98.70166,40%,0 to 5,,,
+6/24/2013,MDF,Wichita Mountains Wildlife Refuge,WMWR-C,,,8:47,34.68921,98.70521,50%,5 to 10,9:33,34.70449,98.70433,45%,10 to 15,,,
+7/9/2013,MDF,Tallgrass Prairie Preserve,TGPP-A,,,6:34,36.87534,96.42184,25%,5 to 10,8:05,36.87529,96.43931,10%,5 to 10,,,
+7/9/2013,MDF,Tallgrass Prairie Preserve,TGPP-B,,,8:18,36.86795,96.43936,10%,5 to 10,9:18,36.86931,96.42085,5%,5 to 10,,,
