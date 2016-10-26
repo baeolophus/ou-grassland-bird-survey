@@ -26,33 +26,3 @@ JNH=Jessica Hightower
 Not found in spreadsheet, but data sheets exist (and are marked "entered"):
 	Point counts
 	06/03/2013, JR, Selman Ranch, Ranch House point count, 12:12pm.  Strong south wind (20-25).  This was listed in the point count conditions tab but no data in data tab.  Any reason for it to be excluded?
-	06/06/2013, JDR, Black Mesa SP, point counts at 10:59 and 11:19.  No weather data given.
-	06/07/2013, JDR, Ellis Co WMA, PC1, no time given for first PC, 7:25 for second PC.  No weather data given.
-	06/07/2013, JDR, Black Kettle, PC2, 14:55, 15:43, 16:18.  All data appears present.
-	06/07/2013, JDR, Black Kettle, PC1, 10:54.  No lat/long, no weather.
-	06/10/2013, JDR, USDA-GRL, PC1, 08:45, 09:23, 10:03.  All data appears present.
-	06/11/2013, JDR, Sandy Sanders WMA, PC1, 06:54.  All data appears present.
-	06/13/2013, JDR, Pennsylvania Ave, PC1, no time for first PC, 09:43 and 10:00 for remaining, all other data present.
-	06/29/2013, JDR, Rita Blanca, PC2, 19:06, 19:25, 19:41.  All data appears present.
-	06/23/2013, JDR, WMWR, 6:42am PC missing lat/long.
-	06/04/2013, JGK, Drummond Flats (GAR), data sheet contains sightings from JGK, JBT, and ESB.  ESB's point count not in spreadsheet.
-
-	Transects
-	06/02/2013, ESB, CHAND1, 7:08am, all data appears present.
-	06/02/2013, ESB, CHAND2, 8:13am, all data appears present.
-	06/04/2013, ESB, Drummond Flats, "drifted off transect 300 m", exclude?
-	06/04/2013, ESB, Drummond Flats C, all data appears present.
-	05/25/2013, JDR (jointly with JGK), KAEFS, 7:04am.  Double observer transect, one observer excluded?
-	05/25/2013, JDR (jointly with ESB, MDF, MAB, JGK), 10:28am.  Multiple observer transect, only one kept?
-	05/25/2013, JDR (jointly with JGK), KAEFS A2, 8:21am.  Double observer transect, one observer excluded?
-	06/04/2013, JDR, Cimarron Hills C, 09:34.  All data appears present.
-	06/04/2013, JDR, Cimarron Hills D, 07:17.  All data appears present.
-	06/05/2013, JDR, Rita Blanca C and D, 09:18 and 11:10.  All data appears present.
-	06/06/2013, JDR, Optima NWR B, 17:40.  All data appears present.
-	06/07/2013, JDR, Packsaddle C, 08:40.  All data appears present.
-	06/07/2013, JDR, Packsaddle D, 09:34.  All data appears present.
-	06/12/2013, JDR, Grimes Switchgrass road transect 1, 06:43.  All data appears present.
-	06/24/2013, JDR, WMWR B01, 7:10am.  No start lat/long given, otherwise okay.
-	05/25/2013, MAB (jointly with ESB, MDF), KAEFS 02, 8:23.  No lat/long for start or end.
-	
-	All data from MDF (Matt Furst?).  All say entered but they are not in any of the files I have.  Does someone either have a file laying around with these data in them to save me re-entered, or a reason why they were excluded?
