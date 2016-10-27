@@ -132,26 +132,27 @@ summary(tree.test)
 plot(tree.test)
 
 tree.test2<-lm(response~bio1+
-                                  bio2+
-                                  bio3+
-                                  bio4+
-                                  bio5+
-                                  bio6+
-                                  bio7+
-                                  bio8+
-                                  bio9+
-                                  bio10+
-                                  bio11+
-                                  bio12+
-                                  bio13+
-                                  bio14+
-                                  bio15+
-                                  bio16+
-                                  bio17+
-                                  bio18+
-                                  bio19,
+                 bio2+
+                 bio3+
+                 bio4+
+                 bio5+
+                 bio6+
+                 bio7+
+                 bio8+
+                 bio9+
+                 bio10+
+                 bio11+
+                 bio12+
+                 bio13+
+                 bio14+
+                 bio15+
+                 bio16+
+                 bio17+
+                 bio18+
+                 bio19,
                                 data=tree.data.dick)
 
+summary(tree.test2)
 #check out Dobrowski et al. 2011; ecological monographs.
 
 #create prediction map for illustration purposes
@@ -175,13 +176,31 @@ ensemble.test.trees<-mean(stack.test.trees)
 
 plot(ensemble.test.trees)
 points(subs)
-#Figure out how the overlapping support sets works to create mixture model.
 
+#Do the randomized geographic sampling to get overlapping support sets.
 #possibly use raster::mosaic() function.
 
+ensemble.test.trees.mosaic.version<-mosaic(tree.test.raster.prediction,
+       tree.test2.raster.prediction,
+       fun=mean)
 
-#create a simple ensemble model.
-#used this: .
+plot(ensemble.test.trees.mosaic.version)
 
-#Figure out how the overlapping support sets works to create mixture model.
-#Do the randomized geographic sampling to get overlapping support sets.
+#develop function
+#count number of non-NA layers (http://stackoverflow.com/questions/17304566/r-count-non-nas-in-a-raster-stack, last answer)
+weights<-1/sum(!is.na(stack.test.trees))
+
+#stack so have appropriate matching number of layers for raster::weighted.mean to work 
+#(http://stackoverflow.com/questions/21041499/stacking-an-existing-rasterstack-multiple-times/21041582?noredirect=1#comment31634090_21041582)
+weights.dim <- stack(replicate(dim(stack.test.trees)[3],
+                 weights ))
+
+#need to confirm that this will extend to cover all area.
+
+ensemble.weighted<-raster::weighted.mean(x=stack.test.trees,
+                      w=weights.dim,
+                      na.rm=TRUE)
+
+plot(ensemble.weighted)
+
+#Overlapping support sets works to create mixture model.
