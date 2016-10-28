@@ -103,7 +103,7 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 5/18/2014,JDR,Selman Ranch,2,SELM,SELMPC03,103,,,7:50,36.77757,-99.39109,100,5 to 10,,EAKI,
 5/18/2014,Kristen,Selman Ranch,5,SELM,SELMPC05,241,"No lat/long, assumed pointname correct.",,7:27,NA,NA,70,0 to 5,Started raining at a light drizzle then stopped after a few min.,,LASP
 5/18/2014,Kristen,Selman Ranch,2,SELM,SELMPC02,242,,,7:51,36.77,-99.39,100,0 to 5,,,"LASP, CASP"
-5/2/2014,Josh,Grazinglands,6,GRLB,NA,182,"CHECk, lat/long a bit off but this is in order traveled¡¦ GRLBPC08?",,10:09,35.54487,-98.0155,0,0 to 5,,,
+5/2/2014,Josh,Grazinglands,6,GRLB,NA,182,"CHECk, lat/long a bit off but this is in order traveledï¿½ï¿½ GRLBPC08?",,10:09,35.54487,-98.0155,0,0 to 5,,,
 5/2/2014,Josh,Grazinglands,5,GRLB,GRLBPC07,183,,,10:22,35.54611,-98.01099,0,0 to 5,,,
 5/2/2014,Josh,Grazinglands,4,GRLB,GRLBPC06,184,,,10:44,35.5437,-98.00511,0,0 to 5,,,
 5/2/2014,Josh,Grazinglands,3,GRLB,GRLBPC05,185,,,10:55,35.54124,-97.99928,0,10 to 15,,"STFL, NOMO, STFL",
@@ -382,7 +382,7 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 6/29/2013,JDR,Rita Blanca,PC2b,RBNG,RBNG-PC24,451,,,19:25,36.53054,-102.92439,100,5-10 E,Winds increasing; storms to west,,
 6/29/2013,JDR,Rita Blanca,PC2c,RBNG,RBNG-PC26,452,,,19:41,36.53049,-102.90648,100,10-15 E,,,
 6/3/2013,MAB,Selman Ranch,Selman Ranch Pt 2,SELM,SELMPC02,455,,,12:10,36.77178,-99.39075,0,15-25,,,
-6/3/2013,JDR,SelmRnch,PC3,SELM,NA,456,"There is a PC3, but no lat/long given here nor time or any other metadata",,12:12,36.77757,99.39109,,,time and lat/long taken from new combined data file. (cmc 2016/10/25),,
+6/3/2013,JDR,Selman Ranch,PC03,SELM,NA,456,"There is a PC3, but no lat/long given here nor time or any other metadata",,12:12,36.77758,99.39111,,20-25,time and lat/long taken from datasheet. (cmc 2016/10/25),,
 6/4/2013,MAB,Cimarron Hills WMA,Cimarron Hills 9,CIMH,CIMHPC09,399,,,10:00,36.98348,-99.3921,0,15-20,,,
 6/4/2013,MAB,Cimarron Hills WMA,Cimarron Hills 10,CIMH,CIMHPC10,389,,,10:17,36.9872,-99.39055,0,15-25,,,
 6/4/2013,MAB,Cimarron Hills WMA,Cimarron Hills 11,CIMH,CIMHPC11,390,,,10:29,36.98715,-99.38189,5,15-20,,,
