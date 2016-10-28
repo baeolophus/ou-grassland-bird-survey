@@ -16,7 +16,7 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,,,,9:43,34.94353,97.54741,0,15 SSW,,2 MODO to SW,
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,,,,10:00,34.95787,97.54742,0,15 SSW,,GRSP singing on fenceline to N,
 6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,,,,19:06,36.5305,102.94289,100,0-5 E,,,
-6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,,,,19:25,36.53054,102.92439,100,5-10 E,,,Winds increasing; storms to west
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,,,,19:25,36.53054,102.92439,100,5-10 E,Winds increasing; storms to west,,
 6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,,,,19:41,36.53049,102.90648,100,10-15 E,,,
 6/3/2013,MDF,Selman Ranch,SELM-PC1,,,,,,12:09,36.76845,99.38728,0%,10 to 15,,,
 6/6/2013,MDF,Black Mesa SP,BLKM-PC2,,,,,,10:56,36.817,102.87723,100%,5 to 10,,,
@@ -99,3 +99,5 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 06/08/14,JNH,Cimarron Hills,PC09,,,,,,16:56,36.98349,-99.39213,30.00%,20 to 25,,,
 06/18/14,Jessica,Cimarron Hills,PC12,,,,,,17:17,36.98719,-99.37579,30.00%,20 to 25,,,
 06/18/14,Jessica,Cimarron Hills,PC01,,,,,,18:07,36.93837,-99.39299,35.00%,20 to 25,,,
+05/18/14,TES,Selman Ranch,PC04,,,,,,7:25,,,90,5 to 10 W,selman ranch pt 4 (get from gpx),,"BHCO, AMCR"
+05/18/14,TES,Selman Ranch,PC01,,,,,,7:55,,,,,selman ranch pt 1 (get from gpx),,
