@@ -124,7 +124,7 @@ pointcount.metadata.newnames<-merge(x=pointcount.metadata,
 
 #Export file, and correct any dubious ones manually in spreadsheet.
 write.csv(pointcount.metadata.newnames,
-          file="2016_pointcount_metadata_newnames.csv")
+          file="2016_pointcount_metadata_additional_newnames.csv")
 
 #Export dubious points to .gpx file.
 #requires "name" field, use "index" as this.
@@ -133,7 +133,7 @@ pointcount.metadata.clean@data$name <- pointcount.metadata.clean@data$index
 fix.pointcounts<-pointcount.metadata.clean[is.na(pointcount.metadata.clean$newspotnames),]
 
 writeOGR(fix.pointcounts["name"], driver="GPX", layer="waypoints", 
-         dsn="2016104_unnamed_points.gpx")
+         dsn="20161031_unnamed_additional_points.gpx")
 #use this to compare original basecamp point list to where point counts conducted
 
 ##sightings
@@ -188,15 +188,3 @@ which.have.duplicates.old[which.have.duplicates.old$duplicates>1,]
 #Now all numbers match!  number of distinct key columns/sites/observer/date and 
 #number of pointcount.metedata.manually.corrected rows are all same.
 #pointcount.data and pointcounts.complete also match because all primary keys unique.
-
-
-#transects
-
-#sightings
-transect.data<-read.csv()
-#metadata
-transect.metadata<-read.csv()
-#merge the files so every row has all metadata attached.
-transect.complete<-left_join(transect.data,
-                             transect.metadata,
-                             by)
