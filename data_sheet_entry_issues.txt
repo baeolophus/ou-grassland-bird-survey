@@ -6,23 +6,10 @@ In spreadsheet, but not found in physical data sheets:
 	05/30/2014 Roy, 1 point count at Rita Blanca NG (two sheets of transects exist but I cannot find the data on those, so I assume it is on another sheet.)
 
 Not found in spreadsheet, but physical data sheets exist:
-	Point counts
-	5/18/2014 Tory/TES, Selman Ranch, no GPS, 7:25 and 7:55am pt4 and pt ??
-	4/21/2014 Jessica, Tall Grass Prairie Preserve, points not named (almost looks like transect?  but labeled PC) and no gps points.
-	6/08/2014 Jessica, Cimarron Hills, points 2, 7, 5, 9, 1, 12.  time 16:00-18:04: too late in day? also wind 20-25 mph.  Otherwise, all data present, no obvious reason for exclusion.
 
-	Transects
-	6/04/2014 Jessica, Tall Grass Prairie Preserve, transect B, no lat/long given.
-	6/05/2014 Jessica, Tall Grass Prairie Preserve, transect D, all data appears to be present.  Maybe thunderstorm?  it says "break for bad thunder/lightning".
-	6/18/2014 Roy/RFF, Cimarron Hills, points 3, 4, 6, 8, 11, 18.  time 15:58-17:47: too late in day?  But others exist this late in day, otherwise all data present and no obvious reason for exclusion.
+Excluded two total.
 
 Observers:
 TES=Tory
 RFF=Roy??
 JNH=Jessica Hightower
-
-2013
-
-Not found in spreadsheet, but data sheets exist (and are marked "entered"):
-	Point counts
-	06/03/2013, JR, Selman Ranch, Ranch House point count, 12:12pm.  Strong south wind (20-25).  This was listed in the point count conditions tab but no data in data tab.  Any reason for it to be excluded?
