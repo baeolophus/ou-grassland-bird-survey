@@ -5814,3 +5814,1269 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 06/03/13,JDR,Selman Ranch,PC03,,,LASP,1,S,220,70,,,
 06/03/13,JDR,Selman Ranch,PC03,,,CASP,1,H,200,140,,,
 06/03/13,JDR,Selman Ranch,PC03,,,CASP,1,H,165,150,,,
+6/4/2013,ESB,Drummond Flats WMA,DRMD-PC4,,,RWBL,1,S,280,30,,,
+6/4/2013,ESB,Drummond Flats WMA,DRMD-PC4,,,DICK,2,S,180,70,,,
+6/4/2013,ESB,Drummond Flats WMA,DRMD-PC4,,,RWBL,1,H,85,75,,,
+6/4/2013,ESB,Drummond Flats WMA,DRMD-PC4,,,DICK,1,S,270,50,,,
+6/4/2013,ESB,Drummond Flats WMA,DRMD-PC4,,,DICK,1,H,200,45,,,
+6/4/2013,ESB,Drummond Flats WMA,DRMD-PC4,,,DICK,1,H,115,55,,,
+6/4/2013,ESB,Drummond Flats WMA,DRMD-PC4,,,MODO,1,S,140,300,,,
+6/4/2013,ESB,Drummond Flats WMA,DRMD-PC4,,,MODO,2,S,90,80,,,
+6/4/2013,ESB,Drummond Flats WMA,DRMD-PC4,,,DICK,1,S,90,120,,,
+6/4/2013,ESB,Drummond Flats WMA,DRMD-PC4,,,EAME,1,S,50,220,,,
+6/4/2013,ESB,Drummond Flats WMA,DRMD-PC4,,,RWBL,1,S,50,30,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,WEME,1,H,100,85,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,HOLA,1,H,20,150,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,NOMO,1,H,150,300,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,WEME,1,H,145,285,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,CASP,1,H,120,220,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,CASP,1,H,40,200,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,CASP,1,H,350,215,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,HOLA,1,H,170,80,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,WEME,1,H,165,290,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,HOLA,1,H,240,125,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,NOMO,1,H,350,450,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,WEKI,3,S,275,185,A,,2 Fighting
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,HOLA,1,S,300,200,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC1,,,HOLA,2,S,395,175,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,LASP,1,H,240,60,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,CASP,1,H,35,120,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,LASP,1,H,80,50,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,CLSW,2,S,80,25,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,CASP,1,H,120,170,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,CASP,1,H,75,100,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,WEME,1,H,265,75,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,WEME,1,H,320,200,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,CLSW,1,S,240,50,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,LASP,1,S,90,30,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,NOMO,1,H,260,235,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,WEKI,1,S,95,160,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,NOMO,1,S,25,215,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,RTHA,1,S,290,250,,Flyover,soaring low
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,BAEA,1,S,280,100,,Flyover,above head
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,WEKI,1,H,270,250,A,,response to RTHA
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,WEKI,1,H,250,200,A,,response to RTHA
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,WEKI,1,S,260,15,,Flyover,flew over head
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,CONI,1,H,30,350,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,LASP,1,H,155,150,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,LASP,1,H,215,150,,,
+6/6/2013,JDR,Black Mesa SP,BLKM-PC6,,,WEKI,1,S,195,160,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,CASP,1,H,95,125,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,CASP,1,H,265,230,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,DICK,1,H,25,200,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,DICK,2,H,115,250,,,CLUSTER
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,EAME,1,H,305,310,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,EAME,1,H,240,300,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,NOBO,1,H,30,400,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,HOFI,1,H,135,90,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,NOBO,1,H,190,385,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,CASP,1,H,235,140,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,DICK,1,H,170,250,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,DICK,1,H,260,240,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,EAME,1,H,340,260,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,WEKI,3,S,350,225,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,CASP,1,H,100,230,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,MODO,1,H,265,400,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,NOBO,1,H,250,450,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,FISP,1,H,155,145,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,BARS,1,H,165,85,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,BARS,1,S,245,100,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,EAME,1,S,295,210,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC1,,,COGR,1,H,30,185,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,CASP,1,H,95,200,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,CASP,1,H,170,210,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,NOBO,1,H,140,280,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,CASP,1,H,50,175,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,WEME,1,H,60,300,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,AMCR,1,H,290,450,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,RWBL,1,S,270,190,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,NOBO,1,H,300,400,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,AMCR,1,S,250,250,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,KILL,1,S,250,85,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,KILL,1,S,245,55,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,KILL,1,H,100,300,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,LASP,1,S,95,130,,,
+6/7/2013,JDR,Ellis Co. WMA,ELIS-PC6,,,HOLA,1,H,195,150,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,NOCA,1,H,0,240,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,DICK,1,H,340,190,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,DICK,1,H,360,170,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,DICK,1,H,310,120,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,CASP,1,H,250,200,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,EAME,1,S,275,90,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,EAME,1,H,185,340,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,EAME,1,H,150,280,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,LASP,2,S,275,100,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,PABU,2,S,100,80,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,DICK,1,H,175,300,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,BGGN,1,H,40,30,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,CASP,1,H,160,240,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,NOBO,1,H,310,350,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC4,,,LASP,1,S,50,85,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC9,,,EAME,1,H,140,150,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC9,,,CASP,1,H,150,200,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC9,,,WEME,1,H,300,375,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC9,,,CASP,1,H,220,175,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC9,,,LASP,1,H,170,230,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC9,,,CASP,1,H,270,165,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC9,,,LASP,1,H,270,145,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC9,,,LASP,1,S,125,95,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC12,,,EAME,1,H,265,200,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC12,,,EAME,1,H,195,190,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC12,,,EAME,1,H,92,125,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC12,,,WEKI,1,S,92,120,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC12,,,EAME,1,H,110,275,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC12,,,DICK,1,H,260,300,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC12,,,DICK,1,H,310,300,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC12,,,DICK,1,H,215,250,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC12,,,LASP,1,H,265,140,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC12,,,NOBO,1,H,305,400,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC12,,,STFL,1,S,300,375,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,EABL,1,S,20,60,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,BEWR,1,H,290,150,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,BEWR,1,H,260,200,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOBO,1,H,210,250,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOBO,1,H,185,100,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOLA,1,H,90,65,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,RBWD,1,H,85,70,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOLA,1,H,145,300,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,FISP,1,H,265,110,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,FISP,1,S,270,60,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,FISP,1,H,85,200,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,PABU,1,H,120,60,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,TUVU,1,S,130,40,,Flyover,Flyover
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOLA,1,S,110,50,,Flyover,Flyby
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,BHCO,1,H,335,50,,Flyover,Flyby
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,EABL,1,S,30,55,P,,likely paired with other EABL
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,DICK,1,H,245,230,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,DICK,1,H,150,60,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,DICK,1,H,160,75,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,EAME,1,H,155,275,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,EAME,1,H,220,290,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,EAME,1,H,170,300,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,GRSP,1,H,280,110,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,DICK,2,H,165,175,,,Cluster
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,DICK,1,H,290,225,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,NOMO,1,H,285,250,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,EAME,1,S,155,115,,Flyover,Flyby
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,EUST,3,S,150,175,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,DICK,1,H,80,90,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,BARS,1,S,265,75,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,BARS,1,S,290,350,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,EAME,1,H,185,200,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,DICK,1,H,175,100,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,BHCO,2,S,10,250,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,DICK,1,H,90,140,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,EAME,1,H,225,230,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,DICK,1,H,80,140,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,DICK,1,H,355,100,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,DICK,1,S,125,100,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,DICK,1,H,30,75,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,STFL,1,H,300,125,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,GRSP,1,H,340,65,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,ELDO,1,S,200,250,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,GRSP,1,H,165,60,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,EUST,1,S,10,350,,Flyover,flyby
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,DICK,1,S,5,200,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,CLSW,4,S,280,135,,Flyover,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,NOBO,1,H,155,250,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,DICK,1,H,100,45,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,DICK,1,H,155,90,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,EAME,1,H,190,200,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,EAME,1,H,280,185,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,DICK,1,H,220,110,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,RWBL,1,S,195,65,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,DICK,1,S,185,70,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,CLSW,2,S,300,120,,Flyover,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,CLSW,15,S,40,115,,Flyover,Under bridge
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,RWBL,1,S,200,135,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,BHCO,1,H,200,120,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,RWBL,1,S,125,180,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,EAME,1,H,260,125,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,RWBL,2,S,190,130,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC12,,,DICK,2,S,250,155,,Flyover,flying together into wheat
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,WEME,1,H,190,325,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,NOBO,1,H,190,350,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,STFL,1,H,195,300,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,MODO,1,H,125,280,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,LASP,1,H,100,145,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,CONI,1,H,115,400,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,CASP,1,H,100,200,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,NOMO,1,H,165,385,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,HOLA,1,H,255,150,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,GRSP,1,S,260,75,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,GRSP,1,S,80,50,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,WEME,1,H,25,150,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,GRSP,1,S,65,55,,,
+6/11/2013,JDR,Sandy Sanders WMA,SAND-PC3,,,BARS,2,S,85,170,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,DICK,1,H,310,55,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,DICK,1,H,200,45,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,NOMO,1,H,185,100,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,DICK,1,S,120,110,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,UNID,2,S,155,150,,,Med. Size (DICK?)
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,DICK,1,H,5,90,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,RBWO,1,H,105,110,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,DICK,1,S,210,25,A,,Female 'tink'ing
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,BHCO,1,S,45,120,,,with cows
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,MODO,1,S,120,110,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,GRSP,1,S,30,100,A,,chased GRSP below
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,GRSP,1,S,45,150,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,SWALLOW,1,S,55,180,,,UNID
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,CLSW,1,S,160,75,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,OROR,1,H,105,105,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,DICK,1,S,175,40,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,EAME,1,H,160,100,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,BARS,1,S,220,110,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,BHCO,1,S,100,70,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,DICK,1,S,95,75,A,,Chased BHCO above
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,CLSW,2,S,55,90,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,CLSW,15,S,220,425,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,RTHA,1,S,130,450,,Flyover,soaring low
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,STFL,2,H,190,35,A,,"heard, then seen fighting"
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,STFL,1,H,300,85,A,,response to above ^
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,DICK,1,H,160,100,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,STFL,1,S,175,90,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,LASP,2,S,20,65,P,,Pair
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,DICK,1,H,190,85,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,CLSW,1,S,200,100,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,NOMO,1,H,230,150,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,NOCA,1,H,260,125,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,NOMO,1,S,185,65,CF,,CF
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,EAME,1,H,175,115,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,EAME,1,S,170,85,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,MODO,1,S,180,120,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,EAME,1,H,295,110,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,DICK,1,S,260,20,,Flyover,Flew over
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,DICK,1,S,270,10,,Flyover,Flew over
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,MODO,1,S,5,95,,Flyover,Flyby
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,STFL,1,S,220,110,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,BHCO,1,S,210,25,,Flyover,Flew over
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,STFL,2,S,25,150,A,,Fighting
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,EAME,1,H,55,115,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,NOMO,1,H,195,125,,,
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC5,,,BHCO,1,S,215,110,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,MODO,1,S,30,150,,Flyover,F
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,BLGR,1,H,0,80,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,HOLA,1,H,180,150,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,WEME,1,H,210,200,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,LBCU,6,S,170,200,,Flyover,F
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,HOLA,1,H,85,125,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,LASP,1,H,175,130,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,LBCU,1,S,220,140,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,LBCU,2,S,235,250,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,WEME,1,H,250,300,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,MALL,2,S,125,150,P,Flyover,"F, pair"
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,LBCU,2,S,115,175,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,WEME,1,H,100,250,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,WEME,1,H,80,225,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,LASP,1,S,270,120,,,On road
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,BLGR,1,H,85,90,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,HOLA,1,H,200,175,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,CHRA,1,S,285,450,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC22,,,LBCU,3,H,135,380,,Landed,"Flew in, landed"
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,HOLA,1,S,40,85,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,HOLA,2,H,60,90,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,HOLA,1,H,350,75,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,CONI,1,S,170,200,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,CONI,1,H,210,170,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,HOLA,1,H,150,100,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,HOLA,1,H,125,80,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,HOLA,2,S,295,140,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,CLSW,2,S,315,145,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,WEME,1,H,155,300,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,HOLA,1,S,250,180,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,MALL,13,S,200,350,,Flyover,Flying as flock
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC24,,,HOLA,1,S,95,150,,Landed,"Flew in, landed"
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,RWBL,3,S,0,25,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,RWBL,2,S,15,80,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,RWBL,5,S,10,50,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,RWBL,1,S,5,65,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,RWBL,1,S,280,75,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,CONI,1,H,200,150,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,KILL,1,H,260,80,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,WEME,1,S,245,190,,Flyover,F
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,MODO,2,S,95,75,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,WEME,1,H,335,250,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,RWBL,1,S,92,95,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,RWBL,2,S,350,120,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,MODO,1,S,355,150,,Landed,"Flew in, landed"
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,CONI,1,H,165,220,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,CONI,1,S,110,200,A,,Chased by another
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,WEME,1,H,40,200,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,RWBL,2,S,10,185,,,
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,RWBL,4,S,335,200,,Flyover,F
+6/29/2013,JDR,Rita Blanca NG,RBNG-PC26,,,WEME,1,S,95,125,,,
+6/3/13,MDF,Selman Ranch,SELM-PC1,,,LASP,1,H,260,110,,,
+6/3/13,MDF,Selman Ranch,SELM-PC1,,,BARS,1,H,90,85,,,
+6/3/13,MDF,Selman Ranch,SELM-PC1,,,TUVU,2,S,310,450,,Flyover,soaring low
+6/3/13,MDF,Selman Ranch,SELM-PC1,,,BARS,1,H,270,175,,,
+6/3/13,MDF,Selman Ranch,SELM-PC1,,,DICK,1,S,10,150,,,
+6/3/13,MDF,Selman Ranch,SELM-PC1,,,CARW,1,H,180,310,,,
+6/3/13,MDF,Selman Ranch,SELM-PC1,,,CASP,1,H,0,145,,,
+6/3/13,MDF,Selman Ranch,SELM-PC1,,,FISP,1,H,195,205,,,
+6/3/13,MDF,Selman Ranch,SELM-PC1,,,TUVU,1,S,300,470,,,
+6/3/13,MDF,Selman Ranch,SELM-PC1,,,PABU,1,H,190,200,,,
+6/3/13,MDF,Selman Ranch,SELM-PC1,,,BLGR,1,H,210,195,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,CLSW,1,S,270,40,,Flyover,flyby
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,WEME,1,H,310,185,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,HOLA,1,H,300,85,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,HOLA,1,S,0,110,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,CASP,1,H,210,260,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,NOMO,1,S,180,200,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,HOLA,1,H,195,105,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,LASP,1,S,10,90,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,CASP,1,H,180,210,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,WEME,1,H,160,160,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,WEKI,1,S,40,135,,Flyover,flying
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,CASP,1,H,75,215,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC2,,,HOLA,1,S,350,25,CF,,perched on fenced w/ food
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,MODO,1,S,285,100,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,WEME,1,H,0,70,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,CLSW,1,S,15,40,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,WEME,1,H,190,135,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,CLSW,1,S,275,115,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,BUOW,1,S,225,195,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,HOLA,1,H,0,90,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,HOLA,3,S,90,65,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,TUVU,1,S,290,340,,Flyover,flying
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,LASP,2,S,5,35,P,,pair perched together
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,BEWR,1,H,345,290,S,,distant song
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,WEKI,2,S,270,225,,Flyover,flying in distance 
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,CASP,1,H,180,310,,,
+6/6/13,MDF,Black Mesa SP,BLKM-PC5,,,CLSW,2,S,185,120,,Flyover,flying
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,WEME,1,H,30,95,,,
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,WEME,1,S,0,165,,,
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,HOLA,1,H,180,75,,,
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,WEME,1,H,275,220,,,
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,WEME,1,H,180,200,,,
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,COGR,1,S,90,240,,Flyover,flying
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,KILL,1,H,340,90,,Flyover,flying
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,KILL,1,H,105,105,,,
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,RWBL,1,S,45,130,,,
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,HOLA,1,H,280,100,,,
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,BLGR,2,S,290,55,,Flyover,flyby
+6/5/13,MDF,Rita Blanca NG ,RBNG-PC1,,,LBCU,1,H,5,250,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC2,,,WEME,1,H,300,80,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC2,,,RWBL,3,S,200,220,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC2,,,RWBL,2,S,0,300,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC2,,,WEME,1,H,10,125,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC2,,,MODO,1,S,275,140,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC2,,,HOLA,2,H,5,70,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC2,,,MODO,1,H,10,110,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC2,,,RWBL,1,S,180,195,,Flyover,flyby
+6/5/13,MDF,Rita Blanca NG,RBNG-PC2,,,WEME,1,H,175,135,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC2,,,RWBL,1,S,85,40,,,perched male
+6/5/13,MDF,Rita Blanca NG,RBNG-PC2,,,HOLA,2,H,185,95,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,WEME,1,H,30,210,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,WEME,1,H,0,100,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,RWBL,5,S,310,140,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,BUOW,1,H,230,250,,,distant/by prairie dog town 
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,RWBL,2,H,180,100,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,WEME,1,H,90,110,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,HOLA,2,H,110,95,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,RWBL,2,S,0,35,P,Flyover,male & female flyby
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,MODO,1,S,185,300,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,WEME,1,H,195,195,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,HOLA,2,S,285,65,,Flyover,flyby
+6/5/13,MDF,Rita Blanca NG,RBNG-PC3,,,RWBL,6,S ,110,85,,Landed,flew over & landed in grass
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,WEME,1,H,95,55,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,HOLA,1,S,0,50,,Flyover,flyby
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,WEME,1,H,200,220,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,WEME,1,H,180,75,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,RWBL,3,S,0,125,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,RWBL,1,S,80,85,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,GRSP,1,H,100,110,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,RWBL,2,S,275,120,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,WEME,1,S,270,70,,Flyover,flyby
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,HOLA,1,H,180,95,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,HOLA,2,S,285,190,,Flyover,flying together 
+6/5/13,MDF,Rita Blanca NG,RBNG-PC4,,,GTGR,1,S,350,410,,,very distant in field 
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,WEME,1,H,95,70,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,WEME,1,S,0,125,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,RWBL,1,H,310,210,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,RWBL,1,H,25,130,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,HOLA,1,H,105,105,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,RWBL,1,H,350,175,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,WEME,1,H,270,110,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,RWBL,2,H,170,205,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,HOLA,1,H,180,90,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,GRSP,1,H,110,115,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,WEME,1,H,180,195,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,MODO,1,S,185,300,,Flyover,flying
+6/5/13,MDF,Rita Blanca NG,RBNG-PC5,,,KILL,1,H,170,210,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC6,,,WEME,1,H,180,70,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC6,,,WEME,1,H,0,130,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC6,,,RWBL,1,H,90,190,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC6,,,CHRA,1,S,175,230,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC6,,,RWBL,3,H,0,110,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC6,,,WEME,1,H,240,200,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC6,,,HOLA,1,H,10,45,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC6,,,HOLA,1,H,115,80,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,GRSP,1,H,10,75,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,RWBL,1,H,0,110,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,WEME,2,S,95,120,,Flyover,flying
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,WEME,1,H,320,150,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,HOLA,1,H,180,95,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,RWBL,1,H,90,200,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,GRSP,1,H,300,90,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,SWHA,1,S,170,100,,,later seen hunting
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,NOHA,1,S,195,350,,,distant
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,HOLA,1,H,45,90,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,WEME,1,H,0,180,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC7,,,RWBL,2,S,15,95,,Flyover,flyover
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,WEME,1,H,270,105,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,HOLA,1,H,160,90,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,HOLA,2,H,150,95,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,HOLA,1,S,180,100,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,HOLA,1,S,110,205,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,RWBL,1,H,0,300,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,HOLA,2,H,5,95,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,HOLA,1,H,280,100,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,HOLA,1,H,310,90,,,later seen
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,HOLA,2,S,175,105,P,,mating pair?
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,WEME,1,H,350,120,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC8,,,CHRA,2,S,200,450,,Flyover,flying
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,WEME,1,H,45,115,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,WEME,1,H,290,110,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,HOLA,2,H,0,80,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,HOLA,1,H,15,60,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,LBCU,1,H,90,310,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,HOLA,1,H,180,50,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,CONI,1,H,180,95,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,CHRA,1,S ,170,60,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,HOLA,3,H,270,45,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,HOLA,1,H,315,85,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,HOLA,2,H,195,30,,,later seen after
+6/5/13,MDF,Rita Blanca NG,RBNG-PC9,,,HOLA,1,S,30,70,,Landed,landed
+6/5/13,MDF,Rita Blanca NG,RBNG-PC10,,,WEME,1,H,95,80,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC10,,,HOLA,2,H,45,105,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC10,,,HOLA,2,H,90,40,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC10,,,WEME,1,H,270,105,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC10,,,HOLA,1,H,5,60,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC10,,,HOLA,1,H,270,55,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC10,,,WEME,1,S,180,95,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC10,,,GTGR,6,S,195,390,,Flyover,flying in group
+6/5/13,MDF,Rita Blanca NG,RBNG-PC11,,,WEME,1,H,210,245,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC11,,,GTGR,4,S,180,110,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC11,,,HOLA,1,H,90,70,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC11,,,HOLA,1,H,65,40,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC11,,,HOLA,1,H,65,100,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC11,,,WEME,1,H,5,90,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC11,,,HOLA,2,S,0,75,,,
+6/5/13,MDF,Rita Blanca NG,RBNG-PC11,,,WEME,1,H,0,110,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,AMKE,2,S,120,105,,Flyover,flying together 
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,WEME,1,H,340,135,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,LASP,1,H,15,85,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,WEME,1,H,285,150,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,LASP,1,H,270,95,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,HOLA,1,H,275,55,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,RBWO,1,H,195,210,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,CONI,1,H,80,140,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,WEME,1,H,90,185,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,CASP,1,H,0,200,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,TUVU,1,S,70,310,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,HOLA,1,H,145,75,,,
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,WEKI,1,S,340,50,,Flyover,flyover
+6/6/13,MDF,Optima WMA,OPTM-PC1,,,MODO,2,S,180,200,,Landed,landed together
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,CASP,1,H,150,200,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,ECDO,1,S,45,70,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,CASP,1,H,90,150,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,WEME,1,H,100,210,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,RWBL,2,H,0,150,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,EAPH,1,H,5,140,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,COGR,2,S,5,140,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,DOWO,1,H,0,150,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,ECDO,1,S,15,50,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,CONI,1,H,270,105,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,MODO,1,S,15,80,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,AMKE,1,S,180,95,,Flyover,flyby
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,AMRO,1,H,350,135,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,NOMO,1,H,145,90,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,DICK,2,H,180,105,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,CONI,1,H,0,120,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,GCFL,1,H,180,110,,,by house
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,MODO,1,S,170,50,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,WEME,1,H,340,130,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,WEME,1,H,190,200,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,KILL,1,H,180,280,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,LASP,2,S,110,95,,Flyover,flying
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,EAPH,1,S,100,105,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,STFL,1,S,130,215,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,CASP,1,H,5,205,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,BHCO,1,H,160,120,,,
+6/6/13,MDF,Optima WMA,OPTM-PC3,,,WEKI,2,S,190,40,,Flyover,flyby
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,RWBL,4,S,60,200,,,
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,HOLA,1,H,95,95,,,
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,WEME,1,H,90,180,,,
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,WEME,1,H,15,210,,,
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,MODO,1,S,0,140,,,
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,HOLA,1,H,10,120,,,
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,MODO,3,S,350,190,,Landed,"flying, then landed"
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,CONI,1,H,280,230,,Flyover,flying
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,WEME,1,H,270,95,,,
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,RWBL,2,S,90,175,,Flyover,flying
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,HOLA,2,H,180,115,,,
+6/6/13,MDF,Optima WMA,OPTM-PC4,,,MODO,4,S,90,145,,,
+6/6/13,MDF,Optima WMA,OPTM-PC5,,,HOLA,3,S,180,80,,,on road
+6/6/13,MDF,Optima WMA,OPTM-PC5,,,CONI,1,H,90,105,,,
+6/6/13,MDF,Optima WMA,OPTM-PC5,,,CONI,1,H,270,95,,,
+6/6/13,MDF,Optima WMA,OPTM-PC5,,,WEME,1,H,0,210,,,
+6/6/13,MDF,Optima WMA,OPTM-PC5,,,CASP,1,H,180,200,,,
+6/6/13,MDF,Optima WMA,OPTM-PC5,,,CASP,1,H,0,170,,,
+6/6/13,MDF,Optima WMA,OPTM-PC5,,,GRSP,1,H,0,45,,,
+6/6/13,MDF,Optima WMA,OPTM-PC5,,,HOLA,1,H,10,65,,,
+6/6/13,MDF,Optima WMA,OPTM-PC5,,,MODO,1,S,90,140,,Flyover,flyby
+6/6/13,MDF,Optima WMA,OPTM-PC5,,,MODO,1,S,360,10,,Flyover,flyover
+6/6/13,MDF,Optima WMA,OPTM-PC5,,,WEME,1,H,180,160,,,
+6/6/13,MDF,Optima WMA,OPTM-PC6,,,CASP,1,H,180,240,,,
+6/6/13,MDF,Optima WMA,OPTM-PC6,,,WEME,1,H,160,45,,,
+6/6/13,MDF,Optima WMA,OPTM-PC6,,,WEME,1,H,95,110,,,
+6/6/13,MDF,Optima WMA,OPTM-PC6,,,LASP,1,S,150,55,,Flyover,flyby
+6/6/13,MDF,Optima WMA,OPTM-PC6,,,WEME,1,H,80,270,,,
+6/6/13,MDF,Optima WMA,OPTM-PC6,,,MODO,1,H,100,100,,,
+6/6/13,MDF,Optima WMA,OPTM-PC6,,,WEME,1,S,360,220,,Flyover,flying
+6/6/13,MDF,Optima WMA,OPTM-PC6,,,CONI,1,H,190,75,,,
+6/6/13,MDF,Optima WMA,OPTM-PC6,,,CASP,1,H,95,195,,,
+6/6/13,MDF,Optima WMA,OPTM-PC6,,,WEKI,1,S,45,90,,Flyover,flycatching
+6/6/13,MDF,Optima WMA,OPTM-PC7,,,WEME,1,H,0,180,,,
+6/6/13,MDF,Optima WMA,OPTM-PC7,,,WEME,1,S,95,70,,,
+6/6/13,MDF,Optima WMA,OPTM-PC7,,,CASP,1,H,180,215,S,,somewhat distant
+6/6/13,MDF,Optima WMA,OPTM-PC7,,,WEME,1,H,280,205,,,
+6/6/13,MDF,Optima WMA,OPTM-PC7,,,CONI,1,H,185,75,,,
+6/6/13,MDF,Optima WMA,OPTM-PC7,,,HOLA,1,H,15,65,,,
+6/6/13,MDF,Optima WMA,OPTM-PC7,,,HOLA,1,H,340,70,,,
+6/6/13,MDF,Optima WMA,OPTM-PC7,,,GRSP,1,H,0,50,S,,singing w/ next GRSP
+6/6/13,MDF,Optima WMA,OPTM-PC7,,,GRSP,1,H,290,80,,,
+6/6/13,MDF,Optima WMA,OPTM-PC7,,,BHCO,1,H,100,155,,Flyover,flying
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,DICK,1,S,60,30,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,DICK,1,H,320,75,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,EAME,1,H,40,135,S,Flyover,flight song heard
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,EAME ,1,H,180,210,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,GRSP,1,H,0,65,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,DICK,1,H,350,200,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,DICK,1,H,185,90,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,GRSP,1,H,85,100,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,GTGR,1,S,290,180,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,STFL,1,S,290,185,A,,harassing GTGR
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,EAME,1,H,200,210,,,distant
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,TUVU,1,S,10,420,,Flyover,flying in distance 
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,GRSP,1,H,350,75,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,DICK,1,H,10,80,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,DICK,1,H,15,105,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,YEWA,1,H,90,140,,,faint
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,EAME,1,S,0,100,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,DICK,1,H,110,120,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,BARS,1,S,5,105,,Flyover,flying
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,GTGR,1,S,40,310,,Flyover,flying
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,NOBO,1,H,180,215,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,RWBL,2,H,275,155,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,EAME,1,H,90,110,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,CLSW,4,S,45,140,,Flyover,flying
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC6,,,COGR,4,S,80,40,,Flyover,flyby
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC10,,,RWBL,1,H,90,135,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC10,,,EAME,1,H,295,160,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC10,,,DICK,1,H,0,105,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC10,,,DICK,1,H,15,115,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC10,,,RWBL,4,S,130,130,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC10,,,EAME,1,H,185,210,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC10,,,DICK,1,H,190,120,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC10,,,LASP,1,S,5,90,,Landed,"flying, then landed"
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,WEME,1,H,130,200,,,
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,WEME,1,H,320,150,,,
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,HOLA,1,H,0,50,,,
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,BARS,1,S,270,45,,Flyover,flyby
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,TRSW,1,S ,270,50,,Flyover,flyby
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,GRSP,1,H,150,75,,,
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,HOLA,1,H,310,80,,,
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,HOLA,1,H,90,145,,,
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,MODO,1,H,260,190,,,
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,CLSW,1,S,250,15,,Flyover,flyby
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,MODO,1,H,180,180,,,
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,COGR,2,S,290,105,,Flyover,flyover
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,NOBO,1,H,180,300,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,CASP,1,H,0,105,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,CONI,2,S,310,180,,Flyover,flying together
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,CASP,1,H,280,170,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,GRSP,1,H,95,90,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,BRTH,1,H,250,65,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,FISP,1,H,330,245,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,CASP,1,H,90,130,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,NOBO,1,H,100,120,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,MODO,2,S,280,15,,Flyover,flyover
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,LASP,1,S,250,70,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,MODO,1,S,250,75,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,DICK,1,H,345,155,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,EAME,1,H,180,105,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,NOBO,1,H,0,200,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,NOBO,1,H,130,210,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,BHCO,1,H,160,85,,Flyover,flyover
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,EAME,1,H,45,215,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,LASP,2,S,95,50,P,,perched together
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC2,,,DICK,1,H,270,110,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,DOWO,1,H,0,75,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,BLGR,1,H,290,55,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,BGGN,1,H,90,100,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,LASP,1,H,80,130,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,NOBO,1,H,270,210,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,CASP,1,H,170,175,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,NOCA,1,H,105,150,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,FISP,1,H,50,95,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,GCFL,1,H,320,115,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,CACH,1,H,5,85,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,CASP,1,H,210,250,,,distant 
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,RWBL,1,H,125,200,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,CACH,3,S,35,70,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,SOSP,1,H,90,135,,,
+6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,YBCU,1,H,45,100,,,
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,WEME ,1,S,310,15,,,
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,YBCU,1,H,95,170,,,
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,STFL,2,S,180,10,,,
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,NOMO,1,H,190,155,,,
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,PABU,1,H,45,230,,,
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,NOBO,1,H,90,300,,,
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,LOSH,1,H,200,130,,,later seen
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,STFL,1,H,200,115,,,
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,NOBO,1,H,285,310,,,distant
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,EAME,1,H,260,145,,,
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,BHCO,1,S,0,95,,Flyover,flyby
+6/7/13,MDF,Black Kettle NG,BKNG-PC5,,,NOBO,1,H,185,200,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC5,,,CASP,1,H,5,130,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC5,,,CONI,1,H,180,115,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC5,,,EAME,1,H,200,165,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC5,,,BARS,1,S,35,50,,,perched
+6/7/13,MDF,Black Kettle NG,BKNG-PC5,,,EAME,1,H,170,125,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC5,,,CASP,1,H,170,170,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC5,,,GRSP,1,H,210,75,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC5,,,WEME,1,H,230,185,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC5,,,CASP,1,H,200,205,,,distant
+6/7/13,MDF,Black Kettle NG,BKNG-PC5,,,CLSW,1,S,120,45,,Flyover,flying
+6/7/13,MDF,Black Kettle NG,BKNG-PC7,,,BEWR,1,H,0,100,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC7,,,WEME,1,H,270,210,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC7,,,CASP,1,H,180,125,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC7,,,KILL,1,H,10,300,,,distant
+6/7/13,MDF,Black Kettle NG,BKNG-PC7,,,CASP,1,S,10,95,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC7,,,DICK,1,H,310,105,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC7,,,DICK,1,H,330,180,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC7,,,LASP,2,S,20,120,A,,fighting by treeline
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,GRSP,1,H,0,90,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,EAME,1,H,350,180,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,DICK,1,H,90,120,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,EAME,1,H,15,150,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,CASP,1,H,330,125,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,WEME,1,H,180,165,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,DICK,1,H,270,110,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,GRSP,1,H,270,75,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,EAME,1,H,240,155,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,LASP,1,H,185,90,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,WEME,1,H,35,210,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,DICK,1,H,90,85,,,
+6/7/13,MDF,Black Kettle NG,BKNG-PC11,,,NOBO,1,H,290,260,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,LBCU,8,S,180,95,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,HOLA,2,H,0,45,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,CASP,1,H,340,110,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,WEME,1,H,5,150,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,WEME,1,H,10,70,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,CASP,1,H,15,125,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,BARS,1,S,95,95,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,HOLA,2,H,180,40,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,WEKI,1,H,170,10,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,HOLA,1,H,45,60,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,Duck sp.,2,S,270,160,,Flyover,flyover pair
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,WEME,1,H,350,145,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,CLSW,1,S,0,10,,Flyover,flyby
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,CONI,1,H,50,100,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC25,,,BLGR,2,S,340,80,,,on fence
+6/29/13,MDF,Rita Blanca NG,RBNG-PC25,,,WEME,1,H,0,115,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC25,,,HOLA,2,H,5,70,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC25,,,HOLA,1,H,180,85,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC25,,,RWBL,2,H,10,140,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC25,,,CASP,1,H,170,210,,,distant
+6/29/13,MDF,Rita Blanca NG,RBNG-PC25,,,CONI,1,H,170,95,,Flyover,flying
+6/29/13,MDF,Rita Blanca NG,RBNG-PC25,,,WEME,1,H,330,190,,,later seen
+6/29/13,MDF,Rita Blanca NG,RBNG-PC25,,,MODO,3,S,50,230,,Flyover,flying
+6/29/13,MDF,Rita Blanca NG,RBNG-PC25,,,HOLA,1,H,50,100,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC25,,,NOMO,1,H,90,120,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,WEME,1,H,180,100,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,HOLA,2,H,0,90,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,HOLA,1,H,75,75,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,WEME,1,H,170,170,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,WEME,1,H,95,55,,,on fence
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,AMCR,1,S,270,210,,Flyover,flying
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,RWBL,2,S,250,200,,Flyover,flying
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,RWBL,2,S,0,15,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,HOLA,1,H,180,85,,,
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,CASP,1,H,340,210,,,distant
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,RWBL,1,H,350,65,,Flyover,flyover
+6/29/13,MDF,Rita Blanca NG,RBNG-PC27,,,HOLA,1,H,290,70,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC12,,,HOLA,2,H,340,10,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC12,,,HOLA,1,H,90,50,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC12,,,WEME,1,H,85,85,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC12,,,SWHA,1,S,45,200,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC12,,,WEKI,1,S,180,40,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC12,,,HOSP,3,H,0,70,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC12,,,BUOW,1,S,310,130,,Flyover,hovering while hunting
+6/30/13,MDF,Rita Blanca NG,RBNG-PC12,,,WEME,2,S,310,110,FY,,feeding 
+6/30/13,MDF,Rita Blanca NG,RBNG-PC12,,,HOLA,3,S,170,55,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC12,,,HOLA,1,S,50,50,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC12,,,BUOW,1,S,175,120,,,perched on fence
+6/30/13,MDF,Rita Blanca NG,RBNG-PC13,,,BUOW,1,S,0,50,,,on fence
+6/30/13,MDF,Rita Blanca NG,RBNG-PC13,,,WEME,1,H,0,85,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC13,,,WEME,1,H,45,110,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC13,,,WEME,1,H,120,210,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC13,,,BARS,2,H,90,95,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC13,,,HOLA,2,H,180,75,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC13,,,LBCU,1,H,195,150,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC13,,,RWBL,1,H,330,125,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC13,,,HOLA,1,H,100,100,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,HOLA,2,S,340,15,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,HOLA,2,S,0,40,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,HOLA,1,H,90,95,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,HOLA,1,H,275,120,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,BUOW,1,S,180,215,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,MODO,3,S,110,125,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,MODO,1,S,185,220,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,RWBL,1,S,185,220,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,WEME,1,H,45,105,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,WEME,2,S,125,140,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,HOLA,2,S,40,100,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,WEME,1,H,0,135,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC14,,,HOLA,1,H,180,75,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC15,,,HOLA,3,S,190,45,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC15,,,HOLA,1,H,5,60,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC15,,,BUOW,2,S,340,85,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC15,,,HOLA,1,H,330,80,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC15,,,BAEA,2,H,45,65,,,"seen after heard, bald eagle"
+6/30/13,MDF,Rita Blanca NG,RBNG-PC15,,,HOLA,1,H,90,90,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC15,,,BUOW,1,S,170,150,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC15,,,WEKI,1,S,270,190,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC15,,,HOLA,1,S,0,150,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC15,,,CHRA,1,S,340,120,,,chi. Raven
+6/30/13,MDF,Rita Blanca NG,RBNG-PC16,,,CHRA,1,S,180,210,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC16,,,HOLA,2,H,200,75,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC16,,,HOLA,1,H,5,60,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC16,,,HOLA,1,H,90,85,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC16,,,TUVU,1,S,250,195,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC16,,,LBCU,1,S,250,190,,,breeding?
+6/30/13,MDF,Rita Blanca NG,RBNG-PC16,,,CHRA,1,S,270,270,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC16,,,HOLA,2,H,185,70,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC16,,,LBCU,1,S,240,180,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,CHRA,2,S,180,75,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,HOLA,1,H,160,60,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,HOLA,7,S,270,80,,,on road
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,HOLA,3,S,180,80,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,HOLA,1,H,210,75,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,LBCU,4,S,90,110,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,BUOW,1,S,95,130,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,MODO,1,S,210,100,ON,,sitting on nest
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,CHRA,1,S,105,300,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,AMCR,1,H,270,200,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,WEME,1,H,180,220,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,HOLA,1,H,0,100,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,HOLA,3,S,90,60,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC17,,,LBCU,2,S,45,200,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,CASP,1,H,0,50,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,CASP,1,H,45,85,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,BCHU,1,S,270,110,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,HOLA,2,H,90,90,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,HOLA,1,H,105,70,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,LASP,1,H,210,130,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,SWHA,1,S,0,90,,Flyover,flyover
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,LABU,1,H,180,60,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,LASP,1,H,190,70,,Landed,landed on wire
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,HOLA,1,H,0,45,,,on fence
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,MODO,1,S,90,110,,Flyover,flyby
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,WEME,1,H,5,140,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,RWBL,2,S,15,165,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,HOLA,2,H,110,110,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC19,,,CHRA,2,S,10,180,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC19,,,HOLA,1,H,340,95,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC19,,,HOLA,15,S,0,50,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC19,,,WEME,1,H,110,200,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC19,,,MODO,1,H,90,70,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC19,,,CASP,1,H,15,105,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC19,,,WEME,1,H,70,130,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC19,,,HOLA,1,H,180,55,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC19,,,MODO,2,S,0,100,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC19,,,LBCU,2,S,350,15,,Flyover,flyover
+6/30/13,MDF,Rita Blanca NG,RBNG-PC19,,,WEME,1,S,330,75,,Landed,landed on hay pile
+6/30/13,MDF,Rita Blanca NG,RBNG-PC20,,,SWHA,1,S,0,45,,,perched
+6/30/13,MDF,Rita Blanca NG,RBNG-PC20,,,CHRA,5,S,180,115,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC20,,,AMCR,1,S,180,115,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC20,,,BARS,1,S,0,35,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC20,,,HOLA,1,H,90,75,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC20,,,HOLA,1,H,300,80,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC20,,,WEME,2,S,270,150,,,on wire
+6/30/13,MDF,Rita Blanca NG,RBNG-PC20,,,CORA,1,S,15,100,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC21,,,LASP,2,S,270,50,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC21,,,HOLA,2,S,90,45,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC21,,,MODO,2,S,190,35,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC21,,,WEKI,1,S,340,25,,,on fence
+6/30/13,MDF,Rita Blanca NG,RBNG-PC21,,,BARS,3,S,5,60,,Flyover,flying 
+6/30/13,MDF,Rita Blanca NG,RBNG-PC21,,,CLSW,8,S,110,75,,Flyover,flying
+6/30/13,MDF,Rita Blanca NG,RBNG-PC21,,,WEKI,2,S,170,55,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC21,,,LASP,1,S,340,60,,,on fence
+6/30/13,MDF,Rita Blanca NG,RBNG-PC21,,,BHCO,1,S,0,80,,Flyover,flyover
+6/30/13,MDF,Rita Blanca NG,RBNG-PC21,,,HOLA,3,S,0,70,,,on wire w/ MODO
+6/30/13,MDF,Rita Blanca NG,RBNG-PC21,,,MODO,1,S,0,70,,,on wire
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,LASP,2,S,340,95,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,NOMO,1,H,0,210,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,NOMO,1,H,15,210,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,CASP,1,H,5,200,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,MODO,1,S,195,195,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,PABU,1,H,310,130,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,KILL,1,S,45,45,,Flyover,flyby
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,BARS,2,S,0,40,,Flyover,flyby
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,STFL,1,S,270,105,,,perched on wire
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,NOBO,1,H,250,115,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,STFL,3,S,10,65,A,,fighting group
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,LBWO,1,H,200,100,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,NOBO,1,H,310,120,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,CASP,1,H,350,185,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,TUVU,1,S,0,200,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC1,,,EAME,1,H,90,190,,,distant
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,LASP,1,S,85,60,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,FISP,1,H,0,130,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,MODO,3,S,90,100,,Landed,"flying, then landed on wire"
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,BEWR,1,H,340,115,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,PABU,1,H,340,95,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,PABU,1,H,95,100,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,AMCR,1,H,330,200,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,NOCA,1,H,180,180,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,EABL,2,H,95,150,,,distant group by farm
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,AMCR,1,H,40,120,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,NOBO,1,H,15,190,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,NOBO,1,H,270,210,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC3,,,EAME,1,H,210,300,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC6,,,RWBL,1,H,270,130,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC6,,,STFL,1,S,0,60,,Flyover,flyby
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC6,,,STFL,1,H,5,75,N,Landed,landed in possible nest
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC6,,,WEKI,2,S,45,30,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC6,,,TUVU,1,S,340,155,,Flyover,flying 
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC6,,,DOWO,1,H,350,140,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC6,,,NOMO,1,H,0,200,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC6,,,GRSP,1,H,270,90,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC6,,,KILL,1,H,300,180,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC6,,,MODO,1,H,310,210,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,EAME,1,H,90,165,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,NOMO,1,H,100,135,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,EAME,1,H,165,210,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,WEME,1,H,10,170,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,NOCA,1,H,95,300,S,,distant song
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,EAME ,1,H,290,160,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,NOMO,1,H,350,240,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,BHCO,1,S,110,75,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,CASP,1,S,0,150,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,LASP,1,H,170,170,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,PABU,1,H,0,175,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,CASP,1,H,180,230,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,TUVU,1,S,350,370,,Flyover,flying
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC2,,,STFL,1,S,340,49,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC2,,,PABU,1,H,160,160,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC2,,,NOMO,1,H,185,200,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC2,,,BHCO,1,S,190,70,,Flyover,flyby
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC2,,,NOCA,1,H,100,205,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC2,,,TUVU,1,S,180,300,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC2,,,CLSW,15,S,190,195,,Flyover,flying in group
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC2,,,BARS,1,S,270,95,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC2,,,GRSP,1,H,200,80,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC2,,,MODO,1,S,180,130,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC6,,,RWBL,2,H,180,100,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC6,,,KILL,1,H,210,120,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC6,,,DICK,1,H,270,155,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC6,,,RTHA,1,S,330,200,,,"perched, then flew"
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC6,,,AMCR,2,S,340,215,,Flyover,flying
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC6,,,CASP,1,H,165,190,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC6,,,NOBO,1,H,90,260,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC6,,,BARS,1,H,45,70,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC6,,,EAME,1,H,180,180,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC6,,,CLSW,10,S,190,230,,Flyover,flying in group
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC10,,,CLSW,5,S,0,50,,Flyover,flying
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC10,,,LASP,1,H,340,70,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC10,,,TUVU,1,S,270,15,,Flyover,flyover
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC10,,,TUVU,1,S,90,110,,Flyover,flying
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC10,,,STFL,2,H,0,80,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC10,,,WEME,1,H,350,200,S,,distant song
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC10,,,BHCO,1,S,45,150,,Flyover,flying
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC10,,,LASP,1,H,40,85,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC10,,,MODO,1,S,200,230,,,
+6/21/13,MDF,Hwy49 W of WMWR,W49H-PC10,,,GRSP,1,H,180,75,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC2,,,WEVI,1,H,40,55,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC2,,,NOCA,1,H,330,200,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC2,,,RCSP,1,H,180,110,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC2,,,MODO,2,S,95,100,,Flyover,flying
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC2,,,LASP,1,H,190,75,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC2,,,PABU,1,H,120,140,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC2,,,NOBO,1,H,180,200,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC2,,,BGGN,1,H,90,90,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC2,,,PABU,1,H,30,45,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC2,,,GRRO,1,H,100,130,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,DICK,2,H,330,60,P,,"""P"""
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,TUTI,1,H,90,110,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,STFL,2,H,90,75,P,,mating pair
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,NOCA,1,H,45,135,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,INBU,1,H,0,100,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,SUTA,1,H,0,105,,,at nearby forest edge
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,DICK,1,H,270,70,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,PABU,1,H,350,150,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,EAME ,1,H,240,160,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,RBWO,1,H,0,200,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,EAME,1,H,90,90,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,NOBO,1,H,180,200,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,BARS,2,S,5,50,,Flyover,flyby
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,FISP,2,H,320,85,N,,nesting?
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,MIKI,1,S,110,70,,Flyover,flying
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,CACH,1,H,50,110,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,EAME ,1,H,330,210,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,NOBO,1,H,0,190,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,AMCR,1,H,270,180,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,DICK,1,H,270,110,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,DICK,1,H,350,90,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,EAME,1,H,5,100,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,EAME,1,H,300,105,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,DICK,1,H,90,75,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,MODO,1,H,245,200,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,PABU,1,H,70,95,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,WEME,1,H,220,150,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,EAME,1,H,95,195,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,CAEG,1,S,25,220,,Flyover,flying
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,BGGN,1,H,180,70,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,NOBO,1,H,0,110,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,STFL,2,H,255,50,ON,,nest
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,GREG,1,S,340,200,,Flyover,flying to lake
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,RWBL,4,H,90,130,,,by lakeshore
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,NOBO,1,H,270,180,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,PABU,1,H,180,60,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,DICK,1,H,180,55,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,DICK,1,H,190,55,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,CAGO,12,S,90,210,,,on lake
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,EABL,1,H,270,80,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,PABU,1,H,270,45,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,GREG,1,S,0,85,,Flyover,flying to lake
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,EAME,1,H ,45,105,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,KILL,1,H,50,100,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,WEKI,1,S,90,120,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,BARS,12,S,95,110,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,LASP,1,H,240,65,,,fence
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,TUVU,2,S,270,120,,Flyover,flying
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,EAME,1,H,310,200,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,CAEG,1,S,85,130,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,SNEG,1,S,8,145,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,LASP,1,H,15,35,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,CAEG,1,S,170,170,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,EAPH,1,H,0,70,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,NOMO,1,H,45,90,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,CLSW,2,H,90,60,,Flyover,flying
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,NOCA,1,H,110,210,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,PABU,1,H,5,70,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,NOBO,1,H,180,230,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,MODO,1,H,300,175,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,DICK,2,H,270,85,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,CLSW,4,H,0,40,,Flyover,flying
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,BGGN,1,S,10,70,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC18,,,LASP,2,S,310,60,,,on fence
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC22,,,EAME,1,H ,0,70,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC22,,,CAEG,3,S,60,85,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC22,,,EAME,1,S,170,45,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC22,,,MODO,1,S,15,90,,Flyover,flyby
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC22,,,EAME,1,S,0,110,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC22,,,CAEG,1,S,110,245,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC22,,,AMCR,1,H,180,130,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC22,,,EAME,1,H,0,40,,,then seen close
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC22,,,EAME,1,S,275,85,,Flyover,landed nearby
+6/23/13,MDF,Meers,MEER-PC2,,,CAEG,3,S,5,230,,Flyover,flying
+6/23/13,MDF,Meers,MEER-PC2,,,CAEG,25,S,0,190,,Flyover,flying
+6/23/13,MDF,Meers,MEER-PC2,,,CAEG,10,S,270,210,,Flyover,flying
+6/23/13,MDF,Meers,MEER-PC2,,,LASP,1,S,340,15,,,on road
+6/23/13,MDF,Meers,MEER-PC2,,,LASP,1,H,190,75,,,
+6/23/13,MDF,Meers,MEER-PC2,,,NOBO,1,H,250,185,,,
+6/23/13,MDF,Meers,MEER-PC2,,,CLSW,10,S,15,100,,Flyover,flying in group
+6/23/13,MDF,Meers,MEER-PC2,,,CAEG,3,S,270,300,,Flyover,flying
+6/23/13,MDF,Meers,MEER-PC2,,,CAEG,4,S,0,185,,Flyover,flying
+6/23/13,MDF,Meers,MEER-PC2,,,BHCO,1,H,45,70,,,
+6/23/13,MDF,Meers,MEER-PC2,,,EAME,1,H,260,135,,,
+6/23/13,MDF,Meers,MEER-PC2,,,EABL,1,H,250,100,,,
+6/23/13,MDF,Meers,MEER-PC2,,,CAEG,15,S,0,120,,Flyover,flying
+6/23/13,MDF,Meers,MEER-PC6,,,CAEG,1,S,340,25,,,
+6/23/13,MDF,Meers,MEER-PC6,,,CAEG,5,S,90,240,,,
+6/23/13,MDF,Meers,MEER-PC6,,,DICK,1,H,0,70,,,
+6/23/13,MDF,Meers,MEER-PC6,,,EAME,1,H,90,110,,,
+6/23/13,MDF,Meers,MEER-PC6,,,CAEG,6,S,180,85,,Flyover,flyover
+6/23/13,MDF,Meers,MEER-PC6,,,LASP,1,H,200,60,,,
+6/23/13,MDF,Meers,MEER-PC6,,,BARS,1,S,270,55,,,
+6/23/13,MDF,Meers,MEER-PC6,,,WEKI,1,S,0,70,,,on road eating bug
+6/23/13,MDF,Meers,MEER-PC6,,,TUVU,1,S,15,40,,Flyover,flyover
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,CLSW,4,S,0,55,,Flyover,flying around
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,RWBL,2,H,320,70,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,AMCR,1,H,170,120,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,AMCR,1,H,270,210,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,DICK,1,H,5,60,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,DICK,1,H,310,80,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,DICK,1,H,310,45,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,DICK,1,H,90,65,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,NOBO,1,H,230,310,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,EAME,1,H,90,110,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,LASP,1,H,100,60,,Flyover,flyover
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,DICK,2,H,5,25,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC1,,,RWBL,1,H,0,70,,Flyover,flyover
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,EAME,2,H,280,95,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,DICK,1,H,90,50,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,DICK,1,H,310,100,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,DICK,1,H,300,90,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,DICK,1,H,260,75,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,CLSW,15,S,180,60,,Flyover,flying
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,KILL,1,S,0,80,,,flushed
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,COYE,1,H,200,45,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,NOBO,1,H,180,300,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,RWBL,2,H,180,205,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,Heron,2,S,0,220,,Flyover,landing in distance
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,DICK,2,H,5,100,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,LASP,1,S,350,50,,Flyover,flyby
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,UPSA,1,S,270,110,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,GBHE,1,S,285,90,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,DICK,1,H,340,75,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,DICK,1,H,15,60,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,CLSW,45,S,0,55,,Flyover,flying
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,DICK,2,H,0,80,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,EAME,2,H,330,75,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,EAME,1,H,275,105,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,EAME,1,H,90,200,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,DICK,1,H,90,15,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,DICK,2,H,180,75,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,DICK,1,H,210,50,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,DICK,1,H,0,135,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,CLSW,20,H,5,60,,Flyover,flying
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,CONI,1,S,270,40,,,perched
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,DICK,1,H,90,90,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,DICK,1,H,180,105,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,DICK,2,H,340,53,P,,"on fence, pair"
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,EAME,2,H,310,65,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,BHCO,1,H,270,85,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,GRSP,1,H,210,130,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,EAME,1,H,45,190,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,EAME,1,H,180,100,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,UPSA,1,H,180,150,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,DICK,1,H,0,95,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC5,,,GRSP,1,H,350,75,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,DICK,1,H,90,45,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,DICK,1,H,330,45,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,DICK,1,H,95,80,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,DICK,1,H,95,105,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,EAME,1,H,180,210,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,DICK,1,H,0,85,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,EAME,2,H,185,205,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,CLSW,15,H,5,40,,Flyover,flying by bridge
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,DICK,1,H,180,70,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,MODO,2,H,5,100,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,DICK,1,H,260,55,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,BHCO,1,H,95,115,,Flyover,flying
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,DICK,1,H,0,90,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC6,,,EAME,1,H,0,55,,,on road
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,DICK,2,H,90,65,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,DICK,1,H,180,50,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,GRSP,2,H,180,55,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,DICK,1,H,15,75,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,DICK,1,H,205,90,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,EAME,2,H,0,100,,Flyover,flying
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,EAME,1,H,185,210,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,EAME,1,H,260,80,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,UPSA,1,H,270,135,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,GRSP,1,H,270,45,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,DICK,2,H,90,90,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,EAME,3,H,0,75,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,CLSW,10,S,5,40,,Flyover,flying
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,DICK,2,S,185,105,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,DICK,3,H,15,65,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC7,,,CONI,1,S,350,60,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,DICK,1,S,340,45,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,DICK,1,H,265,80,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,EAME,3,H,0,70,,,then seen flying away
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,GRSP,1,H,80,50,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,GRSP,1,H,90,55,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,CONI,1,S,0,120,,Flyover,flying
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,DICK,1,H,95,65,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,EAME,1,H,95,150,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,EAME,1,H,275,110,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,DICK,1,H,180,100,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,BHCO,1,S,0,40,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,EAME,2,S,270,50,,Landed,landed on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC8,,,DICK,2,S,310,50,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,BHCO,1,H,195,10,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,CLSW,15,H,300,60,,Flyover,flying
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,DICK,1,H,180,70,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,COGR,1,H,270,35,,,on wire
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,EAME,2,H,250,100,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,DICK,1,H,330,35,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,DICK,1,H,0,55,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,DICK,1,H,90,70,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,EAME,1,S,230,130,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,EAME,1,S,270,300,,,distant
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,DICK,1,H,285,60,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,EAME,1,H,95,70,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,EAME ,1,S,100,110,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,GRSP,1,H,90,65,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,DICK,1,H,45,45,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,EAME,1,S,0,100,,,on wire
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,DICK,1,H,180,60,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,DICK,1,H,200,90,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,GRSP,1,H,270,10,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,DICK,1,H,20,70,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,DICK,1,H,45,105,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,EAME,1,H,270,125,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,DICK,1,H,90,90,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,EAME,1,H,90,105,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,DICK,1,H,180,45,,,on wire
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,CLSW,2,S,195,55,,Flyover,flying
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,EAME,1,H,180,75,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,RWBL,1,H,5,60,,Flyover,flying
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,LASP,1,S,190,50,,Flyover,flyover
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,UPSA,1,H,240,155,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC10,,,STFL,1,S,0,30,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,CLSW,15,S,0,40,,Flyover,flying
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,EAME,2,S,90,95,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,DICK,1,H,90,70,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,DICK,1,H,370,55,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,DICK,2,H,180,25,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,GRSP,1,H,270,15,,,on fence
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,DICK,1,H,0,75,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,DICK,1,H,110,80,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,STFL,1,H,120,100,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,DICK,1,H,270,65,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,DICK,2,H,5,95,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC11,,,EAME,1,H,150,105,,,
+06/18/14,RFF,Cimarron Hills,PC03,,,NOBO,1,H,45,80,S,,
+06/18/14,RFF,Cimarron Hills,PC03,,,EAME,1,H,190,120,S,,wind picked up
+06/18/14,RFF,Cimarron Hills,PC03,,,RWBL,1,H,90,200,S,,lake east of me
+06/18/14,RFF,Cimarron Hills,PC03,,,LASP,1,H,30,140,S,,
+06/18/14,RFF,Cimarron Hills,PC03,,,CONI,1,H,40,250,S,,H/S.  NIHA- CONI?
+06/18/14,RFF,Cimarron Hills,PC03,,,NOBO,1,H,90,140,S,,
+06/18/14,RFF,Cimarron Hills,PC03,,,EAME,1,H,70,200,S,,
+06/18/14,RFF,Cimarron Hills,PC04,,,LASP,1,H,300,80,S,,
+06/18/14,RFF,Cimarron Hills,PC04,,,CASP,1,H,80,100,S,,
+06/18/14,RFF,Cimarron Hills,PC04,,,LASP,1,H,270,80,S,,
+06/18/14,RFF,Cimarron Hills,PC04,,,CASP,1,H,180,90,S,,
+06/18/14,RFF,Cimarron Hills,PC04,,,flycatcher sp,1,S,40,200,,Flyover,
+06/18/14,RFF,Cimarron Hills,PC04,,,KILL,1,H,270,300,S,,
+06/18/14,RFF,Cimarron Hills,PC04,,,KILL,1,S,50,100,,Flyover,
+06/18/14,RFF,Cimarron Hills,PC04,,,LASP,1,H,50,140,S,,
+06/18/14,RFF,Cimarron Hills,PC06,,,FISP,1,H,180,80,S,,
+06/18/14,RFF,Cimarron Hills,PC06,,,LASP,1,H,90,80,S,,
+06/18/14,RFF,Cimarron Hills,PC06,,,TUVU,1,S,90,200,,Flyover,
+06/18/14,RFF,Cimarron Hills,PC06,,,CASP,1,H,270,150,S,,
+06/18/14,RFF,Cimarron Hills,PC06,,,WEME,1,H,270,180,S,,
+06/18/14,RFF,Cimarron Hills,PC06,,,CASP,1,H,180,100,S,,
+06/18/14,RFF,Cimarron Hills,PC06,,,WEME,1,H,140,120,S,,
+06/18/14,RFF,Cimarron Hills,PC08,,,RWBL,1,H,350,40,,Flyover,
+06/18/14,RFF,Cimarron Hills,PC08,,,WEME,1,H,350,70,S,,
+06/18/14,RFF,Cimarron Hills,PC08,,,CONI,1,H,180,200,S,,H/S.  NIHA- CONI?
+06/18/14,RFF,Cimarron Hills,PC08,,,COGR,1,S,40,120,,Landed,Perched on tree
+06/18/14,RFF,Cimarron Hills,PC08,,,SCQU,1,S,0,80,,,crossed road
+06/18/14,RFF,Cimarron Hills,PC11,,,LASP,1,H,180,40,S,,
+06/18/14,RFF,Cimarron Hills,PC11,,,OROR,1,S,0,40,,Flyover,
+06/18/14,RFF,Cimarron Hills,PC11,,,LASP,1,H,340,35,S,,
+06/18/14,RFF,Cimarron Hills,PC11,,,LASP,1,S,250,60,,Landed,Perch on tel wire
+06/18/14,RFF,Cimarron Hills,PC11,,,LASP,1,S,180,40,,Landed,Perch on tree
+06/18/14,RFF,Cimarron Hills,PC11,,,NOBO,1,H,0,50,S,,
+06/18/14,RFF,Cimarron Hills,PC11,,,LASP,1,H,0,60,S,,
+06/18/14,RFF,Cimarron Hills,PC11,,,CASP,1,H,30,80,S,,H/S
+06/18/14,RFF,Cimarron Hills,PC10,,,WEME,1,H,180,100,S,,
+06/18/14,RFF,Cimarron Hills,PC10,,,LASP,1,S,110,40,,Landed,perched on tel wire
+06/18/14,RFF,Cimarron Hills,PC10,,,LASP,1,S,240,100,,Landed,perched on tel wire
+06/18/14,RFF,Cimarron Hills,PC10,,,LASP,1,S,70,100,,Landed,perch on fence
+06/18/14,RFF,Cimarron Hills,PC10,,,WEME,1,H,220,140,S,,
+06/18/14,RFF,Cimarron Hills,PC10,,,LASP,2,S,110,40,,Landed,perched on t wire to join first LASP
+06/18/14,RFF,Cimarron Hills,PC10,,,LASP,1,H,190,80,S,,
+06/18/14,RFF,Cimarron Hills,PC10,,,NOBO,1,H,300,140,S,,
+06/18/14,RFF,Cimarron Hills,PC10,,,GRSP,1,H,60,140,S,,
+06/08/14,JNH,Cimarron Hills,PC02,,,CASP,1,H,SW,150,S,,
+06/08/14,JNH,Cimarron Hills,PC02,,,CASP,1,H,W,150,S,,
+06/08/14,JNH,Cimarron Hills,PC02,,,CASP,1,H,NW,100,S,,
+06/08/14,JNH,Cimarron Hills,PC02,,,NOBO,1,H,E,100,S,,
+06/08/14,JNH,Cimarron Hills,PC02,,,NOBO,1,H,W,75,S,,
+06/08/14,JNH,Cimarron Hills,PC02,,,CASP,1,H,SE,150,S,,
+06/08/14,JNH,Cimarron Hills,PC02,,,NOMO,1,S,N,70,,Flyover,
+06/08/14,JNH,Cimarron Hills,PC02,,,CONI,1,H,N,70,S,Flyover,
+06/08/14,JNH,Cimarron Hills,PC02,,,NOBO,1,H,W,80,S,,
+06/08/14,JNH,Cimarron Hills,PC02,,,MODO,1,H,W,75,S,,
+06/08/14,JNH,Cimarron Hills,PC02,,,TUVU,1,S,E,250,,Flyover,
+06/08/14,JNH,Cimarron Hills,PC02,,,NOMO,1,H,S,200,S,,
+06/08/14,JNH,Cimarron Hills,PC02,,,FISP,1,H,S,150,S,,
+06/08/14,JNH,Cimarron Hills,PC07,,,EAKI,1,S,S,15,,,
+06/08/14,JNH,Cimarron Hills,PC07,,,WEME,1,H,S,35,S,,clucking
+06/08/14,JNH,Cimarron Hills,PC07,,,WEME,1,H,S,150,S,,
+06/08/14,JNH,Cimarron Hills,PC07,,,TUVU,1,S,E,200,S,,
+06/08/14,JNH,Cimarron Hills,PC07,,,WEME,1,H,N,250,S,,
+06/08/14,JNH,Cimarron Hills,PC07,,,NOBO,1,H,S,75,S,,
+06/08/14,JNH,Cimarron Hills,PC07,,,CASP,1,H,S,150,S,,
+06/08/14,JNH,Cimarron Hills,PC07,,,MODO,1,S,N,70,,,
+06/08/14,JNH,Cimarron Hills,PC07,,,CASP,1,H,NW,150,S,,
+06/08/14,JNH,Cimarron Hills,PC07,,,LASP,2,S,W,150,,,
+06/08/14,JNH,Cimarron Hills,PC07,,,LASP,1,H,S,100,S,,
+06/08/14,JNH,Cimarron Hills,PC07,,,WEME,1,H,NE,150,S,,
+06/08/14,JNH,Cimarron Hills,PC07,,,CASP,1,H,SE,150,S,,
+06/08/14,JNH,Cimarron Hills,PC07,,,MODO,2,S,W,100,,Flyover,
+06/08/14,JNH,Cimarron Hills,PC05,,,STFL,2,S,W,50,P,,Pair
+06/08/14,JNH,Cimarron Hills,PC05,,,NOMO,1,S,S,50,,Landed,
+06/08/14,JNH,Cimarron Hills,PC05,,,WEME,1,H,W,40,S,,
+06/08/14,JNH,Cimarron Hills,PC05,,,CASP,1,H,SW,150,S,,
+06/08/14,JNH,Cimarron Hills,PC05,,,CASP,1,H,NE,150,S,,
+06/08/14,JNH,Cimarron Hills,PC05,,,WEME,1,H,NW,150,S,,
+06/08/14,JNH,Cimarron Hills,PC05,,,LASP,1,H,NW,150,S,,
+06/08/14,JNH,Cimarron Hills,PC05,,,CASP,1,H,W,200,S,,
+06/08/14,JNH,Cimarron Hills,PC05,,,CASP,1,H,SE,125,S,,
+06/08/14,JNH,Cimarron Hills,PC05,,,LASP,1,H,E,200,S,,
+06/08/14,JNH,Cimarron Hills,PC05,,,NOBO,1,H,W,150,S,,
+06/08/14,JNH,Cimarron Hills,PC05,,,NOBO,1,H,SE,200,S,,
+06/08/14,JNH,Cimarron Hills,PC05,,,LASP,1,S,W,75,S,,
+06/08/14,JNH,Cimarron Hills,PC05,,,MODO,1,S,S,50,,Landed,
+06/08/14,JNH,Cimarron Hills,PC09,,,WEME,1,H,W,50,,,clucking
+06/08/14,JNH,Cimarron Hills,PC09,,,NOBO,1,H,N,75,S,,
+06/08/14,JNH,Cimarron Hills,PC09,,,WEME,1,H,NW,125,S,,
+06/08/14,JNH,Cimarron Hills,PC09,,,LASP,1,S,NW,50,,,
+06/08/14,JNH,Cimarron Hills,PC09,,,WEME,1,H,E,50,,,clucking
+06/08/14,JNH,Cimarron Hills,PC09,,,STFL,1,S,S,100,,,sitting in tree
+06/08/14,JNH,Cimarron Hills,PC09,,,LASP,1,H,E,100,S,,
+06/08/14,JNH,Cimarron Hills,PC09,,,STFL,1,S,N,150,,,male
+06/08/14,JNH,Cimarron Hills,PC09,,,EAME,1,H,NE,150,,,
+06/08/14,JNH,Cimarron Hills,PC09,,,WEME,1,H,S,50,S,,
+06/08/14,JNH,Cimarron Hills,PC09,,,RWBL,1,H,E,50,,,male
+06/08/14,JNH,Cimarron Hills,PC09,,,EAME,1,H,NW,100,S,,
+06/08/14,JNH,Cimarron Hills,PC09,,,NOMO,1,H,SE,100,S,,
+06/08/14,JNH,Cimarron Hills,PC09,,,LASP,2,S,S,25,,,
+06/08/14,JNH,Cimarron Hills,PC09,,,MODO,1,S,E,50,,Flyover,
+06/08/14,JNH,Cimarron Hills,PC09,,,WEKI,1,S,W,25,,,
+06/18/14,Jessica,Cimarron Hills,PC12,,,GRSP,1,H,SW,60,S,,
+06/18/14,Jessica,Cimarron Hills,PC12,,,GRSP,1,H,SE,60,S,,
+06/18/14,Jessica,Cimarron Hills,PC12,,,NOBO,1,H,E,100,S,,
+06/18/14,Jessica,Cimarron Hills,PC12,,,CASP,1,H,W,65,S,,
+06/18/14,Jessica,Cimarron Hills,PC12,,,LASP,1,H,NW,120,S,,
+06/18/14,Jessica,Cimarron Hills,PC12,,,GRSP,1,H,NE,50,S,,
+06/18/14,Jessica,Cimarron Hills,PC12,,,WEME,1,H,S,250,S,,
+06/18/14,Jessica,Cimarron Hills,PC12,,,WEME,1,H,E,150,S,,
+06/18/14,Jessica,Cimarron Hills,PC01,,,CASP,1,H,W,175,S,,
+06/18/14,Jessica,Cimarron Hills,PC01,,,CASP,1,H,S,200,S,,
+06/18/14,Jessica,Cimarron Hills,PC01,,,NOBO,1,H,W,150,S,,
+06/18/14,Jessica,Cimarron Hills,PC01,,,MODO,2,S,SE,50,,Flyover,
+06/18/14,Jessica,Cimarron Hills,PC01,,,MODO,1,S,E,20,,Flyover,
+06/18/14,Jessica,Cimarron Hills,PC01,,,CASP,1,H,W,45,S,,
+06/18/14,Jessica,Cimarron Hills,PC01,,,DICK,1,H,S,100,S,,
+06/18/14,Jessica,Cimarron Hills,PC01,,,DICK,1,H,N,125,S,,
+06/18/14,Jessica,Cimarron Hills,PC01,,,NOBO,1,H,S,75,S,,
+06/18/14,Jessica,Cimarron Hills,PC01,,,MODO,1,S,S,150,,Flyover,
+05/18/14,TES,Selman Ranch,PC04,,,GRSP,1,H,270,30,,,
+05/18/14,TES,Selman Ranch,PC04,,,EAME,1,H,90,70,,,
+05/18/14,TES,Selman Ranch,PC04,,,GRSP,1,H,90,45,,,
+05/18/14,TES,Selman Ranch,PC04,,,CASP,1,H,45,60,,,
+05/18/14,TES,Selman Ranch,PC04,,,CASP,1,H,195,70,,,
+05/18/14,TES,Selman Ranch,PC04,,,BHCO,1,S,265,90,,,
+05/18/14,TES,Selman Ranch,PC04,,,CASP,1,S,350,40,,,S/H
+05/18/14,TES,Selman Ranch,PC04,,,sparrow sp.,1,H,90,20,,,
+05/18/14,TES,Selman Ranch,PC04,,,GRBH,1,S,185,85,,,called after PC
+05/18/14,TES,Selman Ranch,PC01,,,WEME,1,H,180,70,,,
+05/18/14,TES,Selman Ranch,PC01,,,CASP,1,H,160,40,,,H/S
+05/18/14,TES,Selman Ranch,PC01,,,CASP,1,H,90,35,,,
+05/18/14,TES,Selman Ranch,PC01,,,TUVU,1,S,0,100,,Flyover,
+05/18/14,TES,Selman Ranch,PC01,,,TUVU,1,S,0,50,,Flyover,
+05/18/14,TES,Selman Ranch,PC01,,,blackbird sp.,1,S,160,90,,Flyover,
+05/18/14,TES,Selman Ranch,PC01,,,BHCO,1,S,155,60,,Flyover,
+05/18/14,TES,Selman Ranch,PC01,,,CASP,1,S,270,100,CF,,S/H
+05/18/14,TES,Selman Ranch,PC01,,,WITU,1,H,90,150,,,turkey
+05/18/14,TES,Selman Ranch,PC01,,,NOBO,1,H,100,80,,,
