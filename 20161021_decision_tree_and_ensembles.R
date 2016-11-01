@@ -156,7 +156,6 @@ tree.test2<-lm(response~bio1+
                                 data=tree.data.dick)
 
 summary(tree.test2)
-#check out Dobrowski et al. 2011; ecological monographs.
 
 #create prediction map for illustration purposes
 tree.test.raster.prediction<-raster::predict(object=studyarea.bioclim, #raster object, probably use bioclim.extent,
