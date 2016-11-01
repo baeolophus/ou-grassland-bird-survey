@@ -137,9 +137,11 @@ writeOGR(fix.pointcounts["name"], driver="GPX", layer="waypoints",
 #use this to compare original basecamp point list to where point counts conducted
 
 ##sightings
-pointcount.data<-read.csv(file="pointcount_data.csv")
+
+#11/01/2016- no mismatch for the additional data, so will go on with those without additional corrections.
+pointcount.data<-read.csv(file="20161025_pointcount_data_additions.csv")
 #bring in the manually corrected file
-pointcount.metadata.manually.corrected<-read.csv(file="20161003_pointcount_metadata_newnames_manual_corrections.csv")
+pointcount.metadata.manually.corrected<-read.csv(file="20161031_pointcount_metadata_additional_newnames_manual_corrections.csv")
 #merge the files so every row has all metadata attached.
 pointcounts.complete<-left_join(pointcount.data,
                                 pointcount.metadata.manually.corrected,
