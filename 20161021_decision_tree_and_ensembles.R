@@ -5,7 +5,7 @@ library(dplyr)
 #bring in data and metadata, join for species locations.
 pointcount.data<-read.csv(file="pointcount_data.csv")
 #bring in the manually corrected file
-pointcount.metadata.manually.corrected<-read.csv(file="20161003_pointcount_metadata_newnames_manual_corrections.csv")
+pointcount.metadata.manually.corrected<-read.csv(file="pointcount_metadata.csv")
 #merge the files so every row has all metadata attached.
 pointcounts.complete<-left_join(pointcount.data,
                                 pointcount.metadata.manually.corrected,
@@ -13,6 +13,9 @@ pointcounts.complete<-left_join(pointcount.data,
                                      "Observer",
                                      "Location",
                                      "Point"))
+
+#double-check always that row counts for pointcount.data and pointcounts.complete are the same!
+#if they are not, go back to data manipulation code and run checks to look for duplicates.
 
 pointcounts.complete.na.dick<-filter(pointcounts.complete,
                                      !is.na(Latitude)&
