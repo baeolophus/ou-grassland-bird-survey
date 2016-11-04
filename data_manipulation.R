@@ -6,15 +6,6 @@ library(rgdal) # for reading different spatial file formats
 library(rgeos) # for spatial distance and topology operations
 library(dplyr) # data manipulation
 
-#import data from csv files.
-######
-#point counts
-#metadata
-pointcount.metadata<-read.csv(file="pointcount_metadata.csv")
-pointcount.metadata$Longitude<-ifelse(sign(pointcount.metadata$Longitude)>0, 
-       pointcount.metadata$Longitude*-1, 
-       pointcount.metadata$Longitude*1)
-pointcount.metadata$index<-rownames(pointcount.metadata)
 
 #####
 
@@ -85,6 +76,15 @@ point_counts <- subset(waypoints, !type %in% c("Transect Start_End"))
 transect_startend <-  subset(waypoints, type %in% c("Transect Start_End"))
 ##end borrowed
 
+#import data from csv files.
+######
+#point counts
+#metadata
+pointcount.metadata<-read.csv(file="pointcount_metadata.csv")
+pointcount.metadata$Longitude<-ifelse(sign(pointcount.metadata$Longitude)>0, 
+                                      pointcount.metadata$Longitude*-1, 
+                                      pointcount.metadata$Longitude*1)
+pointcount.metadata$index<-rownames(pointcount.metadata)
 
 #plotting gpx original points along with actual data points.
 #
@@ -202,15 +202,21 @@ which.have.duplicates.old[which.have.duplicates.old$duplicates>1,]
 #Now all numbers match!  number of distinct key columns/sites/observer/date and 
 #number of pointcount.metedata.manually.corrected rows are all same.
 #pointcount.data and pointcounts.complete also match because all primary keys unique.
+####################################
 
-
+####################################
 #transects
+
+
 #metadata
 transect.metadata<-read.csv("transect_metadata.csv")
 transect.metadata$Start.LON<-ifelse(sign(transect.metadata$Start.LON)>0, 
                                     transect.metadata$Start.LON*-1, 
                                     transect.metadata$Start.LON*1)
-transect.metadata$index<-rownames(transect.metadata)
+transect.metadata$End.LON<-ifelse(sign(transect.metadata$End.LON)>0, 
+                                    transect.metadata$End.LON*-1, 
+                                    transect.metadata$End.LON*1)
+transect.metadata$uniquerows<-rownames(transect.metadata)
 #match transect locations to names.
 #plotting gpx original points along with actual data points.
 #
@@ -249,23 +255,28 @@ proj4string(transect.metadata.clean.end)<-proj4string(transect_startend)
 transect.end.join <- sp::over(transect.metadata.clean.end, buf.t)
 transect.metadata.clean.end$END.newspotnames<-transect.end.join$id
 
-#add column of new names back into original clean file.
-transect.metadata$START.newspotnames<-transect.start.join$id
-transect.metadata$END.newspotnames<-merge(x=transect.metadata,
+#add column of new names back into new clean file.
+transect.metadata.newnames<-transect.metadata
+transect.metadata.newnames$START.newspotnames<-transect.start.join$id
+transect.metadata.newnames$END.newspotnames  <-merge(x=transect.metadata,
                                                 y=as.data.frame(transect.metadata.clean.end[,
                                                                                             c("END.newspotnames",
-                                                                                              "index")]),
+                                                                                              "uniquerows")]),
                                                 all.x=TRUE,
                                                 all.y=FALSE,
-                                                by=c("index"))%>%   #merge the column back since it has some NAs
-                                    dplyr::select(END.newspotnames) #select only the column we need
+                                                by=c("uniquerows"))%>% #merge the column back since it has some NAs
+                                   arrange(as.numeric(uniquerows)) %>%
+                                   dplyr::select(END.newspotnames) #select only the column we need
+
 
 #then merge with sightings and do all data checks as for point counts.
 transect.data<-read.csv("transect_data.csv")
 #merge the files so every row has all metadata attached.
 transect.complete<-left_join(transect.data,
-                             transect.metadata,
+                             transect.metadata.newnames,
                              by=c("Date",
                                   "Observer",
                                   "Location",
                                   "Transect"))
+
+#complete matches number of rows in data, so there are no weird duplicates.  Good.
