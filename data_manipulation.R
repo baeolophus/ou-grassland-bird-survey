@@ -205,12 +205,67 @@ which.have.duplicates.old[which.have.duplicates.old$duplicates>1,]
 
 
 #transects
-
-#sightings
-transect.data<-read.csv()
 #metadata
-transect.metadata<-read.csv()
+transect.metadata<-read.csv("transect_metadata.csv")
+transect.metadata$Start.LON<-ifelse(sign(transect.metadata$Start.LON)>0, 
+                                    transect.metadata$Start.LON*-1, 
+                                    transect.metadata$Start.LON*1)
+transect.metadata$index<-rownames(transect.metadata)
+#match transect locations to names.
+#plotting gpx original points along with actual data points.
+#
+plot(y=transect.metadata$Start.LAT,
+     x=transect.metadata$Start.LON)
+plot(y=transect.metadata$End.LAT,
+     x=transect.metadata$End.LON)
+plot(transect_startend, add=TRUE)
+
+#First create buffer around each original point (windmill) to be new polygon.
+buf.t <- gBuffer(transect_startend, 
+               width = 0.003,
+               byid=TRUE,
+               quadsegs = 8)
+plot(buf.t, col="red", add=TRUE)
+# plotting the map with those points and buffers on it for doublechecking
+
+
+#make point counts into spatial data
+#start
+transect.metadata.clean.start<-dplyr::filter(transect.metadata,
+                                         !is.na(Start.LAT),
+                                         !is.na(Start.LON))
+coordinates(transect.metadata.clean.start) <- c("Start.LON", "Start.LAT")
+proj4string(transect.metadata.clean.start)<-proj4string(transect_startend)
+#use over() to take actual points (ptsrand) and join with vegmap/buffers
+transect.start.join <- sp::over(transect.metadata.clean.start, buf.t)
+
+#end
+transect.metadata.clean.end<-dplyr::filter(transect.metadata,
+                                             !is.na(End.LAT),
+                                             !is.na(End.LON))
+coordinates(transect.metadata.clean.end) <- c("End.LON", "End.LAT")
+proj4string(transect.metadata.clean.end)<-proj4string(transect_startend)
+#use over() to take actual points (ptsrand) and join with vegmap/buffers
+transect.end.join <- sp::over(transect.metadata.clean.end, buf.t)
+transect.metadata.clean.end$END.newspotnames<-transect.end.join$id
+
+#add column of new names back into original clean file.
+transect.metadata$START.newspotnames<-transect.start.join$id
+transect.metadata$END.newspotnames<-merge(x=transect.metadata,
+                                                y=as.data.frame(transect.metadata.clean.end[,
+                                                                                            c("END.newspotnames",
+                                                                                              "index")]),
+                                                all.x=TRUE,
+                                                all.y=FALSE,
+                                                by=c("index"))%>%   #merge the column back since it has some NAs
+                                    dplyr::select(END.newspotnames) #select only the column we need
+
+#then merge with sightings and do all data checks as for point counts.
+transect.data<-read.csv("transect_data.csv")
 #merge the files so every row has all metadata attached.
 transect.complete<-left_join(transect.data,
                              transect.metadata,
-                             by)
+                             by=c("Date",
+                                  "Observer",
+                                  "Location",
+                                  "Transect"))
