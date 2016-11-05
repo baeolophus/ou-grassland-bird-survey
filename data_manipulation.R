@@ -269,6 +269,39 @@ transect.metadata.newnames$END.newspotnames  <-merge(x=transect.metadata,
                                    dplyr::select(END.newspotnames) #select only the column we need
 
 
+
+#Export file, and correct any dubious ones manually in spreadsheet.
+write.csv(transect.metadata.newnames,
+          file="20161104_transect_metadata_newnames.csv")
+
+#Export dubious points to .gpx file.
+#turn the new data frame back into a spatialpointsdataframe.
+spatial.transects<-bind_rows(
+          data.frame("longitude"=transect.metadata.newnames$Start.LON,
+                    "latitude"=transect.metadata.newnames$Start.LAT,
+                    "name"=transect.metadata.newnames$uniquerows, #requires "name" field, use "index"/uniquerows as this.
+                    "newspotnames"=as.character(transect.metadata.newnames$START.newspotnames)),
+        z<-  data.frame("longitude"=transect.metadata.newnames$End.LON,
+                     "latitude"=transect.metadata.newnames$End.LAT,
+                     "name"=transect.metadata.newnames$uniquerows,
+                     newspotnames=transect.metadata.newnames$END.newspotnames))
+colnames(z)<-c("a","b","c", "newspotnames")
+#not sure why wont rename correctly.
+spatial.transects.cleaned<-dplyr::filter(spatial.transects,
+                                         !is.na(spatial.transects$latitude)|!is.na(spatial.transects$longitude))
+fix.transect<-spatial.transects.cleaned[is.na(spatial.transects.cleaned$newspotnames),]
+#get dubious points only.
+
+
+coordinates(fix.transect) <- c("longitude", "latitude")
+proj4string(fix.transect)<-proj4string(transect_startend)
+
+
+writeOGR(fix.transect["name"], driver="GPX", layer="waypoints", 
+         dsn="20161104_unnamed_transect_startends.gpx")
+#use this to compare original basecamp point list to where transect start/ends are.
+
+
 #then merge with sightings and do all data checks as for point counts.
 transect.data<-read.csv("transect_data.csv")
 #merge the files so every row has all metadata attached.
