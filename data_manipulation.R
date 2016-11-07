@@ -258,7 +258,7 @@ transect.metadata.clean.end$END.newspotnames<-transect.end.join$id
 #add column of new names back into new clean file.
 transect.metadata.newnames<-transect.metadata
 transect.metadata.newnames$START.newspotnames<-transect.start.join$id
-transect.metadata.newnames$END.newspotnames  <-merge(x=transect.metadata,
+END.newspotnames  <-merge(x=transect.metadata,
                                                 y=as.data.frame(transect.metadata.clean.end[,
                                                                                             c("END.newspotnames",
                                                                                               "uniquerows")]),
@@ -268,7 +268,7 @@ transect.metadata.newnames$END.newspotnames  <-merge(x=transect.metadata,
                                    arrange(as.numeric(uniquerows)) %>%
                                    dplyr::select(END.newspotnames) #select only the column we need
 
-
+transect.metadata.newnames$END.newspotnames <-END.newspotnames[,1] #this needed because otherwise it inserts a data frame into the data frame...
 
 #Export file, and correct any dubious ones manually in spreadsheet.
 write.csv(transect.metadata.newnames,
@@ -276,17 +276,15 @@ write.csv(transect.metadata.newnames,
 
 #Export dubious points to .gpx file.
 #turn the new data frame back into a spatialpointsdataframe.
-spatial.transects<-bind_rows(
-          data.frame("longitude"=transect.metadata.newnames$Start.LON,
-                    "latitude"=transect.metadata.newnames$Start.LAT,
-                    "name"=transect.metadata.newnames$uniquerows, #requires "name" field, use "index"/uniquerows as this.
-                    "newspotnames"=as.character(transect.metadata.newnames$START.newspotnames)),
-        z<-  data.frame("longitude"=transect.metadata.newnames$End.LON,
-                     "latitude"=transect.metadata.newnames$End.LAT,
-                     "name"=transect.metadata.newnames$uniquerows,
-                     newspotnames=transect.metadata.newnames$END.newspotnames))
-colnames(z)<-c("a","b","c", "newspotnames")
-#not sure why wont rename correctly.
+spatial.transects<-bind_rows(data.frame("longitude"=transect.metadata.newnames$Start.LON,
+                                         "latitude"=transect.metadata.newnames$Start.LAT,
+                                         "name"=transect.metadata.newnames$uniquerows, #requires "name" field, use "index"/uniquerows as this.
+                                         "newspotnames"=transect.metadata.newnames$START.newspotnames),
+                             data.frame("longitude"=transect.metadata.newnames$End.LON,
+                                        "latitude"=transect.metadata.newnames$End.LAT,
+                                        "name"=transect.metadata.newnames$uniquerows,
+                                        "newspotnames"=transect.metadata.newnames$END.newspotnames))
+
 spatial.transects.cleaned<-dplyr::filter(spatial.transects,
                                          !is.na(spatial.transects$latitude)|!is.na(spatial.transects$longitude))
 fix.transect<-spatial.transects.cleaned[is.na(spatial.transects.cleaned$newspotnames),]
