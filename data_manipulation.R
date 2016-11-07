@@ -278,11 +278,13 @@ write.csv(transect.metadata.newnames,
 #turn the new data frame back into a spatialpointsdataframe.
 spatial.transects<-bind_rows(data.frame("longitude"=transect.metadata.newnames$Start.LON,
                                          "latitude"=transect.metadata.newnames$Start.LAT,
-                                         "name"=transect.metadata.newnames$uniquerows, #requires "name" field, use "index"/uniquerows as this.
+                                         "name"=paste(transect.metadata.newnames$uniquerows, "start", sep=""),
+                                        #requires "name" field, use "index"/uniquerows as this.
+                                        #but need to paste so have unique values.
                                          "newspotnames"=transect.metadata.newnames$START.newspotnames),
                              data.frame("longitude"=transect.metadata.newnames$End.LON,
                                         "latitude"=transect.metadata.newnames$End.LAT,
-                                        "name"=transect.metadata.newnames$uniquerows,
+                                        "name"=paste(transect.metadata.newnames$uniquerows, "end", sep=""),
                                         "newspotnames"=transect.metadata.newnames$END.newspotnames))
 
 spatial.transects.cleaned<-dplyr::filter(spatial.transects,
