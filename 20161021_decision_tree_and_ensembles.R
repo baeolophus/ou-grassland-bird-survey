@@ -206,3 +206,21 @@ ensemble.weighted<-raster::weighted.mean(x=stack.test.trees,
 plot(ensemble.weighted)
 
 #Overlapping support sets works to create mixture model.
+
+#How to make squares/rectangles:
+#http://neondataskills.org/working-with-field-data/Field-Data-Polygons-From-Centroids
+
+#generate random points
+spsample(x=,
+         n=)
+#create squares around them, these will be support set extents.
+
+#crop the main object (a spatial object) to each extent
+crop(object,
+     extent)
+
+#Do this into list format for all.
+
+#Run the models on each item in the list
+
+#Then assemble per above.
