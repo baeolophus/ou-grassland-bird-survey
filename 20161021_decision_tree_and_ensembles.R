@@ -17,10 +17,14 @@ pointcounts.complete<-left_join(pointcount.data,
 #double-check always that row counts for pointcount.data and pointcounts.complete are the same!
 #if they are not, go back to data manipulation code and run checks to look for duplicates.
 
-pointcounts.complete.na.dick<-filter(pointcounts.complete,
-                                     !is.na(Latitude)&
-                                       !is.na(Longitude)&
+
+pointcounts.complete.na<-filter(pointcounts.complete,
+       !is.na(Latitude)&
+         !is.na(Longitude))
+
+pointcounts.complete.na.dick<-filter(pointcounts.complete.na,
                                        Species=="DICK")
+
 
 #sampling https://rdrr.io/cran/dismo/man/gridSample.html
 library(dismo)
@@ -92,11 +96,49 @@ bioclim.dick<-as.data.frame(extract(x=studyarea.bioclim,
 subs.bioclim<-cbind(subs,
                     na.omit(bioclim.dick))
 subs.bioclim$response<-1
-x<-circles(subs[,c("Longitude","Latitude")], d=50000, lonlat=T)
-bg<-spsample(x@polygons, 1000, type='random', iter=1000)
+
+
+
+nosightings.dick<-filter(pointcounts.complete.na,
+                           Species!="DICK")
+
+(absences<-group_by(nosightings.dick,
+                    Date,
+                    Observer,
+                    Location,
+                    Point)%>%
+  
+  summarize(Sightings=n()))
+
+(presences<-group_by(pointcounts.complete.na.dick,
+                     Date,
+                     Observer,
+                     Location,
+                     Point)%>%
+  
+  summarize(Sightings=n()))
+
+pcs.sans.bird<-anti_join(x=absences,
+                         y=presences,
+                         by=c("Date",
+                              "Observer",
+                              "Location",
+                              "Point"))
+
+#join to gps for bg/absence points.
+bg.draft<-left_join(pcs.sans.bird,
+              pointcount.metadata.manually.corrected,
+              by=c("Date",
+                   "Observer",
+                   "Location",
+                   "Point"))
+bg<-bg.draft[,c("Longitude",
+                "Latitude")]
+coordinates(bg)<-c("Longitude",
+                   "Latitude")
 bg.bioclim.dick<-as.data.frame(extract(studyarea.bioclim,
                          bg))
-bgpoints<-bg@coords
+bgpoints<-as.data.frame(bg@coords)
 colnames(bgpoints)<-c("Longitude","Latitude")
 
 bg.bioclim.dick<-cbind(as.data.frame(bgpoints),
@@ -174,10 +216,6 @@ points(subs)
 
 stack.test.trees<-stack(tree.test.raster.prediction,
                         tree.test2.raster.prediction)
-ensemble.test.trees<-mean(stack.test.trees)
-
-plot(ensemble.test.trees)
-points(subs)
 
 #Do the randomized geographic sampling to get overlapping support sets.
 #possibly use raster::mosaic() function.
