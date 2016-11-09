@@ -245,6 +245,36 @@ plot(ensemble.weighted)
 
 #Overlapping support sets works to create mixture model.
 
+#Testing two overlapping layers and weights.
+#Creating an artificially shortened set of predictions to overlap.
+test.extent1<-extent(-101,-96,
+                         33,38)
+test.extent2<-extent(-103,-98,
+                     33,38)
+
+test.extent.layer1<-crop(tree.test.raster.prediction,
+                         y=test.extent1)
+
+test.extent.layer2<-crop(tree.test2.raster.prediction,
+                         y=test.extent2)
+
+stack.test.trees.extent<-stack(test.extent.layer1,
+                               test.extent.layer2)
+
+weights.extent<-1/sum(!is.na(stack.test.trees.extent))
+
+
+#stack so have appropriate matching number of layers for raster::weighted.mean to work 
+#(http://stackoverflow.com/questions/21041499/stacking-an-existing-rasterstack-multiple-times/21041582?noredirect=1#comment31634090_21041582)
+weights.dim.extent <- stack(replicate(dim(stack.test.trees.extent)[3],
+                                      weights.extent ))
+
+#need to confirm that this will extend to cover all area.
+
+ensemble.weighted.extent<-raster::weighted.mean(x=stack.test.trees.extent,
+                                         w=weights.dim.extent,
+                                         na.rm=TRUE)
+plot(ensemble.weighted.extent)
 #How to make squares/rectangles:
 #http://neondataskills.org/working-with-field-data/Field-Data-Polygons-From-Centroids
 
