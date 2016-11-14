@@ -226,23 +226,6 @@ ensemble.test.trees.mosaic.version<-mosaic(tree.test.raster.prediction,
 
 plot(ensemble.test.trees.mosaic.version)
 
-#develop function
-#count number of non-NA layers (http://stackoverflow.com/questions/17304566/r-count-non-nas-in-a-raster-stack, last answer)
-weights<-1/sum(!is.na(stack.test.trees))
-
-#stack so have appropriate matching number of layers for raster::weighted.mean to work 
-#(http://stackoverflow.com/questions/21041499/stacking-an-existing-rasterstack-multiple-times/21041582?noredirect=1#comment31634090_21041582)
-weights.dim <- stack(replicate(dim(stack.test.trees)[3],
-                 weights ))
-
-#need to confirm that this will extend to cover all area.
-
-ensemble.weighted<-raster::weighted.mean(x=stack.test.trees,
-                      w=weights.dim,
-                      na.rm=TRUE)
-
-plot(ensemble.weighted)
-
 #Overlapping support sets works to create mixture model.
 
 #Testing two overlapping layers and weights.
@@ -255,24 +238,19 @@ test.extent2<-extent(-103,-98,
 test.extent.layer1<-crop(tree.test.raster.prediction,
                          y=test.extent1)
 
+test.extent.layer1.extended<-extend(test.extent.layer1,
+                                    studyarea.extent)
 test.extent.layer2<-crop(tree.test2.raster.prediction,
                          y=test.extent2)
 
 stack.test.trees.extent<-stack(test.extent.layer1,
                                test.extent.layer2)
 
-weights.extent<-1/sum(!is.na(stack.test.trees.extent))
-
-
-#stack so have appropriate matching number of layers for raster::weighted.mean to work 
-#(http://stackoverflow.com/questions/21041499/stacking-an-existing-rasterstack-multiple-times/21041582?noredirect=1#comment31634090_21041582)
-weights.dim.extent <- stack(replicate(dim(stack.test.trees.extent)[3],
-                                      weights.extent ))
 
 #need to confirm that this will extend to cover all area.
 
-ensemble.weighted.extent<-raster::weighted.mean(x=stack.test.trees.extent,
-                                         w=weights.dim.extent,
+ensemble.weighted.extent<-raster::mosaic(x=stack.test.trees.extent,
+                                         fun=mean,
                                          na.rm=TRUE)
 plot(ensemble.weighted.extent)
 #How to make squares/rectangles:
