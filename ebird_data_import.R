@@ -7,6 +7,9 @@ year<-2014
 library(ff)
 library(ffbase)
 
+options("fftempdir"="tempff/")
+
+
 checklist2014<-read.csv.ffdf(file=paste(year, "/", "checklists.csv", sep=""),
                                         colClasses=c(
                                           rep('factor', 2),
@@ -70,4 +73,6 @@ plot(studyarea.ebird2013.df$LONGITUDE,
      pch="+",
      add=TRUE)
 
+delete(checklist2013)
+rm(checklist2013) #these two lines delete from memory.  is okay because have subset data to get what I need.
 
