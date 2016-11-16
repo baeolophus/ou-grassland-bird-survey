@@ -32,13 +32,19 @@ checklist2014<-read.csv.ffdf(file=paste(year, "/", "checklists.csv", sep=""),
 #                         33,38) 
 studyarea.ebird<-subset(checklist2014,
                         LATITUDE>=33 & LATITUDE<=38 &
-                          LONGITUDE >=-103 & LONGITUDE <=-96)
+                          LONGITUDE >=-103 & LONGITUDE <=-94)
 
 write.csv.ffdf(studyarea.ebird,
                file="studyarea_ebird2014.csv")
 
 studyarea.ebird.df<-as.data.frame(studyarea.ebird)
 
+
+oklahoma.ebird2014<-subset(checklist2014,
+                           STATE_PROVINCE=="Oklahoma")
+
+write.csv.ffdf(oklahoma.ebird2014,
+               file="oklahoma_ebird2014.csv")
 plot(studyarea.ebird.df$LONGITUDE,
      studyarea.ebird.df$LATITUDE)
 
@@ -61,14 +67,28 @@ checklist2013<-read.csv.ffdf(file=paste(year2013, "/", "checklists.csv", sep="")
 
 studyarea.ebird2013<-subset(checklist2013,
                         LATITUDE>=33 & LATITUDE<=38 &
-                          LONGITUDE >=-103 & LONGITUDE <=-96)
+                          LONGITUDE >=-103 & LONGITUDE <=-94)
 
 write.csv.ffdf(studyarea.ebird2013,
                file="studyarea_ebird2013.csv")
 
-studyarea.ebird2013.df<-as.data.frame(studyarea.ebird2013)
 
-plot(studyarea.ebird2013.df$LONGITUDE,
+oklahoma.ebird2013<-subset(checklist2013,
+                           STATE_PROVINCE=="Oklahoma")
+
+write.csv.ffdf(studyarea.ebird2013,
+               file="studyarea_ebird2013.csv")
+
+write.csv.ffdf(oklahoma.ebird2013,
+               file="oklahoma_ebird2013.csv")
+studyarea.ebird2013.df<-as.data.frame(studyarea.ebird2013)
+oklahoma.ebird2013.df<-as.data.frame(oklahoma.ebird2013)
+
+plot(oklahoma.ebird2013.df$LONGITUDE,
+     oklahoma.ebird2013.df$LATITUDE)
+
+
+points(studyarea.ebird2013.df$LONGITUDE,
      studyarea.ebird2013.df$LATITUDE,
      pch="+",
      add=TRUE)
