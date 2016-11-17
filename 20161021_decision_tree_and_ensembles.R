@@ -81,7 +81,7 @@ bioclimlayer<-brick(bio1,
 
 
 #crop to extent of study area
-studyarea.extent<-extent(-103,-96,
+studyarea.extent<-extent(-103,-94,
                          33,38) # define the extent
 studyarea.bioclim<-crop(bioclimlayer,
                         studyarea.extent)
