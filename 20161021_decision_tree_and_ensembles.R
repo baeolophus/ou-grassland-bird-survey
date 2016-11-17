@@ -246,28 +246,16 @@ test.extent.layer2<-crop(tree.test2.raster.prediction,
 test.extent.layer2.extended<-extend(test.extent.layer2,
                                     studyarea.extent)
 
-
-plot(test.extent.layer2.extended)
-stack.test.trees.extent<-stack(test.extent.layer1.extended,
-                               test.extent.layer2.extended)
-
-
-#need to confirm that this will extend to cover all area.
-
-ensemble.weighted.extent<-raster::mosaic(x=stack.test.trees.extent,
-                                         fun=mean)
-
-
 ensembleoverlaptest <- list(test.extent.layer1.extended,
           test.extent.layer2.extended)
 names(ensembleoverlaptest)[1:2] <- c('x', 'y')
+#x and y seems necessary, cannot rename these or mosaic gives error in do.call below.
 ensembleoverlaptest$fun <- mean
 ensembleoverlaptest$na.rm <- TRUE
 
 ensemble.mosaic <- do.call(mosaic, ensembleoverlaptest)
-
 plot(ensemble.mosaic)
-plot(ensemble.weighted.extent)
+
 #How to make squares/rectangles:
 #http://neondataskills.org/working-with-field-data/Field-Data-Polygons-From-Centroids
 
