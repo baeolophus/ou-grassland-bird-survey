@@ -313,3 +313,24 @@ transect.complete<-left_join(transect.data,
                                   "Transect"))
 
 #complete matches number of rows in data, so there are no weird duplicates.  Good.
+
+#How to generate gps points for each bird sighting in transects.
+#use chron::times() to get times, calculate location as proportion of start to finish time between gps points of start and finish.
+testtimes<-c("10:15","16:34","2:34")testtimes.s<-paste(testtimes, 
+                   ":00", 
+                   sep="")
+num<-abs(testtimes.c[3]-testtimes.c[2]) #absolute value of differences, gives hours minutes seconds difference
+
+as.numeric(num*24*60) #to convert to hours then minutes
+
+#For each transect need a end time in this minutes format.
+
+#Then column of proportion for each time along it, divided by end time.  
+
+#find distance between start and end.
+
+#Then multiply proportion column by distance.
+
+#Then use function that places point along a line a given distance.
+
+#it should give gps points for it.
