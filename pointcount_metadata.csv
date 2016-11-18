@@ -596,8 +596,8 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 5/8/2014,Roy,WWMT,7,WWMT,WWMT-PC08,332,WWMT-PC07 does not exist on map,confirmed,KEEP,12:15,34.85255,-98.82603,40,10 to 15,"WWMT-PC07, point not in BC",,
 5/8/2014,Roy,WXRD,3,WXRD,WXRD-PC03,329,,,KEEP,10:25,34.69618,-98.7909,90,10 to 15,WXRD-PC03,,
 5/8/2014,Roy,WXRD,7,WXRD,WXRD-PC07,330,,,KEEP,10:50,34.69611,-98.82617,80,10 to 15,WXRD-PC07,,
-5/18/2014,TES,Selman Ranch,PC01,SELM,SELMPC01,102additional,selman ranch pt 1 (get from gpx),"This would match the way we did team point counts (always same order, 800m apart - where possible)",KEEP,7:55,36.76842,-99.38724,,,selman ranch pt 1 (get from gpx),,
-5/18/2014,TES,Selman Ranch,PC04,SELM,SELMPC04,101additional,selman ranch pt 4 (get from gpx),"This would match the way we did team point counts (always same order, 800m apart - where possible)",KEEP,7:25,36.78471,-99.39179,90,5 to 10 W,selman ranch pt 4 (get from gpx),,"BHCO, AMCR"
+5/18/2014,Tory,Selman Ranch,PC01,SELM,SELMPC01,102additional,selman ranch pt 1 (get from gpx),"This would match the way we did team point counts (always same order, 800m apart - where possible)",KEEP,7:55,36.76842,-99.38724,,,selman ranch pt 1 (get from gpx),,
+5/18/2014,Tory,Selman Ranch,PC04,SELM,SELMPC04,101additional,selman ranch pt 4 (get from gpx),"This would match the way we did team point counts (always same order, 800m apart - where possible)",KEEP,7:25,36.78471,-99.39179,90,5 to 10 W,selman ranch pt 4 (get from gpx),,"BHCO, AMCR"
 5/27/2014,Tory,Alesen Rd.,2,ALES,ALES-PC02,370,"CHECK, does not exist in map",confirmed,KEEP,11:30,36.68661,-101.2957,30,5 to 10,,,
 5/29/2014,Tory,Alesen Rd.,5,ALES,ALES-PC05,374,cmc can't find datasheet,confirmed,INVESTIGATE,11:30,36.68911,-101.32286,0,5 to 10,,,"GRSP, MODO (2), SCQU"
 5/29/2014,Tory,Alesen Rd.,8,ALES,ALES-PC08,375,cmc can't find datasheet,confirmed,INVESTIGATE,11:54,36.70382,-101.33167,0,5 to 10,,,GRSP
