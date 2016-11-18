@@ -1857,9 +1857,9 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 4/9/2014,Josh,Kessler,B,,,10:22,GRSP,1,H,-90,30,,,
 4/9/2014,Josh,Kessler,B,,,10:23,TUTI,1,H,25,150,,,
 4/9/2014,Josh,Kessler,B,,,10:28,SAVS,1,S,0,6,,,
-5/1/2014,Josh,Drummond Flats,F,,,10:02:00,CLSW,1,S,-90,15,,Flyover,
-5/1/2014,Josh,Drummond Flats,F,,,10:02:00,EAME,1,H,30,150,S,,
-5/1/2014,Josh,Drummond Flats,F,,,10:02:00,RWBL,3,H,70,40,S,,
+5/1/2014,Josh,Drummond Flats,F,,,10:02,CLSW,1,S,-90,15,,Flyover,
+5/1/2014,Josh,Drummond Flats,F,,,10:02,EAME,1,H,30,150,S,,
+5/1/2014,Josh,Drummond Flats,F,,,10:02,RWBL,3,H,70,40,S,,
 5/1/2014,Josh,Drummond Flats,F,,,10:05,BRTH,1,H,45,100,S,,
 5/1/2014,Josh,Drummond Flats,F,,,10:05,RNPH,1,H,-90,100,,,
 5/1/2014,Josh,Drummond Flats,F,,,10:06,RWBL,1,S,30,45,,,
@@ -4017,7 +4017,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/7/2013,ESB,Tallgrass,A1-A2,,,9:31,PABU,1,H,5,170,,,
 6/7/2013,ESB,Tallgrass,A1-A2,,,9:32,NOCA,1,H,45,110,,,
 6/7/2013,ESB,Tallgrass,A1-A2,,,9:35,INBU,1,H,15,70,,,
-6/7/2013,ESB,Tallgrass,B1-B2,,,0.4152777778,DICK,1,H,-80,30,,,"woods, thick understory"
+6/7/2013,ESB,Tallgrass,B1-B2,,,9:58,DICK,1,H,-80,30,,,"woods, thick understory"
 6/7/2013,ESB,Tallgrass,B1-B2,,,9:58,DICK,1,H,90,60,,,"woods, thick understory"
 6/7/2013,ESB,Tallgrass,B1-B2,,,9:58,BEVI,1,H,-160,35,,,"woods, thick understory"
 6/7/2013,ESB,Tallgrass,B1-B2,,,9:58,YBCU,1,H,70,140,,,"woods, thick understory"
@@ -4243,7 +4243,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 7/4/2013,ESB,Oswalt Ranch,Oswalt A-B,,,8:24,DICK,1,S,30,90,,,
 7/4/2013,ESB,Oswalt Ranch,Oswalt A-B,,,8:27,NOCA,1,H,-45,220,,,
 7/4/2013,ESB,Oswalt Ranch,Oswalt A-B,,,8:24,EAME,1,S,25,170,,,
-7/5/2013,ESB,Chandler,A,,,0.2875,INBU,1,H,-95,80,,,
+7/5/2013,ESB,Chandler,A,,,6:54,INBU,1,H,-95,80,,,
 7/5/2013,ESB,Chandler,A,,,6:55,SITA,1,S,70,130,,,
 7/5/2013,ESB,Chandler,A,,,6:56,FISP,1,H,-20,150,,,
 7/5/2013,ESB,Chandler,A,,,6:58,PABU,1,H,-10,210,,,
