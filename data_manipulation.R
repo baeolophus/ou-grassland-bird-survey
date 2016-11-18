@@ -304,14 +304,18 @@ writeOGR(fix.transect["name"], driver="GPX", layer="waypoints",
 
 #then merge with sightings and do all data checks as for point counts.
 transect.data<-read.csv("transect_data.csv")
+transect.metadata<-read.csv("transect_metadata.csv")
 #merge the files so every row has all metadata attached.
 transect.complete<-left_join(transect.data,
-                             transect.metadata.newnames,
+                             transect.metadata,
                              by=c("Date",
                                   "Observer",
                                   "Location",
                                   "Transect"))
+0.2875 0.4152777778 
+4019
 
+2311 to 2379 are blank on times
 #complete matches number of rows in data, so there are no weird duplicates.  Good.
 
 #How to generate gps points for each bird sighting in transects.
