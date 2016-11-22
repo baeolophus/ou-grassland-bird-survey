@@ -278,7 +278,7 @@ plot(random.points)
 #How to make squares/rectangles:
 #http://neondataskills.org/working-with-field-data/Field-Data-Polygons-From-Centroids
 
-#crop the main object (a spatial object) to each extent
+#crop the main object (a spatial object with given sighting points) to each extent
 crop(object,
      extent)
 
