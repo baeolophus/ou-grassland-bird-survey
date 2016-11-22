@@ -6,7 +6,7 @@
 5,5/9/2014,Crystina,Hackberry Flat,J,NA,NA,5,HACK-J end (JGK),HACK-J start (JGK),,,9:23,34.31229,-98.95168,10,10 to 15,9:52,34.30516,-98.95175,10,10 to 15,9:36 paused briefly to use restroom,,swallow sp.
 6,4/9/2014,Crystina,Kessler,A,NA,NA,6,KAEF-F1,KAEF-F2,no named points nearby. Same as 100 start.,Double observer. Use Josh's data.,8:16,34.98572,-97.52455,0,0 to 5,9:17,34.97969,-97.5227,0,5 to 10,,,SOSP
 7,4/9/2014,Crystina,Kessler,B,NA,NA,7,KAEF-E1,KAEF-E2b,no named points nearby. Same as 7.,Double observer. Use Josh's data.,9:39,34.97746,-97.5171,0,0 to 5,10:34,34.98414,-97.51994,0,10 to 15,,,
-8,5/6/2014,Crystina,WMWR,H,NA,NA,8,WMWR-H end (JGK),WMWR-H end (JDR),,,9:45,34.72477,-98.59242,10,15 to 20,10:43,34.741389,-98.592222,20,20+,,,
+8,5/6/2014,Josh,WMWR,H,NA,NA,8,WMWR-H end (JGK),WMWR-H end (JDR),,,9:45,34.72477,-98.59242,10,15 to 20,10:43,34.741389,-98.592222,20,20+,,,
 13,7/5/2013,ESB,Chandler,A ,NA,NA,13,CHND-A1,CHND-A2,"no end point, otherwise CHND-A, not in original transect gpx",Use other provided endpoints from CHND-A,6:54,35.73656,-96.852,95%,5-10 E,7:25,35.74313,-96.85144,95%,10-15 E,,,
 11,6/15/2013,ESB,Chandler,A1-A2,NA,NA,11,CHND-A1,CHND-A2,"CHND-A, not in original transect gpx",confirmed,6:22,35.73658,-96.85201,95%,0-5 WNW,7:02,35.74313,-96.85144,100%,0-5 WNW,,,
 14,7/5/2013,ESB,Chandler,B ,NA,NA,14,CHND-B1,CHND-B2,"CHND-B, not in original transect gpx.",confirmed,7:40,35.7441,-96.8566,95%,10-15 ENE,8:16,35.73589,-96.85577,95%,15-20 ENE,,,
@@ -154,7 +154,7 @@
 153,6/17/2014,Randy,Packsaddle,B,NA,NA,153,PACK-B2,PACK-B1,,,10:43,35.89442,-99.68922,0,15 to 20,11:25,35.89507,-99.67764,0,15 to 20,,,FISP
 154,6/4/2014,Randy,Tallgrass Prairie,E,NA,NA,154,TGPP-E1,TGPP-E2,,,9:19,36.80749,-96.46574,10,15 to 20,10:19,36.80724,-96.44801,30,15 to 20,,"LOSH, UPSA, STFL, DICK",
 155,6/4/2014,Randy,Tallgrass Prairie,F,NA,NA,155,TGPP-F1,TGPP-F2,,,6:32,36.81426,-96.43803,50,15 to 20,8:42,36.8148,-96.47475,10,15 to 20,,"EAME,GRSP,NOBO,DICK",
-156,5/18/2014,Randy,WMWR,,NA,NA,156,WMWR-E end (MAB),WMWR-E end (MDF),,,9:02,34.74169,-98.58014,60,5 to 10,10:49,34.72477,-98.58017,40,10 to 15,"As I approached road, the traffic muffled ability to hear","PABU,EAME,EAPH,STFL,NOBOSUTA",YEWA
+156,5/18/2014,Randy,WMWR,1,NA,NA,156,WMWR-E end (MAB),WMWR-E end (MDF),,,9:02,34.74169,-98.58014,60,5 to 10,10:49,34.72477,-98.58017,40,10 to 15,"As I approached road, the traffic muffled ability to hear","PABU,EAME,EAPH,STFL,NOBOSUTA",YEWA
 157,6/19/2014,Roy,Cimmaron Bluffs,C,NA,NA,157,CIMB-C2,CIMB-C1,,,10:34,36.81494,-99.34183,10,10 to 15,11:32,36.79803,-99.34174,10,0 to 5,,,
 158,6/19/2014,Roy,Cimmaron Bluffs,F,NA,NA,158,CIMB-F2,CIMB-F1,,,8:32,36.84124,-99.33714,10,5 to 10,10:15,36.81684,-99.33714,10,10 to 15,,,
 159,5/9/2014,Roy,Hackberry Flat,F,NA,NA,159,HACK-F start (JBT),HACK-F end (JBT),,,7:55,34.2977,-98.96552,0,5 to 10,9:02,34.31234,-98.96558,0,5 to 10,,"BAOR, NOBO",DICK
@@ -162,7 +162,7 @@
 161,5/30/2014,Roy,Rita Blanca NG,B,NA,NA,161,RBNG-B1,RBNG-B2,Presumably this is a mistake because both same (checked datasheet) and one should be RBNG-B1.,"Probably. It would have been impossible for him to do it the other direction, provided where transect A finishes.",9:38,36.50898,-102.70658,40,10 to 15,10:48,36.5306,-102.70649,40,10 to 15,,,
 162,6/4/2014,Roy,Tallgrass Prairie,I,NA,NA,162,TGPP-I1,TGPP-I3,,,6:38,36.84534,-96.4518,40,15 to 20,8:29,36.84324,-96.47694,20,20+,,,
 163,6/4/2014,Roy,Tallgrass Prairie,J,NA,NA,163,TGPP-J1,TGPP-J2,,,9:04,36.85189,-96.48306,10,15 to 20,11:41,36.85114,-96.43522,40,10 to 15,,,
-164,6/5/2014,Roy,Tallgrass Prairie,N,NA,NA,164,TGPP-N1,TGPP-N1.5,points south almost to Skiatook Lake,"Looks like he wrote down lat/lon minutes as the decimals of degrees (i.e., 96° 25.31' as 95.2531°)",6:28,36.87533,-96.42183,80,15 to 20,7:25,36.87475,-96.42725,100,20+,Transect ceased early due to thunderstorm,,
+164,6/5/2014,Roy,Tallgrass Prairie,N,NA,NA,164,TGPP-N1,TGPP-N1.5,points south almost to Skiatook Lake,"Looks like he wrote down lat/lon minutes as the decimals of degrees (i.e., 96?25.31' as 95.2531?",6:28,36.87533,-96.42183,80,15 to 20,7:25,36.87475,-96.42725,100,20+,Transect ceased early due to thunderstorm,,
 165,5/16/2014,Tory,Cimmaron Bluffs,D,NA,NA,165,CIMB-D1,CIMB-D2,double observer?,"Yes, use data from JDR",8:42,36.80503,-99.35384,70,0 to 5,11:20,36.84124,-99.35415,10,5 to 10,"EAKI,LASP (before count)",,
 166,5/16/2014,Tory,Cimmaron Bluffs,G,NA,NA,166,CIMB-G1,CIMB-G2,"use points from other double observer?  166End is west across highway, probably misplaced.","Yes, use data from JDR",7:43,36.7979,-99.34843,40,0 to 5,8:10,36.80513,-99.3852,50,0 to 5,,,
 167,6/2/2014,Tory,Optima,A,NA,NA,167,OPTM-A1,OPTM-A2,,,6:49,36.63807,-101.20883,50,5 to 10,9:45,36.62152,-101.2375,100,10 to 15,,STFL,BHCO

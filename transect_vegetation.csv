@@ -1,189 +1,189 @@
-"Date","Observer","Location","Transect","Point On Transect","Camera","Min height vis obstruct (cm)","Forb","Grass","Dead","Bare","Litter","Total","Dist to Edge (m)","Habitat Types <180m","Notes"
-4/23/2014,"Josh","Tallgrass Prairie","E","Start",142,,10,10,80,0,0,100,1000,"Standing Prairie, Burned Prairie","~100m from recent burn"
-4/23/2014,"Josh","Tallgrass Prairie","E","One-third",142,,5,5,80,0,0,90,75,"Standing Prairie",
-4/23/2014,"Josh","Tallgrass Prairie","E","Two-thirds",142,,0,20,60,5,20,105,1000,"Standing Prairie",
-4/23/2014,"Josh","Tallgrass Prairie","E","End",142,,5,5,80,0,5,95,500,"Standing Prairie, Woodland, Riparian","~10m from running stream"
-4/23/2014,"Josh","Tallgrass Prairie","F","Start",142,,10,40,0,40,10,100,600,"Standing Prairie",
-4/23/2014,"Josh","Tallgrass Prairie","F","One-third",142,,5,0,90,0,5,100,1000,"Standing Prairie",
-4/23/2014,"Josh","Tallgrass Prairie","F","Two-thirds",142,,5,10,75,0,10,100,">1000","Standing Prairie",
-4/23/2014,"Josh","Tallgrass Prairie","F","End",142,,5,15,70,0,10,100,">1000","Standing Prairie, Oil Development",
-4/23/2014,"Jessica","Tallgrass Prairie","I","Start",,,2,5,85,0,8,100,10,"Standing Prairie, Woodland",
-4/23/2014,"Jessica","Tallgrass Prairie","I","One-third",,,3,50,22,5,20,100,250,"Standing Prairie, Riparian","near water, small stream"
-4/23/2014,"Jessica","Tallgrass Prairie","I","Two-thirds",,,15,65,10,2,8,100,150,"Standing Prairie, Riparian","near ditch"
-4/23/2014,"Jessica","Tallgrass Prairie","I","End",,,5,40,50,1,4,100,200,"Grazed prairie",
-4/23/2014,"Jeremy","Tallgrass Prairie","A","End",143,,5,25,55,0,15,100,20,"Burned Prairie, Woodland, Riparian",
-4/23/2014,"Jeremy","Tallgrass Prairie","A","Start",143,,15,30,20,15,20,100,80,"Standing Prairie, Residential, Grazed Prairie","Corrals"
-4/23/2014,"Jeremy","Tallgrass Prairie","A","One-third",143,,5,40,30,0,25,100,85,"Native Prairie, Riparian, Woodland","15deg slope"
-4/23/2014,"Jeremy","Tallgrass Prairie","B","Start",143,,15,10,60,0,15,100,10,"Burned prairie, Standing Prairie, scrub, rock",
-4/23/2014,"Jeremy","Tallgrass Prairie","B","One-third",143,,15,15,0,70,0,100,25,"Burned prairie, open water, riparian","Fresh burn"
-4/23/2014,"Jeremy","Tallgrass Prairie","B","Two-thirds",143,,5,15,0,80,0,100,65,"Burned prairie, woodland, scrub, riparian",
-4/23/2014,"Jeremy","Tallgrass Prairie","B","End",143,,20,15,0,55,10,100,3,"Riparian, burned prairie, scrub, woodland",
-5/1/2014,"Josh","Drummond Flats","F","Start",142,,5,45,50,0,0,100,100,"Fenceline, wet prairie, standing prairie",
-5/1/2014,"Josh","Drummond Flats","F","One-third",142,,0,50,0,30,20,100,50,"Row crops, standing prairie","Wheat"
-5/1/2014,"Josh","Drummond Flats","F","Two-thirds",142,,20,20,5,10,45,100,">1000","Standing prairie",
-5/1/2014,"Josh","Drummond Flats","F","End",142,,20,0,0,5,75,100,10,"Standing prairie","Near road"
-5/1/2014,"Josh","Drummond Flats","E","Start",142,,0,0,0,100,0,100,10,"Standing prairie, scrub","Transect begins in road"
-5/1/2014,"Josh","Drummond Flats","E","One-third",142,,20,0,0,50,30,100,">1000","Wet prairie with scrub","Fenceline along dry canal"
-5/1/2014,"Josh","Drummond Flats","E","Two-thirds",142,,0,50,50,0,0,100,50,"Row crops, standing prairie",
-5/1/2014,"Josh","Drummond Flats","E","End",142,,5,30,60,0,5,100,10,"Row crops, standing prairie","Fenceline"
-5/4/2014,"Jeremy","Crosstimbers","A","End",143,,25,25,25,15,10,100,20,"Riparian, standing praries, woodlands",
-5/4/2014,"Jeremy","Noble - Red River Farm","A","Start",143,,0,70,0,0,30,100,8,"Tame grass, pasture",
-5/4/2014,"Jeremy","Noble - Red River Farm","A","One-third",143,,5,50,15,5,25,100,250,"Tame grass (switchgrass)","Some cut, some standing"
-5/4/2014,"Jeremy","Noble - Red River Farm","A","Two-thirds",143,,10,35,40,5,10,100,300,"Tame grass (Switch and feed wheat)",
-5/4/2014,"Jeremy","Noble - Red River Farm","A","End",143,,30,25,20,10,15,100,5,"Crop, tame pasture, farm site",
-5/6/2014,"Josh","WMWR","H","Start",142,,10,20,20,30,20,100,50,"standing prairie, scrub, bare rock",
-5/6/2014,"Josh","WMWR","H","One-third",142,,20,20,0,40,20,100,15,"standing prairie, scrub, bare rock",
-5/6/2014,"Josh","WMWR","H","Two-thirds",142,,10,80,0,5,5,100,150,"standing, prairie, scrub, bare rock, prairie dog town",
-5/6/2014,"Josh","WMWR","H","End",142,,20,10,10,20,40,100,75,"prairie dog town, bare rock, standing prairie, scrub, holy city","Holy City"
-5/4/2014,"Randy","Crosstimbers","B","Start",1504,,10,80,10,0,0,100,50,"Tame grass",
-5/4/2014,"Randy","Crosstimbers","B","One-third",1504,,45,10,40,5,0,100,100,"Tame grass (Stream Corridor to East)",
-5/4/2014,"Randy","Crosstimbers","B","Two-thirds",1504,,50,10,40,0,0,100,100,"Tame grass (Blackjack Oak and Fraxinus sp.)",
-5/4/2014,"Randy","Crosstimbers","B","End",1504,,40,40,20,0,0,100,100,"Tame grass",
-5/9/2014,"Crystina","Hackberry Flat","E","Start",1511,,10,70,10,10,0,100,10,"Restored prairie",
-5/9/2014,"Crystina","Hackberry Flat","E","One-third",1511,,20,30,30,10,10,100,100,"Restored prairie",
-5/9/2014,"Crystina","Hackberry Flat","E","Two-thirds",1511,,2,56,0,40,2,100,120,"wheat field",
-5/9/2014,"Crystina","Hackberry Flat","E","End",1511,,20,68,5,5,2,100,0,"wheat field",
-5/9/2014,"Crystina","Hackberry Flat","J","Start",1511,,5,50,3,40,2,100,5,"wheat field, restored prairie",
-5/9/2014,"Crystina","Hackberry Flat","J","One-third",1511,,1,55,2,40,2,100,100,"wheat field, restored prairie",
-5/9/2014,"Crystina","Hackberry Flat","J","Two-thirds",1511,,0,55,2,40,3,100,90,"wheat field, restored prairie",
-5/9/2014,"Crystina","Hackberry Flat","J","End",1511,,10,60,20,5,5,100,10,"wheat field, restored prairie",
-5/7/2014,"Josh","WMWR","C","Start",142,,10,5,5,50,30,100,10,"oak scrub, standing priaire",
-5/7/2014,"Josh","WMWR","C","One-third",142,,5,20,10,50,15,100,150,"oak scrub, grss/forbes with bare ground",
-5/7/2014,"Josh","WMWR","C","Two-thirds",142,,5,5,10,70,10,100,100,"oake scrub, grass/forbes with bare ground",
-5/7/2014,"Josh","WMWR","C","End",142,,10,10,10,10,60,100,20,"oak scrub, standing prairie","ends at Ft. Sill fence"
-5/9/2014,"Josh","Hackberry Flat","I","Start",142,,20,50,10,0,20,100,5,"standing prairie, bare tilled field",
-5/9/2014,"Josh","Hackberry Flat","I","One-third",142,,0,0,0,80,20,100,100,"tilled field, standing prairie",
-5/9/2014,"Josh","Hackberry Flat","I","Two-thirds",142,,20,10,10,30,30,100,80,"fallow field, standing prairie",
-5/9/2014,"Josh","Hackberry Flat","I","End",142,,0,30,0,80,0,100,15,"fallow field, standing prairie, tilled field",
-5/9/2014,"Josh","Hackberry Flat","D","Start",142,,0,0,0,100,0,100,100,"standing prairie scrub","in road"
-5/9/2014,"Josh","Hackberry Flat","D","One-third",142,,0,20,10,30,40,100,10,"wheat field, scrubs, standing prairie",
-5/9/2014,"Josh","Hackberry Flat","D","Two-thirds",142,,0,5,0,70,25,100,100,"bare tilled field, wheat field",
-5/9/2014,"Josh","Hackberry Flat","D","End",142,,0,80,0,10,10,100,5,"wheat field, standing prairie",
-5/7/2014,"Jeremy","WMWR","B","Start","phone",,20,5,5,65,5,100,5,"standing prairie, woodland",
-5/7/2014,"Jeremy","WMWR","B","One-third","phone",,15,5,15,55,10,100,30,"standing prairie, water, riparian",
-5/7/2014,"Jeremy","WMWR","B","Two-thirds","phone",,5,45,20,10,20,100,200,"standing prairie, woodland","bison grazed"
-5/7/2014,"Jeremy","WMWR","B","End","phone",,0,30,35,20,15,100,40,"standing prairie, woodland, riparian",
-5/9/2014,"Jessica","Hackberry Flat","B","Start",1509,,40,15,20,20,5,100,5,"restored prairie",
-5/9/2014,"Jessica","Hackberry Flat","B","One-third",1509,,30,0,15,55,0,100,150,"lake bed",
-5/9/2014,"Jessica","Hackberry Flat","B","Two-thirds",1509,,5,10,20,60,5,100,100,"restored prairie, lake bed",
-5/9/2014,"Jessica","Hackberry Flat","B","End",1509,,10,2,3,85,0,100,100,"restored prairie, lake bed",
-5/9/2014,"Roy","Hackberry Flat","F","Start",1504,,30,10,15,25,20,100,180,"forest, standing prairie",
-5/9/2014,"Roy","Hackberry Flat","F","One-third",1504,,25,0,5,65,5,100,350,"wheat field, forest",
-5/9/2014,"Roy","Hackberry Flat","F","Two-thirds",1504,,5,50,20,15,10,100,40,"scrub, grass (tall grass)",
-5/9/2014,"Roy","Hackberry Flat","F","End",1504,,5,60,15,10,10,100,,"scrub, grass",
-5/9/2014,"Jessica","Hackberry Flat","C","Start",1509,,25,10,55,0,10,100,100,"restored prairie",
-5/9/2014,"Jessica","Hackberry Flat","C","One-third",1509,,25,5,70,0,0,100,30,"restored prairie",
-5/9/2014,"Jessica","Hackberry Flat","C","Two-thirds",1509,,10,2,0,80,8,100,100,"mixed soy field?",
-5/9/2014,"Jessica","Hackberry Flat","C","End",1509,,0,5,5,90,0,100,10,"wheat field",
-5/18/2014,"Randy","WMWR",1,"Start","phone",,20,20,0,60,0,100,50,"standing prairie",
-5/18/2014,"Randy","WMWR",1,"One-third","phone",,40,40,10,10,0,100,900,"standing prarie",
-5/18/2014,"Randy","WMWR",1,"Two-thirds","phone",,35,35,15,15,0,100,200,"standing prairie",
-5/18/2014,"Randy","WMWR",1,"End","phone",,40,15,5,40,0,100,10,"standing prairie, dirt road, fence row trees",
-5/16/2014,"Kristen","Cimmaron Bluffs","F","Start",142,,5,40,40,0,15,100,10,"woody scrub, standing prarie",
-5/16/2014,"Kristen","Cimmaron Bluffs","F","One-third",142,,10,30,40,5,15,100,200,"standing prarie",
-5/16/2014,"Kristen","Cimmaron Bluffs","F","Two-thirds",142,,5,30,50,0,15,100,160,"standing prarie, riparian",
-5/16/2014,"Kristen","Cimmaron Bluffs","F","End",142,,10,10,60,5,15,100,60,"standing prarie, riparian",
-5/16/2014,"Kristen","Cimmaron Bluffs","C","Start",142,,5,5,75,0,15,100,175,"standing prarie, riparian",
-5/16/2014,"Kristen","Cimmaron Bluffs","C","One-third",142,,5,5,75,0,15,100,20,"standing prarie, riparian",
-5/16/2014,"Kristen","Cimmaron Bluffs","C","Two-thirds",142,,5,5,80,0,10,100,">500","standing prarie",
-5/16/2014,"Kristen","Cimmaron Bluffs","C","End",142,,0,0,90,10,0,100,10,"standing prarie",
-5/17/2014,"Kristen","Cimmaron Hills","D","Start",1507,,15,15,20,45,5,100,5,"Scrub, open water, riparian, standing prarie",
-5/17/2014,"Kristen","Cimmaron Hills","D","One-third",1507,,50,10,10,25,5,100,800,"Scrub",
-5/17/2014,"Kristen","Cimmaron Hills","D","Two-thirds",1507,,5,10,45,35,5,100,">500","standing prarie, scrub",
-5/17/2014,"Kristen","Cimmaron Hills","D","End",1507,,20,25,40,10,5,100,700,"standing prarie, scrub","Sage bush present in 1m plot"
-5/17/2014,"Jeremy","Cimmaron Hills","D","Start",1507,,15,15,20,45,5,100,5,"Scrub, open water, riparian, standing prarie",
-5/17/2014,"Jeremy","Cimmaron Hills","D","One-third",1507,,50,10,10,25,5,100,800,"Scrub",
-5/17/2014,"Jeremy","Cimmaron Hills","D","Two-thirds",1507,,5,10,45,35,10,100,">500","standing prarie, scrub",
-5/17/2014,"Jeremy","Cimmaron Hills","D","End",1507,,20,25,40,10,5,100,700,"standing prarie, scrub","Sage bush present in 1m plot"
-5/30/2014,"Roy","Rita Blanca NG","A","Start",1504,,10,20,5,70,5,100,5,"Standing prarie","Start in Prarie dog town"
-5/30/2014,"Roy","Rita Blanca NG","A","One-third",1504,,5,0,0,90,5,100,4,"Standing prarie",
-5/30/2014,"Roy","Rita Blanca NG","A","Two-thirds",1504,,0,5,0,95,0,100,40,"Standing prarie",
-5/30/2014,"Roy","Rita Blanca NG","A","End",1504,,0,5,0,95,0,100,4,"Standing prarie",
-5/30/2014,"Roy","Rita Blanca NG","B","Start",1504,,10,5,0,85,0,100,4,"Standing prarie",
-5/30/2014,"Roy","Rita Blanca NG","B","One-third",1504,,5,25,0,70,0,100,6,"Standing prarie",
-5/30/2014,"Roy","Rita Blanca NG","B","Two-thirds",1504,,0,30,10,55,5,100,5,"Standing prarie","LOUD generator 5m East"
-5/30/2014,"Roy","Rita Blanca NG","B","End",1504,,0,20,80,0,0,100,2,"Standing prarie",
-6/4/2014,"Roy","Tallgrass Prairie","J","Start",1504,,25,70,5,0,0,100,10,"Grassland",
-6/4/2014,"Roy","Tallgrass Prairie","J","One-third",1504,,50,40,10,0,0,100,500,"Grassland",
-6/4/2014,"Roy","Tallgrass Prairie","J","Two-thirds",1504,,25,70,5,0,0,100,130,"Grassland",
-6/4/2014,"Roy","Tallgrass Prairie","J","End",1504,,30,10,10,20,30,100,,"Riparian",
-6/4/2014,"Roy","Tallgrass Prairie","I","Start",1504,,5,80,10,5,0,100,500,"Grassland",
-6/4/2014,"Roy","Tallgrass Prairie","I","One-third",1504,,15,80,5,0,0,100,150,"Grassland",
-6/4/2014,"Roy","Tallgrass Prairie","I","Two-thirds",1504,,20,75,5,0,0,100,80,"Grassland",
-6/4/2014,"Roy","Tallgrass Prairie","I","End",1504,,40,55,5,0,0,100,150,"Grassland",
-5/16/2014,"Josh","Cimmaron Bluffs","F","Start",142,,5,40,40,0,15,100,10,"woody scrub, standing prairie",
-5/16/2014,"Josh","Cimmaron Bluffs","F","One-third",142,,10,30,40,10,10,100,150,"standing prairie, riparian",
-5/16/2014,"Josh","Cimmaron Bluffs","F","Two-thirds",142,,5,10,70,5,10,100,100,"standing prairie, riparian",
-5/16/2014,"Josh","Cimmaron Bluffs","F","End",142,,10,10,60,10,10,100,30,"standing prairie, riparian",
-5/16/2014,"Josh","Cimmaron Bluffs","C","Start",142,,5,5,70,10,10,100,150,"standing prairie, riparian",
-5/16/2014,"Josh","Cimmaron Bluffs","C","One-third",142,,5,5,60,5,25,100,100,"standing prairie, riparian",
-5/16/2014,"Josh","Cimmaron Bluffs","C","Two-thirds",142,,0,20,50,0,30,100,">500","standing prairie, scrub",
-5/16/2014,"Josh","Cimmaron Bluffs","C","End",142,,0,0,70,20,10,100,6,"standing prairie",
-6/7/2014,"Jessica","Grimes switchgrass","C","Start",1509,,35,45,5,15,0,100,5,"pasture",
-,,"Grimes switchgrass","C","One-third",1509,,15,75,0,5,5,100,200,"pasture",
-,,"Grimes switchgrass","C","Two-thirds",1509,,0,5,5,10,80,100,150,"recently mowed switchgrass",
-,,"Grimes switchgrass","C","End",1509,,10,80,0,5,5,100,10,"pasture",
-6/19/2014,"Roy","Cimmaron Bluffs","F","Start",1504,,40,20,20,10,10,100,10,"Standing Prarie",
-6/19/2014,"Roy","Cimmaron Bluffs","F","One-third",1504,,30,30,20,5,15,100,60,"Standing Prarie",
-6/19/2014,"Roy","Cimmaron Bluffs","F","Two-thirds",1504,,10,30,0,60,0,100,60,"Standing Prarie",
-6/19/2014,"Roy","Cimmaron Bluffs","F","End",1504,,10,50,30,10,0,100,">500","Standing Prarie",
-6/19/2014,"Roy","Cimmaron Bluffs","C","Start",1504,,30,40,10,10,10,100,">500","Standing Prarie",
-6/19/2014,"Roy","Cimmaron Bluffs","C","One-third",1504,,40,30,20,0,10,100,">500","Standing Prarie, Scrub",
-6/19/2014,"Roy","Cimmaron Bluffs","C","Two-thirds",1504,,60,20,15,5,0,100,">500","Standing Prarie",
-6/19/2014,"Roy","Cimmaron Bluffs","C","End",1504,,20,40,15,10,15,100,15,"Standing Prarie",
-6/27/2014,"Kristen","Rita Blanca NG","B","Start",1507,,5,0,5,90,0,100,">500","bare, standing prairie",
-6/27/2014,"Kristen","Rita Blanca NG","B","One-third",1507,,5,5,5,80,5,100,">500","bare, standing prairie",
-6/27/2014,"Kristen","Rita Blanca NG","B","Two-thirds",1507,,5,5,10,75,5,100,">500","standing, prairie","wind: 15-20"
-6/27/2014,"Kristen","Rita Blanca NG","B","End",1507,,5,0,5,90,0,100,5,"bare, standing prairie",
-6/27/2014,"Kristen","Rita Blanca NG","A","Start",1507,,5,5,5,80,5,100,5,"standing prairie",
-6/27/2014,"Kristen","Rita Blanca NG","A","One-third",1507,,5,0,0,90,5,100,5,"standing praire","extremely bare"
-6/27/2014,"Kristen","Rita Blanca NG","A","Two-thirds",1507,,5,0,0,95,0,100,">500","bare",
-6/27/2014,"Kristen","Rita Blanca NG","A","End",1507,,5,0,5,90,0,100,">500","bare",
-6/2/2014,"Tory","Optima","A","Start",1503,,55,5,25,5,10,100,100,"standing prairie, woodland [savannah], human structure",
-6/2/2014,"Tory","Optima","A","One-third",1503,,10,15,10,55,10,100,300,"standing prairie, woodland [savannah], human structure",
-6/2/2014,"Tory","Optima","A","Two-thirds",1503,,0,60,25,10,5,100,">500","standing prairie, woodland [savannah], human structure",
-6/2/2014,"Tory","Optima","A","End",1503,,0,15,5,75,5,100,300,"bare, standing prairie, woodland [savannah], human structure",
-5/16/2014,"Tory","Cimmaron Bluffs","G","End",1507,,10,25,50,5,10,100,45,"Standing Prairie, Riparian, Woodland [Savannah]",
-5/16/2014,"Tory","Cimmaron Bluffs","D","Start",1507,,5,15,50,10,20,100,2,"Standing Prairie, Pasture",
-5/16/2014,"Tory","Cimmaron Bluffs","D","One-third",1507,,20,20,30,25,5,100,325,"Standing Prairie, Rocky",
-5/16/2014,"Tory","Cimmaron Bluffs","D","Two-thirds",1507,,0,10,50,35,5,100,60,"Standing Prairie, Scrub, Woodland",
-5/16/2014,"Tory","Cimmaron Bluffs","D","End",1507,,15,25,20,5,35,100,15,"Standing Prairie, Road, Woodland, Human Structures",
-5/16/2014,"Jeremy","Cimmaron Bluffs","G","End",1507,,10,25,50,5,10,100,45,"Standing Prairie, Riparian, Woodland [Savannah]",
-5/16/2014,"Jeremy","Cimmaron Bluffs","D","Start",1507,,5,15,50,10,20,100,1,"Standing Prairie, Pasture",
-5/16/2014,"Jeremy","Cimmaron Bluffs","D","One-third",1507,,20,20,30,25,5,100,325,"Standing Prairie, Rocky",
-5/16/2014,"Jeremy","Cimmaron Bluffs","D","Two-thirds",1507,,0,10,50,35,5,100,60,"Standing Prairie, Scrub, Woodland",
-5/16/2014,"Jeremy","Cimmaron Bluffs","D","End",1507,,15,25,20,5,35,100,15,"Standing Prairie, Road, Woodland, Human Structures",
-6/5/2014,"Roy","Tallgrass Prairie","N","Start",1504,,60,20,10,10,0,100,1,"Grassland",
-6/5/2014,"Roy","Tallgrass Prairie","N","One-third",1504,,70,20,10,0,0,100,500,"Grassland",
-6/4/2014,"Randy","Tallgrass Prairie","F","Start","phone",,40,45,10,5,0,100,20,"Grassland",
-6/4/2014,"Randy","Tallgrass Prairie","F","One-third","phone",,40,40,10,10,0,100,200,"Grassland",
-6/4/2014,"Randy","Tallgrass Prairie","F","Two-thirds","phone",,30,60,10,0,0,100,400,"Grassland",
-6/4/2014,"Randy","Tallgrass Prairie","F","End","phone",,20,70,10,0,0,100,100,"Grassland",
-6/4/2014,"Randy","Tallgrass Prairie","E","Start","phone",,10,80,10,0,0,100,600,"Grassland",
-6/4/2014,"Randy","Tallgrass Prairie","E","One-third","phone",,10,80,10,0,0,100,600,"Grassland",
-6/4/2014,"Randy","Tallgrass Prairie","E","Two-thirds","phone",,40,50,10,0,0,100,,"Grassland","cattle path"
-6/4/2014,"Randy","Tallgrass Prairie","E","End","phone",,40,30,0,30,0,100,,"Grassland","fire break and fencline"
-6/12/2014,"Randy","Drummond Flats","E","Start","phone",,10,10,0,80,0,100,5,"Standing Prairie, Road","Road and parking area"
-6/12/2014,"Randy","Drummond Flats","E","One-third","phone",,80,0,10,10,0,100,">500","Old field, Disturbed",
-6/12/2014,"Randy","Drummond Flats","E","Two-thirds","phone",,70,10,0,10,0,100,,"Bottomland,wetland","Road nearby"
-6/12/2014,"Randy","Drummond Flats","E","End","phone",,50,30,20,0,0,100,5,"Standing Prarie, Road",
-6/12/2014,"Randy","Drummond Flats","F","Start","phone",,10,80,10,0,0,100,150,"OLD field, Disturbed",
-6/12/2014,"Randy","Drummond Flats","F","One-third","phone",,0,80,0,20,0,100,150,"WHEATFIELD",
-6/12/2014,"Randy","Drummond Flats","F","Two-thirds","phone",,60,20,20,0,0,100,,"LOWLAND","GRSP IN AREA"
-6/12/2014,"Randy","Drummond Flats","F","End","phone",,70,10,10,10,0,100,10,"Old field, Disturbed, 10 meters to road","A lot of Rumex sp."
-6/17/2014,"Randy","Packsaddle","B","Start","phone",,30,30,0,40,0,100,60,"Grassland, Shrubland",
-6/17/2014,"Randy","Packsaddle","B","One-third","phone",,60,20,0,20,0,100,40,"Shinnery Oak, Grassland",
-6/17/2014,"Randy","Packsaddle","B","Two-thirds","phone",,25,25,0,50,0,100,30,"Shinnery Oak, Sandsage, Grassland",
-6/17/2014,"Randy","Packsaddle","B","End","phone",,50,10,0,40,0,100,1,"Shinnery Oak, Sandsage, Grassland",
-6/17/2014,"Randy","Packsaddle","A","Start","phone",,25,25,10,40,0,100,60,"Shinnery Oak, Sandsage, Grassland","dirt road to north"
-6/17/2014,"Randy","Packsaddle","A","One-third","phone",,25,20,5,50,0,100,60,"Shinnery Oak, Sandsage, Grassland","Mainly Shinnery Oak"
-6/17/2014,"Randy","Packsaddle","A","Two-thirds","phone",,40,15,5,40,0,100,150,"Shinnery Oak, Sandsage, Grassland","Sandsage"
-6/17/2014,"Randy","Packsaddle","A","End","phone",,60,10,0,30,0,100,1,"Shinnery Oak, Sandsage, Grassland","Road to West"
-6/19/2014,"Randy","Cimmaron Bluffs","G","Start","phone",,10,85,0,5,0,100,100,"Grassland mix","Road at start"
-6/19/2014,"Randy","Cimmaron Bluffs","G","One-third","phone",,30,60,5,5,0,100,100,"Grassland mix","pasture to west"
-6/19/2014,"Randy","Cimmaron Bluffs","G","Two-thirds","phone",,20,50,10,20,0,100,100,"Grassland mix",
-6/19/2014,"Randy","Cimmaron Bluffs","G","End","phone",,20,60,10,10,0,100,60,"Grassland,","basin, Valley to east"
-6/19/2014,"Randy","Cimmaron Bluffs","D","Start","phone",,10,80,5,5,0,100,40,"Grassland","washout to east grassland, fence at start"
-6/19/2014,"Randy","Cimmaron Bluffs","D","One-third","phone",,5,70,15,10,0,100,50,"Grassland","fence, gully to east"
-6/19/2014,"Randy","Cimmaron Bluffs","D","Two-thirds","phone",,40,50,5,5,0,100,20,"Grassland","bollotmland area"
-6/19/2014,"Randy","Cimmaron Bluffs","D","End","phone",,25,60,10,5,0,100,60,"Grassland","fence, Soapberry Trees"
+Date,Observer,Location,Transect,Point On Transect,Camera,Min height vis obstruct (cm),Forb,Grass,Dead,Bare,Litter,Total,Dist to Edge (m),Habitat Types <180m,Notes
+4/23/2014,Josh,Tallgrass Prairie,E,Start,142,,10,10,80,0,0,100,1000,"Standing Prairie, Burned Prairie",~100m from recent burn
+4/23/2014,Josh,Tallgrass Prairie,E,One-third,142,,5,5,80,0,0,90,75,Standing Prairie,
+4/23/2014,Josh,Tallgrass Prairie,E,Two-thirds,142,,0,20,60,5,20,105,1000,Standing Prairie,
+4/23/2014,Josh,Tallgrass Prairie,E,End,142,,5,5,80,0,5,95,500,"Standing Prairie, Woodland, Riparian",~10m from running stream
+4/23/2014,Josh,Tallgrass Prairie,F,Start,142,,10,40,0,40,10,100,600,Standing Prairie,
+4/23/2014,Josh,Tallgrass Prairie,F,One-third,142,,5,0,90,0,5,100,1000,Standing Prairie,
+4/23/2014,Josh,Tallgrass Prairie,F,Two-thirds,142,,5,10,75,0,10,100,>1000,Standing Prairie,
+4/23/2014,Josh,Tallgrass Prairie,F,End,142,,5,15,70,0,10,100,>1000,"Standing Prairie, Oil Development",
+4/21/2014,Jessica,Tallgrass Prairie,I,Start,,,2,5,85,0,8,100,10,"Standing Prairie, Woodland",
+4/21/2014,Jessica,Tallgrass Prairie,I,One-third,,,3,50,22,5,20,100,250,"Standing Prairie, Riparian","near water, small stream"
+4/21/2014,Jessica,Tallgrass Prairie,I,Two-thirds,,,15,65,10,2,8,100,150,"Standing Prairie, Riparian",near ditch
+4/21/2014,Jessica,Tallgrass Prairie,I,End,,,5,40,50,1,4,100,200,Grazed prairie,
+4/23/2014,JDR,Tallgrass Prairie,A,End,143,,5,25,55,0,15,100,20,"Burned Prairie, Woodland, Riparian",
+4/23/2014,JDR,Tallgrass Prairie,A,Start,143,,15,30,20,15,20,100,80,"Standing Prairie, Residential, Grazed Prairie",Corrals
+4/23/2014,JDR,Tallgrass Prairie,A,One-third,143,,5,40,30,0,25,100,85,"Native Prairie, Riparian, Woodland",15deg slope
+4/23/2014,JDR,Tallgrass Prairie,B,Start,143,,15,10,60,0,15,100,10,"Burned prairie, Standing Prairie, scrub, rock",
+4/23/2014,JDR,Tallgrass Prairie,B,One-third,143,,15,15,0,70,0,100,25,"Burned prairie, open water, riparian",Fresh burn
+4/23/2014,JDR,Tallgrass Prairie,B,Two-thirds,143,,5,15,0,80,0,100,65,"Burned prairie, woodland, scrub, riparian",
+4/23/2014,JDR,Tallgrass Prairie,B,End,143,,20,15,0,55,10,100,3,"Riparian, burned prairie, scrub, woodland",
+5/1/2014,Josh,Drummond Flats,F,Start,142,,5,45,50,0,0,100,100,"Fenceline, wet prairie, standing prairie",
+5/1/2014,Josh,Drummond Flats,F,One-third,142,,0,50,0,30,20,100,50,"Row crops, standing prairie",Wheat
+5/1/2014,Josh,Drummond Flats,F,Two-thirds,142,,20,20,5,10,45,100,>1000,Standing prairie,
+5/1/2014,Josh,Drummond Flats,F,End,142,,20,0,0,5,75,100,10,Standing prairie,Near road
+5/1/2014,Josh,Drummond Flats,E,Start,142,,0,0,0,100,0,100,10,"Standing prairie, scrub",Transect begins in road
+5/1/2014,Josh,Drummond Flats,E,One-third,142,,20,0,0,50,30,100,>1000,Wet prairie with scrub,Fenceline along dry canal
+5/1/2014,Josh,Drummond Flats,E,Two-thirds,142,,0,50,50,0,0,100,50,"Row crops, standing prairie",
+5/1/2014,Josh,Drummond Flats,E,End,142,,5,30,60,0,5,100,10,"Row crops, standing prairie",Fenceline
+5/4/2014,JDR,Crosstimbers,A,End,143,,25,25,25,15,10,100,20,"Riparian, standing praries, woodlands",
+5/4/2014,JDR,Noble - Red River Farm,A,Start,143,,0,70,0,0,30,100,8,"Tame grass, pasture",
+5/4/2014,JDR,Noble - Red River Farm,A,One-third,143,,5,50,15,5,25,100,250,Tame grass (switchgrass),"Some cut, some standing"
+5/4/2014,JDR,Noble - Red River Farm,A,Two-thirds,143,,10,35,40,5,10,100,300,Tame grass (Switch and feed wheat),
+5/4/2014,JDR,Noble - Red River Farm,A,End,143,,30,25,20,10,15,100,5,"Crop, tame pasture, farm site",
+5/6/2014,Josh,WMWR,H,Start,142,,10,20,20,30,20,100,50,"standing prairie, scrub, bare rock",
+5/6/2014,Josh,WMWR,H,One-third,142,,20,20,0,40,20,100,15,"standing prairie, scrub, bare rock",
+5/6/2014,Josh,WMWR,H,Two-thirds,142,,10,80,0,5,5,100,150,"standing, prairie, scrub, bare rock, prairie dog town",
+5/6/2014,Josh,WMWR,H,End,142,,20,10,10,20,40,100,75,"prairie dog town, bare rock, standing prairie, scrub, holy city",Holy City
+5/4/2014,Randy,Crosstimbers,B,Start,1504,,10,80,10,0,0,100,50,Tame grass,
+5/4/2014,Randy,Crosstimbers,B,One-third,1504,,45,10,40,5,0,100,100,Tame grass (Stream Corridor to East),
+5/4/2014,Randy,Crosstimbers,B,Two-thirds,1504,,50,10,40,0,0,100,100,Tame grass (Blackjack Oak and Fraxinus sp.),
+5/4/2014,Randy,Crosstimbers,B,End,1504,,40,40,20,0,0,100,100,Tame grass,
+5/9/2014,Crystina,Hackberry Flat,E,Start,1511,,10,70,10,10,0,100,10,Restored prairie,
+5/9/2014,Crystina,Hackberry Flat,E,One-third,1511,,20,30,30,10,10,100,100,Restored prairie,
+5/9/2014,Crystina,Hackberry Flat,E,Two-thirds,1511,,2,56,0,40,2,100,120,wheat field,
+5/9/2014,Crystina,Hackberry Flat,E,End,1511,,20,68,5,5,2,100,0,wheat field,
+5/9/2014,Crystina,Hackberry Flat,J,Start,1511,,5,50,3,40,2,100,5,"wheat field, restored prairie",
+5/9/2014,Crystina,Hackberry Flat,J,One-third,1511,,1,55,2,40,2,100,100,"wheat field, restored prairie",
+5/9/2014,Crystina,Hackberry Flat,J,Two-thirds,1511,,0,55,2,40,3,100,90,"wheat field, restored prairie",
+5/9/2014,Crystina,Hackberry Flat,J,End,1511,,10,60,20,5,5,100,10,"wheat field, restored prairie",
+5/7/2014,Josh,WMWR,C,Start,142,,10,5,5,50,30,100,10,"oak scrub, standing priaire",
+5/7/2014,Josh,WMWR,C,One-third,142,,5,20,10,50,15,100,150,"oak scrub, grss/forbes with bare ground",
+5/7/2014,Josh,WMWR,C,Two-thirds,142,,5,5,10,70,10,100,100,"oake scrub, grass/forbes with bare ground",
+5/7/2014,Josh,WMWR,C,End,142,,10,10,10,10,60,100,20,"oak scrub, standing prairie",ends at Ft. Sill fence
+5/9/2014,Josh,Hackberry Flat,I,Start,142,,20,50,10,0,20,100,5,"standing prairie, bare tilled field",
+5/9/2014,Josh,Hackberry Flat,I,One-third,142,,0,0,0,80,20,100,100,"tilled field, standing prairie",
+5/9/2014,Josh,Hackberry Flat,I,Two-thirds,142,,20,10,10,30,30,100,80,"fallow field, standing prairie",
+5/9/2014,Josh,Hackberry Flat,I,End,142,,0,30,0,80,0,100,15,"fallow field, standing prairie, tilled field",
+5/9/2014,Josh,Hackberry Flat,D,Start,142,,0,0,0,100,0,100,100,standing prairie scrub,in road
+5/9/2014,Josh,Hackberry Flat,D,One-third,142,,0,20,10,30,40,100,10,"wheat field, scrubs, standing prairie",
+5/9/2014,Josh,Hackberry Flat,D,Two-thirds,142,,0,5,0,70,25,100,100,"bare tilled field, wheat field",
+5/9/2014,Josh,Hackberry Flat,D,End,142,,0,80,0,10,10,100,5,"wheat field, standing prairie",
+5/7/2014,JDR,WMWR,B,Start,phone,,20,5,5,65,5,100,5,"standing prairie, woodland",
+5/7/2014,JDR,WMWR,B,One-third,phone,,15,5,15,55,10,100,30,"standing prairie, water, riparian",
+5/7/2014,JDR,WMWR,B,Two-thirds,phone,,5,45,20,10,20,100,200,"standing prairie, woodland",bison grazed
+5/7/2014,JDR,WMWR,B,End,phone,,0,30,35,20,15,100,40,"standing prairie, woodland, riparian",
+5/9/2014,Jessica,Hackberry Flat,B,Start,1509,,40,15,20,20,5,100,5,restored prairie,
+5/9/2014,Jessica,Hackberry Flat,B,One-third,1509,,30,0,15,55,0,100,150,lake bed,
+5/9/2014,Jessica,Hackberry Flat,B,Two-thirds,1509,,5,10,20,60,5,100,100,"restored prairie, lake bed",
+5/9/2014,Jessica,Hackberry Flat,B,End,1509,,10,2,3,85,0,100,100,"restored prairie, lake bed",
+5/9/2014,Roy,Hackberry Flat,F,Start,1504,,30,10,15,25,20,100,180,"forest, standing prairie",
+5/9/2014,Roy,Hackberry Flat,F,One-third,1504,,25,0,5,65,5,100,350,"wheat field, forest",
+5/9/2014,Roy,Hackberry Flat,F,Two-thirds,1504,,5,50,20,15,10,100,40,"scrub, grass (tall grass)",
+5/9/2014,Roy,Hackberry Flat,F,End,1504,,5,60,15,10,10,100,,"scrub, grass",
+5/9/2014,Jessica,Hackberry Flat,C,Start,1509,,25,10,55,0,10,100,100,restored prairie,
+5/9/2014,Jessica,Hackberry Flat,C,One-third,1509,,25,5,70,0,0,100,30,restored prairie,
+5/9/2014,Jessica,Hackberry Flat,C,Two-thirds,1509,,10,2,0,80,8,100,100,mixed soy field?,
+5/9/2014,Jessica,Hackberry Flat,C,End,1509,,0,5,5,90,0,100,10,wheat field,
+5/18/2014,Randy,WMWR,1,Start,phone,,20,20,0,60,0,100,50,standing prairie,
+5/18/2014,Randy,WMWR,1,One-third,phone,,40,40,10,10,0,100,900,standing prarie,
+5/18/2014,Randy,WMWR,1,Two-thirds,phone,,35,35,15,15,0,100,200,standing prairie,
+5/18/2014,Randy,WMWR,1,End,phone,,40,15,5,40,0,100,10,"standing prairie, dirt road, fence row trees",
+5/16/2014,Kristen,Cimmaron Bluffs,F,Start,142,,5,40,40,0,15,100,10,"woody scrub, standing prarie",
+5/16/2014,Kristen,Cimmaron Bluffs,F,One-third,142,,10,30,40,5,15,100,200,standing prarie,
+5/16/2014,Kristen,Cimmaron Bluffs,F,Two-thirds,142,,5,30,50,0,15,100,160,"standing prarie, riparian",
+5/16/2014,Kristen,Cimmaron Bluffs,F,End,142,,10,10,60,5,15,100,60,"standing prarie, riparian",
+5/16/2014,Kristen,Cimmaron Bluffs,C,Start,142,,5,5,75,0,15,100,175,"standing prarie, riparian",
+5/16/2014,Kristen,Cimmaron Bluffs,C,One-third,142,,5,5,75,0,15,100,20,"standing prarie, riparian",
+5/16/2014,Kristen,Cimmaron Bluffs,C,Two-thirds,142,,5,5,80,0,10,100,>500,standing prarie,
+5/16/2014,Kristen,Cimmaron Bluffs,C,End,142,,0,0,90,10,0,100,10,standing prarie,
+5/17/2014,Kristen,Cimmaron Hills,D,Start,1507,,15,15,20,45,5,100,5,"Scrub, open water, riparian, standing prarie",
+5/17/2014,Kristen,Cimmaron Hills,D,One-third,1507,,50,10,10,25,5,100,800,Scrub,
+5/17/2014,Kristen,Cimmaron Hills,D,Two-thirds,1507,,5,10,45,35,5,100,>500,"standing prarie, scrub",
+5/17/2014,Kristen,Cimmaron Hills,D,End,1507,,20,25,40,10,5,100,700,"standing prarie, scrub",Sage bush present in 1m plot
+5/17/2014,JDR,Cimmaron Hills,D,Start,1507,,15,15,20,45,5,100,5,"Scrub, open water, riparian, standing prarie",
+5/17/2014,JDR,Cimmaron Hills,D,One-third,1507,,50,10,10,25,5,100,800,Scrub,
+5/17/2014,JDR,Cimmaron Hills,D,Two-thirds,1507,,5,10,45,35,10,100,>500,"standing prarie, scrub",
+5/17/2014,JDR,Cimmaron Hills,D,End,1507,,20,25,40,10,5,100,700,"standing prarie, scrub",Sage bush present in 1m plot
+5/30/2014,Roy,Rita Blanca NG,A,Start,1504,,10,20,5,70,5,100,5,Standing prarie,Start in Prarie dog town
+5/30/2014,Roy,Rita Blanca NG,A,One-third,1504,,5,0,0,90,5,100,4,Standing prarie,
+5/30/2014,Roy,Rita Blanca NG,A,Two-thirds,1504,,0,5,0,95,0,100,40,Standing prarie,
+5/30/2014,Roy,Rita Blanca NG,A,End,1504,,0,5,0,95,0,100,4,Standing prarie,
+5/30/2014,Roy,Rita Blanca NG,B,Start,1504,,10,5,0,85,0,100,4,Standing prarie,
+5/30/2014,Roy,Rita Blanca NG,B,One-third,1504,,5,25,0,70,0,100,6,Standing prarie,
+5/30/2014,Roy,Rita Blanca NG,B,Two-thirds,1504,,0,30,10,55,5,100,5,Standing prarie,LOUD generator 5m East
+5/30/2014,Roy,Rita Blanca NG,B,End,1504,,0,20,80,0,0,100,2,Standing prarie,
+6/4/2014,Roy,Tallgrass Prairie,J,Start,1504,,25,70,5,0,0,100,10,Grassland,
+6/4/2014,Roy,Tallgrass Prairie,J,One-third,1504,,50,40,10,0,0,100,500,Grassland,
+6/4/2014,Roy,Tallgrass Prairie,J,Two-thirds,1504,,25,70,5,0,0,100,130,Grassland,
+6/4/2014,Roy,Tallgrass Prairie,J,End,1504,,30,10,10,20,30,100,,Riparian,
+6/4/2014,Roy,Tallgrass Prairie,I,Start,1504,,5,80,10,5,0,100,500,Grassland,
+6/4/2014,Roy,Tallgrass Prairie,I,One-third,1504,,15,80,5,0,0,100,150,Grassland,
+6/4/2014,Roy,Tallgrass Prairie,I,Two-thirds,1504,,20,75,5,0,0,100,80,Grassland,
+6/4/2014,Roy,Tallgrass Prairie,I,End,1504,,40,55,5,0,0,100,150,Grassland,
+5/16/2014,Josh,Cimmaron Bluffs,F,Start,142,,5,40,40,0,15,100,10,"woody scrub, standing prairie",
+5/16/2014,Josh,Cimmaron Bluffs,F,One-third,142,,10,30,40,10,10,100,150,"standing prairie, riparian",
+5/16/2014,Josh,Cimmaron Bluffs,F,Two-thirds,142,,5,10,70,5,10,100,100,"standing prairie, riparian",
+5/16/2014,Josh,Cimmaron Bluffs,F,End,142,,10,10,60,10,10,100,30,"standing prairie, riparian",
+5/16/2014,Josh,Cimmaron Bluffs,C,Start,142,,5,5,70,10,10,100,150,"standing prairie, riparian",
+5/16/2014,Josh,Cimmaron Bluffs,C,One-third,142,,5,5,60,5,25,100,100,"standing prairie, riparian",
+5/16/2014,Josh,Cimmaron Bluffs,C,Two-thirds,142,,0,20,50,0,30,100,>500,"standing prairie, scrub",
+5/16/2014,Josh,Cimmaron Bluffs,C,End,142,,0,0,70,20,10,100,6,standing prairie,
+6/7/2014,Jessica,Grimes switchgrass,C,Start,1509,,35,45,5,15,0,100,5,pasture,
+6/7/2014,Jessica,Grimes switchgrass,C,One-third,1509,,15,75,0,5,5,100,200,pasture,
+6/7/2014,Jessica,Grimes switchgrass,C,Two-thirds,1509,,0,5,5,10,80,100,150,recently mowed switchgrass,
+6/7/2014,Jessica,Grimes switchgrass,C,End,1509,,10,80,0,5,5,100,10,pasture,
+6/19/2014,Roy,Cimmaron Bluffs,F,Start,1504,,40,20,20,10,10,100,10,Standing Prarie,
+6/19/2014,Roy,Cimmaron Bluffs,F,One-third,1504,,30,30,20,5,15,100,60,Standing Prarie,
+6/19/2014,Roy,Cimmaron Bluffs,F,Two-thirds,1504,,10,30,0,60,0,100,60,Standing Prarie,
+6/19/2014,Roy,Cimmaron Bluffs,F,End,1504,,10,50,30,10,0,100,>500,Standing Prarie,
+6/19/2014,Roy,Cimmaron Bluffs,C,Start,1504,,30,40,10,10,10,100,>500,Standing Prarie,
+6/19/2014,Roy,Cimmaron Bluffs,C,One-third,1504,,40,30,20,0,10,100,>500,"Standing Prarie, Scrub",
+6/19/2014,Roy,Cimmaron Bluffs,C,Two-thirds,1504,,60,20,15,5,0,100,>500,Standing Prarie,
+6/19/2014,Roy,Cimmaron Bluffs,C,End,1504,,20,40,15,10,15,100,15,Standing Prarie,
+6/27/2014,Kristen,Rita Blanca NG,B,Start,1507,,5,0,5,90,0,100,>500,"bare, standing prairie",
+6/27/2014,Kristen,Rita Blanca NG,B,One-third,1507,,5,5,5,80,5,100,>500,"bare, standing prairie",
+6/27/2014,Kristen,Rita Blanca NG,B,Two-thirds,1507,,5,5,10,75,5,100,>500,"standing, prairie",wind: 15-20
+6/27/2014,Kristen,Rita Blanca NG,B,End,1507,,5,0,5,90,0,100,5,"bare, standing prairie",
+6/27/2014,Kristen,Rita Blanca NG,A,Start,1507,,5,5,5,80,5,100,5,standing prairie,
+6/27/2014,Kristen,Rita Blanca NG,A,One-third,1507,,5,0,0,90,5,100,5,standing praire,extremely bare
+6/27/2014,Kristen,Rita Blanca NG,A,Two-thirds,1507,,5,0,0,95,0,100,>500,bare,
+6/27/2014,Kristen,Rita Blanca NG,A,End,1507,,5,0,5,90,0,100,>500,bare,
+6/2/2014,Tory,Optima,A,Start,1503,,55,5,25,5,10,100,100,"standing prairie, woodland [savannah], human structure",
+6/2/2014,Tory,Optima,A,One-third,1503,,10,15,10,55,10,100,300,"standing prairie, woodland [savannah], human structure",
+6/2/2014,Tory,Optima,A,Two-thirds,1503,,0,60,25,10,5,100,>500,"standing prairie, woodland [savannah], human structure",
+6/2/2014,Tory,Optima,A,End,1503,,0,15,5,75,5,100,300,"bare, standing prairie, woodland [savannah], human structure",
+5/16/2014,Tory,Cimmaron Bluffs,G,End,1507,,10,25,50,5,10,100,45,"Standing Prairie, Riparian, Woodland [Savannah]",
+5/16/2014,Tory,Cimmaron Bluffs,D,Start,1507,,5,15,50,10,20,100,2,"Standing Prairie, Pasture",
+5/16/2014,Tory,Cimmaron Bluffs,D,One-third,1507,,20,20,30,25,5,100,325,"Standing Prairie, Rocky",
+5/16/2014,Tory,Cimmaron Bluffs,D,Two-thirds,1507,,0,10,50,35,5,100,60,"Standing Prairie, Scrub, Woodland",
+5/16/2014,Tory,Cimmaron Bluffs,D,End,1507,,15,25,20,5,35,100,15,"Standing Prairie, Road, Woodland, Human Structures",
+5/16/2014,JDR,Cimmaron Bluffs,G,End,1507,,10,25,50,5,10,100,45,"Standing Prairie, Riparian, Woodland [Savannah]",
+5/16/2014,JDR,Cimmaron Bluffs,D,Start,1507,,5,15,50,10,20,100,1,"Standing Prairie, Pasture",
+5/16/2014,JDR,Cimmaron Bluffs,D,One-third,1507,,20,20,30,25,5,100,325,"Standing Prairie, Rocky",
+5/16/2014,JDR,Cimmaron Bluffs,D,Two-thirds,1507,,0,10,50,35,5,100,60,"Standing Prairie, Scrub, Woodland",
+5/16/2014,JDR,Cimmaron Bluffs,D,End,1507,,15,25,20,5,35,100,15,"Standing Prairie, Road, Woodland, Human Structures",
+6/5/2014,Roy,Tallgrass Prairie,N,Start,1504,,60,20,10,10,0,100,1,Grassland,
+6/5/2014,Roy,Tallgrass Prairie,N,One-third,1504,,70,20,10,0,0,100,500,Grassland,
+6/4/2014,Randy,Tallgrass Prairie,F,Start,phone,,40,45,10,5,0,100,20,Grassland,
+6/4/2014,Randy,Tallgrass Prairie,F,One-third,phone,,40,40,10,10,0,100,200,Grassland,
+6/4/2014,Randy,Tallgrass Prairie,F,Two-thirds,phone,,30,60,10,0,0,100,400,Grassland,
+6/4/2014,Randy,Tallgrass Prairie,F,End,phone,,20,70,10,0,0,100,100,Grassland,
+6/4/2014,Randy,Tallgrass Prairie,E,Start,phone,,10,80,10,0,0,100,600,Grassland,
+6/4/2014,Randy,Tallgrass Prairie,E,One-third,phone,,10,80,10,0,0,100,600,Grassland,
+6/4/2014,Randy,Tallgrass Prairie,E,Two-thirds,phone,,40,50,10,0,0,100,,Grassland,cattle path
+6/4/2014,Randy,Tallgrass Prairie,E,End,phone,,40,30,0,30,0,100,,Grassland,fire break and fencline
+6/12/2014,Randy,Drummond Flats,E,Start,phone,,10,10,0,80,0,100,5,"Standing Prairie, Road",Road and parking area
+6/12/2014,Randy,Drummond Flats,E,One-third,phone,,80,0,10,10,0,100,>500,"Old field, Disturbed",
+6/12/2014,Randy,Drummond Flats,E,Two-thirds,phone,,70,10,0,10,0,100,,"Bottomland,wetland",Road nearby
+6/12/2014,Randy,Drummond Flats,E,End,phone,,50,30,20,0,0,100,5,"Standing Prarie, Road",
+6/12/2014,Randy,Drummond Flats,F,Start,phone,,10,80,10,0,0,100,150,"OLD field, Disturbed",
+6/12/2014,Randy,Drummond Flats,F,One-third,phone,,0,80,0,20,0,100,150,WHEATFIELD,
+6/12/2014,Randy,Drummond Flats,F,Two-thirds,phone,,60,20,20,0,0,100,,LOWLAND,GRSP IN AREA
+6/12/2014,Randy,Drummond Flats,F,End,phone,,70,10,10,10,0,100,10,"Old field, Disturbed, 10 meters to road",A lot of Rumex sp.
+6/17/2014,Randy,Packsaddle,B,Start,phone,,30,30,0,40,0,100,60,"Grassland, Shrubland",
+6/17/2014,Randy,Packsaddle,B,One-third,phone,,60,20,0,20,0,100,40,"Shinnery Oak, Grassland",
+6/17/2014,Randy,Packsaddle,B,Two-thirds,phone,,25,25,0,50,0,100,30,"Shinnery Oak, Sandsage, Grassland",
+6/17/2014,Randy,Packsaddle,B,End,phone,,50,10,0,40,0,100,1,"Shinnery Oak, Sandsage, Grassland",
+6/17/2014,Randy,Packsaddle,A,Start,phone,,25,25,10,40,0,100,60,"Shinnery Oak, Sandsage, Grassland",dirt road to north
+6/17/2014,Randy,Packsaddle,A,One-third,phone,,25,20,5,50,0,100,60,"Shinnery Oak, Sandsage, Grassland",Mainly Shinnery Oak
+6/17/2014,Randy,Packsaddle,A,Two-thirds,phone,,40,15,5,40,0,100,150,"Shinnery Oak, Sandsage, Grassland",Sandsage
+6/17/2014,Randy,Packsaddle,A,End,phone,,60,10,0,30,0,100,1,"Shinnery Oak, Sandsage, Grassland",Road to West
+6/19/2014,Randy,Cimmaron Bluffs,G,Start,phone,,10,85,0,5,0,100,100,Grassland mix,Road at start
+6/19/2014,Randy,Cimmaron Bluffs,G,One-third,phone,,30,60,5,5,0,100,100,Grassland mix,pasture to west
+6/19/2014,Randy,Cimmaron Bluffs,G,Two-thirds,phone,,20,50,10,20,0,100,100,Grassland mix,
+6/19/2014,Randy,Cimmaron Bluffs,G,End,phone,,20,60,10,10,0,100,60,"Grassland,","basin, Valley to east"
+6/19/2014,Randy,Cimmaron Bluffs,D,Start,phone,,10,80,5,5,0,100,40,Grassland,"washout to east grassland, fence at start"
+6/19/2014,Randy,Cimmaron Bluffs,D,One-third,phone,,5,70,15,10,0,100,50,Grassland,"fence, gully to east"
+6/19/2014,Randy,Cimmaron Bluffs,D,Two-thirds,phone,,40,50,5,5,0,100,20,Grassland,bollotmland area
+6/19/2014,Randy,Cimmaron Bluffs,D,End,phone,,25,60,10,5,0,100,60,Grassland,"fence, Soapberry Trees"
