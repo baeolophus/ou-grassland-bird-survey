@@ -256,13 +256,27 @@ ensembleoverlaptest$na.rm <- TRUE
 ensemble.mosaic <- do.call(mosaic, ensembleoverlaptest)
 plot(ensemble.mosaic)
 
+#generate random points
+
+polygon.extent<-Polygon(
+  matrix(c(-103, 33,
+                                  -103, 38,
+                                  -94, 38,
+                                  -94, 33,
+                                  -103, 33),
+                                  nrow=5, ncol=2,
+                                  byrow=TRUE)
+  )
+
+
+random.points<-spsample(x=polygon.extent,
+         n=1000,
+         type="random")
+
+plot(random.points)
+#create squares around them, these will be support set extents.
 #How to make squares/rectangles:
 #http://neondataskills.org/working-with-field-data/Field-Data-Polygons-From-Centroids
-
-#generate random points
-spsample(x=,
-         n=)
-#create squares around them, these will be support set extents.
 
 #crop the main object (a spatial object) to each extent
 crop(object,
