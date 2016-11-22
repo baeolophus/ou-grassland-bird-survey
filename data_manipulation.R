@@ -312,10 +312,7 @@ transect.complete<-left_join(transect.data,
                                   "Observer",
                                   "Location",
                                   "Transect"))
-0.2875 0.4152777778 
-4019
 
-2311 to 2379 are blank on times
 #complete matches number of rows in data, so there are no weird duplicates.  Good.
 
 #How to generate gps points for each bird sighting in transects.
