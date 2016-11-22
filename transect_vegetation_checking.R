@@ -20,3 +20,21 @@ transect.veg.metadata<-left_join(transect.veg,
                                       "Observer",
                                       "Location",
                                       "Transect"))
+
+#check to make sure no NAs in metadata rows.  Did that and corrected so all veg have metadata matches.
+
+#then this code gets distinct transects from veg.
+veg.distincts<-distinct(transect.veg,
+                           Date,
+                           Observer,
+                           Location,
+                           Transect)
+
+#There are only 50 vegetations out of 167 transects.  Is this even useful?
+
+matching.metadata.to.veg<-left_join(transect.metadata,
+                                    veg.distincts,
+                                    by=c("Date",
+                                         "Observer",
+                                         "Location",
+                                         "Transect"))
