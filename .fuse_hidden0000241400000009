@@ -1,0 +1,170 @@
+* [33m3792183[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtemp[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/claire-active-edits[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m added and reorganized list of issues with text files.  data manipulation file started in earnest.
+*   [33m7227257[m Merge branch 'master' of github.com:baeolophus/ou-grassland-bird-survey
+[32m|[m[33m\[m  
+[32m|[m *   [33mea0b47f[m Merge pull request #3 from baeolophus/deletephotos
+[32m|[m [34m|[m[35m\[m  
+[32m|[m [34m|[m * [33maff5b3c[m Delete CIMG0476.JPG
+[32m|[m [34m|[m * [33mea85b6f[m Delete CIMG0475.JPG
+[32m|[m [34m|[m * [33m02aaed5[m Delete CIMG0474.JPG
+[32m|[m [34m|[m * [33m9166d12[m Delete CIMG0473.JPG
+[32m|[m [34m|[m * [33m5a99a21[m Delete CIMG0472.JPG
+[32m|[m [34m|[m * [33m3a1b5b1[m Delete CIMG0471.JPG
+[32m|[m [34m|[m * [33mb2f6d08[m Delete CIMG0470.JPG
+[32m|[m [34m|[m * [33mceb5046[m Delete CIMG0478.JPG
+[32m|[m [34m|[m * [33mf88a4c6[m Delete CIMG0477.JPG
+[32m|[m [34m|[m * [33m7f5689d[m Delete CIMG0479.JPG
+[32m|[m [34m|[m * [33m5063c04[m Delete CIMG0480.JPG
+[32m|[m [34m|[m * [33m9f551de[m Delete CIMG0481.JPG
+[32m|[m [34m|[m * [33md9dd301[m Delete CIMG0469.JPG
+[32m|[m [34m|[m * [33mb493fbd[m Delete CIMG0468.JPG
+[32m|[m [34m|[m * [33m30df1a5[m Delete CIMG0467.JPG
+[32m|[m [34m|[m * [33ma4075bc[m Delete CIMG0466.JPG
+[32m|[m [34m|[m * [33m8afa82d[m Delete CIMG0465.JPG
+[32m|[m [34m|[m * [33m24c2010[m Delete CIMG0482.JPG
+[32m|[m [34m|[m * [33mb9b0094[m Delete CIMG0483.JPG
+[32m|[m [34m|[m * [33m57d78e5[m Delete CIMG0484.JPG
+[32m|[m [34m|[m * [33md248685[m Delete CIMG0485.JPG
+[32m|[m [34m|[m * [33ma60bb26[m Delete CIMG0486.JPG
+[32m|[m [34m|[m * [33m5c8d2d8[m Delete CIMG0487.JPG
+[32m|[m [34m|[m * [33mb989941[m Delete CIMG0488.JPG
+[32m|[m [34m|[m * [33m8ca0ddb[m Delete CIMG0489.JPG
+[32m|[m [34m|[m * [33mb97f562[m Delete CIMG0490.JPG
+[32m|[m [34m|[m * [33m0fb37da[m Delete CIMG0491.JPG
+[32m|[m [34m|[m * [33mba9ad70[m Delete CIMG0492.JPG
+[32m|[m [34m|[m * [33m7773994[m Delete CIMG0493.JPG
+[32m|[m [34m|[m * [33m4fce633[m Delete CIMG0494.JPG
+[32m|[m [34m|[m * [33m909c73d[m Delete CIMG0495.JPG
+[32m|[m [34m|[m * [33mdf5da69[m Delete CIMG0496.JPG
+[32m|[m [34m|[m * [33mea819f8[m Delete CIMG0498.JPG
+[32m|[m [34m|[m * [33m4add1d8[m Delete CIMG0499.JPG
+[32m|[m [34m|[m * [33mab17f21[m Delete CIMG0500.JPG
+[32m|[m [34m|[m * [33m2027a46[m Delete CIMG0501.JPG
+[32m|[m [34m|[m * [33m1ae8152[m Delete CIMG0502.JPG
+[32m|[m [34m|[m * [33ma00e814[m Delete CIMG0503.JPG
+[32m|[m [34m|[m * [33mcdf0ada[m Delete CIMG0504.JPG
+[32m|[m [34m|[m * [33m2fe78db[m Delete CIMG0505.JPG
+[32m|[m [34m|[m * [33mf3ef605[m Delete CIMG0506.JPG
+[32m|[m [34m|[m * [33mff4a124[m Delete CIMG0507.JPG
+[32m|[m [34m|[m * [33m02eac07[m Delete CIMG0508.JPG
+[32m|[m [34m|[m * [33maba6022[m Delete CIMG0509.JPG
+[32m|[m [34m|[m * [33m4b892a5[m Delete CIMG0464.JPG
+[32m|[m [34m|[m * [33m629183f[m Delete CIMG0463.JPG
+[32m|[m [34m|[m * [33m315e312[m Delete CIMG0462.JPG
+[32m|[m [34m|[m * [33m065f37e[m Delete CIMG0461.JPG
+[32m|[m [34m|[m * [33mcf4c64c[m Delete CIMG0460.JPG
+[32m|[m [34m|[m * [33m72fb359[m Delete CIMG0459.JPG
+[32m|[m [34m|[m * [33m6f84417[m Delete CIMG0458.JPG
+[32m|[m [34m|[m * [33mfb55a97[m Delete CIMG0457.JPG
+[32m|[m [34m|[m * [33m69262d4[m Delete CIMG0456.JPG
+[32m|[m [34m|[m * [33ma0fcee0[m Delete CIMG0455.JPG
+[32m|[m [34m|[m * [33m7df6d9b[m Delete CIMG0454.JPG
+[32m|[m [34m|[m * [33mdbc5260[m Delete CIMG0453.JPG
+[32m|[m [34m|[m * [33m0d6208c[m Delete CIMG0452.JPG
+[32m|[m [34m|[m * [33mba2c87f[m Delete CIMG0451.JPG
+[32m|[m [34m|[m * [33m6364657[m Delete CIMG0450.JPG
+[32m|[m [34m|[m * [33m5e48165[m Delete CIMG0449.JPG
+[32m|[m [34m|[m * [33m0945d37[m Delete CIMG0448.JPG
+[32m|[m [34m|[m * [33m372e141[m Delete CIMG0447.JPG
+[32m|[m [34m|[m * [33m4fa9ac5[m Delete CIMG0446.JPG
+[32m|[m [34m|[m * [33m794fb70[m Delete CIMG0445.JPG
+[32m|[m [34m|[m * [33mb1bd636[m Delete CIMG0444.JPG
+[32m|[m [34m|[m * [33mc00ca5c[m Delete CIMG0443.JPG
+[32m|[m [34m|[m * [33mc55cab8[m Delete CIMG0442.JPG
+[32m|[m [34m|[m * [33mcf167e1[m Delete CIMG0441.JPG
+[32m|[m [34m|[m * [33m4b51da6[m Delete CIMG0440.JPG
+[32m|[m [34m|[m * [33ma5212e5[m Delete CIMG0439.JPG
+[32m|[m [34m|[m * [33mcb433eb[m Delete CIMG0438.JPG
+[32m|[m [34m|[m * [33m6ad914c[m Delete CIMG0437.JPG
+[32m|[m [34m|[m * [33m8835440[m Delete CIMG0436.JPG
+[32m|[m [34m|[m * [33m9c82eab[m Delete CIMG0435.JPG
+[32m|[m [34m|[m * [33mb47cfea[m Delete CIMG0434.JPG
+[32m|[m [34m|[m * [33m8713961[m Delete CIMG0433.JPG
+[32m|[m [34m|[m * [33ma91d44c[m Delete CIMG0432.JPG
+[32m|[m [34m|[m * [33mc7feb11[m Delete CIMG0431.JPG
+[32m|[m [34m|[m * [33m534494b[m Delete CIMG0430.JPG
+[32m|[m [34m|[m * [33mb2204c9[m Delete CIMG0429.JPG
+[32m|[m [34m|[m * [33m921a454[m Delete CIMG0428.JPG
+[32m|[m [34m|[m * [33m7398d17[m Delete CIMG0427.JPG
+[32m|[m [34m|[m * [33m85cb3b8[m Delete CIMG0426.JPG
+[32m|[m [34m|[m * [33m0018f23[m Delete CIMG0425.JPG
+[32m|[m [34m|[m * [33mffad90f[m Delete CIMG0424.JPG
+[32m|[m [34m|[m * [33m814b880[m Delete CIMG0423.JPG
+[32m|[m [34m|[m * [33m159a4e8[m Delete CIMG0422.JPG
+[32m|[m [34m|[m * [33m5e64cb6[m Delete CIMG0421.JPG
+[32m|[m [34m|[m * [33m037df23[m Delete CIMG0420.JPG
+[32m|[m [34m|[m * [33mb44dd76[m Delete CIMG0419.JPG
+[32m|[m [34m|[m * [33mfc5db9a[m Delete CIMG0418.JPG
+[32m|[m [34m|[m * [33m0b47779[m Delete CIMG0417.JPG
+[32m|[m [34m|[m * [33mddbaa56[m Delete CIMG0416.JPG
+[32m|[m [34m|[m * [33md217f1e[m Delete CIMG0415.JPG
+[32m|[m [34m|[m * [33m3123039[m Delete CIMG0414.JPG
+[32m|[m [34m|[m * [33mccbce62[m Delete CIMG0413.JPG
+[32m|[m [34m|[m * [33m9882016[m Delete CIMG0412.JPG
+[32m|[m [34m|[m * [33m531511b[m Delete CIMG0411.JPG
+[32m|[m [34m|[m * [33m840caba[m Delete CIMG0410.JPG
+[32m|[m [34m|[m * [33mf06d410[m Delete CIMG0409.JPG
+[32m|[m [34m|[m * [33mcc3de4a[m Delete CIMG0408.JPG
+[32m|[m [34m|[m * [33md7d5c08[m Delete CIMG0407.JPG
+[32m|[m [34m|[m * [33m81f3530[m Delete CIMG0406.JPG
+[32m|[m [34m|[m * [33m4d737f9[m Delete CIMG0405.JPG
+[32m|[m [34m|[m * [33me6b4610[m Delete CIMG0404.JPG
+[32m|[m [34m|[m * [33m44da89b[m Delete CIMG0403.JPG
+[32m|[m [34m|[m * [33mcf7067e[m Delete CIMG0402.JPG
+[32m|[m [34m|[m * [33mbe3b835[m Delete CIMG0401.JPG
+[32m|[m [34m|[m * [33md279e8b[m Delete CIMG0400.JPG
+[32m|[m [34m|[m * [33m6310fc7[m Delete CIMG0399.JPG
+[32m|[m [34m|[m * [33m8dfdc13[m Delete CIMG0398.JPG
+[32m|[m [34m|[m * [33m7479646[m Delete CIMG0397.JPG
+[32m|[m [34m|[m * [33m7b67e31[m Delete CIMG0396.JPG
+[32m|[m [34m|[m * [33me127e0e[m Delete CIMG0395.JPG
+[32m|[m [34m|[m * [33m551ebd5[m Delete CIMG0394.JPG
+[32m|[m [34m|[m * [33m2cf9325[m Delete CIMG0393.JPG
+[32m|[m [34m|[m * [33m4e03d1b[m Delete CIMG0392.JPG
+[32m|[m [34m|[m * [33m2cdb7ff[m Delete CIMG0391.JPG
+[32m|[m [34m|[m * [33me75671d[m Delete CIMG0390.JPG
+[32m|[m [34m|[m * [33mc4bfeae[m Delete CIMG0389.JPG
+[32m|[m [34m|[m * [33m467c941[m Delete CIMG0388.JPG
+[32m|[m [34m|[m * [33mc01e2b9[m Delete CIMG0387.JPG
+[32m|[m [34m|[m * [33m250698a[m Delete CIMG0386.JPG
+[32m|[m [34m|[m * [33m5b53f91[m Delete CIMG0385.JPG
+[32m|[m [34m|[m * [33ma2d976c[m Delete CIMG0384.JPG
+[32m|[m [34m|[m * [33m7ecfdb7[m Delete CIMG0383.JPG
+[32m|[m [34m|[m * [33mddfde1a[m Delete CIMG0382.JPG
+[32m|[m [34m|[m * [33me519674[m Delete CIMG0381.JPG
+[32m|[m [34m|[m * [33me08e97a[m Delete CIMG0380.JPG
+[32m|[m [34m|[m * [33mc09ee8d[m Delete CIMG0379.JPG
+[32m|[m [34m|[m * [33m7f6d131[m Delete CIMG0378.JPG
+[32m|[m [34m|[m * [33m31d3b75[m Delete CIMG0377.JPG
+[32m|[m [34m|[m * [33m3199154[m Delete CIMG0376.JPG
+[32m|[m [34m|[m * [33mc690b70[m Delete CIMG0375.JPG
+[32m|[m [34m|[m * [33md520134[m Delete CIMG0374.JPG
+[32m|[m [34m|[m * [33mbfa44e4[m Delete CIMG0373.JPG
+[32m|[m [34m|[m * [33m7417119[m Delete CIMG0372.JPG
+[32m|[m [34m|[m * [33mc17cfda[m Delete CIMG0156.JPG
+[32m|[m [34m|[m * [33m79e794d[m Delete CIMG0155.JPG
+[32m|[m [34m|[m[34m/[m  
+[32m|[m * [33mac30678[m Delete CIMG0154.JPG
+[32m|[m *   [33m60722b4[m Merge pull request #2 from rossjd/master
+[32m|[m [36m|[m[1;31m\[m  
+[32m|[m [36m|[m * [33mba948ec[m Add files via upload
+[32m|[m * [1;31m|[m   [33mb8dff48[m Merge pull request #1 from rossjd/master
+[32m|[m [1;32m|[m[1;31m\[m [1;31m\[m  
+[32m|[m [1;32m|[m [1;31m|[m[1;31m/[m  
+[32m|[m [1;32m|[m * [33mdcb34f6[m Add files via upload
+[32m|[m [1;32m|[m * [33m0fe8b80[m Add files via upload
+[32m|[m [1;32m|[m * [33md259ecc[m Add files via upload
+[32m|[m [1;32m|[m * [33m360e876[m Add files via upload
+[32m|[m [1;32m|[m * [33m7da5e6f[m Create fieldphoto_description
+[32m|[m [1;32m|[m * [33maecb304[m Add files via upload
+[32m|[m [1;32m|[m * [33m2a331ec[m Create study_background
+[32m|[m [1;32m|[m * [33mbde4d96[m Delete CASP
+[32m|[m [1;32m|[m * [33m22e76ae[m Create CASP
+[32m|[m [1;32m|[m[1;32m/[m  
+* [1;32m|[m [33m592078e[m updated project objectives
+* [1;32m|[m [33m62c65fe[m code testing dismo and biomod2. list of issues with data sheets vs computer spreadsheets of data. docx file with outline of main project objectives.
+* [1;32m|[m [33ma3caf52[m Jeremy's link to dropbox of vegetation photos with info on pics.
+[1;32m|[m[1;32m/[m  
+* [33m9169cb0[m testing line endings between OS
+* [33m7276061[m testing line endings and creating a file for data code.
+* [33m5d7ce79[m basic files: gitignore, r project, and custom attributes that makes line endings consistent between windows and ubuntu/linux.
+* [33mdba75aa[m Initial commit
