@@ -284,25 +284,32 @@ library(rgdal)
 
 #set the radius for the plots
 radius <- 20 #radius in meters
+#get the centroids from the random.points spatial points object.
+
+centroids<-data.frame(
+  "x"=coordinates(random.points)[,1],
+  "y"=coordinates(random.points)[,2]
+)
+centroids$ID<-paste("ID", rownames(centroids), sep="")
 
 #define the plot boundaries based upon the plot radius. 
 #NOTE: this assumes that plots are oriented North and are not rotated. 
 #If the plots are rotated, you'd need to do additional math to find 
 #the corners.
-yPlus <- centroids$northing+radius
-xPlus <- centroids$easting+radius
-yMinus <- centroids$northing-radius
-xMinus <- centroids$easting-radius
+yPlus <- centroids$y+radius
+xPlus <- centroids$x+radius
+yMinus <- centroids$y-radius
+xMinus <- centroids$x-radius
 
 #Extract the plot ID information. NOTE: because we set
 #stringsAsFactor to false above, we can import the plot 
 #ID's using the code below. If we didn't do that, our ID's would 
 #come in as factors by default. 
 #We'd thus have to use the code ID=as.character(centroids$Plot_ID) 
-ID=centroids$Plot_ID
+ID<-centroids$ID
 
 #calculate polygon coordinates for each plot centroid. 
-square=cbind(xMinus,yPlus, xPlus,yPlus, xPlus,yMinus, xMinus,yMinus,xMinus,yPlus,xMinus,yPlus)
+square<-cbind(xMinus,yPlus, xPlus,yPlus, xPlus,yMinus, xMinus,yMinus,xMinus,yPlus,xMinus,yPlus)
 
 
 #create spatial polygons
@@ -312,15 +319,16 @@ polys <- SpatialPolygons(mapply(function(poly, id) {
 },
 split(square, row(square)), ID),
 proj4string=CRS(as.character(
-  "+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0")))
+  "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0")))
 
 # Create SpatialPolygonDataFrame -- this step is required to output multiple polygons.
 polys.df <- SpatialPolygonsDataFrame(polys, data.frame(id=ID, row.names=ID))
 
-plot(polys.df, col=rainbow(50, alpha=0.5))
+plot(polys.df, col=rainbow(50, alpha=0.5),
+     add=TRUE)
 
 
-
+#it makes things, but they don't look spaced appropriately or the 20 m thing is off scale?
 
 #crop the main object (a spatial object with given sighting points) to each extent
 crop(object,
