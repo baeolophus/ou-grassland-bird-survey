@@ -1,3 +1,5 @@
+bigfiles/** filter=lfs diff=lfs merge=lfs -text
+
 # Basic .gitattributes for a R repo. 
 
 
