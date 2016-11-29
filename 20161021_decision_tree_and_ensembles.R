@@ -273,6 +273,9 @@ random.points<-spsample(x=polygon.extent,
          n=1000,
          type="random")
 
+proj4string(random.points)<-CRS(as.character(
+  "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+
 plot(random.points)
 #create squares around them, these will be support set extents.
 #How to make squares/rectangles, code/comments adapted from here:
@@ -283,7 +286,7 @@ library(sp)
 library(rgdal)
 
 #set the radius for the plots
-radius <- 20 #radius in meters
+radius <- 1 #radius in meters
 #get the centroids from the random.points spatial points object.
 
 centroids<-data.frame(
@@ -313,22 +316,20 @@ square<-cbind(xMinus,yPlus, xPlus,yPlus, xPlus,yMinus, xMinus,yMinus,xMinus,yPlu
 
 
 #create spatial polygons
-polys <- SpatialPolygons(mapply(function(poly, id) {
+polys <- SpatialPolygons(
+  mapply(function(poly, id) {
   xy <- matrix(poly, ncol=2, byrow=TRUE)
   Polygons(list(Polygon(xy)), ID=id)
-},
-split(square, row(square)), ID),
-proj4string=CRS(as.character(
+  },
+  split(square, row(square)), ID),
+  proj4string=CRS(as.character(
   "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0")))
 
 # Create SpatialPolygonDataFrame -- this step is required to output multiple polygons.
 polys.df <- SpatialPolygonsDataFrame(polys, data.frame(id=ID, row.names=ID))
 
-plot(polys.df, col=rainbow(50, alpha=0.5),
+plot(polys.df,
      add=TRUE)
-
-
-#it makes things, but they don't look spaced appropriately or the 20 m thing is off scale?
 
 #crop the main object (a spatial object with given sighting points) to each extent
 crop(object,
