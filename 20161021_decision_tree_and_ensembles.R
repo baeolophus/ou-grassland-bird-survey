@@ -275,8 +275,52 @@ random.points<-spsample(x=polygon.extent,
 
 plot(random.points)
 #create squares around them, these will be support set extents.
-#How to make squares/rectangles:
+#How to make squares/rectangles, code/comments adapted from here:
 #http://neondataskills.org/working-with-field-data/Field-Data-Polygons-From-Centroids
+#they got much from: http://stackoverflow.com/questions/26620373/spatialpolygons-creating-a-set-of-polygons-in-r-from-coordinates
+
+library(sp)
+library(rgdal)
+
+#set the radius for the plots
+radius <- 20 #radius in meters
+
+#define the plot boundaries based upon the plot radius. 
+#NOTE: this assumes that plots are oriented North and are not rotated. 
+#If the plots are rotated, you'd need to do additional math to find 
+#the corners.
+yPlus <- centroids$northing+radius
+xPlus <- centroids$easting+radius
+yMinus <- centroids$northing-radius
+xMinus <- centroids$easting-radius
+
+#Extract the plot ID information. NOTE: because we set
+#stringsAsFactor to false above, we can import the plot 
+#ID's using the code below. If we didn't do that, our ID's would 
+#come in as factors by default. 
+#We'd thus have to use the code ID=as.character(centroids$Plot_ID) 
+ID=centroids$Plot_ID
+
+#calculate polygon coordinates for each plot centroid. 
+square=cbind(xMinus,yPlus, xPlus,yPlus, xPlus,yMinus, xMinus,yMinus,xMinus,yPlus,xMinus,yPlus)
+
+
+#create spatial polygons
+polys <- SpatialPolygons(mapply(function(poly, id) {
+  xy <- matrix(poly, ncol=2, byrow=TRUE)
+  Polygons(list(Polygon(xy)), ID=id)
+},
+split(square, row(square)), ID),
+proj4string=CRS(as.character(
+  "+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0")))
+
+# Create SpatialPolygonDataFrame -- this step is required to output multiple polygons.
+polys.df <- SpatialPolygonsDataFrame(polys, data.frame(id=ID, row.names=ID))
+
+plot(polys.df, col=rainbow(50, alpha=0.5))
+
+
+
 
 #crop the main object (a spatial object with given sighting points) to each extent
 crop(object,
