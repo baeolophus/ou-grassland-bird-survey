@@ -332,10 +332,14 @@ plot(polys.df,
      add=TRUE)
 
 #crop the main object (a spatial object with given sighting points) to each extent
+
+#take each polygon as an extent and put it into a list
+
 crop(object,
      extent)
 
 #Do this into list format for all.
+#some sort of lapply, sapply, or mapply to get all polygons.
 
 #Run the models on each item in the list
 
