@@ -332,11 +332,25 @@ plot(polys.df,
      add=TRUE)
 
 #crop the main object (a spatial object with given sighting points) to each extent
+#first make main thing a spatial object.
+dick.spatialpoints<-SpatialPoints(pointcounts.complete.na.dick[,c("Longitude","Latitude")],
+                                  proj4string=CRS(as.character(
+                                    "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+                                  )
+#take each polygon as an extent and put it into a list?  or take each "row" and turn it into an extent.
+#then make list of extents.
 
-#take each polygon as an extent and put it into a list
+extent.1<-extent(polys.df[1,])#might not need
+#this is simpler and works nicely so far.
+#http://robinlovelace.net/r/2014/07/29/clipping-with-r.html
 
-crop(object,
-     extent)
+plot(dick.spatialpoints)
+plot(dick.spatialpoints[polys.df[2,],],
+     add=TRUE,
+     col="red",
+     pch="!")
+plot(polys.df[2,],
+     add=TRUE)
 
 #Do this into list format for all.
 #some sort of lapply, sapply, or mapply to get all polygons.
