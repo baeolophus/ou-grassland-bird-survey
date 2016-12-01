@@ -344,12 +344,24 @@ extent.1<-extent(polys.df[1,])#might not need
 #this is simpler and works nicely so far.
 #http://robinlovelace.net/r/2014/07/29/clipping-with-r.html
 
+testlist<-lapply(dick.spatialpoints[polys.df[1,],], as.list)
+
+singlething<-dick.spatialpoints[polys.df[2,],] #works
+spatial.support.set<-function(numbersupportsets){
+  zing<-dick.spatialpoints[polys.df[numbersupportsets,],]
+}
+test<-spatial.support.set(3)
+list.test<-lapply(1:3, spatial.support.set)
+
+lapply(dick.spatialpoints, FUN='[',1,2)
+list1 = lapply(list(1,2,3), '[', 1,2)
+
 plot(dick.spatialpoints)
-plot(dick.spatialpoints[polys.df[2,],],
+plot(dick.spatialpoints[polys.df[3,],],
      add=TRUE,
      col="red",
      pch="!")
-plot(polys.df[2,],
+plot(polys.df[3,],
      add=TRUE)
 
 #Do this into list format for all.
