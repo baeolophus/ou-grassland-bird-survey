@@ -340,22 +340,22 @@ dick.spatialpoints<-SpatialPoints(pointcounts.complete.na.dick[,c("Longitude","L
 #take each polygon as an extent and put it into a list?  or take each "row" and turn it into an extent.
 #then make list of extents.
 
-extent.1<-extent(polys.df[1,])#might not need
 #this is simpler and works nicely so far.
 #http://robinlovelace.net/r/2014/07/29/clipping-with-r.html
 
-testlist<-lapply(dick.spatialpoints[polys.df[1,],], as.list)
-
 singlething<-dick.spatialpoints[polys.df[2,],] #works
 spatial.support.set<-function(numbersupportsets){
-  zing<-dick.spatialpoints[polys.df[numbersupportsets,],]
+  dick.spatialpoints[polys.df[numbersupportsets,],]
+  #I think there should be a line that turns it back into regular data?
+  #And I might want to extract this from the bioclim stuff first?
+  #I think all the function will be applied within here, and then I will have a list of predictions.
+  #I could even do the mean of several kinds of models as the prediction for each square
+  #if I choose to include more than one model type.
+  #need to have the minimum data requirement in here too.
 }
-test<-spatial.support.set(3)
-list.test<-lapply(1:3, spatial.support.set)
+list.test<-lapply(1:6, spatial.support.set)
 
-lapply(dick.spatialpoints, FUN='[',1,2)
-list1 = lapply(list(1,2,3), '[', 1,2)
-
+#This demonstrates that the subsetting actually samples the main dataset.
 plot(dick.spatialpoints)
 plot(dick.spatialpoints[polys.df[3,],],
      add=TRUE,
@@ -363,9 +363,6 @@ plot(dick.spatialpoints[polys.df[3,],],
      pch="!")
 plot(polys.df[3,],
      add=TRUE)
-
-#Do this into list format for all.
-#some sort of lapply, sapply, or mapply to get all polygons.
 
 #Run the models on each item in the list
 
