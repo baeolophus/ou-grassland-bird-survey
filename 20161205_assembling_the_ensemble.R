@@ -1,6 +1,18 @@
+#libraries needed
+library(raster)
+library(sp)
+library(rgdal)
+
+#Bring in predictor data.
+
+#Bring in whole response data set as a spatial object including presence/absence.
+#specify species
+
+#Merge the predictor and response data
+
 #generate random points
 
-polygon.extent<-Polygon(
+studyarea.extent<-Polygon(
   matrix(c(-103, 33,
            -103, 38,
            -94, 38,
@@ -11,7 +23,7 @@ polygon.extent<-Polygon(
 )
 
 
-random.points<-spsample(x=polygon.extent,
+random.points<-spsample(x=studyarea.extent,
                         n=1000,
                         type="random")
 
@@ -24,11 +36,8 @@ plot(random.points)
 #http://neondataskills.org/working-with-field-data/Field-Data-Polygons-From-Centroids
 #they got much from: http://stackoverflow.com/questions/26620373/spatialpolygons-creating-a-set-of-polygons-in-r-from-coordinates
 
-library(sp)
-library(rgdal)
-
 #set the radius for the plots
-radius <- 1 #radius in meters
+radius <- 1 #radius in decimal degrees
 #get the centroids from the random.points spatial points object.
 
 centroids<-data.frame(
@@ -73,19 +82,12 @@ polys.df <- SpatialPolygonsDataFrame(polys, data.frame(id=ID, row.names=ID))
 plot(polys.df,
      add=TRUE)
 
-#Then bring in predictor data.
-
-#Then bring in whole response data set as a spatial object including presence/absence.
-
 #Now, function for subsetting and running the test on each subset.
 
-spatial.support.set<-function(numbersupportsets, dataset){
-  dataset[polys.df[numbersupportsets,],]
+spatial.support.set<-function(numbersupportsets, dataset, N){
+  support.set<-dataset[polys.df[numbersupportsets,],]
   #I think there should be a line that turns it back into regular data?
-  #And I might want to extract this from the bioclim stuff first?
-  #I think all the function will be applied within here, and then I will have a list of predictions.
-  #I could even do the mean of several kinds of models as the prediction for each square
-  #if I choose to include more than one model type.
+  sample.size.good<-ifelse(length(support.set)>N, 1, 0)
   #need to have the minimum data requirement in here too.
   library(rpart)
   tree.test<-rpart(response~bio1+
@@ -118,9 +120,17 @@ spatial.support.set<-function(numbersupportsets, dataset){
   plot(tree.test.raster.prediction)
   tree.test.raster.prediction.extended<-extend(tree.test.raster.prediction,
                                       studyarea.extent)
+  return(list(tree.test.raster.prediction.extended,
+              sample.size.good))
+  
+  #I could even do the mean of several kinds of models as the prediction for each square
+  #if I choose to include more than one model type.
 }
 
-list.test<-lapply(1:6, spatial.support.set, dataset=NAME.OF.DATASET)
+list.test<-lapply(1:6,
+                  FUN=spatial.support.set,
+                  dataset=NAME.OF.DATASET,
+                  N=)
 
 
 names(list.test)[1:2] <- c('x', 'y')
@@ -129,5 +139,17 @@ list.test$fun <- mean
 list.test$na.rm <- TRUE
 
 ensemble.mosaic <- do.call(mosaic, list.test)
+
+ensemble.weighted.mosaic<-do.call(weighted.mean,
+                                  list.test,
+                                  w=,
+                                  na.rm=TRUE)
+
+list.test<-list(list(1,1,1), list(1,2,6))
+test.function<-function(x){
+  thing<-unlist(list.test[[x]][3])
+  mean(thing)}
+test.function(2)
+hmm<-lapply(1:2, test.function)
 plot(ensemble.mosaic)
 
