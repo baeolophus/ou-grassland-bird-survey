@@ -86,36 +86,18 @@ plot(polys.df,
 
 spatial.support.set<-function(numbersupportsets, dataset, N){
   support.set<-dataset[polys.df[numbersupportsets,],]
+  support.set.predictors<-support.set[,????]
   #I think there should be a line that turns it back into regular data?
   sample.size.good<-ifelse(length(support.set)>N, 1, 0)
   #need to have the minimum data requirement in here too.
   library(rpart)
   tree.test<-rpart(response~bio1+
-                     bio2+
-                     bio3+
-                     bio4+
-                     bio5+
-                     bio6+
-                     bio7+
-                     bio8+
-                     bio9+
-                     bio10+
-                     bio11+
-                     bio12+
-                     bio13+
-                     bio14+
-                     bio15+
-                     bio16+
-                     bio17+
-                     bio18+
-                     bio19,
+                     bio2,
                    data=tree.data.dick,
                    method="class",
                    control=rpart.control(cp=0.0000000000000000000000000001))
-  summary(tree.test)
-  plot(tree.test)
   #create prediction map for illustration purposes
-  tree.test.raster.prediction<-raster::predict(object=studyarea.bioclim, #raster object, probably use bioclim.extent,
+  tree.test.raster.prediction<-raster::predict(object=support.set.predictors, #raster object, probably use bioclim.extent,
                                                model=tree.test)
   plot(tree.test.raster.prediction)
   tree.test.raster.prediction.extended<-extend(tree.test.raster.prediction,
