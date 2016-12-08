@@ -253,31 +253,35 @@ spatial.support.set<-function(whichrandombox,
   #if I choose to include more than one model type.
 }
 
-test<-spatial.support.set(3,
-                    spatialdataset=tree.data.dick)
-
-list.test<-lapply(1:3,
+list.test<-lapply(1:1000,
                   FUN=spatial.support.set,
                   spatialdataset=tree.data.dick)
 
 
-names(list.test)[1:2] <- c('x', 'y')
+weights<-lapply(list.test,
+                "[",
+                2)
+weights<-as.vector(unlist(weights))
+
+predictions.support.sets<-unlist(lapply(list.test,
+                                 "[",
+                                 1))
+
+predictions.support.sets.stacked<-raster::stack(predictions.support.sets)
+
+#names(predictions.support.sets)[1:2] <- c('x', 'y')
 #x and y seems necessary, cannot rename these or mosaic gives error in do.call below.
-list.test$fun <- mean
-list.test$na.rm <- TRUE
+#predictions.support.sets$fun <- mean
+#predictions.support.sets$na.rm <- TRUE
 
-ensemble.mosaic <- do.call(mosaic, list.test)
+#ensemble.mosaic <- do.call(mosaic, predictions.support.sets) #This works
 
-ensemble.weighted.mosaic<-do.call(weighted.mean,
-                                  list.test,
-                                  w=,
-                                  na.rm=TRUE)
+#predictions.support.sets2<-predictions.support.sets
+#predictions.support.sets2$fun<-raster::weighted
 
-list.test<-list(list(1,1,1), list(1,2,6))
-test.function<-function(x){
-  thing<-unlist(list.test[[x]][3])
-  mean(thing)}
-test.function(2)
-hmm<-lapply(1:2, test.function)
-plot(ensemble.mosaic)
+ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
+                                  list(predictions.support.sets.stacked,
+                                       weights,
+                                       TRUE))
 
+plot(ensemble.weighted.mosaic)
