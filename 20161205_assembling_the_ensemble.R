@@ -2,13 +2,149 @@
 library(raster)
 library(sp)
 library(rgdal)
+library(dplyr)
 
 #Bring in predictor data.
+#import bioclim layers
+bio1<-raster('bio_5m_bil/bio1.bil')
+bio2<-raster('bio_5m_bil/bio2.bil')
+bio3<-raster('bio_5m_bil/bio3.bil')
+bio4<-raster('bio_5m_bil/bio4.bil')
+bio5<-raster('bio_5m_bil/bio5.bil')
+bio6<-raster('bio_5m_bil/bio6.bil')
+bio7<-raster('bio_5m_bil/bio7.bil')
+bio8<-raster('bio_5m_bil/bio8.bil')
+bio9<-raster('bio_5m_bil/bio9.bil')
+bio10<-raster('bio_5m_bil/bio10.bil')
+bio11<-raster('bio_5m_bil/bio11.bil')
+bio12<-raster('bio_5m_bil/bio12.bil')
+bio13<-raster('bio_5m_bil/bio13.bil')
+bio14<-raster('bio_5m_bil/bio14.bil')
+bio15<-raster('bio_5m_bil/bio15.bil')
+bio16<-raster('bio_5m_bil/bio16.bil')
+bio17<-raster('bio_5m_bil/bio17.bil')
+bio18<-raster('bio_5m_bil/bio18.bil')
+bio19<-raster('bio_5m_bil/bio19.bil')
+bioclimlayer<-brick(bio1,
+                    bio2,
+                    bio3,
+                    bio4,
+                    bio5,
+                    bio6,
+                    bio7,
+                    bio8,
+                    bio9,
+                    bio10,
+                    bio11,
+                    bio12,
+                    bio13,
+                    bio14,
+                    bio15,
+                    bio16,
+                    bio17,
+                    bio18,
+                    bio19)
+
+
+#crop to extent of study area
+studyarea.extent<-extent(-103,-94,
+                         33,38) # define the extent
+studyarea.bioclim<-crop(bioclimlayer,
+                        studyarea.extent)
 
 #Bring in whole response data set as a spatial object including presence/absence.
-#specify species
 
-#Merge the predictor and response data
+#bring in data and metadata, join for species locations.
+pointcount.data<-read.csv(file="pointcount_data.csv")
+#bring in the manually corrected file
+pointcount.metadata.manually.corrected<-read.csv(file="pointcount_metadata.csv")
+#merge the files so every row has all metadata attached.
+pointcounts.complete<-left_join(pointcount.data,
+                                pointcount.metadata.manually.corrected,
+                                by=c("Date",
+                                     "Observer",
+                                     "Location",
+                                     "Point"))
+
+#double-check always that row counts for pointcount.data and pointcounts.complete are the same!
+#if they are not, go back to data manipulation code and run checks to look for duplicates.
+
+
+pointcounts.complete.na<-filter(pointcounts.complete,
+                                !is.na(Latitude)&
+                                  !is.na(Longitude))
+#SET SPECIES HERE
+pointcounts.complete.na.dick<-filter(pointcounts.complete.na,
+                                     Species=="DICK")
+
+
+#extract values for analysis
+bioclim.dick<-as.data.frame(extract(x=studyarea.bioclim,
+                                    y=c(pointcounts.complete.na.dick$Longitude,
+                                        pointcounts.complete.na.dick$Latitude)))
+
+
+subs.bioclim<-cbind(pointcounts.complete.na.dick[,c("Longitude",
+                                                    "Latitude")],
+                    na.omit(bioclim.dick))
+subs.bioclim$response<-1
+
+
+
+nosightings.dick<-filter(pointcounts.complete.na,
+                         Species!="DICK")
+
+(absences<-group_by(nosightings.dick,
+                    Date,
+                    Observer,
+                    Location,
+                    Point)%>%
+  
+  summarize(Sightings=n()))
+
+(presences<-group_by(pointcounts.complete.na.dick,
+                     Date,
+                     Observer,
+                     Location,
+                     Point)%>%
+  
+  summarize(Sightings=n()))
+
+pcs.sans.bird<-anti_join(x=absences,
+                         y=presences,
+                         by=c("Date",
+                              "Observer",
+                              "Location",
+                              "Point"))
+
+#join to gps for bg/absence points.
+bg.draft<-left_join(pcs.sans.bird,
+                    pointcount.metadata.manually.corrected,
+                    by=c("Date",
+                         "Observer",
+                         "Location",
+                         "Point"))
+bg<-bg.draft[,c("Longitude",
+                "Latitude")]
+coordinates(bg)<-c("Longitude",
+                   "Latitude")
+bg.bioclim.dick<-as.data.frame(extract(studyarea.bioclim,
+                                       bg))
+bgpoints<-as.data.frame(bg@coords)
+colnames(bgpoints)<-c("Longitude","Latitude")
+
+bg.bioclim.dick<-cbind(as.data.frame(bgpoints),
+                       bg.bioclim.dick)
+
+bg.bioclim.dick$response<-0
+
+tree.data.dick<-rbind(bg.bioclim.dick,
+                      subs.bioclim)
+
+coordinates(tree.data.dick)<-c("Longitude", "Latitude")
+#make it spatial
+proj4string(tree.data.dick)<-CRS(as.character(
+  "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 
 #generate random points
 
@@ -22,12 +158,16 @@ studyarea.extent<-Polygon(
          byrow=TRUE)
 )
 
+#I think I can combine this with polygon() above and use in all places.
+studyarea.extent.polygons<-SpatialPolygons(list(Polygons(list(studyarea.extent), "studyarea")))
 
-random.points<-spsample(x=studyarea.extent,
+random.points<-spsample(x=studyarea.extent, #should be able to use the spatial polygon here too.
                         n=1000,
                         type="random")
 
 proj4string(random.points)<-CRS(as.character(
+  "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+proj4string(tree.data.dick)<-CRS(as.character(
   "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 
 plot(random.points)
@@ -84,24 +224,28 @@ plot(polys.df,
 
 #Now, function for subsetting and running the test on each subset.
 
-spatial.support.set<-function(numbersupportsets, dataset, N){
-  support.set<-dataset[polys.df[numbersupportsets,],]
-  support.set.predictors<-support.set[,????]
+
+spatial.support.set<-function(whichrandombox,
+                              spatialdataset){
+  spatial.support.set<-spatialdataset[polys.df[whichrandombox,],]
   #I think there should be a line that turns it back into regular data?
-  sample.size.good<-ifelse(length(support.set)>N, 1, 0)
+  sample.size.good<-ifelse(length(spatial.support.set)>10, 1, 0)
   #need to have the minimum data requirement in here too.
   library(rpart)
   tree.test<-rpart(response~bio1+
                      bio2,
-                   data=tree.data.dick,
+                   data=spatialdataset,
                    method="class",
                    control=rpart.control(cp=0.0000000000000000000000000001))
   #create prediction map for illustration purposes
-  tree.test.raster.prediction<-raster::predict(object=support.set.predictors, #raster object, probably use bioclim.extent,
+  support.set.bioclim<-crop(studyarea.bioclim,
+                            extent(polys.df[whichrandombox,]))
+  tree.test.raster.prediction<-raster::predict(object=support.set.bioclim, #raster object, probably use bioclim.extent,
                                                model=tree.test)
   plot(tree.test.raster.prediction)
-  tree.test.raster.prediction.extended<-extend(tree.test.raster.prediction,
-                                      studyarea.extent)
+  tree.test.raster.prediction.extended<-extend(x=tree.test.raster.prediction,
+                                      y=extent(studyarea.extent.polygons),
+                                      value=NA)
   return(list(tree.test.raster.prediction.extended,
               sample.size.good))
   
@@ -109,10 +253,12 @@ spatial.support.set<-function(numbersupportsets, dataset, N){
   #if I choose to include more than one model type.
 }
 
-list.test<-lapply(1:6,
+test<-spatial.support.set(3,
+                    spatialdataset=tree.data.dick)
+
+list.test<-lapply(1:3,
                   FUN=spatial.support.set,
-                  dataset=NAME.OF.DATASET,
-                  N=)
+                  spatialdataset=tree.data.dick)
 
 
 names(list.test)[1:2] <- c('x', 'y')
