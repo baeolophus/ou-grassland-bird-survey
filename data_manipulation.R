@@ -5,7 +5,7 @@ library(raster) # better printing of spatial objects, export shapefiles
 library(rgdal) # for reading different spatial file formats
 library(rgeos) # for spatial distance and topology operations
 library(dplyr) # data manipulation
-
+library(geosphere) #distances between transects
 
 #####
 
@@ -317,14 +317,6 @@ transect.complete<-left_join(transect.data,
 
 #How to generate gps points for each bird sighting in transects.
 #use chron::times() to get times, calculate location as proportion of start to finish time between gps points of start and finish.
-testtimes<-c("10:15","16:34","2:34")
-testtimes.s<-paste(testtimes, 
-                   ":00", 
-                   sep="")
-num<-abs(testtimes.c[3]-testtimes.c[2]) #absolute value of differences, gives hours minutes seconds difference
-
-as.numeric(num*24*60) #to convert to hours then minutes
-
 #For each transect need start, end, and sighting time in this minutes format.
 transect.complete$starttime<-paste(transect.complete$Start.Time..24h.,
                                    ":00",
@@ -344,11 +336,22 @@ rownames(transect.complete[(is.na(transect.complete$time)),])
 #These remaining simply have no time on the original data sheets.
 
 #Then column of proportion for each time along it, divided by end time.  
+transect.complete$lengthoftransect.time<-as.numeric(abs(transect.complete$starttime-transect.complete$endtime)*24*60)
+#absolute value of differences, gives hours minutes seconds difference
+#as.numeric(num*24*60) #to convert to hours then minutes
+transect.complete$time.to.this.bird<-as.numeric(abs(transect.complete$starttime-transect.complete$time)*60*24)
+transect.complete$proportion.time.along.transect<-transect.complete$time.to.this.bird/transect.complete$lengthoftransect.time
+View(transect.complete[,c("starttime", "endtime", "time", "proportion.time.along.transect")])
 
 #find distance between start and end.
+distm()
+#get the initial bearing to extend from the start (west) to end (east).
+bearing()
+
 
 #Then multiply proportion column by distance.
 
 #Then use function that places point along a line a given distance.
+destPoint()
 
 #it should give gps points for it.
