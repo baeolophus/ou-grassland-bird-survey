@@ -7320,9 +7320,6 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/27/2013,MAB,WMWR,F,,,7:41,WITU,4,S,-30,75,,,
 5/27/2013,MAB,WMWR,F,,,7:45,NOCA,1,H,10,75,,,
 5/27/2013,MAB,WMWR,F,,,7:45,PABU,1,H,-30,100,,,
-5/27/2013,MAB,WMWR,F,,,,TUTI,1,,,,,,after transect
-5/27/2013,MAB,WMWR,F,,,,BEWR,1,,,,,,after transect
-5/27/2013,MAB,WMWR,F,,,,PABU,1,,,,,,"after transect, female"
 5/29/2013,MAB,Hackberry Flats,C1,,,7:05,CONI,1,S,-160,30,,,
 5/29/2013,MAB,Hackberry Flats,C1,,,7:06,DICK,1,H,-90,50,,,
 5/29/2013,MAB,Hackberry Flats,C1,,,7:06,DICK,1,H,-160,75,,,
@@ -7370,10 +7367,6 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/29/2013,MAB,Hackberry Flats,C1,,,7:53,MODO,1,S,-30,45,,,
 5/29/2013,MAB,Hackberry Flats,C1,,,7:53,EAME,1,S,-45,20,,,
 5/29/2013,MAB,Hackberry Flats,C1,,,7:55,DICK,1,H,-90,50,,,
-5/29/2013,MAB,Hackberry Flats,C1,,,,DICK,1,,,,,,after transect
-5/29/2013,MAB,Hackberry Flats,C1,,,,LASP,1,,,,,,after transect
-5/29/2013,MAB,Hackberry Flats,C1,,,,EAME,1,,,,,,after transect
-5/29/2013,MAB,Hackberry Flats,C1,,,,CASP,1,,,,,,after transect
 5/29/2013,MAB,Hackberry Flats,C2,,,8:14,EAME,1,S,-90,50,,,
 5/29/2013,MAB,Hackberry Flats,C2,,,8:14,GRSP,2,S,-45,30,,,
 5/29/2013,MAB,Hackberry Flats,C2,,,8:14,EAME,1,H,100,100,,,
@@ -7437,11 +7430,6 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/1/2013,MAB,Coffey Ranch,B,,,12:55,BHCO,1,H,-45,40,,,
 6/1/2013,MAB,Coffey Ranch,B,,,12:56,EAPH,1,H,-100,70,,,
 6/1/2013,MAB,Coffey Ranch,B,,,12:56,NOCA,1,H,120,75,,,
-6/1/2013,MAB,Coffey Ranch,B,,,,GRHE,2,,,,,,before transect
-6/1/2013,MAB,Coffey Ranch,B,,,,DOWO,1,,,,,,before transect
-6/1/2013,MAB,Coffey Ranch,B,,,,EUST,1,,,,,,before transect
-6/1/2013,MAB,Coffey Ranch,B,,,,HOSP,4,,,,,,before transect
-6/1/2013,MAB,Coffey Ranch,B,,,,STFL,1,,,,,,before transect
 6/1/2013,MAB,Coffey Ranch,C,,,13:45,SUTA,1,S,180,50,,,
 6/1/2013,MAB,Coffey Ranch,C,,,13:45,DICK,1,H,-15,80,,,
 6/1/2013,MAB,Coffey Ranch,C,,,13:45,PABU,1,H,-15,80,,,
@@ -7586,7 +7574,6 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/3/2013,MAB,Cimarron Bluffs WMA,B,,,9:45,MODO,1,S,-10,30,,,
 6/3/2013,MAB,Cimarron Bluffs WMA,B,,,9:45,MODO,1,S,10,40,,,
 6/3/2013,MAB,Cimarron Bluffs WMA,B,,,9:48,DICK,1,H,45,20,,,
-6/3/2013,MAB,Cimarron Bluffs WMA,B,,,,STFL,1,S,,,,,before transect
 6/5/2013,MAB,Rita Blanca WMA,A,,,9:06,BLGR,1,H,90,45,,,
 6/5/2013,MAB,Rita Blanca WMA,A,,,9:08,BUOW,1,S,180,120,,,
 6/5/2013,MAB,Rita Blanca WMA,A,,,9:09,BUOW,1,S,45,120,,,
@@ -7746,8 +7733,6 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/7/2013,MAB,Packsaddle WMA,E,,,9:17,BLGR,1,H,45,65,,,
 6/7/2013,MAB,Packsaddle WMA,E,,,9:18,NOMO,1,S,-45,75,,,
 6/7/2013,MAB,Packsaddle WMA,E,,,9:20,YBCU,1,S,0,15,,,
-6/7/2013,MAB,Packsaddle WMA,E,,,,DICK,1,H,,,,,after transect
-6/7/2013,MAB,Packsaddle WMA,E,,,,WITU,1,S,,,,,after transect
 6/7/2013,MAB,Packsaddle WMA,F,,,9:47,NOMO,1,H,160,250,,,
 6/7/2013,MAB,Packsaddle WMA,F,,,9:47,CASP,1,H,30,75,,,
 6/7/2013,MAB,Packsaddle WMA,F,,,9:50,NOMO,1,H,45,120,,,
@@ -7800,8 +7785,6 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/24/2013,MAB,WMWR ,E1,,,8:46,LASP,1,H,0,50,,,
 6/24/2013,MAB,WMWR ,E1,,,8:46,LASP,1,H,-90,100,,,
 6/24/2013,MAB,WMWR ,E1,,,8:48,PABU,1,H,90,30,,,
-6/24/2013,MAB,WMWR ,E1,,,,NOCA,1,H,,,,,after transect
-6/24/2013,MAB,WMWR ,E1,,,,EAME,2,H,,,,,after transect
 6/24/2013,MAB,WMWR,E2,,,7:17,MODO,1,S,-20,35,,,
 6/24/2013,MAB,WMWR,E2,,,7:17,LASP,1,H,-100,50,,,
 6/24/2013,MAB,WMWR,E2,,,7:20,GRSP,1,H,5,20,,,
