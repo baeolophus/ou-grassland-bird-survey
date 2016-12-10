@@ -329,9 +329,19 @@ as.numeric(num*24*60) #to convert to hours then minutes
 transect.complete$starttime<-paste(transect.complete$Start.Time..24h.,
                                    ":00",
                                    sep="")
+transect.complete$endtime<-paste(transect.complete$End.Time..24h.,
+                                   ":00",
+                                   sep="")
+transect.complete$time<-paste(transect.complete$Time..24hr.,
+                                   ":00",
+                                   sep="")
 transect.complete$starttime<-chron::times(transect.complete$starttime)
-rownames(transect.complete[(is.na(transect.complete$starttime)),])
+transect.complete$endtime<-chron::times(transect.complete$endtime)
+transect.complete$time<-chron::times(transect.complete$time)
+
+rownames(transect.complete[(is.na(transect.complete$time)),])
 #This checks to see if any have NA.
+#These remaining simply have no time on the original data sheets.
 
 #Then column of proportion for each time along it, divided by end time.  
 
