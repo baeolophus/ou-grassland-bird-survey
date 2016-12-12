@@ -343,15 +343,27 @@ transect.complete$time.to.this.bird<-as.numeric(abs(transect.complete$starttime-
 transect.complete$proportion.time.along.transect<-transect.complete$time.to.this.bird/transect.complete$lengthoftransect.time
 View(transect.complete[,c("starttime", "endtime", "time", "proportion.time.along.transect")])
 
+x<-matrix(c(transect.complete$Start.LON, transect.complete$Start.LAT), 
+             ncol=2)
 #find distance between start and end.
-distm()
+transect.complete$transect.distance<-distHaversine(p1=matrix(c(transect.complete$Start.LON, transect.complete$Start.LAT), 
+               ncol=2),
+      p2=matrix(c(transect.complete$End.LON, transect.complete$End.LAT), 
+               ncol=2))
 #get the initial bearing to extend from the start (west) to end (east).
-bearing()
+transect.complete$transect.bearing<-bearing(p1=matrix(c(transect.complete$Start.LON, transect.complete$Start.LAT), 
+                 ncol=2),
+        p2=matrix(c(transect.complete$End.LON, transect.complete$End.LAT), 
+                 ncol=2))
 
 
 #Then multiply proportion column by distance.
-
+transect.complete$transect.distance.sighting<-transect.complete$transect.distance*transect.complete$proportion.time.along.transect
 #Then use function that places point along a line a given distance.
-destPoint()
+transect.sighting.lonlat<-destPoint(p=matrix(c(transect.complete$Start.LON, transect.complete$Start.LAT),ncol=2),
+          b=transect.complete$transect.bearing,
+          d=transect.complete$transect.distance.sighting)
 
 #it should give gps points for it.
+transect.complete$sighting.LON<-transect.sighting.lonlat[,1]
+transect.complete$sighting.LAT<-transect.sighting.lonlat[,2]
