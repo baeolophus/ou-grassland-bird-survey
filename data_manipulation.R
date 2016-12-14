@@ -367,3 +367,14 @@ transect.sighting.lonlat<-destPoint(p=matrix(c(transect.complete$Start.LON, tran
 #it should give gps points for it.
 transect.complete$sighting.LON<-transect.sighting.lonlat[,1]
 transect.complete$sighting.LAT<-transect.sighting.lonlat[,2]
+
+#Now clean up dates to match ebird.
+transect.complete$dates.format<-as.character(transect.complete$Date)
+transect.complete$dates.format<-as.Date(transect.complete$dates.format,
+                                        format="%m/%d/%Y")
+transect.complete$year<-format(as.Date(transect.complete$dates.format),
+                                format="%Y")
+transect.complete$month<-format(as.Date(transect.complete$dates.format),
+                               format="%m")
+transect.complete$day<-format(as.Date(transect.complete$dates.format),
+                               format="%d")
