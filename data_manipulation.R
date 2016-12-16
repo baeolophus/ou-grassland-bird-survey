@@ -366,7 +366,6 @@ transect.complete$lengthoftransect.time<-as.numeric(abs(transect.complete$startt
 #as.numeric(num*24*60) #to convert to hours then minutes
 transect.complete$time.to.this.bird<-as.numeric(abs(transect.complete$starttime-transect.complete$time)*60*24)
 transect.complete$proportion.time.along.transect<-transect.complete$time.to.this.bird/transect.complete$lengthoftransect.time
-View(transect.complete[,c("starttime", "endtime", "time", "proportion.time.along.transect")])
 
 x<-matrix(c(transect.complete$Start.LON, transect.complete$Start.LAT), 
              ncol=2)
@@ -403,3 +402,27 @@ transect.complete$month<-format(as.Date(transect.complete$dates.format),
                                format="%m")
 transect.complete$day<-format(as.Date(transect.complete$dates.format),
                                format="%d")
+
+
+###
+#Formatting ebird to fit into same format as transects and PCs.
+#get list of species codes from PC
+#get list of species codes from transect
+(tr.species<-distinct(data.frame(levels(transect.complete$Possible.Species))))
+(pc.species<-distinct(data.frame(levels(pointcounts.complete$Species))))
+
+all.species<-data.frame(c(tr.species, pc.species))
+dplyr::distinct(all.species) #view to see what corrections need made in each file
+#combine list for no duplicates
+#get scientific names for all
+#select only those columns from ebird
+
+#Then change format to one row per species.
+
+###############
+##MAKING COMBINED SINGLE DATA SHEET
+###############
+#If there are any more changes to data,
+#then edit original ones and rerun this script.
+###############
+
