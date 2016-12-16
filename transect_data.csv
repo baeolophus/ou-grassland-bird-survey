@@ -2952,7 +2952,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/30/2014,Roy,Rita Blanca NG,B,,,9:49,HOLA,1,H,90,50,S,,
 5/30/2014,Roy,Rita Blanca NG,B,,,9:53,HOLA,1,H,0,60,S,,
 5/30/2014,Roy,Rita Blanca NG,B,,,9:54,HOLA,1,H,-90,70,S,,
-5/30/2014,Roy,Rita Blanca NG,B,,,9:54,LABU,1,H,80,70,S,,
+5/30/2014,Roy,Rita Blanca NG,B,,,9:54,LARB,1,H,80,70,S,,
 5/30/2014,Roy,Rita Blanca NG,B,,,9:58,HOLA,1,H,90,80,S,,
 5/30/2014,Roy,Rita Blanca NG,B,,,9:58,HOLA,1,H,-10,90,S,,
 5/30/2014,Roy,Rita Blanca NG,B,,,10:00,HOLA,1,H,-45,100,S,,
@@ -8435,7 +8435,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/4/2013,JDR,Cimmaron Hills WMA,CIMH-D,,,09:14,CASP,1,H,-90,110,,,
 6/5/2013,JDR,Rita Blanca National Grassland,RBNG-C,,,09:18,HOLA,1,H,35,100,,,
 6/5/2013,JDR,Rita Blanca National Grassland,RBNG-C,,,09:18,CASP,1,S,-25,85,,,
-6/5/2013,JDR,Rita Blanca National Grassland,RBNG-C,,,09:18,LABU,1,H,50,75,,,
+6/5/2013,JDR,Rita Blanca National Grassland,RBNG-C,,,09:18,LARB,1,H,50,75,,,
 6/5/2013,JDR,Rita Blanca National Grassland,RBNG-C,,,09:18,CASP,1,H,45,150,,,
 6/5/2013,JDR,Rita Blanca National Grassland,RBNG-C,,,09:20,WEME,1,H,90,180,,,
 6/5/2013,JDR,Rita Blanca National Grassland,RBNG-C,,,09:20,HOLA,2,H,25,110,A,,Fighting

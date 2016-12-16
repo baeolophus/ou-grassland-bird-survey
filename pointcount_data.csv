@@ -1116,8 +1116,8 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 4/20/2014,JDR,Caddo Co Center Pivots,28,,,MODO,1,S,10,150,,Landed,landed in crop
 4/25/2014,JDR,Rita Blanca NG,10,,,HOLA,1,H,300,45,,,
 4/25/2014,JDR,Rita Blanca NG,10,,,HOLA,1,S,300,40,A,Landed,Fighting with above HOLA
-4/25/2014,JDR,Rita Blanca NG,10,,,LABU,1,H,60,80,,Landed,H/S
-4/25/2014,JDR,Rita Blanca NG,10,,,LABU,4,S,355,220,,,Joined by above LABU in cemetery
+4/25/2014,JDR,Rita Blanca NG,10,,,LARB,1,H,60,80,,Landed,H/S
+4/25/2014,JDR,Rita Blanca NG,10,,,LARB,4,S,355,220,,,Joined by above LABU in cemetery
 4/25/2014,JDR,Rita Blanca NG,10,,,LASP,1,H,85,100,S,,
 4/25/2014,JDR,Rita Blanca NG,10,,,HOLA,1,S,150,250,,,
 4/25/2014,JDR,Rita Blanca NG,10,,,HOSP,1,H,0,240,,,Cemetery
@@ -2089,7 +2089,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 4/25/2014,Josh,Rita Blanca NG,17,,,RWBL,1,S,30,60,S,,
 4/25/2014,Josh,Rita Blanca NG,17,,,HOLA,1,S,45,50,CN,Landed,
 4/25/2014,Josh,Rita Blanca NG,17,,,WEME,1,H,315,150,S,,
-4/25/2014,Josh,Rita Blanca NG,17,,,LABU,1,S,225,40,,,Female
+4/25/2014,Josh,Rita Blanca NG,17,,,LARB,1,S,225,40,,,Female
 4/25/2014,Josh,Rita Blanca NG,17,,,HOLA,1,H,300,100,S,,
 4/25/2014,Josh,Rita Blanca NG,17,,,UNKNOWN,1,S,270,300,,,Passerine on road
 4/25/2014,Josh,Rita Blanca NG,17,,,HOLA,1,S,350,100,,Landed,
@@ -3763,7 +3763,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/17/2014,Tory,Cimmaron Hills,TES-053,,,STFL,4,H,10,80,P,Flyover,H/S
 5/17/2014,Tory,Cimmaron Hills,TES-053,,,,1,H,90,65,,Flyover,H/S Swallow sp.
 5/17/2014,Tory,Cimmaron Hills,TES-053,,,BLJA,1,H,300,90,,,
-5/17/2014,Tory,Cimmaron Hills,TES-053,,,LABU,1,S,260,100,,Flyover,
+5/17/2014,Tory,Cimmaron Hills,TES-053,,,LARB,1,S,260,100,,Flyover,
 5/17/2014,Tory,Cimmaron Hills,TES-053,,,,1,S,180,95,,Flyover,Meadowlark sp.
 5/17/2014,Tory,Cimmaron Hills,TES-054,,,WEME,2,H,90,10,,,
 5/17/2014,Tory,Cimmaron Hills,TES-054,,,WEME,1,H,275,40,,,H/S
@@ -6580,7 +6580,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,HOLA,1,H,105,70,,,
 6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,LASP,1,H,210,130,,,
 6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,SWHA,1,S,0,90,,Flyover,flyover
-6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,LABU,1,H,180,60,,,
+6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,LARB,1,H,180,60,,,
 6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,LASP,1,H,190,70,,Landed,landed on wire
 6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,HOLA,1,H,0,45,,,on fence
 6/30/13,MDF,Rita Blanca NG,RBNG-PC18,,,MODO,1,S,90,110,,Flyover,flyby
