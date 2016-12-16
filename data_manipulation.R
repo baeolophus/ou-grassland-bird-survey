@@ -408,13 +408,18 @@ transect.complete$day<-format(as.Date(transect.complete$dates.format),
 #Formatting ebird to fit into same format as transects and PCs.
 #get list of species codes from PC
 #get list of species codes from transect
-(tr.species<-distinct(data.frame(levels(transect.complete$Possible.Species))))
-(pc.species<-distinct(data.frame(levels(pointcounts.complete$Species))))
+(tr.species<-levels(transect.complete$Possible.Species))
+(pc.species<-levels(pointcounts.complete$Species))
+distinct(data.frame(tr.species))
+distinct(data.frame(pc.species))
 
-all.species<-data.frame(c(tr.species, pc.species))
-dplyr::distinct(all.species) #view to see what corrections need made in each file
+all.species<-c(tr.species, pc.species)
+dplyr::distinct(data.frame(all.species)) #view to see what corrections need made in each file
 #combine list for no duplicates
 #get scientific names for all
+aou.codes<-foreign::read.dbf(file="AOUcodes2016.dbf")
+#this file has codes, scientific names (presumably will match ebird), and common names.
+
 #select only those columns from ebird
 
 #Then change format to one row per species.
