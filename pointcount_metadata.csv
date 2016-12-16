@@ -144,10 +144,10 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 6/10/2013,JBT,USDA - Grazinglands Res Lab,GRLB-PC5,GRLB,GRLBPC05,485,,,KEEP,9:18,35.54124,-97.99925,0%,15-20,,,
 7/2/2013,JBT,USDA - Grazinglands Res Lab,GRLB-PC6,GRLB,GRLBPC06,487,,,KEEP,9:03,35.54454,-98.00707,0,0-5 SW,,,
 6/10/2013,JBT,USDA - Grazinglands Res Lab,GRLB-PC9,GRLB,GRLBPC09,488,,,KEEP,10:02,35.53791,-98.06109,0%,15-20,,,
-5/15/2014,JDR,Black Kettle NG,3,BKNG,BKNGPC14,99,,Date corrected,INVESTIGATE,9:46,35.59581,-99.65971,20,5 to 10,,WEKI,AMCR
-5/15/2014,JDR,Black Kettle NG,5,BKNG,BKNGPC15,100,,Date corrected,INVESTIGATE,10:21,35.60999,-99.57595,20,5 to 10,,,
-5/15/2014,JDR,Black Kettle NG,7,BKNG,BKNGPC08,98,,Date corrected,INVESTIGATE,9:19,35.60265,-99.64536,20,5 to 10,,,
-5/15/2014,JDR,Black Kettle NG,10,BKNG,BKNGPC13,101,,Date corrected,INVESTIGATE,10:55,35.61504,-99.71311,20,5 to 10,,,
+5/15/2014,JDR,Black Kettle NG,3,BKNG,BKNGPC14,99,,"Date corrected; double-observer (w/ Kristen, keep JDR¡¯s)",KEEP,9:46,35.59581,-99.65971,20,5 to 10,,WEKI,AMCR
+5/15/2014,JDR,Black Kettle NG,5,BKNG,BKNGPC15,100,,Date corrected,KEEP,10:21,35.60999,-99.57595,20,5 to 10,,,
+5/15/2014,JDR,Black Kettle NG,7,BKNG,BKNGPC08,98,,Date corrected; double-observer (but no data from Kristen),KEEP,9:19,35.60265,-99.64536,20,5 to 10,,,
+5/15/2014,JDR,Black Kettle NG,10,BKNG,BKNGPC13,101,,Date corrected,KEEP,10:55,35.61504,-99.71311,20,5 to 10,,,
 6/7/2013,JDR,Black Kettle NG,BKNG-PC12,BKNG,BKNGPC12,9additional,,,KEEP,16:18,35.60992,-99.58542,,,,,
 6/7/2013,JDR,Black Kettle NG,BKNG-PC3,BKNG,BKNG-PC03,6additional,,,KEEP,10:54,35.7773,-99.85403,,,,,
 6/7/2013,JDR,Black Kettle NG,BKNG-PC4,BKNG,BKNGPC04,7additional,,,KEEP,14:55,35.61734,-99.70589,75,10-15 S,,,
@@ -297,9 +297,9 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 5/29/2014,Josh,Alesen Rd.,6,ALES,ALES-PC06,199,"CHECK, does not exist in map",confirmed,KEEP,11:36,36.68919,-101.3319,0,5 to 10,,,
 5/29/2014,Josh,Alesen Rd.,9,ALES,ALES-PC09,200,"CHECK, does not exist in map",confirmed,KEEP,11:57,36.71038,-101.32803,0,5 to 10,,,
 5/15/2014,Josh,Black Kettle NG,1,BKNG,BKNG-PC10,192,,Location didn't seem to be right. He would have been at PC10,INVESTIGATE,10:17,35.60995,-99.60295,50,5 to 10,,,"AMCR, MODO,MIKI,UVU,CLSW"
-5/15/2014,Josh,Black Kettle NG,5,BKNG,BKNGPC06,193,,He would have been at PC06,INVESTIGATE,10:50,35.61714,-99.68766,70,5 to 10,,,CCSP
-5/15/2014,Josh,Black Kettle NG,6,BKNG,BKNGPC06,190,,Location didn't seem to be right. He would have been at PC07,INVESTIGATE,9:18,35.61714,-99.68766,30,5 to 10,,MIKI,RBWO
-5/15/2014,Josh,Black Kettle NG,8,BKNG,BKNGPC08,191,,Points overlapping,INVESTIGATE,9:39,35.60263,-99.64536,50,5 to 10,,,
+5/15/2014,Josh,Black Kettle NG,5,BKNG,BKNGPC06,193,,He was at PC06 (renamed from PC05),INVESTIGATE,10:50,35.61714,-99.68766,70,5 to 10,,,CCSP
+5/15/2014,Josh,Black Kettle NG,6,BKNG,BKNGPC07,190,,Double-observer; at PC07 (renamed from PC06 by Jeremy).  CMC 12/16/16: used BKNGPC07 gps point from basecamp.,KEEP,9:18,35.60933,-99.64439,30,5 to 10,,MIKI,RBWO
+5/15/2014,Josh,Black Kettle NG,8,BKNG,BKNGPC09,191,,Double-observer (w/ Tory).  GPS points re-done from Tory¡¯s.,KEEP,9:39,35.59875,-99.65285,50,5 to 10,,,
 5/30/2014,Josh,Black Mesa SP,0,BLKM,BLKM-PC01,222,,,KEEP,13:33,36.8024,-102.87727,70,10 to 15,,,
 5/30/2014,Josh,Black Mesa SP,2,BLKM,BLKM-PC03,221,,,KEEP,13:12,36.817,-102.87723,70,10 to 15,,,
 5/30/2014,Josh,Black Mesa SP,4,BLKM,BLKM-PC05,220,"CHECK, does not exist in map, very far from others in site.",Looks like a typo (missing first 8 in latitude),KEEP,12:56,36.83082,-102.87759,70,10 to 15,,,
@@ -364,9 +364,9 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 6/8/2014,Josh,WXRD,3,WXRD,WXRD-PC04,234,,,KEEP,10:24,34.69614,-98.7999,100,10 to 15,WXRD,,
 5/8/2014,Josh,WXRD,5,WXRD,WXRD-PC05,187,,,KEEP,10:44,34.69612,-98.80868,80,5 to 10,WXRD-PC05,,
 6/8/2014,Josh,WXRD,7,WXRD,WXRD-PC08,237,,,KEEP,,34.69607,-98.83495,100,10 to 15,WXRD,,"STFL, BARS"
-5/15/2014,Kristen,Black Kettle NG,3,BKNG,BKNGPC04,240,By 4 and 13.   Where to place?,She appears to have rounded to 2 decimal places on sheet,INVESTIGATE,10:52,35.61734,-99.70589,60,5 to 10,,,
-5/15/2014,Kristen,Black Kettle NG,10,BKNG,NA,239,Between 11 and 12.   Where to place?,She appears to have rounded to 2 decimal places on sheet,INVESTIGATE,10:19,35.60992,-99.58542,30,5 to 10,Car stopped to ask what we were doing for abt 1.5min.,,
-5/15/2014,Kristen,Black Kettle NG,?8,BKNG,NA,238,Between 9 and 14.  Where to place?,,INVESTIGATE,9:46,35.6,-99.66,,,,WEKI,AMCR
+5/15/2014,Kristen,Black Kettle NG,3,BKNG,BKNGPC04,240,By 4 and 13.   Where to place?,She appears to have rounded to 2 decimal places on sheet.  Double-observer with JDR (keep JDR),INVESTIGATE,10:52,35.61734,-99.70589,60,5 to 10,,,
+5/15/2014,Kristen,Black Kettle NG,10,BKNG,NA,239,Between 11 and 12.   Where to place?,She appears to have rounded to 2 decimal places on sheet.  Double-observer with JDR (keep JDR),INVESTIGATE,10:19,35.60992,-99.58542,30,5 to 10,Car stopped to ask what we were doing for abt 1.5min.,,
+5/15/2014,Kristen,Black Kettle NG,8,BKNG,NA,238,Between 9 and 14.  Where to place?,Double-observer with JDR (keep JDR); Lat/Lon correct on original,INVESTIGATE,9:46,35.59581,-99.65971,,,,WEKI,AMCR
 6/27/2014,Kristen,Black Mesa SP,2,BLKM,BLKM-PC02,263,,,KEEP,14:36,36.80986,-102.87724,50,15 to 20,,,
 6/27/2014,Kristen,Black Mesa SP,4,BLKM,BLKM-PC04,262,,,KEEP,14:14,36.82421,-102.87734,60,10 to 15,trudk stopped to talk,,
 6/27/2014,Kristen,Black Mesa SP,6,BLKM,BLKM-PC06,261,,,KEEP,13:56,36.83885,-102.87694,70,5 to 10,,,
@@ -602,8 +602,8 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 5/29/2014,Tory,Alesen Rd.,5,ALES,ALES-PC05,374,cmc can't find datasheet,confirmed,INVESTIGATE,11:30,36.68911,-101.32286,0,5 to 10,,,"GRSP, MODO (2), SCQU"
 5/29/2014,Tory,Alesen Rd.,8,ALES,ALES-PC08,375,cmc can't find datasheet,confirmed,INVESTIGATE,11:54,36.70382,-101.33167,0,5 to 10,,,GRSP
 5/15/2014,Tory,Black Kettle NG,4,BKNG,BKNGPC05,363,,,INVESTIGATE,10:52,35.61718,-99.69678,60,0 to 5,,,
-5/15/2014,Tory,Black Kettle NG,6,BKNG,BKNGPC07,360,,,INVESTIGATE,9:18,35.60933,-99.64439,30,5 to 10,,MIKI,
-5/15/2014,Tory,Black Kettle NG,8,BKNG,BKNGPC09,361,,,INVESTIGATE,9:39,35.59875,-99.65285,30,5 to 10,,,
+5/15/2014,Tory,Black Kettle NG,6,BKNG,BKNGPC07,360,,Double-observer (w/Josh).  Use Josh¡¯s over this one.,INVESTIGATE,9:18,35.60933,-99.64439,30,5 to 10,,MIKI,
+5/15/2014,Tory,Black Kettle NG,8,BKNG,BKNGPC09,361,,"Double-observer (w/Josh, keep Josh¡¯s) at PC09 (renamed from PC08)",INVESTIGATE,9:39,35.59875,-99.65285,30,5 to 10,,,
 5/15/2014,Tory,Black Kettle NG,9,BKNG,BKNGPC11,362,,,INVESTIGATE,10:18,35.6099,-99.59411,30,0 to 5,,,"EAME, LASP"
 5/17/2014,Tory,Cimmaron Hills,1,CIMH,CIMHPC01,364,,,KEEP,7:53,36.93846,-99.39312,100,0 to 5,,,
 5/17/2014,Tory,Cimmaron Hills,2,CIMH,CIMHPC02,365,,,KEEP,8:14,36.94392,-99.39935,100,0 to 5,,,
