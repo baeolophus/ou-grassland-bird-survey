@@ -414,11 +414,13 @@ distinct(data.frame(tr.species))
 distinct(data.frame(pc.species))
 
 all.species<-c(tr.species, pc.species)
-dplyr::distinct(data.frame(all.species)) #view to see what corrections need made in each file
+names.i.have<-dplyr::distinct(data.frame(all.species)) #view to see what corrections need made in each file
+colnames(names.i.have)<-"SPEC"
 #combine list for no duplicates
 #get scientific names for all
 aou.codes<-foreign::read.dbf(file="AOUcodes2016.dbf")
 #this file has codes, scientific names (presumably will match ebird), and common names.
+does.it.have.match<-dplyr::left_join(names.i.have, aou.codes)
 
 #select only those columns from ebird
 
