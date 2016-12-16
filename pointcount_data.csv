@@ -145,7 +145,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 4/23/2014,Crystina,Tallgrass Prairie,26,,,EAME,1,H,190,100,,,
 4/23/2014,Crystina,Tallgrass Prairie,26,,,NOBO,1,H,170,70,,,
 4/23/2014,Crystina,Tallgrass Prairie,26,,,EAME,1,H,60,50,,,"heard, then seen"
-4/23/2014,Crystina,Tallgrass Prairie,26,,,unID,20,S,20,200,,,"too far away to ID, swallowlike behavior, might be more over the hill"
+4/23/2014,Crystina,Tallgrass Prairie,26,,,UNKNOWN,20,S,20,200,,,"too far away to ID, swallowlike behavior, might be more over the hill"
 4/23/2014,Crystina,Tallgrass Prairie,26,,,meadowlark sp.,1,S,200,50,,,
 4/23/2014,Crystina,Tallgrass Prairie,27,,,EAME,1,H,180,70,,,
 4/23/2014,Crystina,Tallgrass Prairie,27,,,GRSP,1,H,170,30,,,
@@ -169,7 +169,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 4/23/2014,Crystina,Tallgrass Prairie,28,,,TUTI,1,H,50,60,,,
 4/23/2014,Crystina,Tallgrass Prairie,28,,,WITU,1,H,30,140,,,
 4/23/2014,Crystina,Tallgrass Prairie,28,,,BGGN,1,S,160,20,,,
-4/23/2014,Crystina,Tallgrass Prairie,28,,,unID,1,S,180,40,,Landed,"small bird, flew into tree"
+4/23/2014,Crystina,Tallgrass Prairie,28,,,UNKNOWN,1,S,180,40,,Landed,"small bird, flew into tree"
 4/23/2014,Crystina,Tallgrass Prairie,28,,,CANG,2,H,60,200,,Flyover,"heard, then seen"
 4/23/2014,Crystina,Tallgrass Prairie,28,,,EAME,1,H,250,150,,,
 4/23/2014,Crystina,Tallgrass Prairie,29,,,EAME,1,H,200,30,,,
@@ -188,7 +188,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 4/23/2014,Crystina,Tallgrass Prairie,31,,,EAME,1,H,40,150,,,
 4/23/2014,Crystina,Tallgrass Prairie,31,,,EAME,1,H,30,200,,,
 4/23/2014,Crystina,Tallgrass Prairie,31,,,EAME,1,H,170,60,,,
-4/23/2014,Crystina,Tallgrass Prairie,31,,,unID,2,S,350,300,,,smaller passerines
+4/23/2014,Crystina,Tallgrass Prairie,31,,,UNKNOWN,2,S,350,300,,,smaller passerines
 4/23/2014,Crystina,Tallgrass Prairie,31,,,sparrow sp.,1,H,90,30,A,,
 4/23/2014,Crystina,Tallgrass Prairie,31,,,sparrow sp.,4,H,170,40,,Landed,was able to ID as LASP
 4/23/2014,Crystina,Tallgrass Prairie,31,,,LASP,1,H,200,30,,,
@@ -214,14 +214,14 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 4/23/2014,Crystina,Tallgrass Prairie,33,,,FISP,1,H,160,200,,,
 4/23/2014,Crystina,Tallgrass Prairie,33,,,GRSP,1,H,170,30,,,
 4/23/2014,Crystina,Tallgrass Prairie,33,,,AMKE,1,S,110,110,,Landed,
-4/23/2014,Crystina,Tallgrass Prairie,33,,,unID,3,S,160,150,,Flyover,
+4/23/2014,Crystina,Tallgrass Prairie,33,,,UNKNOWN,3,S,160,150,,Flyover,
 4/23/2014,Crystina,Tallgrass Prairie,34,,,TUTI,1,H,240,150,,,
 4/23/2014,Crystina,Tallgrass Prairie,34,,,EAME,1,H,340,50,,,
 4/23/2014,Crystina,Tallgrass Prairie,34,,,GRSP,1,H,160,30,,,
 4/23/2014,Crystina,Tallgrass Prairie,34,,,EAME,1,H,50,70,,,
 4/23/2014,Crystina,Tallgrass Prairie,34,,,EAME,1,H,170,70,,,
 4/23/2014,Crystina,Tallgrass Prairie,34,,,FISP,1,H,250,80,,,getting difficult to hear
-4/23/2014,Crystina,Tallgrass Prairie,34,,,unID,33,S,170,150,,Flyover,
+4/23/2014,Crystina,Tallgrass Prairie,34,,,UNKNOWN,33,S,170,150,,Flyover,
 4/23/2014,Crystina,Tallgrass Prairie,34,,,NOBO,1,H,180,200,,,
 4/23/2014,Crystina,Tallgrass Prairie,34,,,sparrow sp.,1,S,50,60,,Flyover,"couldn't ID, truck drove by"
 4/23/2014,Crystina,Tallgrass Prairie,35,,,EAME,1,H,200,50,,,
@@ -347,7 +347,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/5/2014,Crystina,WMWR,10,,,NOBO,1,H,130,100,,,
 5/5/2014,Crystina,WMWR,11,,,NOCA,1,H,290,60,,,
 5/5/2014,Crystina,WMWR,11,,,PABU,1,H,210,200,,,
-5/5/2014,Crystina,WMWR,11,,,unID,1,H,210,200,,,later id'ed as WEVI
+5/5/2014,Crystina,WMWR,11,,,UNKNOWN,1,H,210,200,,,later id'ed as WEVI
 5/5/2014,Crystina,WMWR,11,,,MODO,2,S,270,150,,Landed,
 5/5/2014,Crystina,WMWR,11,,,PABU,1,H,320,100,,,
 5/5/2014,Crystina,WMWR,11,,,AMCR,1,S,300,150,,Flyover,
@@ -422,7 +422,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/6/2014,Crystina,WMWR,18,,,PABU,1,H,210,40,,,
 5/6/2014,Crystina,WMWR,18,,,CACH,1,H,230,100,,,
 5/6/2014,Crystina,WMWR,18,,,BGGN,1,H,120,40,,,
-5/6/2014,Crystina,WMWR,18,,,unID,1,H,170,100,,,CASP
+5/6/2014,Crystina,WMWR,18,,,UNKNOWN,1,H,170,100,,,CASP
 5/6/2014,Crystina,WMWR,18,,,BRTH,1,S,130,30,,Landed,
 5/6/2014,Crystina,WMWR,18,,,TUVU,1,S,100,150,,Flyover,
 5/6/2014,Crystina,WMWR,18,,,NOBO,1,H,190,70,,,
@@ -440,7 +440,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/6/2014,Crystina,WMWR,19,,,NOMO,1,H,250,70,,,
 5/6/2014,Crystina,WMWR,19,,,WEVI,1,H,240,60,,,
 5/6/2014,Crystina,WMWR,19,,,DICK,1,H,160,120,,,
-5/6/2014,Crystina,WMWR,19,,,unID,1,H,140,80,,,CASP
+5/6/2014,Crystina,WMWR,19,,,UNKNOWN,1,H,140,80,,,CASP
 5/7/2014,Crystina,WMWR,20,,,STFL,1,H,230,50,,Landed,heard then seen
 5/7/2014,Crystina,WMWR,20,,,LASP,1,H,290,60,,Landed,heard then seen
 5/7/2014,Crystina,WMWR,20,,,TUVU,2,S,310,190,,Flyover,
@@ -801,7 +801,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/13/2014,Crystina,WMWR,22,,,AMCR,1,H,90,300,,,
 6/13/2014,Crystina,WMWR,22,,,GRSP,1,H,160,30,,,
 6/13/2014,Crystina,WMWR,22,,,AMCR,3,S,170,150,,Flyover,
-6/13/2014,Crystina,WMWR,22,,,unID,2,S,170,150,A,,mobbing AMCR
+6/13/2014,Crystina,WMWR,22,,,UNKNOWN,2,S,170,150,A,,mobbing AMCR
 6/13/2014,Crystina,WMWR,23,,,NOBO,1,H,130,100,,,
 6/13/2014,Crystina,WMWR,23,,,GRSP,1,H,190,30,,,
 6/13/2014,Crystina,WMWR,23,,,PABU,1,H,170,200,S,,
@@ -1194,7 +1194,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/14/2014,JDR,Black Kettle NG,10,,,BARS,1,H,330,70,,,
 5/14/2014,JDR,Black Kettle NG,10,,,NOCA,1,H,350,200,,,
 5/14/2014,JDR,Black Kettle NG,10,,,RBWO,1,H,190,170,,,
-5/14/2014,JDR,Black Kettle NG,10,,,RODO,2,S,185,220,,,On wire
+5/14/2014,JDR,Black Kettle NG,10,,,ROPI,2,S,185,220,,,On wire
 5/14/2014,JDR,Black Kettle NG,10,,,NOBO,1,H,180,200,,,
 5/14/2014,JDR,Black Kettle NG,10,,,CCSP,1,H,20,70,,,
 5/14/2014,JDR,Black Kettle NG,10,,,LASP,1,H,245,100,,,S
@@ -1305,12 +1305,12 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 4/20/2014,Jessica,Caddo Co Center Pivots,27,,,GRSP,1,H,135,40,S,,
 4/20/2014,Jessica,Caddo Co Center Pivots,27,,,AMCR,1,H,180,100,,,
 4/20/2014,Jessica,Caddo Co Center Pivots,27,,,BHCO,1,S,180,40,,Flyover,
-4/25/2014,Jessica,Rita Blanca NG,11,,,unID,1,S,90,350,,,"in distance on telephone wire, possible MODO"
+4/25/2014,Jessica,Rita Blanca NG,11,,,UNKNOWN,1,S,90,350,,,"in distance on telephone wire, possible MODO"
 4/25/2014,Jessica,Rita Blanca NG,15,,,HOLA,1,H,45,200,S,,
 4/25/2014,Jessica,Rita Blanca NG,15,,,WEME,1,H,90,250,S,,
 4/25/2014,Jessica,Rita Blanca NG,15,,,LASP,3,S,90,200,,,on fence
 4/25/2014,Jessica,Rita Blanca NG,15,,,HOLA,1,H,315,300,S,,
-4/25/2014,Jessica,Rita Blanca NG,15,,,unID,1,S,225,300,,,looks like it may be a sparrow
+4/25/2014,Jessica,Rita Blanca NG,15,,,UNKNOWN,1,S,225,300,,,looks like it may be a sparrow
 4/25/2014,Jessica,Rita Blanca NG,15,,,HOLA,1,S,90,60,,,
 4/25/2014,Jessica,Rita Blanca NG,15,,,HOLA,1,S,90,30,,,
 4/25/2014,Jessica,Rita Blanca NG,23,,,VESP,1,H,225,100,,,
@@ -1363,7 +1363,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/5/2014,Jessica,Tall Grass Prairie West,3,,,EAME,1,S,315,10,S,,
 6/5/2014,Jessica,Tall Grass Prairie West,3,,,RWBL,1,H,225,50,,,
 6/5/2014,Jessica,Tall Grass Prairie West,3,,,EAME,1,H,0,75,P,,
-6/5/2014,Jessica,Tall Grass Prairie West,3,,,Swallow Sp.,1,S,270,25,,Flyover,
+6/5/2014,Jessica,Tall Grass Prairie West,3,,,swallow sp.,1,S,270,25,,Flyover,
 6/5/2014,Jessica,Tall Grass Prairie West,3,,,RWBL,1,H,0,75,,,
 6/5/2014,Jessica,Tall Grass Prairie West,7,,,CLSW,2,S,270,25,,Flyover,
 6/5/2014,Jessica,Tall Grass Prairie West,7,,,BARS,8,S,90,50,,Flyover,
@@ -1432,7 +1432,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/7/2014,Jessica,Grimes Switch Grass,2,,,DICK,2,S,180,15,,,CHASE
 6/7/2014,Jessica,Grimes Switch Grass,3,,,LASP,1,H,45,50,,,
 6/7/2014,Jessica,Grimes Switch Grass,3,,,NOMO,1,H,45,70,,,
-6/7/2014,Jessica,Grimes Switch Grass,3,,,RODO,1,S,270,100,,,
+6/7/2014,Jessica,Grimes Switch Grass,3,,,ROPI,1,S,270,100,,,
 6/7/2014,Jessica,Grimes Switch Grass,3,,,BHCO,1,H,0,60,,,
 6/7/2014,Jessica,Grimes Switch Grass,3,,,AMCR,1,H,90,75,,,
 6/7/2014,Jessica,Grimes Switch Grass,3,,,RWBL,1,H,0,80,,,
@@ -2076,7 +2076,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 4/20/2014,Josh,Caddo Co Center Pivots,21,,,STFL,1,S,150,50,,Landed,Joined above STFL
 4/20/2014,Josh,Caddo Co Center Pivots,25,,,WEME,1,H,80,170,S,,
 4/20/2014,Josh,Caddo Co Center Pivots,25,,,HOLA,2,H,100,55,,Landed,
-4/20/2014,Josh,Caddo Co Center Pivots,25,,,RODO,3,S,290,200,,,
+4/20/2014,Josh,Caddo Co Center Pivots,25,,,ROPI,3,S,290,200,,,
 4/20/2014,Josh,Caddo Co Center Pivots,25,,,WEME,1,H,10,150,S,,
 4/20/2014,Josh,Caddo Co Center Pivots,25,,,HOLA,2,H,320,20,,,
 4/20/2014,Josh,Caddo Co Center Pivots,25,,,blackbird sp.,2,H,260,200,,Flyover,COGR? Unable to ID to species based on 'chk' call
@@ -2091,7 +2091,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 4/25/2014,Josh,Rita Blanca NG,17,,,WEME,1,H,315,150,S,,
 4/25/2014,Josh,Rita Blanca NG,17,,,LABU,1,S,225,40,,,Female
 4/25/2014,Josh,Rita Blanca NG,17,,,HOLA,1,H,300,100,S,,
-4/25/2014,Josh,Rita Blanca NG,17,,,unID,1,S,270,300,,,Passerine on road
+4/25/2014,Josh,Rita Blanca NG,17,,,UNKNOWN,1,S,270,300,,,Passerine on road
 4/25/2014,Josh,Rita Blanca NG,17,,,HOLA,1,S,350,100,,Landed,
 4/25/2014,Josh,Rita Blanca NG,21,,,WEME,1,H,315,400,S,,
 4/25/2014,Josh,Rita Blanca NG,21,,,CASP,1,H,200,200,S,,
@@ -2173,7 +2173,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/2/2014,Josh,Grazinglands,10,,,EAME,1,H,310,150,S,,
 5/2/2014,Josh,Grazinglands,10,,,SAVS,1,S,45,25,,,
 5/2/2014,Josh,Grazinglands,10,,,BARS,1,S,260,40,,Flyover,
-5/2/2014,Josh,Grazinglands,10,,,unID,4,S,140,100,,,Backlit birds moving in riparian veg
+5/2/2014,Josh,Grazinglands,10,,,UNKNOWN,4,S,140,100,,,Backlit birds moving in riparian veg
 5/2/2014,Josh,Grazinglands,10,,,EAME,1,H,130,150,S,,
 5/2/2014,Josh,Grazinglands,10,,,KILL,1,H,320,50,,Landed,
 5/2/2014,Josh,Grazinglands,10,,,DICK,1,H,170,125,S,,
@@ -2605,7 +2605,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/30/2014,Josh,Rita Blanca NG,22,,,CASP,1,H,200,120,S,,
 5/30/2014,Josh,Rita Blanca NG,22,,,WEME,1,H,180,200,S,,
 5/30/2014,Josh,Rita Blanca NG,22,,,CASP,1,S,330,40,,Landed,
-5/30/2014,Josh,Rita Blanca NG,22,,,unID,1,S,170,200,,Landed,Dropped into grass before seen well; probably RWBL or LARB
+5/30/2014,Josh,Rita Blanca NG,22,,,UNKNOWN,1,S,170,200,,Landed,Dropped into grass before seen well; probably RWBL or LARB
 5/30/2014,Josh,Rita Blanca NG,22,,,RWBL,1,S,210,175,,Flyover,
 5/30/2014,Josh,Rita Blanca NG,22,,,LASP,1,H,170,160,S,,
 5/30/2014,Josh,Rita Blanca NG,22,,,LASP,2,H,230,190,S,,
@@ -2703,7 +2703,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/18/2014,Kristen,Selman Ranch,2,,,CASP,1,H,50,80,S,,
 5/18/2014,Kristen,Selman Ranch,2,,,CASP,1,H,210,110,S,,
 5/18/2014,Kristen,Selman Ranch,2,,,CASP,1,H,135,110,S,,
-5/18/2014,Kristen,Selman Ranch,2,,,unID,1,H,170,210,S,,BLGR?
+5/18/2014,Kristen,Selman Ranch,2,,,UNKNOWN,1,H,170,210,S,,BLGR?
 5/18/2014,Kristen,Selman Ranch,2,,,LASP,1,H,290,180,S,,
 5/18/2014,Kristen,Selman Ranch,2,,,LASP,1,H,120,150,S,,H/S
 5/18/2014,Kristen,Selman Ranch,2,,,LASP,1,S,100,60,,,Perching
@@ -2858,7 +2858,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/5/2014,Kristen,Tallgrass Prairie West,10,,,EAME,1,S,320,150,,,
 6/5/2014,Kristen,Tallgrass Prairie West,10,,,GRSP,1,H,100,80,S,,
 6/27/2014,Kristen,Black Mesa SP,2,,,WEME,1,H,140,150,,,calling
-6/27/2014,Kristen,Black Mesa SP,2,,,unID,1,S,120,100,,Flyover,
+6/27/2014,Kristen,Black Mesa SP,2,,,UNKNOWN,1,S,120,100,,Flyover,
 6/27/2014,Kristen,Black Mesa SP,2,,,CASP,1,H,200,120,S,,
 6/27/2014,Kristen,Black Mesa SP,2,,,CASP,1,H,180,80,S,,
 6/27/2014,Kristen,Black Mesa SP,4,,,HOLA,1,S,160,70,,,"S/H, perched"
@@ -3835,7 +3835,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/29/2014,Tory,Alesen Rd.,8,,,CLSW,2,S,190,30,,,On fence line
 5/29/2014,Tory,Alesen Rd.,8,,,HOLA,1,H,295,80,,,
 5/29/2014,Tory,Alesen Rd.,8,,,meadowlark sp.,1,H,180,100,,,H/S meadowlark sp.
-5/29/2014,Tory,Alesen Rd.,8,,,unID,1,S,95,50,,,On fence/backlit then flew
+5/29/2014,Tory,Alesen Rd.,8,,,UNKNOWN,1,S,95,50,,,On fence/backlit then flew
 5/29/2014,Tory,Alesen Rd.,8,,,CASP,1,H,90,100,,,
 5/29/2014,Tory,Alesen Rd.,8,,,meadowlark sp.,1,S,350,90,,,"On fence, meadowlark sp."
 5/29/2014,Tory,Optima,10,,,RWBL,5,H,90,80,,,
@@ -3951,7 +3951,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 7/3/2013,ESB,Cross Timbers,CTPC5,,,NOBO,1,H,180,130,,,
 7/3/2013,ESB,Cross Timbers,CTPC5,,,NOBO,1,H,310,60,,,
 7/3/2013,ESB,Cross Timbers,CTPC5,,,NOMO,1,H,160,110,,,
-7/3/2013,ESB,Cross Timbers,CTPC5,,,KILD,1,S,180,40,,,Killdeer
+7/3/2013,ESB,Cross Timbers,CTPC5,,,KILL,1,S,180,40,,,Killdeer
 7/3/2013,ESB,Cross Timbers,CTPC5,,,PABU,1,H,190,170,,,
 7/3/2013,ESB,Cross Timbers,CTPC5,,,NOMO,1,H,95,160,,,
 7/3/2013,ESB,Cross Timbers,CTPC5,,,BRTH,2,S,200,160,P,,Probably Pair
@@ -3961,7 +3961,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 7/3/2013,ESB,Cross Timbers,CTPC5,,,BARS,2,S,275,140,,,
 7/3/2013,ESB,Cross Timbers,CTPC5,,,NOCA,1,H,180,130,,,
 7/3/2013,ESB,Cross Timbers,CTPC6,,,NOMO,1,H,30,300,,,
-7/3/2013,ESB,Cross Timbers,CTPC6,,,KILD,1,H,185,190,,,
+7/3/2013,ESB,Cross Timbers,CTPC6,,,KILL,1,H,185,190,,,
 7/3/2013,ESB,Cross Timbers,CTPC6,,,DICK,1,H,120,120,,,
 7/3/2013,ESB,Cross Timbers,CTPC6,,,EAME,1,H,180,130,,,
 7/3/2013,ESB,Cross Timbers,CTPC7,,,PABU,1,H,90,35,,,
@@ -4010,7 +4010,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 7/3/2013,ESB,Red River Ranch,RRPC3,,,MODO,1,S,300,90,,,
 7/3/2013,ESB,Red River Ranch,RRPC3,,,BEVI,1,H,85,160,,,
 7/3/2013,ESB,Red River Ranch,RRPC3,,,GRSP,1,H,170,50,,,
-7/3/2013,ESB,Red River Ranch,RRPC3,,,KIDE,1,S,320,60,,,
+7/3/2013,ESB,Red River Ranch,RRPC3,,,KILL,1,S,320,60,,,
 7/3/2013,ESB,Red River Ranch,RRPC3,,,NOMO,1,H,320,190,,,
 7/3/2013,ESB,Red River Ranch,RRPC3,,,DICK,1,H,95,80,,,
 7/3/2013,ESB,Red River Ranch,RRPC3,,,EAME,1,H,35,180,,,
@@ -4145,7 +4145,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/7/13,JBT,Tallgrass Prairie Preserve,TGPP-PC23,,,DICK,1,H,240,50,S,,
 6/7/13,JBT,Tallgrass Prairie Preserve,TGPP-PC23,,,DICK,1,H,50,63,S,,
 6/7/13,JBT,Tallgrass Prairie Preserve,TGPP-PC23,,,DICK,1,H,40,120,S,,
-6/7/13,JBT,Tallgrass Prairie Preserve,TGPP-PC23,,,UNID,1,H,260,120,,,"""Trill-Siren-Call"""
+6/7/13,JBT,Tallgrass Prairie Preserve,TGPP-PC23,,,UNKNOWN,1,H,260,120,,,"""Trill-Siren-Call"""
 6/7/13,JBT,Tallgrass Prairie Preserve,TGPP-PC23,,,EAME,1,H,180,65,S,,
 6/7/13,JBT,Tallgrass Prairie Preserve,TGPP-PC23,,,EAME,1,H,200,80,S,,
 6/7/13,JBT,Tallgrass Prairie Preserve,TGPP-PC23,,,RWBL,1,S,245,75,S,,male
@@ -4310,7 +4310,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/11/13,JBT,Sandy Sanderson,SAND-PC4,,,NOBO,1,H,150,190,S,,
 6/11/13,JBT,Sandy Sanderson,SAND-PC4,,,EAME,1,H,55,50,S,,
 6/11/13,JBT,Sandy Sanderson,SAND-PC4,,,EAME,3,S,95,120,,,fence
-6/11/13,JBT,Sandy Sanderson,SAND-PC4,,,UNID,1,S,96,115,,,fence
+6/11/13,JBT,Sandy Sanderson,SAND-PC4,,,UNKNOWN,1,S,96,115,,,fence
 6/11/13,JBT,Sandy Sanderson,SAND-PC4,,,CONI,1,H,45,200,S,,
 6/11/13,JBT,Sandy Sanderson,SAND-PC4,,,EAME,1,H,15,60,S,,
 6/11/13,JBT,Sandy Sanderson,SAND-PC4,,,GRSP,1,S,300,35,,,call
@@ -4368,10 +4368,10 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/27/13,JBT,NW of WMWR,WWMT-PC3,,,TUVU,2,S,350,600,,Flyover,
 6/27/13,JBT,NW of WMWR,WWMT-PC3,,,NOBO,1,H,52,300,S,,
 6/27/13,JBT,NW of WMWR,WWMT-PC5,,,PABU,1,H,150,75,S,,
-6/27/13,JBT,NW of WMWR,WWMT-PC5,,,UNID,1,S,350,70,,,Powerline
+6/27/13,JBT,NW of WMWR,WWMT-PC5,,,UNKNOWN,1,S,350,70,,,Powerline
 6/27/13,JBT,NW of WMWR,WWMT-PC5,,,EABL,1,H,300,300,S,,
 6/27/13,JBT,NW of WMWR,WWMT-PC5,,,PABU,1,H,290,105,S,,Trees
-6/27/13,JBT,NW of WMWR,WWMT-PC5,,,UNID,1,S,5,55,,,Mesquite
+6/27/13,JBT,NW of WMWR,WWMT-PC5,,,UNKNOWN,1,S,5,55,,,Mesquite
 6/27/13,JBT,NW of WMWR,WWMT-PC5,,,EAME,1,S,186,85,S,,Powerline
 6/27/13,JBT,NW of WMWR,WWMT-PC5,,,MODO,1,H,20,60,S,,
 6/27/13,JBT,NW of WMWR,WWMT-PC5,,,KILL,1,H,210,120,S,,
@@ -5241,7 +5241,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/11/2013,JGK,Sandy Sanderson WMA,SAND-PC2,,,TUVU,1,S,180,350,,Landed,Flew to tree
 6/11/2013,JGK,Sandy Sanderson WMA,SAND-PC2,,,STFL,1,H,170,300,,,
 6/11/2013,JGK,Sandy Sanderson WMA,SAND-PC2,,,EAME,1,H,300,60,,,
-6/11/2013,JGK,Sandy Sanderson WMA,SAND-PC2,,,UNID,1,H,280,100,,,decending chirps
+6/11/2013,JGK,Sandy Sanderson WMA,SAND-PC2,,,UNKNOWN,1,H,280,100,,,decending chirps
 6/11/2013,JGK,Sandy Sanderson WMA,SAND-PC2,,,CONI,1,S,190,80,,Flyover,flying
 6/11/2013,JGK,Sandy Sanderson WMA,SAND-PC2,,,MODO,2,S,270,50,,Flyover,flying
 6/21/2013,JGK,Hwy49 W of WMWR,W49H-PC1,,,PABU,1,H,250,110,,,
@@ -5539,7 +5539,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/7/2013,MAB,Black Kettle NG,Black Kettle M1,,,WEKI,1,S,125,120,,,
 6/7/2013,MAB,Black Kettle NG,Black Kettle M1,,,COGR,1,S,125,120,,,
 6/7/2013,MAB,Black Kettle NG,Black Kettle M1,,,LASP,1,S,180,40,,,
-6/7/2013,MAB,Black Kettle NG,Black Kettle M2,,,??ME,1,S,45,75,,,
+6/7/2013,MAB,Black Kettle NG,Black Kettle M2,,,meadowlark sp.,1,S,45,75,,,
 6/7/2013,MAB,Black Kettle NG,Black Kettle M2,,,CASP,1,H,90,200,,,
 6/7/2013,MAB,Black Kettle NG,Black Kettle M2,,,HOLA,1,H,-100,50,,,
 6/7/2013,MAB,Black Kettle NG,Black Kettle M3,,,NOBO,1,H,210,500,,,
@@ -5749,7 +5749,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/23/2013,MAB,WMWR area,WMWR inside M3,,,LASP,1,H,300,100,,,
 6/23/2013,MAB,WMWR area,WMWR inside M3,,,NOBO,1,H,60,100,,,
 6/23/2013,MAB,WMWR area,WMWR inside M3,,,LASP,1,S,200,75,,,
-6/23/2013,MAB,WMWR area,WMWR inside M3,,,UNID,2,S,210,100,,,
+6/23/2013,MAB,WMWR area,WMWR inside M3,,,UNKNOWN,2,S,210,100,,,
 6/23/2013,MAB,WMWR area,WMWR inside M3,,,WODU,1,S,160,150,,,
 6/23/2013,MAB,WMWR area,WMWR inside M3,,,TUVU,1,S,120,300,,,
 6/23/2013,MAB,WMWR area,WMWR inside M3,,,TUVU,1,S,200,300,,,
@@ -5936,15 +5936,15 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,BEWR,1,H,260,200,,,
 6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOBO,1,H,210,250,,,
 6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOBO,1,H,185,100,,,
-6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOLA,1,H,90,65,,,
-6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,RBWD,1,H,85,70,,,
-6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOLA,1,H,145,300,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOCA,1,H,90,65,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,RBWO,1,H,85,70,,,
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOCA,1,H,145,300,,,
 6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,FISP,1,H,265,110,,,
 6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,FISP,1,S,270,60,,,
 6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,FISP,1,H,85,200,,,
 6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,PABU,1,H,120,60,,,
 6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,TUVU,1,S,130,40,,Flyover,Flyover
-6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOLA,1,S,110,50,,Flyover,Flyby
+6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,NOCA,1,S,110,50,,Flyover,Flyby
 6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,BHCO,1,H,335,50,,Flyover,Flyby
 6/7/2013,JDR,Black Kettle NG,BKNG-PC3,,,EABL,1,S,30,55,P,,likely paired with other EABL
 6/10/2013,JDR,Grazingland Res Lab,GRLB-PC4,,,DICK,1,H,245,230,,,
@@ -6012,7 +6012,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,DICK,1,H,200,45,,,
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,NOMO,1,H,185,100,,,
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,DICK,1,S,120,110,,,
-6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,UNID,2,S,155,150,,,Med. Size (DICK?)
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,UNKNOWN,2,S,155,150,,,Med. Size (DICK?)
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,DICK,1,H,5,90,,,
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,RBWO,1,H,105,110,,,
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,DICK,1,S,210,25,A,,Female 'tink'ing
@@ -6020,7 +6020,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,MODO,1,S,120,110,,,
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,GRSP,1,S,30,100,A,,chased GRSP below
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,GRSP,1,S,45,150,,,
-6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,SWALLOW,1,S,55,180,,,UNID
+6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,swallow sp.,1,S,55,180,,,UNID
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,CLSW,1,S,160,75,,,
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC1,,,OROR,1,H,105,105,,,
 6/13/2013,JDR,Pennsylvania Ave (nr. KAEFS),PENN-PC3,,,DICK,1,S,175,40,,,
@@ -6350,7 +6350,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,DICK,1,S,60,30,,,
 6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,DICK,1,H,320,75,,,
 6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,EAME,1,H,40,135,S,Flyover,flight song heard
-6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,EAME ,1,H,180,210,,,
+6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,EAME,1,H,180,210,,,
 6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,GRSP,1,H,0,65,,,
 6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,DICK,1,H,350,200,,,
 6/10/13,MDF,Grazinglands Res Lab,GRLB-PC2,,,DICK,1,H,185,90,,,
@@ -6427,7 +6427,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,CACH,3,S,35,70,,,
 6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,SOSP,1,H,90,135,,,
 6/7/13,MDF,Ellis Co. WMA,ELIS-PC5,,,YBCU,1,H,45,100,,,
-6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,WEME ,1,S,310,15,,,
+6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,WEME,1,S,310,15,,,
 6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,YBCU,1,H,95,170,,,
 6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,STFL,2,S,180,10,,,
 6/7/13,MDF,Ellis Co. WMA,BKNG-PC2,,,NOMO,1,H,190,155,,,
@@ -6480,7 +6480,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,HOLA,2,H,180,40,,,
 6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,WEKI,1,H,170,10,,,
 6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,HOLA,1,H,45,60,,,
-6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,Duck sp.,2,S,270,160,,Flyover,flyover pair
+6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,duck sp.,2,S,270,160,,Flyover,flyover pair
 6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,WEME,1,H,350,145,,,
 6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,CLSW,1,S,0,10,,Flyover,flyby
 6/29/13,MDF,Rita Blanca NG,RBNG-PC23,,,CONI,1,H,50,100,,,
@@ -6661,7 +6661,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,EAME,1,H,165,210,,,
 6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,WEME,1,H,10,170,,,
 6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,NOCA,1,H,95,300,S,,distant song
-6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,EAME ,1,H,290,160,,,
+6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,EAME,1,H,290,160,,,
 6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,NOMO,1,H,350,240,,,
 6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,BHCO,1,S,110,75,,,
 6/19/13,MDF,Cross Rd W of WMWR,WXRD-PC8,,,CASP,1,S,0,150,,,
@@ -6717,7 +6717,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,SUTA,1,H,0,105,,,at nearby forest edge
 6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,DICK,1,H,270,70,,,
 6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,PABU,1,H,350,150,,,
-6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,EAME ,1,H,240,160,,,
+6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,EAME,1,H,240,160,,,
 6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,RBWO,1,H,0,200,,,
 6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,EAME,1,H,90,90,,,
 6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,NOBO,1,H,180,200,,,
@@ -6725,7 +6725,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,FISP,2,H,320,85,N,,nesting?
 6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,MIKI,1,S,110,70,,Flyover,flying
 6/21/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC6,,,CACH,1,H,50,110,,,
-6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,EAME ,1,H,330,210,,,
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,EAME,1,H,330,210,,,
 6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,NOBO,1,H,0,190,,,
 6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,AMCR,1,H,270,180,,,
 6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC10,,,DICK,1,H,270,110,,,
@@ -6827,7 +6827,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,COYE,1,H,200,45,,,
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,NOBO,1,H,180,300,,,
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,RWBL,2,H,180,205,,,
-7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,Heron,2,S,0,220,,Flyover,landing in distance
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,heron sp.,2,S,0,220,,Flyover,landing in distance
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,DICK,2,H,5,100,,,
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC2,,,LASP,1,S,350,50,,Flyover,flyby
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC3,,,UPSA,1,S,270,110,,,
@@ -6911,7 +6911,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,EAME,1,S,270,300,,,distant
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,DICK,1,H,285,60,,,
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,EAME,1,H,95,70,,,
-7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,EAME ,1,S,100,110,,,
+7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,EAME,1,S,100,110,,,
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,GRSP,1,H,90,65,,,
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,DICK,1,H,45,45,,,
 7/8/13,MDF,Tallgrass Prairie Preserve,TGPP-PC9,,,EAME,1,S,0,100,,,on wire
@@ -6953,7 +6953,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 06/18/14,Roy,Cimarron Hills,PC04,,,CASP,1,H,80,100,S,,
 06/18/14,Roy,Cimarron Hills,PC04,,,LASP,1,H,270,80,S,,
 06/18/14,Roy,Cimarron Hills,PC04,,,CASP,1,H,180,90,S,,
-06/18/14,Roy,Cimarron Hills,PC04,,,flycatcher sp,1,S,40,200,,Flyover,
+06/18/14,Roy,Cimarron Hills,PC04,,,flycatcher sp.,1,S,40,200,,Flyover,
 06/18/14,Roy,Cimarron Hills,PC04,,,KILL,1,H,270,300,S,,
 06/18/14,Roy,Cimarron Hills,PC04,,,KILL,1,S,50,100,,Flyover,
 06/18/14,Roy,Cimarron Hills,PC04,,,LASP,1,H,50,140,S,,
