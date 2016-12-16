@@ -202,6 +202,31 @@ which.have.duplicates.old[which.have.duplicates.old$duplicates>1,]
 #Now all numbers match!  number of distinct key columns/sites/observer/date and 
 #number of pointcount.metedata.manually.corrected rows are all same.
 #pointcount.data and pointcounts.complete also match because all primary keys unique.
+
+#add in month, date, year columns for PCs.  then export as new current version.
+#bring in data and metadata, join for species locations.
+pointcount.data<-read.csv(file="pointcount_data.csv")
+#bring in the manually corrected file
+pointcount.metadata.manually.corrected<-read.csv(file="pointcount_metadata.csv")
+#merge the files so every row has all metadata attached.
+pointcounts.complete<-left_join(pointcount.data,
+                                pointcount.metadata.manually.corrected,
+                                by=c("Date",
+                                     "Observer",
+                                     "Location",
+                                     "Point"))
+
+#Now clean up dates to match ebird.
+pointcounts.complete$dates.format<-as.character(pointcounts.complete$Date)
+pointcounts.complete$dates.format<-as.Date(pointcounts.complete$dates.format,
+                                        format="%m/%d/%Y")
+pointcounts.complete$year<-format(as.Date(pointcounts.complete$dates.format),
+                               format="%Y")
+pointcounts.complete$month<-format(as.Date(pointcounts.complete$dates.format),
+                                format="%m")
+pointcounts.complete$day<-format(as.Date(pointcounts.complete$dates.format),
+                              format="%d")
+
 ####################################
 
 ####################################
