@@ -32,7 +32,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 4/9/2014,Crystina,Kessler,B,,,10:09,SAVS,1,H,87,15,,,Flushed
 4/9/2014,Crystina,Kessler,B,,,10:11,MODO,1,S,-20,140,,,
 4/9/2014,Crystina,Kessler,B,,,10:12,AMCR,3,S,-20,140,,,
-4/9/2014,Crystina,Kessler,B,,,10:14,unID,1,S,-17,90,,Flyover,
+4/9/2014,Crystina,Kessler,B,,,10:14,UNKNOWN,1,S,-17,90,,Flyover,
 4/9/2014,Crystina,Kessler,B,,,10:15,BRTH,1,H,40,130,,Flyover,
 4/9/2014,Crystina,Kessler,B,,,10:19,sparrow sp.,1,S,5,10,,,
 4/9/2014,Crystina,Kessler,B,,,10:20,LASP,1,S,75,20,,,Wind started to pick up.
@@ -65,10 +65,10 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 4/15/2014,Crystina,Chickasaw NRA,A,,,9:13,NOCA,1,H,-70,140,,,
 4/15/2014,Crystina,Chickasaw NRA,A,,,9:14,LASP,1,H,80,60,,,
 4/15/2014,Crystina,Chickasaw NRA,A,,,9:17,NOCA,2,S,-80,30,,,
-4/15/2014,Crystina,Chickasaw NRA,A,,,9:17,unID,1,H,40,50,,Landed,"can't ID song, flew over then landed"
+4/15/2014,Crystina,Chickasaw NRA,A,,,9:17,UNKNOWN,1,H,40,50,,Landed,"can't ID song, flew over then landed"
 4/15/2014,Crystina,Chickasaw NRA,A,,,9:18,BGGN,1,H,10,20,,,
 4/15/2014,Crystina,Chickasaw NRA,A,,,9:20,NOCA,1,H,60,90,,,
-4/15/2014,Crystina,Chickasaw NRA,A,,,9:21,unID,1,S,40,170,,,
+4/15/2014,Crystina,Chickasaw NRA,A,,,9:21,UNKNOWN,1,S,40,170,,,
 4/15/2014,Crystina,Chickasaw NRA,A,,,9:28,TUTI,1,H,-50,60,,,
 4/15/2014,Crystina,Chickasaw NRA,A,,,9:29,AMCR,1,H,-80,150,,,
 4/15/2014,Crystina,Chickasaw NRA,A,,,9:29,YRWA,1,H,-40,80,,,
@@ -146,7 +146,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 4/17/2014,Crystina,Grady Co WMA,A,,,10:21,CACH,1,H,-50,60,,,
 4/17/2014,Crystina,Grady Co WMA,A,,,10:23,WITU,1,H,-50,120,,,"Turkey season, could be a hunter call"
 4/17/2014,Crystina,Grady Co WMA,A,,,10:26,SAVS,1,S,70,70,,,Seen then heard
-4/17/2014,Crystina,Grady Co WMA,A,,,10:27,unID,2,S,30,150,,Flyover,
+4/17/2014,Crystina,Grady Co WMA,A,,,10:27,UNKNOWN,2,S,30,150,,Flyover,
 4/17/2014,Crystina,Grady Co WMA,A,,,10:28,NOCA,1,H,40,190,,,Heard then seen
 4/17/2014,Crystina,Grady Co WMA,A,,,10:29,sparrow sp.,4,H,10,30,,Landed,Heard then seen
 4/17/2014,Crystina,Grady Co WMA,A,,,10:30,COHA,1,S,80,130,,Flyover,
@@ -171,7 +171,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 4/17/2014,Crystina,Grady Co WMA,A,,,10:51,NOMO,1,H,-30,50,,,
 4/17/2014,Crystina,Grady Co WMA,A,,,10:53,BGGN,1,H,-20,20,,,
 4/17/2014,Crystina,Grady Co WMA,A,,,10:53,TUTI,1,H,-10,30,,,
-4/17/2014,Crystina,Grady Co WMA,A,,,10:54,unID,1,H,-50,30,,,"Saw bird @ 10:56, ID'ed as BLJA"
+4/17/2014,Crystina,Grady Co WMA,A,,,10:54,UNKNOWN,1,H,-50,30,,,"Saw bird @ 10:56, ID'ed as BLJA"
 4/17/2014,Crystina,Grady Co WMA,A,,,10:55,BLJA,1,H,-80,40,,,
 4/17/2014,Crystina,Grady Co WMA,A,,,10:56,NOCA,1,H,-40,20,,,
 4/17/2014,Crystina,Grady Co WMA,A,,,10:57,BGGN,1,H,-10,30,,,
@@ -222,7 +222,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/9/2014,Crystina,Hackberry Flat,E,,,7:59,NOBO,1,H,50,150,,,
 5/9/2014,Crystina,Hackberry Flat,E,,,8:00,sparrow sp.,1,S,-50,20,,Landed,flushed
 5/9/2014,Crystina,Hackberry Flat,E,,,8:01,sparrow sp.,1,S,-20,50,,Flyover,
-5/9/2014,Crystina,Hackberry Flat,E,,,8:02,unID,1,S,10,60,,Flyover,
+5/9/2014,Crystina,Hackberry Flat,E,,,8:02,UNKNOWN,1,S,10,60,,Flyover,
 5/9/2014,Crystina,Hackberry Flat,E,,,8:03,EAME,1,H,-30,50,,,
 5/9/2014,Crystina,Hackberry Flat,E,,,8:05,EAME,1,H,50,200,,,
 5/9/2014,Crystina,Hackberry Flat,E,,,8:13,EAME,1,H,-50,200,,,
@@ -242,7 +242,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/9/2014,Crystina,Hackberry Flat,J,,,9:23,GRSP,1,S,-80,30,,Landed,
 5/9/2014,Crystina,Hackberry Flat,J,,,9:25,EAME,1,S,-60,110,,,seen then heard
 5/9/2014,Crystina,Hackberry Flat,J,,,9:26,DICK,1,H,50,130,,,
-5/9/2014,Crystina,Hackberry Flat,J,,,9:28,unID,1,S,0,250,,Landed,
+5/9/2014,Crystina,Hackberry Flat,J,,,9:28,UNKNOWN,1,S,0,250,,Landed,
 5/9/2014,Crystina,Hackberry Flat,J,,,9:29,EAME,1,H,-70,120,,,
 5/9/2014,Crystina,Hackberry Flat,J,,,9:31,EAME,1,H,60,200,,,very far away
 5/9/2014,Crystina,Hackberry Flat,J,,,9:32,GRSP,1,H,70,40,,,
@@ -452,7 +452,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 4/23/2014,JDR,Tallgrass Prairie,B,,,9:55,UPSA,2,S,45,35,,,
 4/23/2014,JDR,Tallgrass Prairie,B,,,9:56,EAME,1,H,-40,450,S,,
 4/23/2014,JDR,Tallgrass Prairie,B,,,9:56,KILL,1,H,10,175,,Flyover,H/S
-4/23/2014,JDR,Tallgrass Prairie,B,,,9:56,UnID,1,H,100,40,,,small 'chip'
+4/23/2014,JDR,Tallgrass Prairie,B,,,9:56,UNKNOWN,1,H,100,40,,,small 'chip'
 4/23/2014,JDR,Tallgrass Prairie,B,,,10:00,BHCO,2,S,-20,80,,Flyover,
 4/23/2014,JDR,Tallgrass Prairie,B,,,10:00,KILL,1,S,-35,100,,,
 4/23/2014,JDR,Tallgrass Prairie,B,,,10:00,sparrow sp.,2,S,-30,150,,Flyover,
@@ -727,7 +727,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/4/2014,JDR,Noble - Red River Farm,A,,,11:15,NOMO,1,H,40,110,S,,
 5/4/2014,JDR,Noble - Red River Farm,A,,,11:16,DICK,1,H,10,35,S,,
 5/4/2014,JDR,Noble - Red River Farm,A,,,11:16,GRSP,1,S,0,65,,Landed,
-5/4/2014,JDR,Noble - Red River Farm,A,,,11:16,TRANSITIONING HABITATS,,,,,,,
+5/4/2014,JDR,Noble - Red River Farm,A,,,11:16,,,,,,,,TRANSITIONING HABITATS
 5/4/2014,JDR,Noble - Red River Farm,A,,,11:17,DICK,1,S,-90,150,S,,
 5/4/2014,JDR,Noble - Red River Farm,A,,,11:17,DICK,1,H,30,85,,Flyover,
 5/4/2014,JDR,Noble - Red River Farm,A,,,11:19,CCSP,2,H,80,70,,,
@@ -2233,7 +2233,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:01,woodpecker sp.,1,S,10,50,,Landed,FLEW THEN LANDED
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:02,MODO,1,S,0,40,,Flyover,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:03,LASP,1,H,60,30,S,,
-5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:08,unID,1,S,20,40,,Flyover,
+5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:08,UNKNOWN,1,S,20,40,,Flyover,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:09,LASP,1,H,70,50,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:12,CLSW,1,S,20,10,,Flyover,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:12,sparrow sp.,1,S,45,40,,Flyover,
@@ -2243,10 +2243,10 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:19,CASP,1,H,45,40,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:19,LASP,1,H,40,30,S,,FLEW IN TO SAME PERCH AS CASP
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:22,EAKI,1,H,20,30,S,,
-5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:22,unID,1,H,,,,,
+5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:22,UNKNOWN,1,H,,,,,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:24,CASP,1,H,5,20,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:24,EAME,1,H,75,120,S,,
-5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:25,unID,1,S,10,10,,Flyover,
+5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:25,UNKNOWN,1,S,10,10,,Flyover,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:27,LASP,1,H,15,10,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:31,CASP,1,H,-45,80,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:33,LASP,1,H,-50,90,S,,
@@ -2263,7 +2263,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:58,GRSP,1,H,-60,40,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:58,sparrow sp.,1,,,,,,
 5/16/2014,Kristen,Cimmaron Bluffs,F,,,9:59,EAME,1,H,-35,200,S,,
-5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:36,unID,1,H,35,100,S,,
+5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:36,UNKNOWN,1,H,35,100,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:38,sparrow sp.,1,S,5,30,,Flyover,
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:40,EAME,1,H,-50,120,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:40,EAME,1,H,40,150,S,,
@@ -2273,7 +2273,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:46,NOCA,1,H,20,80,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:49,MODO,1,H,-50,20,S,Landed,FLEW THEN LANDED
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:50,TUVU,3,S,-50,200,,Flyover,
-5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:51,unID,1,H,-25,20,S,,
+5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:51,UNKNOWN,1,H,-25,20,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:52,EAME,1,H,-40,100,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:52,EAME,1,H,60,80,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,10:52,NOMO,1,H,55,70,S,,
@@ -2296,7 +2296,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,11:35,RTHA,1,S,-100,70,,Flyover,
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,11:36,sparrow sp.,1,S,80,10,,Flyover,
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,11:39,CASP,1,H,70,80,S,,
-5/16/2014,Kristen,Cimmaron Bluffs,C,,,11:39,unID,1,H,80,50,S,,
+5/16/2014,Kristen,Cimmaron Bluffs,C,,,11:39,UNKNOWN,1,H,80,50,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,11:40,GRSP,1,H,-45,20,S,,
 5/16/2014,Kristen,Cimmaron Bluffs,C,,,11:42,MODO,2,S,10,10,,Flyover,
 5/17/2014,Kristen,Cimmaron Hills,D,,,8:06,MODO,2,S,-60,50,,Flyover,FOGGY AND HUMID
@@ -2370,9 +2370,9 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/17/2014,Kristen,Cimmaron Hills,D,,,,sparrow sp.,10,S,0,120,,Flyover,POSSIBLE CHSP
 5/17/2014,Kristen,Cimmaron Hills,D,,,,sparrow sp.,1,S,5,30,,,PERCHING
 5/17/2014,Kristen,Cimmaron Hills,D,,,,TUVU,1,S,-30,500,,Flyover,
-5/17/2014,Kristen,Cimmaron Hills,D,,,,unID,1,H,60,20,S,,LOSH?
-5/17/2014,Kristen,Cimmaron Hills,D,,,,unID,2,S,-80,50,,Flyover,
-5/17/2014,Kristen,Cimmaron Hills,D,,,,unID,4,S,-20,20,,Flyover,
+5/17/2014,Kristen,Cimmaron Hills,D,,,,UNKNOWN,1,H,60,20,S,,LOSH?
+5/17/2014,Kristen,Cimmaron Hills,D,,,,UNKNOWN,2,S,-80,50,,Flyover,
+5/17/2014,Kristen,Cimmaron Hills,D,,,,UNKNOWN,4,S,-20,20,,Flyover,
 5/17/2014,Kristen,Cimmaron Hills,D,,,,WEME,1,H,-50,100,S,,
 5/17/2014,Kristen,Cimmaron Hills,D,,,,WEME,1,H,-15,80,S,,
 5/17/2014,Kristen,Cimmaron Hills,D,,,,WEME,1,H,45,150,S,,
@@ -2435,8 +2435,8 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/27/2014,Kristen,Rita Blanca NG,A,,,7:27,blackbird sp.,1,H,-80,50,,Flyover,H/S
 6/27/2014,Kristen,Rita Blanca NG,A,,,7:27,WEME,1,H,20,200,S,,hard to hear H/S
 6/27/2014,Kristen,Rita Blanca NG,A,,,7:46,sparrow sp.,1,H,90,20,S,,"H/S, flying HOLA"
-6/27/2014,Kristen,Rita Blanca NG,A,,,7:57,unid,1,H,40,300,S,,KILL?
-6/27/2014,Kristen,Rita Blanca NG,A,,,8:08,unID,1,H,60,150,S,,HOLA
+6/27/2014,Kristen,Rita Blanca NG,A,,,7:57,UNKNOWN,1,H,40,300,S,,KILL?
+6/27/2014,Kristen,Rita Blanca NG,A,,,8:08,UNKNOWN,1,H,60,150,S,,HOLA
 6/27/2014,Kristen,Rita Blanca NG,B,,,8:54,CASP,1,H,100,250,S,,
 6/27/2014,Kristen,Rita Blanca NG,B,,,8:54,HOLA,1,H,40,200,S,,
 6/27/2014,Kristen,Rita Blanca NG,B,,,8:55,HOLA,1,H,-60,300,S,,
@@ -2457,7 +2457,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/27/2014,Kristen,Rita Blanca NG,B,,,9:28,HOLA,1,S,-20,40,,Flyover,
 6/27/2014,Kristen,Rita Blanca NG,B,,,9:31,HOLA,1,H,-80,90,S,,
 6/27/2014,Kristen,Rita Blanca NG,B,,,9:37,HOLA,1,H,80,30,S,,loud motor running
-6/27/2014,Kristen,Rita Blanca NG,B,,,9:39,unID,3,S,-40,300,,Flyover,MODO
+6/27/2014,Kristen,Rita Blanca NG,B,,,9:39,UNKNOWN,3,S,-40,300,,Flyover,MODO
 6/27/2014,Kristen,Rita Blanca NG,B,,,9:41,HOLA,1,S,20,30,,Flyover,
 6/27/2014,Kristen,Rita Blanca NG,B,,,9:43,HOLA,1,H,40,80,S,,
 6/27/2014,Kristen,Rita Blanca NG,B,,,9:43,WEME,1,S,-10,100,,Flyover,S/H
@@ -3561,8 +3561,8 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/2/2014,Tory,Optima,A,,,7:09,MODO,1,S,10,40,,Flyover,
 6/2/2014,Tory,Optima,A,,,7:16,CASP,1,H,-90,200,,,Wind increased to 10 -15
 6/2/2014,Tory,Optima,A,,,7:17,KILL,1,H,-45,200,,,
-6/2/2014,Tory,Optima,A,,,7:19,unID,1,H,45,20,,Landed,H/S
-6/2/2014,Tory,Optima,A,,,7:19,unID,1,H,-45,40,,,
+6/2/2014,Tory,Optima,A,,,7:19,UNKNOWN,1,H,45,20,,Landed,H/S
+6/2/2014,Tory,Optima,A,,,7:19,UNKNOWN,1,H,-45,40,,,
 6/2/2014,Tory,Optima,A,,,7:22,CASP,1,H,10,30,,,
 6/2/2014,Tory,Optima,A,,,7:23,WEME,1,H,-25,200,,,
 6/2/2014,Tory,Optima,A,,,7:24,MODO,2,H,-25,15,P,Flyover,H/S Flushed
@@ -3690,7 +3690,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/6/2013,ESB,Tallgrass,I1-I2,,,8:39,EAME,1,H,5,130,,,
 6/6/2013,ESB,Tallgrass,I1-I2,,,8:39,DICK,2,S,-10,70,,,
 6/6/2013,ESB,Tallgrass,I1-I2,,,8:40,DICK,1,S,20,80,,,
-6/6/2013,ESB,Tallgrass,I1-I2,,,8:42,KIDE,1,H,10,20,,,
+6/6/2013,ESB,Tallgrass,I1-I2,,,8:42,KILL,1,H,10,20,,,
 6/6/2013,ESB,Tallgrass,I1-I2,,,8:42,DICK,1,H,-70,60,,,
 6/6/2013,ESB,Tallgrass,I1-I2,,,8:43,DICK,1,S,90,80,,,
 6/6/2013,ESB,Tallgrass,I1-I2,,,8:43,EAME,1,H,40,110,,,
@@ -3807,7 +3807,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/6/2013,ESB,Tallgrass,J1-J2,,,10:47,EAME,1,H,-55,130,,,
 6/6/2013,ESB,Tallgrass,J1-J2,,,10:48,DICK,1,S,30,50,,,
 6/6/2013,ESB,Tallgrass,J1-J2,,,10:49,STFL,1,S,-20,55,,,
-6/6/2013,ESB,Tallgrass,J1-J2,,,10:51,KIDE,1,S,-100,40,,Flyover,Flying
+6/6/2013,ESB,Tallgrass,J1-J2,,,10:51,KILL,1,S,-100,40,,Flyover,Flying
 6/6/2013,ESB,Tallgrass,J1-J2,,,10:52,DICK,1,S,-60,50,,,
 6/6/2013,ESB,Tallgrass,J1-J2,,,10:53,EAME,1,H,-50,70,,,
 6/6/2013,ESB,Tallgrass,J1-J2,,,10:53,EAME,1,H,20,90,,,
@@ -3916,17 +3916,17 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:34,TUTI,1,H,-30,65,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:35,INBU,1,H,70,70,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:36,CACH,1,H,-85,30,,,in woods
-6/7/2013,ESB,Tallgrass,A1-A2,,,7:36,FISP',1,H,10,90,,,in woods
+6/7/2013,ESB,Tallgrass,A1-A2,,,7:36,FISP,1,H,10,90,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:38,DICK,1,H,-80,95,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:38,DICK,1,H,-30,130,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:40,DICK,1,H,15,110,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:40,DICK,1,H,35,100,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:41,DICK,1,H,35,100,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:48,BEWR,1,H,90,40,,,in woods
-6/7/2013,ESB,Tallgrass,A1-A2,,,7:49,CACH ,1,H,95,60,,,in woods
+6/7/2013,ESB,Tallgrass,A1-A2,,,7:49,CACH,1,H,95,60,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:50,BEWR,1,H,20,70,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:50,CONI,1,S,40,80,,,in woods
-6/7/2013,ESB,Tallgrass,A1-A2,,,7:50,NOMa,1,S,5,55,,,in woods
+6/7/2013,ESB,Tallgrass,A1-A2,,,7:50,NOMO,1,S,5,55,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:51,LASP,1,S,90,40,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:52,DICK,1,H,5,50,,,in woods
 6/7/2013,ESB,Tallgrass,A1-A2,,,7:52,EABL,1,H,90,80,,,in woods
@@ -4090,7 +4090,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/15/2013,ESB,Chandler,A1-A2,,,6:30,DICK,1,H,10,90,,,
 6/15/2013,ESB,Chandler,A1-A2,,,6:30,PABU,1,H,-20,85,,,
 6/15/2013,ESB,Chandler,A1-A2,,,6:30,PABU,1,H,75,130,,,
-6/15/2013,ESB,Chandler,A1-A2,,,6:30,?,1,H,95,120,,,Song SP RWBL?
+6/15/2013,ESB,Chandler,A1-A2,,,6:30,UNKNOWN,1,H,95,120,,,Song SP RWBL?
 6/15/2013,ESB,Chandler,A1-A2,,,6:32,NOCA,1,H,35,210,,,
 6/15/2013,ESB,Chandler,A1-A2,,,6:35,BLJA,1,S,60,190,,,
 6/15/2013,ESB,Chandler,A1-A2,,,6:36,BHCO,1,H,-100,70,,,
@@ -4235,7 +4235,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 7/4/2013,ESB,Oswalt,Oswalt A-B,,,8:00,DICK,1,H,0,60,,,
 7/4/2013,ESB,Oswalt,Oswalt A-B,,,8:03,DICK,2,S,0,20,,,No obvious pair Flushed up
 7/4/2013,ESB,Oswalt,Oswalt A-B,,,8:08,STFL,1,S,-100,170,,,
-7/4/2013,ESB,Oswalt,Oswalt A-B,,,8:13,KILD,1,D,80,120,,,killdeer
+7/4/2013,ESB,Oswalt,Oswalt A-B,,,8:13,KILL,1,D,80,120,,,killdeer
 7/4/2013,ESB,Oswalt,Oswalt A-B,,,8:24,GRSP,1,S,50,65,,,
 7/4/2013,ESB,Oswalt,Oswalt A-B,,,8:27,EAME,1,H,-5,230,,,
 7/4/2013,ESB,Oswalt,Oswalt A-B,,,8:34,NOMO,1,H,-90,130,,,
@@ -4838,7 +4838,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/2/2013,JBT,Crosstimbers WMA,XTIM-B,,,10:55,NOMO,1,H,-30,41,S,,
 6/2/2013,JBT,Crosstimbers WMA,XTIM-B,,,10:55,DICK,1,H,-90,85,S,,
 6/2/2013,JBT,Crosstimbers WMA,XTIM-B,,,11:00,NOCA,1,H,-20,150,S,,
-6/2/2013,JBT,Crosstimbers WMA,XTIM-B,,,11:00,NOMA,1,H,70,170,S,,
+6/2/2013,JBT,Crosstimbers WMA,XTIM-B,,,11:00,NOMO,1,H,70,170,S,,"entered on sheet as NOMA, based on previous  entries probably NOMO (cmc 12/16/16)"
 6/2/2013,JBT,Crosstimbers WMA,XTIM-C,,,13:04,EAME,1,H,-50,65,S,,
 6/2/2013,JBT,Crosstimbers WMA,XTIM-C,,,13:04,YBCU,1,H,160,4,S,,
 6/2/2013,JBT,Crosstimbers WMA,XTIM-C,,,13:04,GRSP,1,H,-45,42,S,,
@@ -5156,7 +5156,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/6/2013,JBT,Tallgrass Prairie Preserve,TGPP-G,,,8:39,UPSA,1,H,180,220,S,,
 6/6/2013,JBT,Tallgrass Prairie Preserve,TGPP-G,,,8:41,DICK,1,S,90,25,,,Flushed
 6/6/2013,JBT,Tallgrass Prairie Preserve,TGPP-G,,,8:41,DICK,1,H,80,65,S,,
-6/6/2013,JBT,Tallgrass Prairie Preserve,TGPP-G,,,8:45,UNID,1,H,-70,110,,,"""Tudl-Way-Oooo"""
+6/6/2013,JBT,Tallgrass Prairie Preserve,TGPP-G,,,8:45,UNKNOWN,1,H,-70,110,,,"""Tudl-Way-Oooo"""
 6/6/2013,JBT,Tallgrass Prairie Preserve,TGPP-G,,,8:46,KILL,1,S,180,40,,,
 6/6/2013,JBT,Tallgrass Prairie Preserve,TGPP-G,,,8:47,DICK,1,S,0,25,,Flyover,
 6/6/2013,JBT,Tallgrass Prairie Preserve,TGPP-G,,,8:47,EAME,1,H,-45,90,S,,
@@ -6088,7 +6088,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/27/2013,JDR,WMWR,D02,,,8:48,GRSP,1,H,100,100,,,
 5/27/2013,JDR,WMWR,D02,,,8:48,EAME,1,H,80,200,,,
 5/27/2013,JDR,WMWR,D02,,,8:51,STFL,1,S,35,60,,,
-5/27/2013,JDR,WMWR,D02,,,8:51,Sparrow,1,S,-25,15,,,Flushed near road (could not be certain)
+5/27/2013,JDR,WMWR,D02,,,8:51,sparrow sp.,1,S,-25,15,,,Flushed near road (could not be certain)
 5/27/2013,JDR,WMWR,D02,,,8:54,MODO,1,H,-80,160,,,
 5/27/2013,JDR,WMWR,D02,,,8:55,STFL,1,S,-20,40,,,
 5/27/2013,JDR,WMWR,D02,,,8:57,DICK,1,H,0,150,,,Detected as I crested hill
@@ -6148,7 +6148,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/29/2013,JDR,HACKBERRY ,D,,,7:07,PABU,1,H,55,250,,,
 5/29/2013,JDR,HACKBERRY ,D,,,7:07,NOBO,1,H,20,380,,,
 5/29/2013,JDR,HACKBERRY ,D,,,7:07,EAME,2,H,-45,400,,,distant cluster
-5/29/2013,JDR,HACKBERRY ,D,,,7:11,UKNOWN,1,H,85,30,,,"small ""tsink"" alarm call"
+5/29/2013,JDR,HACKBERRY ,D,,,7:11,UNKNOWN,1,H,85,30,,,"small ""tsink"" alarm call"
 5/29/2013,JDR,HACKBERRY ,D,,,7:11,EAME,1,H,0,330,,,
 5/29/2013,JDR,HACKBERRY ,D,,,7:12,KILL,1,H,90,350,,,
 5/29/2013,JDR,HACKBERRY ,D,,,7:14,DICK,1,H,-45,250,,,
@@ -6213,7 +6213,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/29/2013,JDR,HACKBERRY ,D,,,8:12,STFL,1,S,-30,175,,,
 5/29/2013,JDR,HACKBERRY ,D,,,8:13,EAME,1,H,-45,170,,,
 5/29/2013,JDR,HACKBERRY ,D,,,8:14,MODO,1,S,-65,230,,,
-5/29/2013,JDR,HACKBERRY ,D,,,8:17,Sparrow sp.,1,S,85,5,,,"small, flushed nearby"
+5/29/2013,JDR,HACKBERRY ,D,,,8:17,sparrow sp.,1,S,85,5,,,"small, flushed nearby"
 5/29/2013,JDR,HACKBERRY ,I,,,8:29,LASP,1,S,5,85,,Flyover,flyby
 5/29/2013,JDR,HACKBERRY ,I,,,8:29,BHCO,1,H,90,170,,,
 5/29/2013,JDR,HACKBERRY ,I,,,8:30,MODO,1,S,90,225,,Flyover,flyby
@@ -6233,7 +6233,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/29/2013,JDR,HACKBERRY ,I,,,8:54,EAME,1,H,125,350,,,
 5/29/2013,JDR,HACKBERRY ,I,,,8:55,CLSW,1,S,0,80,,,
 5/29/2013,JDR,HACKBERRY ,I,,,8:55,HOLA,1,H,-10,175,,,
-5/29/2013,JDR,HACKBERRY ,I,,,8:57,HOLA ,1,H,30,180,,,
+5/29/2013,JDR,HACKBERRY ,I,,,8:57,HOLA,1,H,30,180,,,
 5/29/2013,JDR,HACKBERRY ,I,,,8:58,HOLA,1,H,80,170,,,heard then seen
 5/29/2013,JDR,HACKBERRY ,I,,,8:58,HOLA,2,S,75,60,,Flyover,flying w/ above HOLA
 5/29/2013,JDR,HACKBERRY ,I,,,8:59,HOLA,1,S ,-55,100,,,
@@ -6243,7 +6243,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/29/2013,JDR,HACKBERRY ,I,,,9:04,RWBL,1,S,50,175,,,edge of field
 5/29/2013,JDR,HACKBERRY ,I,,,9:05,CONI,1,S ,-15,20,,,flushed from bare ground
 5/29/2013,JDR,HACKBERRY ,I,,,9:06,HOLA,1,H,-45,110,,,
-5/29/2013,JDR,HACKBERRY ,I,,,9:07,HOLA ,1,S,40,90,,,
+5/29/2013,JDR,HACKBERRY ,I,,,9:07,HOLA,1,S,40,90,,,
 5/29/2013,JDR,HACKBERRY ,I,,,9:07,CONI,1,S,80,160,,Flyover,flying w/ above CONI
 5/29/2013,JDR,HACKBERRY ,I,,,9:08,NOBO,1,H,-90,290,,,edge of field
 5/29/2013,JDR,HACKBERRY ,I,,,9:09,KILL,1,S,50,60,,Flyover,flying with previous two
@@ -6680,24 +6680,24 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/30/2013,JDR,Rita Blanca,D,,,9:31,LASP,1,H,85,160,,,Near windmill
 6/30/2013,JDR,Rita Blanca,D,,,9:34,WEME,1,S,-65,250,,,Near road
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:04,DICK,1,H,-10,130,,,
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:04,UNID,1,H,-50,100,,,
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:04,UNKNOWN,1,H,-50,100,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:04,NOCA,1,S,-40,20,,,
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:05,Heron,1,S,-45,?,,Flyover,flyover
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:06,UNID,1,H,-50,20,,,"in tree, warbler?"
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:06,UNID,1,?,0,18,,,sparrow in tree
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:05,heron sp.,1,S,-45,?,,Flyover,flyover
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:06,UNKNOWN,1,H,-50,20,,,"in tree, warbler?"
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:06,UNKNOWN,1,?,0,18,,,sparrow in tree
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:09,DICK,1,S,15,90,,,
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:10,UNID,1,S,-90,10,,,
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:11,UNID,1,S,-50,130,,,
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:10,UNKNOWN,1,S,-90,10,,,
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:11,UNKNOWN,1,S,-50,130,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:14,DICK,1,H,20,100,,,
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:15,UNID,1,S,8,22,,,
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:15,UNKNOWN,1,S,8,22,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:16,GRSP,1,S,0,1,NE,,Almost stepped on nest
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:17,GRSP,1,S,45,6,P,,Seen w/ above
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:19,UNID,1,S,-10,50,,,
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:19,UNKNOWN,1,S,-10,50,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:24,YBCU,1,H,95,100,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:24,DICK,1,H,5,50,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:25,STFL,1,S,-45,200,,Flyover,flyover
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:26,FISP,1,H,-85,100,,,
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:27,UNID,1,H,80,150,,,
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:27,UNKNOWN,1,H,80,150,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:28,FISP,1,H,5,100,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:30,AMCR,13,S,50,300,,Flyover,flyover flock
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:31,DICK,1,H,-50,70,,,
@@ -6708,7 +6708,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:36,DICK,1,S,-85,40,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:39,NOCA,1,H,-15,100,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:40,DICK,2,S,5,15,P,Flyover,flying as a pair
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:42,UNID,1,H,-90,120,,,
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:42,UNKNOWN,1,H,-90,120,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:46,CACH,1,H,-60,80,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:47,FISP,1,H,0,150,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:21,BEVI,1,H,45,100,,,
@@ -6721,7 +6721,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:24,BEVI,1,H,10,60,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:25,NOCA,1,H,-5,70,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:28,INBU,1,H,50,50,,,
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:30,UNID,,S,0,50,,Flyover,flying
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:30,UNKNOWN,,S,0,50,,Flyover,flying
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:31,DICK,1,H,10,80,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:32,FISP,1,S,80,15,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:33,NOCA,1,H,75,120,,,
@@ -6731,12 +6731,12 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:39,DICK,1,H,10,110,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:40,BHCO,2,S,-90,12,P,,pair
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:41,BHCO,1,S,-90,12,,,w/ pair
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:42,UNID,,H,-90,30,,,
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:42,UNKNOWN,,H,-90,30,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:43,NOCA,1,H,-85,160,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:45,DICK,1,S,10,65,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:47,REVI,1,H,-50,20,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:48,MIKI,1,S,-40,150,,Flyover,flyover
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:50,UNID,,S,-20,160,,,
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:50,UNKNOWN,,S,-20,160,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:52,LASP,1,S,35,45,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:53,FISP,1,H,45,70,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:54,TUTI,1,H,40,80,,,
@@ -6744,7 +6744,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:56,DICK,1,S,40,90,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:57,RTHA,1,S,-30,100,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:58,NOCA,1,H,-50,180,,,
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:59,UNID,1,H,-60,130,,,
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:59,UNKNOWN,1,H,-60,130,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,8:59,NOCA,1,H,45,180,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-D,,,9:01,NOMO,1,H,40,150,,,
 5/27/2013,JGK,Wichita Mountains Wildlife Refuge,WMWR-C,,,6:23,NOCA,1,H,130,200,,,
@@ -6774,7 +6774,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/27/2013,JGK,Wichita Mountains Wildlife Refuge,WMWR-C,,,7:13,PABU,1,H,-90,250,,,
 5/27/2013,JGK,Wichita Mountains Wildlife Refuge,WMWR-C,,,7:14,INBU,1,H,-80,200,,,
 5/27/2013,JGK,Wichita Mountains Wildlife Refuge,WMWR-C,,,7:15,PABU,1,H,-60,210,,,
-5/27/2013,JGK,Wichita Mountains Wildlife Refuge,WMWR-C,,,7:16,UNID,1,H,80,110,,,
+5/27/2013,JGK,Wichita Mountains Wildlife Refuge,WMWR-C,,,7:16,UNKNOWN,1,H,80,110,,,
 5/27/2013,JGK,Wichita Mountains Wildlife Refuge,WMWR-C,,,7:18,PABU,1,H,45,170,,,
 5/27/2013,JGK,Wichita Mountains Wildlife Refuge,WMWR-C,,,7:19,AMCR,1,H,-90,300,,,
 5/27/2013,JGK,Wichita Mountains Wildlife Refuge,WMWR-C,,,7:21,TUTI,1,H,60,300,,,
@@ -6801,7 +6801,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/29/2013,JGK,Hackberry Flats WMA,HACK-E,,,7:15,CONI,1,S,30,40,,Flyover,flyover
 5/29/2013,JGK,Hackberry Flats WMA,HACK-E,,,7:15,BHCO,1,S,-40,30,,Flyover,flyover
 5/29/2013,JGK,Hackberry Flats WMA,HACK-E,,,7:17,BHCO,1,S,-90,350,,,
-5/29/2013,JGK,Hackberry Flats WMA,HACK-E,,,7:19,UNID,1,H,-80,160,,,"continuous, shrill decending call"
+5/29/2013,JGK,Hackberry Flats WMA,HACK-E,,,7:19,UNKNOWN,1,H,-80,160,,,"continuous, shrill decending call"
 5/29/2013,JGK,Hackberry Flats WMA,HACK-E,,,7:20,BHCO,1,H,-85,130,,,
 5/29/2013,JGK,Hackberry Flats WMA,HACK-E,,,7:22,EAME,2,S,-50,210,,Flyover,flying together
 5/29/2013,JGK,Hackberry Flats WMA,HACK-E,,,7:22,KILL,1,H,40,100,,,
@@ -6855,7 +6855,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,12:46,NOCA,1,H,-130,180,,,
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,12:48,TUVU,1,S,-75,350,,Flyover,Flyover
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,12:49,NOCA,1,H,80,220,,,
-6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,12:50,UNID,1,H,-90,250,,,"similar to NOCA, lower pitch"
+6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,12:50,UNKNOWN,1,H,-90,250,,,"similar to NOCA, lower pitch"
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,12:52,TUVU,2,S,25,400,,Flyover,soaring together
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:00,DICK,1,H,50,150,,,
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:01,PABU,1,H,50,180,,,
@@ -6866,7 +6866,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:07,NOCA,1,H,-50,270,,,
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:07,YBCU,1,H,-150,80,,,
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:10,STFL,2,S,90,130,,Flyover,flyover
-6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:15,UNID,1,H,-180,70,,,"5 notes, warble on end"
+6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:15,UNKNOWN,1,H,-180,70,,,"5 notes, warble on end"
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:15,NOCA,1,S,-20,10,,Flyover,flyover
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:19,AMCR,1,S,60,200,,Flyover,flyover
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:19,AMCR,1,S,-50,250,,Flyover,flyover
@@ -6887,7 +6887,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:43,DICK,1,H,30,50,,,
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:46,TUVU,1,S,-10,200,,Flyover,flyover
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:47,FISP,1,H,60,220,,,
-6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:49,UNID,1,H,90,120,,,same as above unknown
+6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:49,UNKNOWN,1,H,90,120,,,same as above unknown
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:49,FISP,1,H,40,150,,,
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:50,NOCA,1,S,0,20,,,flushed out
 6/1/2013,JGK,Noble Foundation - Coffey Ranch,COFF-A,,,13:51,NOCA,1,H,25,70,,,
@@ -7098,7 +7098,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/7/2013,JGK,Tallgrass Prairie Preserve,TGPP-F,,,7:42,DICK,1,H,-45,70,,,
 6/7/2013,JGK,Tallgrass Prairie Preserve,TGPP-F,,,7:42,DICK,1,S,-45,65,P,,"with 7:42, P?"
 6/7/2013,JGK,Tallgrass Prairie Preserve,TGPP-F,,,7:42,COYE,1,H,-15,150,,,
-6/7/2013,JGK,Tallgrass Prairie Preserve,TGPP-F,,,7:44,UNID,1,H,10,250,,,
+6/7/2013,JGK,Tallgrass Prairie Preserve,TGPP-F,,,7:44,UNKNOWN,1,H,10,250,,,
 6/7/2013,JGK,Tallgrass Prairie Preserve,TGPP-F,,,7:47,BEVI,1,H,10,110,P,,calling to each other
 6/7/2013,JGK,Tallgrass Prairie Preserve,TGPP-F,,,7:48,DICK,1,S,-40,60,,,
 6/7/2013,JGK,Tallgrass Prairie Preserve,TGPP-F,,,7:55,EAME,1,H,-80,70,,,
@@ -7345,7 +7345,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/29/2013,MAB,Hackberry Flats,C1,,,7:25,LASP,1,S,40,15,,,
 5/29/2013,MAB,Hackberry Flats,C1,,,7:27,MODO,2,S,0,150,,,
 5/29/2013,MAB,Hackberry Flats,C1,,,7:27,BARS,1,S,40,80,,,
-5/29/2013,MAB,Hackberry Flats,C1,,,7:29,swallow,1,S,90,75,,,"non-BARS, wedge tail, didn't see head - either NRWS or CLSW"
+5/29/2013,MAB,Hackberry Flats,C1,,,7:29,swallow sp.,1,S,90,75,,,"non-BARS, wedge tail, didn't see head - either NRWS or CLSW"
 5/29/2013,MAB,Hackberry Flats,C1,,,7:29,MODO,3,S,45,65,,,
 5/29/2013,MAB,Hackberry Flats,C1,,,7:29,LASP,1,S,130,75,,,
 5/29/2013,MAB,Hackberry Flats,C1,,,7:31,BHCO,1,S,-75,40,,,
@@ -7442,7 +7442,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/1/2013,MAB,Coffey Ranch,C,,,13:54,NOCA,1,H,90,50,,,
 6/1/2013,MAB,Coffey Ranch,C,,,13:54,NOCA,1,H,120,30,,,
 6/1/2013,MAB,Coffey Ranch,C,,,13:54,DICK,1,H,-10,65,,,
-6/1/2013,MAB,Coffey Ranch,C,,,13:54,swallow,1,S,-20,80,,,NRWS or CLSW
+6/1/2013,MAB,Coffey Ranch,C,,,13:54,swallow sp.,1,S,-20,80,,,NRWS or CLSW
 6/1/2013,MAB,Coffey Ranch,C,,,13:56,INBU,2,H,40,75,P,,"singing, female seen nearby"
 6/1/2013,MAB,Coffey Ranch,C,,,14:03,AMCR,1,H,90,200,,,
 6/1/2013,MAB,Coffey Ranch,C,,,14:05,PABU,2,S,35,5,,,"1 bland brown, 1 greenish"
@@ -7657,7 +7657,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/6/2013,MAB,Optima Lake NWR,A,,,17:52,MODO,1,S,100,90,,,
 6/6/2013,MAB,Optima Lake NWR,A,,,17:52,ECDO,1,S,110,100,,,
 6/6/2013,MAB,Optima Lake NWR,A,,,17:53,NOMO,1,H,110,250,,,
-6/6/2013,MAB,Optima Lake NWR,A,,,17:55,MOSO,1,S,80,130,,,
+6/6/2013,MAB,Optima Lake NWR,A,,,17:55,MODO,1,S,80,130,,,
 6/6/2013,MAB,Optima Lake NWR,A,,,18:02,MODO,2,S,45,50,,,
 6/6/2013,MAB,Optima Lake NWR,A,,,18:02,MODO,1,S,110,150,,,
 6/6/2013,MAB,Optima Lake NWR,A,,,18:04,WEKI,1,S,-80,175,,,
@@ -7815,7 +7815,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/2/2013,ESB,Chandler,CHND-A,,,7:08,TUTI,1,H,-170,100,,,Behind in woods
 6/2/2013,ESB,Chandler,CHND-A,,,7:08,CARW,1,H,-160,230,,,behind in woods
 6/2/2013,ESB,Chandler,CHND-A,,,7:08,AMCR,1,H,-170,250,,,
-6/2/2013,ESB,Chandler,CHND-A,,,7:12,UNID,1,S,-90,40,,Flyover,flew/trill WEKI?
+6/2/2013,ESB,Chandler,CHND-A,,,7:12,UNKNOWN,1,S,-90,40,,Flyover,flew/trill WEKI?
 6/2/2013,ESB,Chandler,CHND-A,,,7:13,CARW,1,H,70,200,,,
 6/2/2013,ESB,Chandler,CHND-A,,,7:14,DICK,1,H,-10,130,,,
 6/2/2013,ESB,Chandler,CHND-A,,,7:15,YBCU,1,H,170,300,,,behind in woods
@@ -8155,7 +8155,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/25/2013,JDR,Kessler Atmospheric and Ecological Field Station,KAEF-B,,,10:30,DICK,1,H,-90,40,,,
 5/25/2013,JDR,Kessler Atmospheric and Ecological Field Station,KAEF-B,,,10:30,DICK,1,H,-5,90,,,
 5/25/2013,JDR,Kessler Atmospheric and Ecological Field Station,KAEF-B,,,10:31,RBWO,1,H,-90,60,,,
-5/25/2013,JDR,Kessler Atmospheric and Ecological Field Station,KAEF-B,,,10:32,HAWR,1,S,-180,45,,,
+5/25/2013,JDR,Kessler Atmospheric and Ecological Field Station,KAEF-B,,,10:32,HAWO,1,S,-180,45,,,
 5/25/2013,JDR,Kessler Atmospheric and Ecological Field Station,KAEF-B,,,10:34,NOCA,1,H,-90,120,,,
 5/25/2013,JDR,Kessler Atmospheric and Ecological Field Station,KAEF-B,,,10:34,TUTI,1,H,-90,130,,,
 5/25/2013,JDR,Kessler Atmospheric and Ecological Field Station,KAEF-B,,,10:36,MIKI,1,S,0,30,,Flyover,Same as at 10:28?
@@ -8302,7 +8302,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/4/2013,JDR,Cimmaron Hills WMA,CIMH-C,,,11:10,NOBO,1,H,-90,380,,,
 6/4/2013,JDR,Cimmaron Hills WMA,CIMH-C,,,11:13,WEME,1,H,-80,155,,,
 6/4/2013,JDR,Cimmaron Hills WMA,CIMH-C,,,11:14,CASP,1,H,-5,180,,,
-6/4/2013,JDR,Cimmaron Hills WMA,CIMH-C,,,11:15,Sparrow sp.,1,S,115,60,,,
+6/4/2013,JDR,Cimmaron Hills WMA,CIMH-C,,,11:15,sparrow sp.,1,S,115,60,,,
 6/4/2013,JDR,Cimmaron Hills WMA,CIMH-C,,,11:16,WEME,1,H,15,245,,,
 6/4/2013,JDR,Cimmaron Hills WMA,CIMH-C,,,11:16,CASP,1,H,70,225,,,
 6/4/2013,JDR,Cimmaron Hills WMA,CIMH-C,,,11:18,BAOR,1,H,-30,280,,,
@@ -8525,7 +8525,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/6/2013,JDR,Optima NWR,OPTM-B,,,17:46,CASP,1,H,-45,280,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,17:46,CASP,1,H,-10,225,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,17:47,CASP,1,S,-95,25,,,
-6/6/2013,JDR,Optima NWR,OPTM-B,,,17:47,Sparrow sp.,1,S,-90,25,,,"Rufus crown, line through eye"
+6/6/2013,JDR,Optima NWR,OPTM-B,,,17:47,sparrow sp.,1,S,-90,25,,,"Rufus crown, line through eye"
 6/6/2013,JDR,Optima NWR,OPTM-B,,,17:47,NOMO,1,H,35,300,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,17:50,CASP,1,H,100,250,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,17:51,WEKI,1,S,25,300,,,
@@ -8576,7 +8576,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/6/2013,JDR,Optima NWR,OPTM-B,,,18:49,BARS,1,S,45,50,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,18:49,NOBO,1,H,35,410,,,duplicate?
 6/6/2013,JDR,Optima NWR,OPTM-B,,,18:49,LASP,1,H,-35,125,,,
-6/6/2013,JDR,Optima NWR,OPTM-B,,,18:52,CASP ,1,H,-40,180,,,
+6/6/2013,JDR,Optima NWR,OPTM-B,,,18:52,CASP,1,H,-40,180,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,18:53,CASP,1,H,80,250,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,18:54,CASP,1,H,50,170,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,18:54,CASP,1,H,-40,45,A,,tinking'
@@ -8590,7 +8590,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:01,CASP,1,S,-35,30,A,,'Tinking'
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:02,CASP,1,S,-5,90,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:03,LASP,1,H,0,1,FY,,juv. Flushed
-6/6/2013,JDR,Optima NWR,OPTM-B,,,19:05,Sparrow sp.,1,H,85,35,A,,"""tinking"""
+6/6/2013,JDR,Optima NWR,OPTM-B,,,19:05,sparrow sp.,1,H,85,35,A,,"""tinking"""
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:05,CASP,1,H,20,200,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:05,CASP,1,H,-80,150,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:05,NOMO,1,H,40,375,,,
@@ -8611,10 +8611,10 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:22,LASP,1,H,0,105,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:26,CASP,1,S,-60,35,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:26,CASP,1,H,50,170,,,
-6/6/2013,JDR,Optima NWR,OPTM-B,,,19:28,Sparrow sp.,1,H,25,70,A,,tinking'
+6/6/2013,JDR,Optima NWR,OPTM-B,,,19:28,sparrow sp.,1,H,25,70,A,,tinking'
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:29,NOBO,1,H,90,320,,,
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:29,CASP,1,H,-80,95,,,
-6/6/2013,JDR,Optima NWR,OPTM-B,,,19:31,CASP ,1,S,75,10,,,Flushed
+6/6/2013,JDR,Optima NWR,OPTM-B,,,19:31,CASP,1,S,75,10,,,Flushed
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:32,WEKI,1,S,0,90,,Flyover,flyby
 6/6/2013,JDR,Optima NWR,OPTM-B,,,19:34,NOMO,1,S,5,250,,,
 6/7/2013,JDR,Packsaddle WMA,PACK-C,,,08:40,PABU,1,H,75,90,,,
@@ -8868,7 +8868,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:24,TUTI,1,H,-20,200,,,
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:30,EAME,1,H,20,30,,,
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:30,DICK,1,H,40,40,,,
-5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:30,DICK ,1,H,-30,40,,,
+5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:30,DICK,1,H,-30,40,,,
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:31,BARS,1,S,10,10,,,feeding in field very close
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:31,AMCR,1,S,100,110,,,
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:36,EAKI,1,S,90,95,,Flyover,Harassed by EAME in air
@@ -8879,7 +8879,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:43,CARW,1,H,90,100,,,
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:45,CARW,1,H,-90,25,,,
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:47,NOMO,1,S,-5,10,,,
-5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:47,DOWO ,1,S,0,15,,,Feeding
+5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:47,DOWO,1,S,0,15,,,Feeding
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:53,INBU,1,S,90,35,,,
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:54,OROR,1,H,65,40,,,Singing female
 5/25/2013,MDF,Kessler Atmospheric and Ecological Field Station,KAEF-C,,,7:57,YBCU,3,S,0,110,N,,Possibly nesting
@@ -9230,7 +9230,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/3/2013,MDF,Cimmaron Bluff WMA,CIMB-C,,,7:17,MODO,1,S,45,45,,Flyover,flyby
 6/3/2013,MDF,Cimmaron Bluff WMA,CIMB-C,,,7:17,RTHA,1,S,0,230,,,
 6/3/2013,MDF,Cimmaron Bluff WMA,CIMB-C,,,7:20,WEKI,1,S,90,170,,,dark head
-6/3/2013,MDF,Cimmaron Bluff WMA,CIMB-C,,,7:25,WEME ,1,H,0,75,,,
+6/3/2013,MDF,Cimmaron Bluff WMA,CIMB-C,,,7:25,WEME,1,H,0,75,,,
 6/3/2013,MDF,Cimmaron Bluff WMA,CIMB-C,,,7:25,LASP,1,H,75,170,,,
 6/3/2013,MDF,Cimmaron Bluff WMA,CIMB-C,,,7:29,NOBO,1,H,180,210,,,
 6/3/2013,MDF,Cimmaron Bluff WMA,CIMB-C,,,7:29,DICK,1,H,180,75,,,
@@ -9309,7 +9309,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:10,CASP,1,H,-40,135,,,
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:10,EAME,1,H,5,160,,,
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:11,DICK,1,H,10,205,,,
-6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:11,WEME ,1,H,80,100,,,
+6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:11,WEME,1,H,80,100,,,
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:13,GRSP,1,H,15,95,,,
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:13,GRSP,1,S,-80,60,,,
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:13,DICK,1,H,20,190,,,
@@ -9333,7 +9333,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:29,DICK,1,H,90,110,,,
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:29,NOBO,1,H,-90,240,,,
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:29,GRSP,1,H,-75,30,,,
-6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:32,Falcon sp.,1,S,0,400,,Flyover,flying falcon
+6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:32,falcon sp.,1,S,0,400,,Flyover,flying falcon
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:32,NOMO,1,H,15,200,,,
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:34,KILL,1,S,45,85,,Flyover,flyover
 6/4/2013,MDF,Cimmaron Hills WMA,CIMH-A,,,7:34,COGR,1,S,0,80,,Flyover,flyover
