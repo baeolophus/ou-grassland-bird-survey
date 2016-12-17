@@ -892,9 +892,9 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 4/17/2014,JDR,Grady Co WMA,3,,,GRSP,1,H,20,60,S,,
 4/17/2014,JDR,Grady Co WMA,3,,,HOSP,1,H,270,120,,,
 4/17/2014,JDR,Grady Co WMA,3,,,MODO,1,H,330,85,S,,
-4/17/2014,JDR,Grady Co WMA,3,,,ECDO,1,H,290,90,,,
-4/17/2014,JDR,Grady Co WMA,3,,,ECDO,1,S,155,125,,,
-4/17/2014,JDR,Grady Co WMA,3,,,ECDO,1,S,155,125,P,,Joined above ECDO
+4/17/2014,JDR,Grady Co WMA,3,,,EUCD,1,H,290,90,,,
+4/17/2014,JDR,Grady Co WMA,3,,,EUCD,1,S,155,125,,,
+4/17/2014,JDR,Grady Co WMA,3,,,EUCD,1,S,155,125,P,,Joined above ECDO
 4/17/2014,JDR,Grady Co WMA,3,,,RWBL,2,S,10,120,,Flyover,
 4/17/2014,JDR,Grady Co WMA,4,,,NOCA,1,H,80,150,,,
 4/17/2014,JDR,Grady Co WMA,4,,,LASP,1,H,130,85,S,,
@@ -2351,7 +2351,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/29/2014,Josh,Optima,14,,,WEKI,1,S,310,50,,,
 5/29/2014,Josh,Optima,14,,,KILL,1,H,260,250,,,
 5/29/2014,Josh,Optima,14,,,WEKI,2,S,220,30,A,,Chasing with above WEKI
-5/29/2014,Josh,Optima,14,,,ECDO,1,H,10,35,S,,
+5/29/2014,Josh,Optima,14,,,EUCD,1,H,10,35,S,,
 5/29/2014,Josh,Optima,14,,,WEME,1,S,50,40,,,
 5/29/2014,Josh,Optima,14,,,LASP,1,S,60,55,,Landed,
 5/29/2014,Josh,Schultz WMA,2,,,WEME,1,H,120,100,S,,
@@ -2896,7 +2896,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/4/2014,Randy,Noble - Red River Farm,1,,,EAME,1,H,359,20,S,,
 5/4/2014,Randy,Noble - Red River Farm,1,,,DICK,1,H,180,40,S,,
 5/4/2014,Randy,Noble - Red River Farm,1,,,UPSA,1,S,190,30,,,Walking in west field
-5/4/2014,Randy,Noble - Red River Farm,1,,,ECDO,2,S,270,10,,Flyover,
+5/4/2014,Randy,Noble - Red River Farm,1,,,EUCD,2,S,270,10,,Flyover,
 5/4/2014,Randy,Noble - Red River Farm,1,,,NOBO,1,H,220,100,S,,
 5/4/2014,Randy,Noble - Red River Farm,1,,,NOBO,1,H,180,100,S,,
 5/4/2014,Randy,Noble - Red River Farm,1,,,BAEA,1,S,260,500,,Flyover,Flying over Red River
@@ -2915,7 +2915,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 5/4/2014,Randy,Noble - Red River Farm,3,,,CACH,1,H,270,10,,,
 5/4/2014,Randy,Noble - Red River Farm,3,,,RBWO,1,H,270,10,,,
 5/4/2014,Randy,Noble - Red River Farm,3,,,CACH,1,S,270,10,,Landed,
-5/4/2014,Randy,Noble - Red River Farm,3,,,ECDO,1,H,270,20,S,,
+5/4/2014,Randy,Noble - Red River Farm,3,,,EUCD,1,H,270,20,S,,
 5/4/2014,Randy,Noble - Red River Farm,3,,,EUST,1,H,180,10,,Flyover,
 5/4/2014,Randy,Noble - Red River Farm,3,,,BLJA,1,S,350,10,,Flyover,
 5/4/2014,Randy,Noble - Red River Farm,3,,,HOSP,1,S,180,50,,,On House Roof
@@ -3929,7 +3929,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 7/3/2013,ESB,Cross Timbers,CTPC2,,,NOCA,1,H,300,130,,,
 7/3/2013,ESB,Cross Timbers,CTPC2,,,PABU,1,H,355,110,,,
 7/3/2013,ESB,Cross Timbers,CTPC2,,,EAPH,1,H,250,65,,,
-7/3/2013,ESB,Cross Timbers,CTPC2,,,BOWR,1,H,330,120,,,
+7/3/2013,ESB,Cross Timbers,CTPC2,,,BEWR,1,H,330,120,,,
 7/3/2013,ESB,Cross Timbers,CTPC2,,,EAPH,1,H,350,130,,,
 7/3/2013,ESB,Cross Timbers,CTPC2,,,MODO,1,H,320,110,,,
 7/3/2013,ESB,Cross Timbers,CTPC2,,,NOMO,1,H,0,200,,,
@@ -3998,7 +3998,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 7/3/2013,ESB,Red River Ranch,RRPC2,,,NOCA,1,H,350,140,,,
 7/3/2013,ESB,Red River Ranch,RRPC2,,,PABU,1,H,340,130,,,
 7/3/2013,ESB,Red River Ranch,RRPC2,,,NOMO,1,H,185,180,,,
-7/3/2013,ESB,Red River Ranch,RRPC2,,,BACO,3,S,200,15,P,,On Wire (Pair) +1
+7/3/2013,ESB,Red River Ranch,RRPC2,,,BHCO,3,S,200,15,P,,On Wire (Pair) +1
 7/3/2013,ESB,Red River Ranch,RRPC2,,,GRSP,1,H,85,45,,,
 7/3/2013,ESB,Red River Ranch,RRPC2,,,HOFI,1,H,350,140,,,ID?? Not Sure
 7/3/2013,ESB,Red River Ranch,RRPC2,,,EAME,1,H,195,110,,,
@@ -4543,7 +4543,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC3,,,EAME,1,H,85,160,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC3,,,EAME,1,S,5,120,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC3,,,EAME,1,S,20,40,S,Landed,landed
-7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC3,,,ECDO,1,H,160,200,S,,
+7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC3,,,EUCD,1,H,160,200,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC3,,,DICK,1,H,30,70,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC3,,,CLSW,4,S,180,20,,Flyover,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC4,,,DICK,1,S,230,20,S,,
@@ -4554,7 +4554,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC4,,,CACH,1,H,120,60,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC4,,,YBCU,1,H,160,80,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC4,,,DICK,1,H,320,25,S,,
-7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC4,,,ECDO,1,H,120,85,S,,
+7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC4,,,EUCD,1,H,120,85,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC4,,,BARS,6,S,82,100,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC4,,,MODO,1,S,84,110,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC4,,,EAME,1,S,305,85,S,,Scrub
@@ -5169,7 +5169,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/6/2013,JGK,Tallgrass Prairie Preserve,TGPW-PC6,,,CLSW,1,S,170,250,,Flyover,flying
 6/6/2013,JGK,Tallgrass Prairie Preserve,TGPW-PC6,,,DICK,1,H,90,100,,,
 6/6/2013,JGK,Tallgrass Prairie Preserve,TGPW-PC6,,,DICK,1,H,50,120,,,
-6/6/2013,JGK,Tallgrass Prairie Preserve,TGPW-PC6,,,GPCH,1,H,190,200,,,quail? Peasant?
+6/6/2013,JGK,Tallgrass Prairie Preserve,TGPW-PC6,,,GRPC,1,H,190,200,,,quail? Peasant?
 6/6/2013,JGK,Tallgrass Prairie Preserve,TGPW-PC7,,,DICK,1,H,85,140,,,
 6/6/2013,JGK,Tallgrass Prairie Preserve,TGPW-PC7,,,AMRO,2,S,340,40,,,
 6/6/2013,JGK,Tallgrass Prairie Preserve,TGPW-PC7,,,DICK,1,S,200,10,,,in tree
@@ -5973,7 +5973,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,DICK,1,H,30,75,,,
 6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,STFL,1,H,300,125,,,
 6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,GRSP,1,H,340,65,,,
-6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,ELDO,1,S,200,250,,,
+6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,EUCD,1,S,200,250,,,
 6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,GRSP,1,H,165,60,,,
 6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,EUST,1,S,10,350,,Flyover,flyby
 6/10/2013,JDR,Grazingland Res Lab,GRLB-PC8,,,DICK,1,S,5,200,,,
@@ -6278,14 +6278,14 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/6/13,MDF,Optima WMA,OPTM-PC1,,,WEKI,1,S,340,50,,Flyover,flyover
 6/6/13,MDF,Optima WMA,OPTM-PC1,,,MODO,2,S,180,200,,Landed,landed together
 6/6/13,MDF,Optima WMA,OPTM-PC2,,,CASP,1,H,150,200,,,
-6/6/13,MDF,Optima WMA,OPTM-PC2,,,ECDO,1,S,45,70,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,EUCD,1,S,45,70,,,
 6/6/13,MDF,Optima WMA,OPTM-PC2,,,CASP,1,H,90,150,,,
 6/6/13,MDF,Optima WMA,OPTM-PC2,,,WEME,1,H,100,210,,,
 6/6/13,MDF,Optima WMA,OPTM-PC2,,,RWBL,2,H,0,150,,,
 6/6/13,MDF,Optima WMA,OPTM-PC2,,,EAPH,1,H,5,140,,,
 6/6/13,MDF,Optima WMA,OPTM-PC2,,,COGR,2,S,5,140,,,
 6/6/13,MDF,Optima WMA,OPTM-PC2,,,DOWO,1,H,0,150,,,
-6/6/13,MDF,Optima WMA,OPTM-PC2,,,ECDO,1,S,15,50,,,
+6/6/13,MDF,Optima WMA,OPTM-PC2,,,EUCD,1,S,15,50,,,
 6/6/13,MDF,Optima WMA,OPTM-PC2,,,CONI,1,H,270,105,,,
 6/6/13,MDF,Optima WMA,OPTM-PC2,,,MODO,1,S,15,80,,,
 6/6/13,MDF,Optima WMA,OPTM-PC2,,,AMKE,1,S,180,95,,Flyover,flyby
@@ -6384,7 +6384,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,WEME,1,H,320,150,,,
 6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,HOLA,1,H,0,50,,,
 6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,BARS,1,S,270,45,,Flyover,flyby
-6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,TRSW,1,S ,270,50,,Flyover,flyby
+6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,TRES,1,S ,270,50,,Flyover,flyby
 6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,GRSP,1,H,150,75,,,
 6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,HOLA,1,H,310,80,,,
 6/11/13,MDF,Sandy Sanders WMA,SAND-PC1,,,HOLA,1,H,90,145,,,
@@ -6747,7 +6747,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,PABU,1,H,180,60,,,
 6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,DICK,1,H,180,55,,,
 6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,DICK,1,H,190,55,,,
-6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,CAGO,12,S,90,210,,,on lake
+6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,CANG,12,S,90,210,,,on lake
 6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,EABL,1,H,270,80,,,
 6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,PABU,1,H,270,45,,,
 6/23/13,MDF,Wichita Mountains Wildlife Refuge,WMWR-PC14,,,GREG,1,S,0,85,,Flyover,flying to lake
@@ -7069,7 +7069,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 05/18/14,Tory,Selman Ranch,PC04,,,BHCO,1,S,265,90,,,
 05/18/14,Tory,Selman Ranch,PC04,,,CASP,1,S,350,40,,,S/H
 05/18/14,Tory,Selman Ranch,PC04,,,sparrow sp.,1,H,90,20,,,
-05/18/14,Tory,Selman Ranch,PC04,,,GRBH,1,S,185,85,,,called after PC
+05/18/14,Tory,Selman Ranch,PC04,,,,1,S,185,85,,,"GRBH (wrong abbrev, not sure what- cmc 12/16/16) called after PC"
 05/18/14,Tory,Selman Ranch,PC01,,,WEME,1,H,180,70,,,
 05/18/14,Tory,Selman Ranch,PC01,,,CASP,1,H,160,40,,,H/S
 05/18/14,Tory,Selman Ranch,PC01,,,CASP,1,H,90,35,,,
