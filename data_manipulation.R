@@ -423,6 +423,19 @@ aou.codes<-foreign::read.dbf(file="AOUcodes2016.dbf")
 does.it.have.match<-dplyr::left_join(names.i.have, aou.codes)
 
 #select only those columns from ebird
+pull.these.columns.from.ebird<-gsub(" ", "_", as.character(does.it.have.match$SCINAME))
+
+#ebird import
+ebird2013<-read.csv(file="bigfiles\\studyarea_ebird2013.csv")
+ebird2014<-read.csv(file="bigfiles\\studyarea_ebird2014.csv")
+
+
+selected.ebird.sp.2013<-dplyr::select(ebird2013, #original dataframe
+                             1:19, #metadata columns from original dataframe
+                             one_of(pull.these.columns.from.ebird)) #select species in our surveys
+
+test<-head(selected.ebird.sp.2013)
+
 
 #Then change format to one row per species.
 
