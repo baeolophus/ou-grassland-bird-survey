@@ -323,7 +323,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:48,BHCO,2,S,-85,100,,Flyover,
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:49,BGGN,1,H,10,40,,,
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:49,FISP,1,H,20,175,S,,
-4/23/2014,JDR,Tallgrass Prairie,A,,,7:49,MYWA,1,H,20,65,,Flyover,H/S
+4/23/2014,JDR,Tallgrass Prairie,A,,,7:49,YRWA,1,H,20,65,,Flyover,H/S.  MYWA replaced by YRWA.
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:51,NOFL,1,H,25,290,,,
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:51,RNPH,1,H,-15,400,,,
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:51,RWBL,1,S,-120,70,,Landed,Female
@@ -333,7 +333,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:54,RWBL,2,S,0,15,,,Females
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:55,CARW,1,H,-10,165,,,
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:55,CHSP,1,H,-30,90,,,
-4/23/2014,JDR,Tallgrass Prairie,A,,,7:55,MYWA,1,H,-90,110,,,
+4/23/2014,JDR,Tallgrass Prairie,A,,,7:55,YRWA,1,H,-90,110,,,Myrtle (MYWA)
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:57,BGGN,1,H,-30,100,,,
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:57,BLJA,20,S,0,250,,Flyover,
 4/23/2014,JDR,Tallgrass Prairie,A,,,7:57,UPSA,1,H,-90,150,,Flyover,
@@ -6331,7 +6331,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:08,DICK,1,H,-35,90,,,
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:08,GRSP,1,H,25,80,,,
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:08,BEVI,1,H,45,115,,,
-6/1/2013,JDR,Oswalt Road Ranch,A,,,14:09,YSFL,1,H,35,350,,,
+6/1/2013,JDR,Oswalt Road Ranch,A,,,14:09,NOFL,1,H,35,350,,,Yellow-shafted flicker changed to nofl
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:10,DICK,1,H,30,210,,,
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:12,DICK,1,S,-10,35,,Flyover,F
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:13,DICK,1,S,25,30,,,
@@ -6376,7 +6376,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:44,BARS,2,S,0,50,,,
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:44,GRSP,2,S,35,8,,,
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:47,AMKE,1,S,-25,165,,,feeding atop fencepost
-6/1/2013,JDR,Oswalt Road Ranch,A,,,14:48,YSFL,1,H,-70,200,,,
+6/1/2013,JDR,Oswalt Road Ranch,A,,,14:48,NOFL,1,H,-70,200,,,Yellow-shafted flicker changed to nofl
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:49,NOMO,1,H,100,150,,,
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:50,MODO,4,S,50,160,,,
 6/1/2013,JDR,Oswalt Road Ranch,A,,,14:50,EUST,1,S,85,90,,,
