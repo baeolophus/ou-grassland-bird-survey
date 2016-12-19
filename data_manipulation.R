@@ -434,10 +434,14 @@ selected.ebird.sp.2013<-dplyr::select(ebird2013, #original dataframe
                              1:19, #metadata columns from original dataframe
                              one_of(pull.these.columns.from.ebird)) #select species in our surveys
 
-test<-head(selected.ebird.sp.2013)
-
-
+gathered.ebird.data<-selected.ebird.sp.2013%>%
+  gather(key=species, value=count, one_of(pull.these.columns.from.ebird))
 #Then change format to one row per species.
+#gives an error about losing attributes but this is because the count columns are factors.
+#http://stackoverflow.com/questions/28972386/retain-attributes-when-using-gather-from-tidyr-attributes-are-not-identical
+#The values seem okay so I'm leaving it for now.
+
+#It already gives days where absences occured.  Will need to filter so they are complete counts that give absences.
 
 ###############
 ##MAKING COMBINED SINGLE DATA SHEET
