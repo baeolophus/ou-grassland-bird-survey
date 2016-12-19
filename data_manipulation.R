@@ -203,31 +203,6 @@ which.have.duplicates.old[which.have.duplicates.old$duplicates>1,]
 #number of pointcount.metedata.manually.corrected rows are all same.
 #pointcount.data and pointcounts.complete also match because all primary keys unique.
 
-#add in month, date, year columns for PCs.  then export as new current version.
-#bring in data and metadata, join for species locations.
-pointcount.data<-read.csv(file="pointcount_data.csv")
-#bring in the manually corrected file
-pointcount.metadata.manually.corrected<-read.csv(file="pointcount_metadata.csv")
-#merge the files so every row has all metadata attached.
-pointcounts.complete<-left_join(pointcount.data,
-                                pointcount.metadata.manually.corrected,
-                                by=c("Date",
-                                     "Observer",
-                                     "Location",
-                                     "Point"))
-
-#Now clean up dates to match ebird.
-pointcounts.complete$dates.format<-as.character(pointcounts.complete$Date)
-pointcounts.complete$dates.format<-as.Date(pointcounts.complete$dates.format,
-                                        format="%m/%d/%Y")
-pointcounts.complete$year<-format(as.Date(pointcounts.complete$dates.format),
-                               format="%Y")
-pointcounts.complete$month<-format(as.Date(pointcounts.complete$dates.format),
-                                format="%m")
-pointcounts.complete$day<-format(as.Date(pointcounts.complete$dates.format),
-                              format="%d")
-
-####################################
 
 ####################################
 #transects
@@ -326,7 +301,8 @@ writeOGR(fix.transect["name"], driver="GPX", layer="waypoints",
          dsn="20161104_unnamed_transect_startends.gpx")
 #use this to compare original basecamp point list to where transect start/ends are.
 
-
+#######################
+#Polishing up data formats and combining the different sources.
 #then merge with sightings and do all data checks as for point counts.
 transect.data<-read.csv("transect_data.csv")
 transect.metadata<-read.csv("transect_metadata.csv")
@@ -404,6 +380,36 @@ transect.complete$day<-format(as.Date(transect.complete$dates.format),
                                format="%d")
 
 
+#add in month, date, year columns for PCs.  then export as new current version.
+#bring in data and metadata, join for species locations.
+pointcount.data<-read.csv(file="pointcount_data.csv")
+#bring in the manually corrected file
+pointcount.metadata.manually.corrected<-read.csv(file="pointcount_metadata.csv")
+#merge the files so every row has all metadata attached.
+pointcounts.complete<-left_join(pointcount.data,
+                                pointcount.metadata.manually.corrected,
+                                by=c("Date",
+                                     "Observer",
+                                     "Location",
+                                     "Point"))
+
+#Now clean up dates to match ebird.
+pointcounts.complete$dates.format<-as.character(pointcounts.complete$Date)
+pointcounts.complete$dates.format<-as.Date(pointcounts.complete$dates.format,
+                                           format="%m/%d/%Y")
+pointcounts.complete$year<-format(as.Date(pointcounts.complete$dates.format),
+                                  format="%Y")
+pointcounts.complete$month<-format(as.Date(pointcounts.complete$dates.format),
+                                   format="%m")
+pointcounts.complete$day<-format(as.Date(pointcounts.complete$dates.format),
+                                 format="%d")
+pointcounts.complete$TIME<-as.character(pointcounts.complete$Start.Time..24h.)
+timebits<-strsplit(pointcounts.complete$TIME,
+                                       ":")
+pointcounts.complete$hours<-as.numeric(sapply(timebits, "[", 1))
+pointcounts.complete$minutes<-as.numeric(sapply(timebits, "[", 2))
+pointcounts.complete$ebird.time<-pointcounts.complete$hours+pointcounts.complete$minutes/60
+####################################
 ###
 #Formatting ebird to fit into same format as transects and PCs.
 #get list of species codes from PC
@@ -429,20 +435,59 @@ pull.these.columns.from.ebird<-gsub(" ", "_", as.character(does.it.have.match$SC
 ebird2013<-read.csv(file="bigfiles\\studyarea_ebird2013.csv")
 ebird2014<-read.csv(file="bigfiles\\studyarea_ebird2014.csv")
 
-
 selected.ebird.sp.2013<-dplyr::select(ebird2013, #original dataframe
                              1:19, #metadata columns from original dataframe
                              one_of(pull.these.columns.from.ebird)) #select species in our surveys
 
 
-gathered.ebird.data<-selected.ebird.sp.2013%>%
-  gather(key=species, value=count, one_of(pull.these.columns.from.ebird))
+gathered.ebird.data.2013<-selected.ebird.sp.2013%>%
+  tidyr::gather(key=species, value=count, one_of(pull.these.columns.from.ebird))
+
+selected.ebird.sp.2014<-dplyr::select(ebird2014, #original dataframe
+                                      1:19, #metadata columns from original dataframe
+                                      one_of(pull.these.columns.from.ebird)) #select species in our surveys
+
 #Then change format to one row per species.
 #gives an error about losing attributes but this is because the count columns are factors.
 #http://stackoverflow.com/questions/28972386/retain-attributes-when-using-gather-from-tidyr-attributes-are-not-identical
 #The values seem okay so I'm leaving it for now.
 
 #It already gives days where absences occured.  Will need to filter so they are complete counts that give absences.
+ 
+#do for 2014 too
+gathered.ebird.data.2014<-selected.ebird.sp.2014%>%
+  tidyr::gather(key=species, value=count, one_of(pull.these.columns.from.ebird))
+
+#Then combine into one big ebird file
+gathered.ebird.data.all<-rbind(gathered.ebird.data.2013,
+                               gathered.ebird.data.2014)
+
+##Eliminate ebird duplicates because some survey data was uploaded to ebird.
+#First eliminate non-primary checklists (where people submitted more than one checklist for one birding event)
+ebird.cleaned<-gathered.ebird.data.all%>%
+  filter(PRIMARY_CHECKLIST_FLAG==1)
+
+#Pull out transects and point counts from ebird 
+#with the checklist code types.
+#from ebird documentation: "What kind of observation the sample is:
+#stationary (P21), traveling (P22, P34), 
+#area (P23, P35), 
+#casual (P20), or random (P48).
+#Protocol P34 is a small amount of data contributed from the Rocky
+#Mountain Bird Observatory that we believe is high quality.
+#Protocol P35 data are back-yard area counts made on consecutive days
+#(see http://www.birds.cornell.edu/MyYardCounts).
+
+ebird.cleaned.test<-ebird.cleaned%>%
+  filter(COUNT_TYPE=="P21", STATE_PROVINCE=="Oklahoma",
+         MONTH>3&MONTH<8
+         )
+
+
+#Convert time to same format as ours.
+
+#Match by date, time, and lat/long.
+
 
 ###############
 ##MAKING COMBINED SINGLE DATA SHEET
