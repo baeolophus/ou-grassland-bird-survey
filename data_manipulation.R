@@ -434,6 +434,7 @@ selected.ebird.sp.2013<-dplyr::select(ebird2013, #original dataframe
                              1:19, #metadata columns from original dataframe
                              one_of(pull.these.columns.from.ebird)) #select species in our surveys
 
+
 gathered.ebird.data<-selected.ebird.sp.2013%>%
   gather(key=species, value=count, one_of(pull.these.columns.from.ebird))
 #Then change format to one row per species.
