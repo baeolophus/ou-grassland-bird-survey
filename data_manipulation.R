@@ -6,7 +6,7 @@ library(rgdal) # for reading different spatial file formats
 library(rgeos) # for spatial distance and topology operations
 library(dplyr) # data manipulation
 library(geosphere) #distances between transects
-
+library(lubridate) #dates for year
 #####
 
 #import gpx files of where transects and point counts should be
@@ -372,13 +372,19 @@ transect.complete$sighting.LAT<-transect.sighting.lonlat[,2]
 transect.complete$dates.format<-as.character(transect.complete$Date)
 transect.complete$dates.format<-as.Date(transect.complete$dates.format,
                                         format="%m/%d/%Y")
-transect.complete$year<-format(as.Date(transect.complete$dates.format),
-                                format="%Y")
-transect.complete$month<-format(as.Date(transect.complete$dates.format),
-                               format="%m")
-transect.complete$day<-format(as.Date(transect.complete$dates.format),
-                               format="%d")
-
+transect.complete$year<-as.numeric(format(as.Date(transect.complete$dates.format),
+                                format="%Y"))
+transect.complete$month<-as.numeric(format(as.Date(transect.complete$dates.format),
+                               format="%m"))
+transect.complete$day<-as.numeric(format(as.Date(transect.complete$dates.format),
+                               format="%d"))
+transect.complete$ebird.day<-yday(transect.complete$dates.format)
+transect.complete$TIME<-as.character(transect.complete$Start.Time..24h.)
+timebits.tr<-strsplit(transect.complete$TIME,
+                   ":")
+transect.complete$hours<-as.numeric(sapply(timebits.tr, "[", 1))
+transect.complete$minutes<-as.numeric(sapply(timebits.tr, "[", 2))
+transect.complete$ebird.time<-transect.complete$hours+transect.complete$minutes/60
 
 #add in month, date, year columns for PCs.  then export as new current version.
 #bring in data and metadata, join for species locations.
@@ -397,17 +403,17 @@ pointcounts.complete<-left_join(pointcount.data,
 pointcounts.complete$dates.format<-as.character(pointcounts.complete$Date)
 pointcounts.complete$dates.format<-as.Date(pointcounts.complete$dates.format,
                                            format="%m/%d/%Y")
-pointcounts.complete$year<-format(as.Date(pointcounts.complete$dates.format),
-                                  format="%Y")
-pointcounts.complete$month<-format(as.Date(pointcounts.complete$dates.format),
-                                   format="%m")
-pointcounts.complete$day<-format(as.Date(pointcounts.complete$dates.format),
-                                 format="%d")
+pointcounts.complete$year<-as.numeric(format(as.Date(pointcounts.complete$dates.format),
+                                  format="%Y"))
+pointcounts.complete$month<-as.numeric(format(as.Date(pointcounts.complete$dates.format),
+                                   format="%m"))
+pointcounts.complete$day<-as.numeric(format(as.Date(pointcounts.complete$dates.format),
+                                 format="%d"))
 pointcounts.complete$TIME<-as.character(pointcounts.complete$Start.Time..24h.)
-timebits<-strsplit(pointcounts.complete$TIME,
+timebits.pc<-strsplit(pointcounts.complete$TIME,
                                        ":")
-pointcounts.complete$hours<-as.numeric(sapply(timebits, "[", 1))
-pointcounts.complete$minutes<-as.numeric(sapply(timebits, "[", 2))
+pointcounts.complete$hours<-as.numeric(sapply(timebits.pc, "[", 1))
+pointcounts.complete$minutes<-as.numeric(sapply(timebits.pc, "[", 2))
 pointcounts.complete$ebird.time<-pointcounts.complete$hours+pointcounts.complete$minutes/60
 ####################################
 ###
@@ -479,16 +485,23 @@ ebird.cleaned<-gathered.ebird.data.all%>%
 #(see http://www.birds.cornell.edu/MyYardCounts).
 
 ebird.cleaned.test<-ebird.cleaned%>%
-  filter(COUNT_TYPE=="P21", STATE_PROVINCE=="Oklahoma",
-         MONTH>3&MONTH<8
+  filter(STATE_PROVINCE=="Oklahoma"
          )
 
 
-#Convert time to same format as ours.
-
 #Match by date, time, and lat/long.
+#for point counts.
+filter(dat, name %in% target)
 
-
+z<-right_join(ebird.cleaned.test,
+           transect.complete,
+           by=c("YEAR"="year",
+                "DAY"="ebird.day"
+               ))
+z[!is.na(z$SAMPLING_EVENT_ID),]
+filter(ebird.cleaned.test,
+       YEAR==2014,
+       DAY %in% transect.complete$ebird.day)
 ###############
 ##MAKING COMBINED SINGLE DATA SHEET
 ###############
