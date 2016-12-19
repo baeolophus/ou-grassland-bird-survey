@@ -2816,7 +2816,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/19/2014,Randy,Cimmaron Bluffs,G,,,9:40,WEME,1,H,-90,150,S,,
 6/19/2014,Randy,Cimmaron Bluffs,G,,,10:00,BLJA,1,H,-80,70,S,,
 6/19/2014,Randy,Cimmaron Bluffs,G,,,10:00,CONI,1,H,100,70,S,,
-6/19/2014,Randy,Cimmaron Bluffs,G,,,10:00,PEFO,1,H,-90,125,S,,"PEACOCK AT HOUSE NEAR START,"
+6/19/2014,Randy,Cimmaron Bluffs,G,,,10:00,Peafowl,1,H,-90,125,S,,"PEACOCK AT HOUSE NEAR START,"
 6/19/2014,Randy,Cimmaron Bluffs,G,,,10:05,BLGR,1,H,-20,70,S,,
 6/19/2014,Randy,Cimmaron Bluffs,G,,,10:05,KILL,1,H,80,100,,,COOING
 6/19/2014,Randy,Cimmaron Bluffs,G,,,10:05,MODO,1,H,0,30,,,
@@ -4130,7 +4130,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/15/2013,ESB,Chandler,B1-B2,,,7:15,DICK,1,H,40,190,,,
 6/15/2013,ESB,Chandler,B1-B2,,,7:16,NOCA,1,H,-5,210,,,
 6/15/2013,ESB,Chandler,B1-B2,,,7:16,EAME,1,H,-5,240,,,
-6/15/2013,ESB,Chandler,B1-B2,,,7:17,CAWR,1,H,-20,220,,,
+6/15/2013,ESB,Chandler,B1-B2,,,7:17,CARW,1,H,-20,220,,,
 6/15/2013,ESB,Chandler,B1-B2,,,7:17,EAME,1,H,-30,120,,,
 6/15/2013,ESB,Chandler,B1-B2,,,7:17,EAME,1,H,45,140,,,
 6/15/2013,ESB,Chandler,B1-B2,,,7:17,NOBO,1,H,-40,200,,,
@@ -4139,7 +4139,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/15/2013,ESB,Chandler,B1-B2,,,7:21,CACH,1,H,85,180,,,
 6/15/2013,ESB,Chandler,B1-B2,,,7:22,EAME,1,S,45,290,,,On wire
 6/15/2013,ESB,Chandler,B1-B2,,,7:23,BARS,1,S,10,30,,Flyover,flying
-6/15/2013,ESB,Chandler,B1-B2,,,7:25,CAWR,1,H,-40,190,,,
+6/15/2013,ESB,Chandler,B1-B2,,,7:25,CARW,1,H,-40,190,,,
 6/15/2013,ESB,Chandler,B1-B2,,,7:28,BEVI,1,H,15,210,,,across road
 6/15/2013,ESB,Chandler,B1-B2,,,7:28,FISP,1,H,10,220,,,across road
 6/15/2013,ESB,Chandler,B1-B2,,,7:29,EAME,1,H,-95,120,,,
@@ -4158,7 +4158,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/15/2013,ESB,Chandler,B1-B2,,,7:41,NOCA,1,H,90,150,,,
 6/15/2013,ESB,Chandler,B1-B2,,,7:41,CACH,1,H,100,150,,,
 6/15/2013,ESB,Chandler,B1-B2,,,7:42,FISP,1,H,120,130,,,
-6/15/2013,ESB,Chandler,B1-B2,,,7:42,CAWR,1,H,30,110,,,in woods
+6/15/2013,ESB,Chandler,B1-B2,,,7:42,CARW,1,H,30,110,,,in woods
 6/15/2013,ESB,Chandler,B1-B2,,,7:43,RBWO,1,H,-150,70,,,
 7/4/2013,ESB,Oswalt,Oswalt A-B,,,6:31,DICK,1,H,-145,35,,,
 7/4/2013,ESB,Oswalt,Oswalt A-B,,,6:32,EAME,1,H,-60,130,,,
@@ -4270,7 +4270,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 7/5/2013,ESB,Chandler,A ,,,7:11,PABU,1,H,-45,220,,,
 7/5/2013,ESB,Chandler,A ,,,7:17,DICK,1,H,30,110,,,
 7/5/2013,ESB,Chandler,A ,,,7:22,FISP,1,H,45,180,,,
-7/5/2013,ESB,Chandler,A ,,,6:55,CAWR,1,H,90,180,,,
+7/5/2013,ESB,Chandler,A ,,,6:55,CARW,1,H,90,180,,,
 7/5/2013,ESB,Chandler,A ,,,6:58,FISP,1,S,-55,75,,,
 7/5/2013,ESB,Chandler,A ,,,7:11,DICK,1,H,-95,130,,,
 7/5/2013,ESB,Chandler,A ,,,7:17,DICK,1,H,-40,160,,,
@@ -4290,11 +4290,11 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 7/5/2013,ESB,Chandler,B ,,,7:57,FISP,1,H,0,210,,,
 7/5/2013,ESB,Chandler,B ,,,7:59,FISP,1,H,-35,200,,,
 7/5/2013,ESB,Chandler,B ,,,7:59,DICK,1,H,-20,130,,,
-7/5/2013,ESB,Chandler,B ,,,8:00,CAWR,1,H,55,60,,,
+7/5/2013,ESB,Chandler,B ,,,8:00,CARW,1,H,55,60,,,
 7/5/2013,ESB,Chandler,B ,,,8:01,NOCA,2,S,60,60,,,P
 7/5/2013,ESB,Chandler,B ,,,8:02,BEVI,1,H,5,110,,,
 7/5/2013,ESB,Chandler,B ,,,8:03,NOCA,1,H,-40,200,,,
-7/5/2013,ESB,Chandler,B ,,,8:04,CAWR,1,H,-130,180,,,
+7/5/2013,ESB,Chandler,B ,,,8:04,CARW,1,H,-130,180,,,
 7/5/2013,ESB,Chandler,B ,,,8:04,FISP,1,H,15,190,,,
 7/5/2013,ESB,Chandler,B ,,,8:05,DICK,1,H,-20,80,,,
 7/5/2013,ESB,Chandler,B ,,,8:05,DICK,1,H,0,120,,,
@@ -4305,7 +4305,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 7/5/2013,ESB,Chandler,B ,,,8:12,NOCA,1,H,90,160,,,
 7/5/2013,ESB,Chandler,B ,,,8:14,NOCA,1,H,5,130,,,
 7/5/2013,ESB,Chandler,B ,,,8:16,,,,,,,,"END, STARTED TO RAIN"
-7/5/2013,ESB,Chandler,B ,,,7:40,CAWR,1,H,95,100,,,
+7/5/2013,ESB,Chandler,B ,,,7:40,CARW,1,H,95,100,,,
 7/5/2013,ESB,Chandler,B ,,,7:42,NOCA,1,H,75,180,,,
 7/5/2013,ESB,Chandler,B ,,,7:46,DICK,1,S,40,230,,,On wire
 7/5/2013,ESB,Chandler,B ,,,7:52,PIWO,1,S,40,160,,Flyover,flyover pileated 
@@ -4562,7 +4562,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:23,FISP,1,H,45,70,S,,
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:23,NOCA,1,H,-25,105,S,,
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:23,TUTI,1,H,-90,120,S,,
-6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:26,CAWR,1,H,-180,60,S,,
+6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:26,CARW,1,H,-180,60,S,,
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:26,MODO,1,H,-90,90,S,,
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:27,NOMO,1,H,70,160,S,,
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:27,YBCU,1,H,-160,150,S,,
@@ -4571,7 +4571,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:34,NOMO,1,H,80,115,S,,
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:34,CACH,1,H,-20,90,S,,
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:35,NOCA,1,S,45,20,,Flyover,
-6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:37,CAWR,1,S,20,12,,,
+6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:37,CARW,1,S,20,12,,,
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:37,YBCU,1,H,-45,180,S,,
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:39,NOFL,1,H,20,80,S,,
 6/1/2013,JBT,Noble Foundation - Oswalt Road Ranch,OSWT-B,,,13:42,EAME,1,H,-25,120,S,,
@@ -5417,7 +5417,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/12/2013,JBT,"Grimes Switchgrass, Garvin Co.",GRSG-A,,,7:27,DICK,2,S,55,30,S,,"male, s"
 6/12/2013,JBT,"Grimes Switchgrass, Garvin Co.",GRSG-A,,,7:27,DICK,1,S,25,35,S,,"female, s"
 6/12/2013,JBT,"Grimes Switchgrass, Garvin Co.",GRSG-A,,,7:28,BHCO,1,S,-58,42,,,fence
-6/12/2013,JBT,"Grimes Switchgrass, Garvin Co.",GRSG-A,,,7:28,GRGR,1,S,-58,42,,,fence
+6/12/2013,JBT,"Grimes Switchgrass, Garvin Co.",GRSG-A,,,7:28,GTGR,1,S,-58,42,,,"Fence.  Was GRGR, corrected to GTGR by cmc 12/19/16."
 6/12/2013,JBT,"Grimes Switchgrass, Garvin Co.",GRSG-A,,,7:30,DICK,2,S,-40,120,,,landed
 6/12/2013,JBT,"Grimes Switchgrass, Garvin Co.",GRSG-A,,,7:30,DICK,2,S,-65,45,,,trees
 6/12/2013,JBT,"Grimes Switchgrass, Garvin Co.",GRSG-A,,,7:30,DICK,1,S,90,40,,,landed
@@ -5646,13 +5646,13 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:44,NOCA,1,H,180,90,S,,
 7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:44,PABU,1,H,180,65,S,,
 7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:50,EABL,4,S,20,80,,,powerline
-7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:50,NOSH,2,S,18,85,,,powerline
+7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:50,LOSH,2,S,18,85,,,powerline.  NOSH makes no sense.  LOSH?  Changed cmc 12/19/2016
 7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:50,EAPH,1,S,20,40,S,,powerline
 7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:52,STFL,1,S,10,110,,,powerline
 7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:52,MODO,1,S,5,150,,,powerline
 7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:53,MODO,1,S,20,45,,,powerline
-7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:54,NOSH,1,S,30,115,,,Tree
-7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:54,NOSH,1,S,15,75,,Landed,"powerline, landed"
+7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:54,LOSH,1,S,30,115,,,Tree. NOSH makes no sense.  LOSH?  Changed cmc 12/19/2016
+7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:54,LOSH,1,S,15,75,,Landed,"powerline, landed. NOSH makes no sense.  LOSH?  Changed cmc 12/19/2016"
 7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,8:59,MODO,2,S,0,45,,Flyover,
 7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,9:01,NOBO,1,H,-60,250,S,,
 7/3/2013,JBT,Crosstimbers WMA,XTIM-A,,,9:01,NOMO,3,S,-65,150,,,powerline
@@ -8659,7 +8659,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/7/2013,JDR,Packsaddle WMA,PACK-C,,,09:13,BHCO,1,S,100,125,,,
 6/7/2013,JDR,Packsaddle WMA,PACK-C,,,09:16,LASP,1,H,10,200,,,
 6/7/2013,JDR,Packsaddle WMA,PACK-C,,,09:16,FISP,1,H,5,220,,,
-6/7/2013,JDR,Packsaddle WMA,PACK-C,,,09:16,NOLA,1,H,30,250,,,
+6/7/2013,JDR,Packsaddle WMA,PACK-C,,,09:16,NOCA,1,H,30,250,,,
 6/7/2013,JDR,Packsaddle WMA,PACK-C,,,09:19,LASP,1,S,60,25,,Flyover,flyby
 6/7/2013,JDR,Packsaddle WMA,PACK-D,,,09:34,FISP,1,H,-65,200,,,
 6/7/2013,JDR,Packsaddle WMA,PACK-D,,,09:34,FISP,1,H,15,210,,,
@@ -8726,7 +8726,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/12/2013,JDR,"Grimes Switchgrass, Garvin Co.",GRSG-B,,,07:18,LASP,1,S,-90,75,,,
 6/12/2013,JDR,"Grimes Switchgrass, Garvin Co.",GRSG-B,,,07:18,AMGO,1,S,-95,90,,,
 6/12/2013,JDR,"Grimes Switchgrass, Garvin Co.",GRSG-B,,,07:20,AMGO,1,S,-20,80,,,
-6/12/2013,JDR,"Grimes Switchgrass, Garvin Co.",GRSG-B,,,07:20,NOLA,1,H,-90,125,,,
+6/12/2013,JDR,"Grimes Switchgrass, Garvin Co.",GRSG-B,,,07:20,NOCA,1,H,-90,125,,,
 6/12/2013,JDR,"Grimes Switchgrass, Garvin Co.",GRSG-B,,,07:22,WEKI,1,S,5,80,,,
 6/12/2013,JDR,"Grimes Switchgrass, Garvin Co.",GRSG-B,,,07:22,STFL,1,S,-60,60,N,,VS (F)
 6/12/2013,JDR,"Grimes Switchgrass, Garvin Co.",GRSG-B,,,07:22,STFL,1,S,-5,90,N,,VS(M)
@@ -8767,7 +8767,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/24/2013,JDR,Wichita Mountains Wildlife Refuge,WMWR-B,,,07:31,KILL,1,H,90,200,,Flyover,F
 6/24/2013,JDR,Wichita Mountains Wildlife Refuge,WMWR-B,,,07:31,KILL,1,H,70,250,,,
 6/24/2013,JDR,Wichita Mountains Wildlife Refuge,WMWR-B,,,07:31,CAEG,2,S,55,300,,Flyover,F
-6/24/2013,JDR,Wichita Mountains Wildlife Refuge,WMWR-B,,,07:33,LGHE,1,S,-65,35,,,Flushed
+6/24/2013,JDR,Wichita Mountains Wildlife Refuge,WMWR-B,,,07:33,LBHE,1,S,-65,35,,,"Flushed.  Data sheet says LGHE, replaced with probable LBHE cmc 12/19/16 after consulting with Jeremy."
 6/24/2013,JDR,Wichita Mountains Wildlife Refuge,WMWR-B,,,07:33,LASP,1,S,-85,40,,,
 6/24/2013,JDR,Wichita Mountains Wildlife Refuge,WMWR-B,,,07:33,YBCU,1,H,-70,80,,,
 6/24/2013,JDR,Wichita Mountains Wildlife Refuge,WMWR-B,,,07:33,RWBL,1,H,-50,50,,,

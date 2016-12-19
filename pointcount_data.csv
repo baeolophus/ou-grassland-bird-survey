@@ -4568,7 +4568,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC5,,,EAME,1,S,280,50,,,"Call, powerline"
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC5,,,STFL,1,S,277,65,,,powerline
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC5,,,NOMO,1,S,270,,,,road
-7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC5,,,NOSH,3,S,275,80,,,powerline
+7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC5,,,LOSH,3,S,275,80,,,powerline. NOSH makes no sense.  LOSH?  Changed cmc 12/19/2016
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC5,,,NOMO,1,S,65,30,,,powerline
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC5,,,STFL,1,S,40,100,,,powerline
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC5,,,BARS,2,S,5,20,,Flyover,
@@ -4579,7 +4579,7 @@ Date,Observer,Location,Point,StandardizedLocationName,LocalSurveyName,Species,Qu
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC5,,,DICK,1,S,180,55,S,,Tree
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC6,,,EAME,1,H,30,45,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC6,,,DICK,1,H,125,50,S,,
-7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC6,,,NOSH,1,S,50,23,S,,Fence
+7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC6,,,LOSH,1,S,50,23,S,,Fence. NOSH makes no sense.  LOSH?  Changed cmc 12/19/2016
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC6,,,NOBO,1,H,350,200,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC6,,,EAME,1,H,60,100,S,,
 7/4/13,JBT,Noble Foundation - Oswalt Ranch,OSWT-PC6,,,FISP,1,H,35,110,S,,
