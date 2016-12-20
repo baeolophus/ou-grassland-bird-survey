@@ -400,6 +400,9 @@ pointcounts.complete<-left_join(pointcount.data,
                                      "Location",
                                      "Point"))
 
+#checking that everything has a match
+rownames(pointcounts.complete[(is.na(pointcounts.complete$Latitude)),])
+
 #Now clean up dates to match ebird.
 pointcounts.complete$dates.format<-as.character(pointcounts.complete$Date)
 pointcounts.complete$dates.format<-as.Date(pointcounts.complete$dates.format,
@@ -410,7 +413,10 @@ pointcounts.complete$month<-as.numeric(format(as.Date(pointcounts.complete$dates
                                    format="%m"))
 pointcounts.complete$day<-as.numeric(format(as.Date(pointcounts.complete$dates.format),
                                  format="%d"))
+
+pointcounts.complete$ebird.day<-yday(pointcounts.complete$dates.format)
 pointcounts.complete$TIME<-as.character(pointcounts.complete$Start.Time..24h.)
+
 timebits.pc<-strsplit(pointcounts.complete$TIME,
                                        ":")
 pointcounts.complete$hours<-as.numeric(sapply(timebits.pc, "[", 1))
@@ -489,36 +495,45 @@ ebird.cleaned.test<-ebird.cleaned%>%
   filter(STATE_PROVINCE=="Oklahoma"
          )
 
-little.ebird<-dplyr::select(ebird.cleaned.test, SAMPLING_EVENT_ID, LONGITUDE, LATITUDE)%>%
+ebird.sampling.ids<-dplyr::select(ebird.cleaned.test, YEAR, DAY, SAMPLING_EVENT_ID, LONGITUDE, LATITUDE)%>%
   dplyr::distinct(SAMPLING_EVENT_ID, .keep_all=TRUE)
 
-transect.complete$LONGITUDE<-transect.complete$Start.LON
-transect.complete$LATITUDE<-transect.complete$Start.LAT
+transect.primary.keys<-dplyr::select(transect.complete, 
+                                     Date, Observer, Location, spot=Transect,
+                                     ebird.day,
+                                     year,
+                                     Longitude=Start.LON, Latitude=Start.LAT)%>%
+  dplyr::distinct(Date, Observer, Location, spot, .keep_all=TRUE)
+pointcount.primary.keys<-dplyr::select(pointcounts.complete, 
+                                     Date, Observer, Location, spot=Point,
+                                     ebird.day,
+                                     year,
+                                     Longitude, Latitude)%>%
+  dplyr::distinct(Date, Observer, Location, spot, .keep_all=TRUE)
 
+primary.keys<-rbind(transect.primary.keys,
+                    pointcount.primary.keys)
 #Use spatial buffer for point counts and transects
 #Slightly bigger than that for matching points above, or same??
-geo.join.test<-fuzzyjoin::geo_inner_join(x=little.ebird,
-                               y=transect.complete,
-                               max_dist=100,
-                               units="meters",
-                               by=c("LONGITUDE", "LATITUDE"),
-                               distance_col=TRUE)
-#Match the ebird checklist code
+sampling.ids.that.we.input<-fuzzyjoin::geo_left_join(x=primary.keys,
+                                        y=ebird.sampling.ids,
+                               max_dist=0.4,
+                               unit="km",
+                               by=c("Longitude"="LONGITUDE", 
+                                    "Latitude"="LATITUDE"))%>%
+  filter(.,
+       DAY==ebird.day,
+       YEAR==year)%>%
+  #Then get out which ebird checklist codes, these are the ones that will be eliminated.
+  distinct(SAMPLING_EVENT_ID)
 
-#Examine this smaller subset for date, time.
+omit.these<-as.character(sampling.ids.that.we.input[,1])
 
-#Then pull out all rows matching year, year-day, and time.
-filter(dat, name %in% target)
+#Match the ebird checklist code, remove any with that code.
 
-z<-right_join(ebird.cleaned.test,
-           transect.complete,
-           by=c("YEAR"="year",
-                "DAY"="ebird.day"
-               ))
-z[!is.na(z$SAMPLING_EVENT_ID),]
-filter(ebird.cleaned.test,
-       YEAR==2014,
-       DAY %in% transect.complete$ebird.day)
+ebird<-dplyr::filter(gathered.ebird.data.all,
+                     SAMPLING_EVENT_ID!=omit.these)
+
 ###############
 ##MAKING COMBINED SINGLE DATA SHEET
 ###############
