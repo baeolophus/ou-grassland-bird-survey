@@ -538,16 +538,9 @@ complete.list.of.jeremy.samples<-c("S18101887", #Grady County WMA point counts o
                                "S18434697", #Cimmaron Bluffs WMA on 5/16/2014 transects
                                "S18434249") #Cimmaron Hills WMA on 5/17/2014 transects
 #These are all from Jeremy.
-#Match the ebird checklist code, remove any with that code.
-
-what.do.these.look.like<-dplyr::filter(gathered.ebird.data.all,
-                                       SAMPLING_EVENT_ID==list.of.samples.from.jeremy)
-
-what.do.these.look.like[1,]
-
-original.data<-dplyr::filter(primary.keys,
-                             ebird.day==115,
-                             year==2014)
+#These are all included in the filtered "omit.these" so it works for known ebird samples.
+#It is unclear how many other people entered surveys or "presurvey" birds,
+#so we will eliminate all 25-35 sampling events in the "omit.these" list.
 
 ebird<-dplyr::filter(gathered.ebird.data.all,
                      SAMPLING_EVENT_ID!=omit.these)
