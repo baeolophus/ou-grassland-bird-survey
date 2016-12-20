@@ -7,6 +7,7 @@ library(rgeos) # for spatial distance and topology operations
 library(dplyr) # data manipulation
 library(geosphere) #distances between transects
 library(lubridate) #dates for year
+library(fuzzyjoin)
 #####
 
 #import gpx files of where transects and point counts should be
@@ -488,9 +489,25 @@ ebird.cleaned.test<-ebird.cleaned%>%
   filter(STATE_PROVINCE=="Oklahoma"
          )
 
+little.ebird<-dplyr::select(ebird.cleaned.test, SAMPLING_EVENT_ID, LONGITUDE, LATITUDE)%>%
+  dplyr::distinct(SAMPLING_EVENT_ID, .keep_all=TRUE)
 
-#Match by date, time, and lat/long.
-#for point counts.
+transect.complete$LONGITUDE<-transect.complete$Start.LON
+transect.complete$LATITUDE<-transect.complete$Start.LAT
+
+#Use spatial buffer for point counts and transects
+#Slightly bigger than that for matching points above, or same??
+geo.join.test<-fuzzyjoin::geo_inner_join(x=little.ebird,
+                               y=transect.complete,
+                               max_dist=100,
+                               units="meters",
+                               by=c("LONGITUDE", "LATITUDE"),
+                               distance_col=TRUE)
+#Match the ebird checklist code
+
+#Examine this smaller subset for date, time.
+
+#Then pull out all rows matching year, year-day, and time.
 filter(dat, name %in% target)
 
 z<-right_join(ebird.cleaned.test,
