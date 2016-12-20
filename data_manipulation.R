@@ -495,18 +495,20 @@ ebird.cleaned.test<-ebird.cleaned%>%
   filter(STATE_PROVINCE=="Oklahoma"
          )
 
-ebird.sampling.ids<-dplyr::select(ebird.cleaned.test, YEAR, DAY, SAMPLING_EVENT_ID, LONGITUDE, LATITUDE)%>%
+ebird.sampling.ids<-dplyr::select(ebird.cleaned.test, YEAR, DAY, TIME, SAMPLING_EVENT_ID, LONGITUDE, LATITUDE)%>%
   dplyr::distinct(SAMPLING_EVENT_ID, .keep_all=TRUE)
 
 transect.primary.keys<-dplyr::select(transect.complete, 
                                      Date, Observer, Location, spot=Transect,
                                      ebird.day,
+                                     ebird.time,
                                      year,
                                      Longitude=Start.LON, Latitude=Start.LAT)%>%
   dplyr::distinct(Date, Observer, Location, spot, .keep_all=TRUE)
 pointcount.primary.keys<-dplyr::select(pointcounts.complete, 
                                      Date, Observer, Location, spot=Point,
                                      ebird.day,
+                                     ebird.time,
                                      year,
                                      Longitude, Latitude)%>%
   dplyr::distinct(Date, Observer, Location, spot, .keep_all=TRUE)
@@ -517,19 +519,35 @@ primary.keys<-rbind(transect.primary.keys,
 #Slightly bigger than that for matching points above, or same??
 sampling.ids.that.we.input<-fuzzyjoin::geo_left_join(x=primary.keys,
                                         y=ebird.sampling.ids,
-                               max_dist=0.4,
+                               max_dist=15,
                                unit="km",
                                by=c("Longitude"="LONGITUDE", 
                                     "Latitude"="LATITUDE"))%>%
   filter(.,
        DAY==ebird.day,
-       YEAR==year)%>%
+       YEAR==year,
+       TIME>=(ebird.time-1)&TIME<=(ebird.time+1))%>%
   #Then get out which ebird checklist codes, these are the ones that will be eliminated.
-  distinct(SAMPLING_EVENT_ID)
+  distinct(SAMPLING_EVENT_ID, .keep_all=TRUE)
 
 omit.these<-as.character(sampling.ids.that.we.input[,1])
 
+complete.list.of.jeremy.samples<-c("S18101887", #Grady County WMA point counts on 4/17/2014. PCs
+                               "S18137660", #Tallgrass Prairie Preserve on 4/23/2014. transect.
+                               "S18137507", #Rita Blanca point counts on 4/25/2014. PCs
+                               "S18434697", #Cimmaron Bluffs WMA on 5/16/2014 transects
+                               "S18434249") #Cimmaron Hills WMA on 5/17/2014 transects
+#These are all from Jeremy.
 #Match the ebird checklist code, remove any with that code.
+
+what.do.these.look.like<-dplyr::filter(gathered.ebird.data.all,
+                                       SAMPLING_EVENT_ID==list.of.samples.from.jeremy)
+
+what.do.these.look.like[1,]
+
+original.data<-dplyr::filter(primary.keys,
+                             ebird.day==115,
+                             year==2014)
 
 ebird<-dplyr::filter(gathered.ebird.data.all,
                      SAMPLING_EVENT_ID!=omit.these)
