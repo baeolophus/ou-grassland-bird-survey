@@ -296,8 +296,8 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 5/27/2014,Josh,Alesen Rd.,3,ALES,ALES-PC03,194,"CHECK, does not exist in map",confirmed,KEEP,11:33,36.6891,-101.30484,40,10 to 15,,,
 5/29/2014,Josh,Alesen Rd.,6,ALES,ALES-PC06,199,"CHECK, does not exist in map",confirmed,KEEP,11:36,36.68919,-101.3319,0,5 to 10,,,
 5/29/2014,Josh,Alesen Rd.,9,ALES,ALES-PC09,200,"CHECK, does not exist in map",confirmed,KEEP,11:57,36.71038,-101.32803,0,5 to 10,,,
-5/15/2014,Josh,Black Kettle NG,1,BKNG,BKNG-PC10,192,,Location didn't seem to be right. He would have been at PC10,INVESTIGATE,10:17,35.60995,-99.60295,50,5 to 10,,,"AMCR, MODO,MIKI,UVU,CLSW"
-5/15/2014,Josh,Black Kettle NG,5,BKNG,BKNGPC06,193,,He was at PC06 (renamed from PC05),INVESTIGATE,10:50,35.61714,-99.68766,70,5 to 10,,,CCSP
+5/15/2014,Josh,Black Kettle NG,1,BKNG,BKNG-PC10,192,,Location didn't seem to be right. He would have been at PC10,KEEP,10:17,35.60995,-99.60295,50,5 to 10,,,"AMCR, MODO,MIKI,UVU,CLSW"
+5/15/2014,Josh,Black Kettle NG,5,BKNG,BKNGPC06,193,,He was at PC06 (renamed from PC05),KEEP,10:50,35.61714,-99.68766,70,5 to 10,,,CCSP
 5/15/2014,Josh,Black Kettle NG,6,BKNG,BKNGPC07,190,,Double-observer; at PC07 (renamed from PC06 by Jeremy).  CMC 12/16/16: used BKNGPC07 gps point from basecamp.,KEEP,9:18,35.60933,-99.64439,30,5 to 10,,MIKI,RBWO
 5/15/2014,Josh,Black Kettle NG,8,BKNG,BKNGPC09,191,,Double-observer (w/ Tory).  GPS points re-done from Tory¡¯s.,KEEP,9:39,35.59875,-99.65285,50,5 to 10,,,
 5/30/2014,Josh,Black Mesa SP,0,BLKM,BLKM-PC01,222,,,KEEP,13:33,36.8024,-102.87727,70,10 to 15,,,
@@ -364,9 +364,9 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 6/8/2014,Josh,WXRD,3,WXRD,WXRD-PC04,234,,,KEEP,10:24,34.69614,-98.7999,100,10 to 15,WXRD,,
 5/8/2014,Josh,WXRD,5,WXRD,WXRD-PC05,187,,,KEEP,10:44,34.69612,-98.80868,80,5 to 10,WXRD-PC05,,
 6/8/2014,Josh,WXRD,7,WXRD,WXRD-PC08,237,,,KEEP,,34.69607,-98.83495,100,10 to 15,WXRD,,"STFL, BARS"
-5/15/2014,Kristen,Black Kettle NG,3,BKNG,BKNGPC04,240,By 4 and 13.   Where to place?,She appears to have rounded to 2 decimal places on sheet.  Double-observer with JDR (keep JDR),INVESTIGATE,10:52,35.61734,-99.70589,60,5 to 10,,,
-5/15/2014,Kristen,Black Kettle NG,10,BKNG,NA,239,Between 11 and 12.   Where to place?,She appears to have rounded to 2 decimal places on sheet.  Double-observer with JDR (keep JDR),INVESTIGATE,10:19,35.60992,-99.58542,30,5 to 10,Car stopped to ask what we were doing for abt 1.5min.,,
-5/15/2014,Kristen,Black Kettle NG,8,BKNG,NA,238,Between 9 and 14.  Where to place?,Double-observer with JDR (keep JDR); Lat/Lon correct on original,INVESTIGATE,9:46,35.59581,-99.65971,,,,WEKI,AMCR
+5/15/2014,Kristen,Black Kettle NG,3,BKNG,BKNGPC04,240,By 4 and 13.   Where to place?,She appears to have rounded to 2 decimal places on sheet.  Double-observer with JDR (keep JDR),DOUBLE,10:52,35.61734,-99.70589,60,5 to 10,,,
+5/15/2014,Kristen,Black Kettle NG,10,BKNG,NA,239,Between 11 and 12.   Where to place?,She appears to have rounded to 2 decimal places on sheet.  Double-observer with JDR (keep JDR),DOUBLE,10:19,35.60992,-99.58542,30,5 to 10,Car stopped to ask what we were doing for abt 1.5min.,,
+5/15/2014,Kristen,Black Kettle NG,8,BKNG,NA,238,Between 9 and 14.  Where to place?,Double-observer with JDR (keep JDR); Lat/Lon correct on original,DOUBLE,9:46,35.59581,-99.65971,,,,WEKI,AMCR
 6/27/2014,Kristen,Black Mesa SP,2,BLKM,BLKM-PC02,263,,,KEEP,14:36,36.80986,-102.87724,50,15 to 20,,,
 6/27/2014,Kristen,Black Mesa SP,4,BLKM,BLKM-PC04,262,,,KEEP,14:14,36.82421,-102.87734,60,10 to 15,trudk stopped to talk,,
 6/27/2014,Kristen,Black Mesa SP,6,BLKM,BLKM-PC06,261,,,KEEP,13:56,36.83885,-102.87694,70,5 to 10,,,
@@ -578,7 +578,7 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 5/27/2014,Roy,Optima,6,OPTM,OPTM-PC07,336,,,KEEP,10:35,36.61651,-101.23351,60,0 to 5,Winds fading throughout morning,GRSP (H),Falcon Sp.
 5/29/2014,Roy,Optima,9,OPTM,OPTM-PC09,339,"CHECK, does not exist in map",confirmed,KEEP,10:18,36.61245,-101.15209,0,5 to 10,Birds flocking to Central Pivot Irrigation Machines North and South,"KILL, GTGR, COGR","KILL, GTGR, COGR"
 5/29/2014,Roy,Optima,12,OPTM,OPTM-PC12,340,"CHECK, does not exist in map",confirmed,KEEP,10:45,36.58745,-101.15207,0,5 to 10,,WEME,HOLA
-5/30/2014,Roy,Rita Blanca NG,3,RBNG,RBNG-PC04,353,cmc can't find datasheet,,INVESTIGATE,11:13,36.51605,-102.64748,30,10 to 15,,,
+5/30/2014,Roy,Rita Blanca NG,3,RBNG,RBNG-PC04,353,cmc can't find datasheet,,KEEP,11:13,36.51605,-102.64748,30,10 to 15,,,
 5/29/2014,Roy,SCHU,1,SCHU,SCHU-PC01,341,"CHECK, does not exist in map",confirmed,KEEP,7:00,36.5439,-101.16675,10,0 to 5,"Sun just risen, bird activity increased as count went on.","GTGR, CASP","OROR, TUVU, LASP"
 5/29/2014,Roy,SCHU,3,SCHU,SCHU-PC03,342,"CHECK, does not exist in map",confirmed,KEEP,7:25,36.53676,-101.18557,10,0 to 5,,WEME,"NOMO, EAME, CASP, CLSW"
 5/29/2014,Roy,SCHU,5,SCHU,SCHU-PC05,343,"CHECK, does not exist in map",confirmed,KEEP,7:52,36.52941,-101.19627,0,5 to 10,,,"NOMO, MODO, CLSW, WEKI"
@@ -599,12 +599,12 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 5/18/2014,Tory,Selman Ranch,PC01,SELM,SELMPC01,102additional,selman ranch pt 1 (get from gpx),"This would match the way we did team point counts (always same order, 800m apart - where possible)",KEEP,7:55,36.76842,-99.38724,,,selman ranch pt 1 (get from gpx),,
 5/18/2014,Tory,Selman Ranch,PC04,SELM,SELMPC04,101additional,selman ranch pt 4 (get from gpx),"This would match the way we did team point counts (always same order, 800m apart - where possible)",KEEP,7:25,36.78471,-99.39179,90,5 to 10 W,selman ranch pt 4 (get from gpx),,"BHCO, AMCR"
 5/27/2014,Tory,Alesen Rd.,2,ALES,ALES-PC02,370,"CHECK, does not exist in map",confirmed,KEEP,11:30,36.68661,-101.2957,30,5 to 10,,,
-5/29/2014,Tory,Alesen Rd.,5,ALES,ALES-PC05,374,cmc can't find datasheet,confirmed,INVESTIGATE,11:30,36.68911,-101.32286,0,5 to 10,,,"GRSP, MODO (2), SCQU"
-5/29/2014,Tory,Alesen Rd.,8,ALES,ALES-PC08,375,cmc can't find datasheet,confirmed,INVESTIGATE,11:54,36.70382,-101.33167,0,5 to 10,,,GRSP
-5/15/2014,Tory,Black Kettle NG,4,BKNG,BKNGPC05,363,,,INVESTIGATE,10:52,35.61718,-99.69678,60,0 to 5,,,
-5/15/2014,Tory,Black Kettle NG,6,BKNG,BKNGPC07,360,,Double-observer (w/Josh).  Use Josh¡¯s over this one.,INVESTIGATE,9:18,35.60933,-99.64439,30,5 to 10,,MIKI,
-5/15/2014,Tory,Black Kettle NG,8,BKNG,BKNGPC09,361,,"Double-observer (w/Josh, keep Josh¡¯s) at PC09 (renamed from PC08)",INVESTIGATE,9:39,35.59875,-99.65285,30,5 to 10,,,
-5/15/2014,Tory,Black Kettle NG,9,BKNG,BKNGPC11,362,,,INVESTIGATE,10:18,35.6099,-99.59411,30,0 to 5,,,"EAME, LASP"
+5/29/2014,Tory,Alesen Rd.,5,ALES,ALES-PC05,374,cmc can't find datasheet,confirmed,KEEP,11:30,36.68911,-101.32286,0,5 to 10,,,"GRSP, MODO (2), SCQU"
+5/29/2014,Tory,Alesen Rd.,8,ALES,ALES-PC08,375,cmc can't find datasheet,confirmed,KEEP,11:54,36.70382,-101.33167,0,5 to 10,,,GRSP
+5/15/2014,Tory,Black Kettle NG,4,BKNG,BKNGPC05,363,,,KEEP,10:52,35.61718,-99.69678,60,0 to 5,,,
+5/15/2014,Tory,Black Kettle NG,6,BKNG,BKNGPC07,360,,Double-observer (w/Josh).  Use Josh¡¯s over this one.,DOUBLE,9:18,35.60933,-99.64439,30,5 to 10,,MIKI,
+5/15/2014,Tory,Black Kettle NG,8,BKNG,BKNGPC09,361,,"Double-observer (w/Josh, keep Josh¡¯s) at PC09 (renamed from PC08)",DOUBLE,9:39,35.59875,-99.65285,30,5 to 10,,,
+5/15/2014,Tory,Black Kettle NG,9,BKNG,BKNGPC11,362,,,KEEP,10:18,35.6099,-99.59411,30,0 to 5,,,"EAME, LASP"
 5/17/2014,Tory,Cimmaron Hills,1,CIMH,CIMHPC01,364,,,KEEP,7:53,36.93846,-99.39312,100,0 to 5,,,
 5/17/2014,Tory,Cimmaron Hills,2,CIMH,CIMHPC02,365,,,KEEP,8:14,36.94392,-99.39935,100,0 to 5,,,
 5/17/2014,Tory,Cimmaron Hills,TES-052,CIMH,CIMHPC52,366,,,KEEP,9:25,36.93115,-99.39213,100,0 to 5,,,
@@ -614,8 +614,8 @@ Date,Observer,Location,Point,StandardizedLocationName,newspotnames,index,cmc_com
 5/27/2014,Tory,Optima,1,OPTM,OPTM-PC02,371,,,KEEP,9:39,36.63102,-101.20216,50,5 to 10,,,"CLSW, BHCO, LASP"
 5/27/2014,Tory,Optima,4,OPTM,OPTM-PC05,372,,,KEEP,10:09,36.62376,-101.22407,60,0 to 5,,,"MODO, STFL"
 5/27/2014,Tory,Optima,7,OPTM,OPTM-PC08,373,"CHECK, same distance west of OPTM-PC07 as OPTM-PC06 is east.",confirmed,KEEP,10:36,36.61647,-101.2425,50,0 to 5,BUOR breeding pair,,"BUOR, CONI, NOBO, WEME"
-5/29/2014,Tory,Optima,10,OPTM,OPTM-PC10,376,cmc can't find datasheet,confirmed,INVESTIGATE,10:20,36.60525,-101.15206,0,0 to 5,COGR and RWBL flocked to central pivot irrigation machine in field east of PC,,"BUOR (2nd year male), HOLA, LASP"
-5/29/2014,Tory,Optima,13,OPTM,OPTM-PC13,377,cmc can't find datasheet,confirmed,INVESTIGATE,10:46,36.58767,-101.16119,0,0 to 5,,,GRSP
+5/29/2014,Tory,Optima,10,OPTM,OPTM-PC10,376,cmc can't find datasheet,confirmed,KEEP,10:20,36.60525,-101.15206,0,0 to 5,COGR and RWBL flocked to central pivot irrigation machine in field east of PC,,"BUOR (2nd year male), HOLA, LASP"
+5/29/2014,Tory,Optima,13,OPTM,OPTM-PC13,377,cmc can't find datasheet,confirmed,KEEP,10:46,36.58767,-101.16119,0,0 to 5,,,GRSP
 5/30/2014,Tory,Rita Blanca NG,4,RBNG,RBNG-PC05,378,,,KEEP,11:14,36.51611,-102.65641,50,10 to 15,"Prairie dogs to SE, corn field to N with central pivots",,
 6/8/2014,Tory,WMWR,0,W49H,W49H-PC01,381,,,KEEP,11:31,34.73975,-98.78909,90,10 to 15,W49H,,"CAGO, NOBO, LASP"
 6/8/2014,Tory,WMWR,2,WXRD,WXRD-PC03,379,,,KEEP,10:19,34.69624,-98.79086,100,5 to 10,"WXRD, misting",,"CLSW, RTHU"
