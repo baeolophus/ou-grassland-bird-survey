@@ -4881,7 +4881,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 6/2/2013,JBT,Crosstimbers WMA,XTIM-D,,,13:54,AMCR,KEEP,1,H,80,300,H,,H
 6/2/2013,JBT,Crosstimbers WMA,XTIM-D,,,13:54,STFL,KEEP,1,H,-30,85,S,,Tree
 6/2/2013,JBT,Crosstimbers WMA,XTIM-D,,,13:56,STFL,KEEP,1,S,24,28,S,,"Perched, small snag"
-6/2/2013,JBT,Crosstimbers WMA,XTIM-D,,,13:57,DICK,KEEP,1,H,22,5-,S,,S 
+6/2/2013,JBT,Crosstimbers WMA,XTIM-D,,,13:57,DICK,KEEP,1,H,22,50,S,,S 
 6/2/2013,JBT,Crosstimbers WMA,XTIM-D,,,13:59,STFL,KEEP,1,S,-17,58,C,,Display
 6/2/2013,JBT,Crosstimbers WMA,XTIM-D,,,14:01,DICK,KEEP,2,S,-27,20,,,Flushed
 6/2/2013,JBT,Crosstimbers WMA,XTIM-D,,,14:01,STFL,KEEP,2,S,-27,46,,,Perched
@@ -6150,7 +6150,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/29/2013,JDR,HACKBERRY ,D,,,7:07,EAME,KEEP,2,H,-45,400,,,distant cluster
 5/29/2013,JDR,HACKBERRY ,D,,,7:11,UNKNOWN,KEEP,1,H,85,30,,,"small ""tsink"" alarm call"
 5/29/2013,JDR,HACKBERRY ,D,,,7:11,EAME,KEEP,1,H,0,330,,,
-5/29/2013,JDR,HACKBERRY ,D,,,7:12,KILL,KEEP,1,H,90,350,,,
+5/29/2013,JDR,HACKBERRY ,D,,-27,7:12,KILL,KEEP,1,H,90,350,,,
 5/29/2013,JDR,HACKBERRY ,D,,,7:14,DICK,KEEP,1,H,-45,250,,,
 5/29/2013,JDR,HACKBERRY ,D,,,7:14,DICK,KEEP,1,H,5,250,,,
 5/29/2013,JDR,HACKBERRY ,D,,,7:14,EAME,KEEP,1,H,10,300,,,
@@ -6176,7 +6176,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/29/2013,JDR,HACKBERRY ,D,,,7:35,NOBO,KEEP,1,H,-40,260,,,
 5/29/2013,JDR,HACKBERRY ,D,,,7:36,MODO,KEEP,1,S,75,400,,Flyover,fly by
 5/29/2013,JDR,HACKBERRY ,D,,,7:37,MODO,KEEP,1,H,80,140,,,
-5/29/2013,JDR,HACKBERRY ,D,,,7:38,EAME,KEEP,1,S,-55,27-,,,
+5/29/2013,JDR,HACKBERRY ,D,,,7:38,EAME,KEEP,1,S,-55,270,,,
 5/29/2013,JDR,HACKBERRY ,D,,,7:39,RWBL,KEEP,1,S,0,100,,Flyover,fly by
 5/29/2013,JDR,HACKBERRY ,D,,,7:40,CONI,KEEP,1,S,-15,75,,Flyover,fly by
 5/29/2013,JDR,HACKBERRY ,D,,,7:41,BHCO,KEEP,1,H,85,110,,,
@@ -6682,7 +6682,7 @@ Date,Observer,Location,Transect,StandardizedLocationName,LocalSurveyName,Time (2
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:04,DICK,KEEP,1,H,-10,130,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:04,UNKNOWN,KEEP,1,H,-50,100,,,
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:04,NOCA,KEEP,1,S,-40,20,,,
-5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:05,heron sp.,KEEP,1,S,-45,?,,Flyover,flyover
+5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:05,heron sp.,KEEP,1,S,-45,,,Flyover,flyover
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:06,UNKNOWN,KEEP,1,H,-50,20,,,"in tree, warbler?"
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:06,UNKNOWN,KEEP,1,?,0,18,,,sparrow in tree
 5/25/2013,JGK,Kessler Atmospheric and Ecological Field Station,KAEF-A,,,7:09,DICK,KEEP,1,S,15,90,,,
