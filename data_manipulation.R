@@ -478,7 +478,8 @@ gathered.ebird.data.all<-rbind(gathered.ebird.data.2013,
 ##Eliminate ebird duplicates because some survey data was uploaded to ebird.
 #First eliminate non-primary checklists (where people submitted more than one checklist for one birding event)
 ebird.cleaned<-gathered.ebird.data.all%>%
-  filter(PRIMARY_CHECKLIST_FLAG==1)
+  filter(PRIMARY_CHECKLIST_FLAG==1,
+         COUNT_TYPE!="P20") #eliminate casual counts
 
 #Pull out transects and point counts from ebird 
 #with the checklist code types.
@@ -528,7 +529,7 @@ sampling.ids.that.we.input<-fuzzyjoin::geo_left_join(x=primary.keys,
        YEAR==year,
        TIME>=(ebird.time-1)&TIME<=(ebird.time+1))%>%
   #Then get out which ebird checklist codes, these are the ones that will be eliminated.
-  distinct(SAMPLING_EVENT_ID, .keep_all=TRUE)
+  distinct(SAMPLING_EVENT_ID)
 
 omit.these<-as.character(sampling.ids.that.we.input[,1])
 
@@ -542,13 +543,29 @@ complete.list.of.jeremy.samples<-c("S18101887", #Grady County WMA point counts o
 #It is unclear how many other people entered surveys or "presurvey" birds,
 #so we will eliminate all 25-35 sampling events in the "omit.these" list.
 
-ebird<-dplyr::filter(gathered.ebird.data.all,
-                     SAMPLING_EVENT_ID!=omit.these)
+ebird.complete<-dplyr::filter(ebird.cleaned,
+                     !(SAMPLING_EVENT_ID %in% omit.these))
+
 
 ###############
-##MAKING COMBINED SINGLE DATA SHEET
+##MAKING COMBINED SINGLE DATA SHEET for presence/absence data
 ###############
 #If there are any more changes to data,
 #then edit original ones and rerun this script.
 ###############
+#Specify data sources for impending combination.
+ebird.complete$datasource<-"EBIRD"
+transect.complete$datasource<-"TRANSECT"
+pointcounts.complete$datasource<-"POINTCOUNT"
 
+#Create primary key single columns for our data with same name as ebird primary key (SAMPLING_EVENT_ID)
+transect.complete$SAMPLING_EVENT_ID<-paste(transect.complete$Date,
+                                           transect.complete$Observer,
+                                           transect.complete$Location,
+                                           transect.complete$Transect,
+                                           sep="_")
+pointcounts.complete$SAMPLING_EVENT_ID<-paste(pointcounts.complete$Date,
+                                              pointcounts.complete$Observer,
+                                              pointcounts.complete$Location,
+                                              pointcounts.complete$Point,
+                                           sep="_")
