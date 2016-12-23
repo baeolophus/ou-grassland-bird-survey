@@ -396,11 +396,6 @@ transect.complete$Quantity.corrected<-as.numeric(as.character(transect.complete$
 View(transect.complete[is.na(transect.complete$Quantity.corrected),c("Quantity.corrected", "Quantity")])
 #checks that all NAs are reasonable (no value given in original Quantity)
 
-#correcting distance to numeric
-transect.complete$Distance.corrected<-gsub("+", "",
-                                           as.character(transect.complete$Distance..m.),
-                                           fixed=TRUE)
-
 #add in month, date, year columns for PCs.  then export as new current version.
 #bring in data and metadata, join for species locations.
 pointcount.data<-read.csv(file="pointcount_data.csv")
@@ -575,22 +570,44 @@ pointcounts.complete<-left_join(pointcounts.complete,
                                          aou.codes,
                                          by=c("Species"="SPEC"))
 pointcounts.complete$SCINAME<-gsub(" ", "_", as.character(pointcounts.complete$SCINAME))
+transect.complete<-left_join(transect.complete,
+                                aou.codes,
+                                by=c("Possible.Species"="SPEC"))
+transect.complete$SCINAME<-gsub(" ", "_", as.character(transect.complete$SCINAME))
+
+
+ebird.complete$SCINAME.spaces<-gsub("_", " ", as.character(ebird.complete$species))
+ebird.complete<-left_join(ebird.complete,
+                             aou.codes,
+                             by=c("SCINAME.spaces"="SCINAME"))
+
+ebird.complete$SCINAME<-gsub(" ", "_", as.character(ebird.complete$SCINAME.spaces))
+
 
 #Create primary key single columns for our data with same name as ebird primary key (SAMPLING_EVENT_ID)
-transect.complete$SAMPLING_EVENT_ID<-paste(transect.complete$Date,
+transect.complete$SAMPLING_EVENT_ID<-paste(transect.complete$datasource,
+                                           transect.complete$Date,
                                            transect.complete$Observer,
                                            transect.complete$Location,
                                            transect.complete$Transect,
                                            sep="_")
-pointcounts.complete$SAMPLING_EVENT_ID<-paste(pointcounts.complete$Date,
+pointcounts.complete$SAMPLING_EVENT_ID<-paste(pointcounts.complete$datasource,
+                                              pointcounts.complete$Date,
                                               pointcounts.complete$Observer,
                                               pointcounts.complete$Location,
                                               pointcounts.complete$Point,
                                            sep="_")
 
-pc.combine<-dplyr::filter(pointcounts.complete,
+
+pc.species.per.transect<-dplyr::group_by(pointcounts.complete,
+                                         SAMPLING_EVENT_ID,
+                                         Species)%>%
+  do(.,
+     sample_n(., 1))%>%ungroup(.)
+pc.combine<-dplyr::filter(pc.species.per.transect,
                           whattodowiththisrecord=="KEEP",
-                          whattodowiththissighting=="KEEP")%>%
+                          whattodowiththissighting=="KEEP",
+                          Distance..m.<500)%>%
                           select(.,
                    datasource,
                    SAMPLING_EVENT_ID,
@@ -599,15 +616,24 @@ pc.combine<-dplyr::filter(pointcounts.complete,
                    ebird.day,
                    ebird.time,
                    Observer,
-                   Species,
+                   SCINAME,
                    Longitude,
                    Latitude,
-                   Quantity,
-                   Distance..m.
+                   Quantity
                    )
-tr.combine<-dplyr::filter(transect.complete,
+
+#This gets one species sighting per transect so we have one row per species per transect while still retaining detailed location data.
+#There may be a better way (first sighting?  last sighting?) but this will do for now.
+tr.species.per.transect<-dplyr::group_by(transect.complete,
+                                         SAMPLING_EVENT_ID,
+                                         Possible.Species)%>%
+  do(.,
+     sample_n(., 1))%>%ungroup(.)
+
+tr.combine<-dplyr::filter(tr.species.per.transect,
                           whattodowiththisrecord=="KEEP",
-                          whattodowiththissighting=="KEEP")%>%
+                          whattodowiththissighting=="KEEP",
+                          Distance..m.<500)%>%
                           select(.,
                    datasource,
                    SAMPLING_EVENT_ID,
@@ -616,56 +642,57 @@ tr.combine<-dplyr::filter(transect.complete,
                    ebird.day,
                    ebird.time,
                    Observer,
-                   Species=Possible.Species,
+                   SCINAME,
                    Longitude=sighting.LON,
                    Latitude=sighting.LAT,
-                   Quantity=Quantity.corrected,
-                   Distance..m.)
-oursurveys.combined<-rbind(tr.combine,
-      pc.combine)
-oursurveys.generate.presence<-dplyr::filter(pointcounts.complete,
-                                             Distance..m.<500) %>%
-                               dplyr::group_by(SAMPLING_EVENT_ID,
-                                               SCINAME) %>%
-                               summarize(Quantity=sum(Quantity)) %>%
+                   Quantity=Quantity.corrected)
+oursurveys.combined<-bind_rows(tr.combine,
+                                      pc.combine)
+
+oursurveys.combined<-ungroup(oursurveys.combined)
+
+oursurveys.generate.presence<-dplyr::filter(oursurveys.combined,
+                                             !is.na(SCINAME)) %>%
                                tidyr::spread(key=SCINAME,
                                              value=Quantity, 
                                              fill=0) %>% #whereever there is an empty row, create 0
                                tidyr::gather(key=SCINAME,
                                              value=Quantity,
                                              one_of(pull.these.columns.from.ebird)) #gather all the species columns
+oursurveys.generate.presence$Quantity<-as.character(oursurveys.generate.presence$Quantity)
+#necessary to convert to character to combine with ebird
+oursurveys.generate.presence<-ungroup(oursurveys.generate.presence)
 
-combine.transect<-select(transect.complete,
-                         SAMPLING_EVENT_ID,
-                         year,
-                         month,
-                         ebird.day,
-                         ebird.time,
-                         species=Possible.Species,
-                         Longitude,
-                         Latitude,
-                         Quantity,
-                         presence,
-                         datasource)
-combine.pointcounts<-select(pointcounts.complete, 
-                            SAMPLING_EVENT_ID,
-                            year,
-                            month,
-                            ebird.day,
-                            ebird.time,
-                            species=Species,
-                            Longitude,
-                            Latitude,
-                            Quantity,
-                            presence,
-                            datasource)
+str(oursurveys.generate.presence)
 
-combine.ebird<-select(ebird,)
+combine.ebird<-select(ebird.complete,
+                      datasource,
+                      SAMPLING_EVENT_ID,
+                      year=YEAR,
+                      month=MONTH,
+                      ebird.day=DAY,
+                      ebird.time=TIME,
+                      Observer=OBSERVER_ID,
+                      Species=SPEC,
+                      SCINAME,
+                      Longitude=LONGITUDE,
+                      Latitude=LATITUDE,
+                      Quantity=count)
+combine.ebird$Distance..m<-NA
 
 #all have same columns in same order though with different names.
-complete.dataset.for.sdm<-bind_rows(combine.transect,
-          combine.pointcounts,
-          combine.ebird)
+str(combine.ebird)
+str(oursurveys.generate.presence)
+complete.dataset.for.sdm<-rbind(oursurveys.generate.presence,
+                                    combine.ebird)
+
+complete.dataset.for.sdm$quantity.numeric<-gsub("X",
+                                                9999999999,
+                                                complete.dataset.for.sdm$Quantity,
+                                                fixed=TRUE)
+complete.dataset.for.sdm$quantity.numeric<-as.numeric(complete.dataset.for.sdm$quantity.numeric)
+complete.dataset.for.sdm$presence<-ifelse(complete.dataset.for.sdm$quantity.numeric<1, 0, 1)
+
 colnames(complete.dataset.for.sdm)<-c("primarykey",
                                       "year",
                                       "month",
@@ -676,4 +703,4 @@ colnames(complete.dataset.for.sdm)<-c("primarykey",
                                       "longitude",
                                       "latitude",
                                       "quantity",
-                                      "presence")
+                                      "distance")
