@@ -463,6 +463,7 @@ selected.ebird.sp.2013<-dplyr::select(ebird2013, #original dataframe
 
 
 gathered.ebird.data.2013<-selected.ebird.sp.2013%>%
+  mutate_each(funs(as.character), one_of(pull.these.columns.from.ebird))%>%
   tidyr::gather(key=species, value=Quantity, one_of(pull.these.columns.from.ebird))
 
 selected.ebird.sp.2014<-dplyr::select(ebird2014, #original dataframe
@@ -478,6 +479,7 @@ selected.ebird.sp.2014<-dplyr::select(ebird2014, #original dataframe
  
 #do for 2014 too
 gathered.ebird.data.2014<-selected.ebird.sp.2014%>%
+  mutate_each(funs(as.character), one_of(pull.these.columns.from.ebird))%>%
   tidyr::gather(key=species, value=Quantity, one_of(pull.these.columns.from.ebird))
 
 #Then combine into one big ebird file
@@ -658,10 +660,10 @@ oursurveys.generate.presence<-dplyr::filter(oursurveys.combined,
                                              fill=0) %>% #whereever there is an empty row, create 0
                                tidyr::gather(key=SCINAME,
                                              value=Quantity,
-                                             one_of(pull.these.columns.from.ebird)) #gather all the species columns
+                                             one_of(pull.these.columns.from.ebird)) %>% #gather all the species columns
+                               dplyr::arrange(SAMPLING_EVENT_ID)
 oursurveys.generate.presence$Quantity<-as.character(oursurveys.generate.presence$Quantity)
 #necessary to convert to character to combine with ebird
-oursurveys.generate.presence<-ungroup(oursurveys.generate.presence)
 
 str(oursurveys.generate.presence)
 
@@ -673,12 +675,11 @@ combine.ebird<-select(ebird.complete,
                       ebird.day=DAY,
                       ebird.time=TIME,
                       Observer=OBSERVER_ID,
-                      Species=SPEC,
                       SCINAME,
                       Longitude=LONGITUDE,
                       Latitude=LATITUDE,
-                      Quantity=count)
-combine.ebird$Distance..m<-NA
+                      Quantity) %>%
+                dplyr::arrange(SAMPLING_EVENT_ID)
 
 #all have same columns in same order though with different names.
 str(combine.ebird)
@@ -692,15 +693,25 @@ complete.dataset.for.sdm$quantity.numeric<-gsub("X",
                                                 fixed=TRUE)
 complete.dataset.for.sdm$quantity.numeric<-as.numeric(complete.dataset.for.sdm$quantity.numeric)
 complete.dataset.for.sdm$presence<-ifelse(complete.dataset.for.sdm$quantity.numeric<1, 0, 1)
+complete.dataset.for.sdm$SCINAME.space<-gsub("_",
+                                                " ",
+                                                complete.dataset.for.sdm$SCINAME,
+                                                fixed=TRUE)
 
-colnames(complete.dataset.for.sdm)<-c("primarykey",
-                                      "year",
-                                      "month",
-                                      "dayofyear",
-                                      "time",
-                                      "observer",
-                                      "species",
-                                      "longitude",
-                                      "latitude",
-                                      "quantity",
-                                      "distance")
+
+complete.dataset.for.sdm<-left_join(complete.dataset.for.sdm,
+                                         aou.codes[,c("SPEC",
+                                                      "COMMONNAME",
+                                                      "SCINAME")],
+                                         by=c("SCINAME.space"="SCINAME"))
+complete.dataset.for.sdm<-dplyr::arrange(complete.dataset.for.sdm,
+                                         datasource,
+                                         SAMPLING_EVENT_ID)
+
+#now select species to get smaller datasets that are easily used.
+
+complete.dataset.for.sdm.dick<-dplyr::filter(complete.dataset.for.sdm,
+                                             SPEC=="DICK")
+
+write.csv(complete.dataset.for.sdm.dick,
+          file = "completedatasetforsdm.DICK.csv")
