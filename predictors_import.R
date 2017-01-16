@@ -30,3 +30,19 @@ predictors.brick<-brick(NASS2013,
                     NASS2014,
                     bio18,
                     bio19)
+
+library(sp)
+library(rgdal)
+library(raster)
+library(ggplot2)
+#Import census blocks for Oklahoma.
+censusblocks<-readOGR(dsn="E:\\Downloads\\tabblock2010_40_pophu",
+                      layer="tabblock2010_40_pophu")
+
+str(censusblocks)
+head(censusblocks)
+#Get out population count field.
+
+ggplot(data=censusblocks)+
+  geom_polygon(mapping=aes(color=POP10))
+
