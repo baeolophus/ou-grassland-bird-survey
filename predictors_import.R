@@ -46,3 +46,62 @@ head(censusblocks)
 ggplot(data=censusblocks)+
   geom_polygon(mapping=aes(color=POP10))
 
+#import census data geodatabase
+
+# The input file geodatabase
+fgdb<-"E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/easements_EASEAREA_ok_3276698_01/easements/easement_a_ok.gdb"
+# List all feature classes in a file geodatabase
+subset(ogrDrivers(), grepl("GDB", name))
+fc_list <- ogrListLayers(fgdb)
+print(fc_list)
+# Read the feature class
+easements<-readOGR(dsn=fgdb,
+                   layer="easement_a_ok")
+
+plot(easements)
+
+#Create masking raster y out of study area extent
+studyarea.extent.raster <- 
+easements.raster <- rasterize(x = easements,
+                            y = studyarea.extent,
+                            field = 1,
+                            )
+
+#Convert a spatial polygon to a raster (https://www.r-bloggers.com/converting-shapefiles-to-rasters-in-r/)
+shp2raster <- function(shp,
+                       mask.raster,
+                       label,
+                       value,
+                       transform = FALSE,
+                       proj.from = NA,
+                       proj.to = NA, 
+                       map = TRUE) {
+  
+  require(raster, rgdal)
+  
+  # use transform==TRUE if the polygon is not in the same coordinate system as
+  # the output raster, setting proj.from & proj.to to the appropriate
+  # projections
+  if (transform == TRUE) {
+    proj4string(shp) <- proj.from
+    shp <- spTransform(shp, proj.to)
+  }
+  
+  # convert the shapefile to a raster based on a standardised background
+  # raster
+  r <- rasterize(shp, mask.raster)
+  # set the cells associated with the shapfile to the specified value
+  r[!is.na(r)] <- value
+  # merge the new raster with the mask raster and export to the working
+  # directory as a tif file
+  r <- mask(merge(r, mask.raster), mask.raster, filename = label, format = "GTiff",
+            overwrite = T)
+  
+  # plot map of new raster
+  if (map == TRUE) {
+    plot(r, main = label, axes = F, box = F)
+  }
+  
+  names(r) <- label
+  return(r)
+}
