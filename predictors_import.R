@@ -1,20 +1,27 @@
 #Bringing in predictors.
 
+
+#help on working with rasters in R:
+#http://neondataskills.org/R/Raster-Data-In-R/
+#
+
+library(sp)
+library(rgdal)
+library(raster)
+library(ggplot2)
+
 #NASS- raster, each year has its own
 #https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php
 #Includes switchgrass code, so even if switchgrass not found in OK could do analysis nationwide??
 #30 meter resolution.
 #switchgrass appears to be rare to non-existent in OK in both years.
 
-#help on working with rasters in R:
-#http://neondataskills.org/R/Raster-Data-In-R/
-#
-
-library(raster)
 NASS2013<-raster('bigfiles/cdl_30m_r_ok_2013_utm14.tif')
 NASS2014<-raster('bigfiles/cdl_30m_r_ok_2014_utm14.tif')
+NLCD2011<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
 plot(NASS2013)
 plot(NASS2014)
+plot(NLCD2011)
 
 extract2013<-getValues(NASS2013)
 unique(values(NASS2013))
@@ -31,10 +38,6 @@ predictors.brick<-brick(NASS2013,
                     bio18,
                     bio19)
 
-library(sp)
-library(rgdal)
-library(raster)
-library(ggplot2)
 #Import census blocks for Oklahoma.
 censusblocks<-readOGR(dsn="E:\\Downloads\\tabblock2010_40_pophu",
                       layer="tabblock2010_40_pophu")
@@ -61,11 +64,38 @@ easements<-readOGR(dsn=fgdb,
 plot(easements)
 
 #Create masking raster y out of study area extent
-studyarea.extent.raster <- 
+blank_oklahoma<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
+blank_oklahoma<-setValues(NLCD2011, 0)
+
+grs80.14<-CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
+easements <- spTransform(easements,
+                         CRSobj=grs80.14)
+
+rasterOptions()$tmpdir
+
+rasterOptions(tmpdir="E:/Documents/R/temp")
+
+
 easements.raster <- rasterize(x = easements,
-                            y = studyarea.extent,
-                            field = 1,
-                            )
+                            y = blank_oklahoma)
+
+writeRaster(easements.raster,
+            filename = "conservation_easements_raster.tif",
+            format="GTiff")
+
+easements.raster<-shp2raster(shp=easements,
+           mask.raster=blank_oklahoma,
+           label= "easement_raster",
+           value = 1,
+           transform=TRUE,
+           proj.from= "+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs",
+           proj.to = "+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs",
+           map=TRUE)
+
+easement.raster.test<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/easements_EASEAREA_ok_3276698_01/rasterized_easements/conservation_easements_raster.grd")
+
+plot(easement.raster.test)
+plot(easements, add=TRUE)
 
 #Convert a spatial polygon to a raster (https://www.r-bloggers.com/converting-shapefiles-to-rasters-in-r/)
 shp2raster <- function(shp,
