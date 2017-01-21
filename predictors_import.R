@@ -67,71 +67,39 @@ plot(easements)
 blank_oklahoma<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
 blank_oklahoma<-setValues(NLCD2011, 0)
 
+#Transform polygon to same projection as blank raster.
 grs80.14<-CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
 easements <- spTransform(easements,
                          CRSobj=grs80.14)
 
+#Create temporary directory in place with enough space to hold 5-10+ GB of temporary files.
 rasterOptions()$tmpdir
-
 rasterOptions(tmpdir="E:/Documents/R/temp")
 
+#Rasterize the polygon in two ways.
+#First, presence/absence of easements.
+easements.raster.presence.absence <- rasterize(x = easements,
+                            y = blank_oklahoma,
+                            field = 1,
+                            background = 0)
 
-easements.raster <- rasterize(x = easements,
-                            y = blank_oklahoma)
+#Second, how many acres exist in that easement?
+easements.raster.CalcAcres <- rasterize(x = easements,
+                                               y = blank_oklahoma,
+                                               field = "CalcAcres")
 
-writeRaster(easements.raster,
-            filename = "conservation_easements_raster.tif",
+#Write these two files as GeoTiffs.  (Tried .grd default files but they gave many errors and do not load in QGIS.)
+writeRaster(easements.raster.CalcAcres,
+            filename = "conservation_easements_CalcAcres_raster.tif",
             format="GTiff")
 
-easements.raster<-shp2raster(shp=easements,
-           mask.raster=blank_oklahoma,
-           label= "easement_raster",
-           value = 1,
-           transform=TRUE,
-           proj.from= "+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs",
-           proj.to = "+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs",
-           map=TRUE)
+writeRaster(easements.raster.presence.absence,
+            filename = "conservation_easements_CalcAcres_raster.tif",
+            format="GTiff")
 
-easement.raster.test<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/easements_EASEAREA_ok_3276698_01/rasterized_easements/conservation_easements_raster.grd")
+#Re-import to see they will work.
+easement.raster.test<-raster("conservation_easements_raster.tif")
 
+#Plot with vector to see that they match!  (Also did this in QGIS where I can zoom in more easily.)
 plot(easement.raster.test)
 plot(easements, add=TRUE)
-
-#Convert a spatial polygon to a raster (https://www.r-bloggers.com/converting-shapefiles-to-rasters-in-r/)
-shp2raster <- function(shp,
-                       mask.raster,
-                       label,
-                       value,
-                       transform = FALSE,
-                       proj.from = NA,
-                       proj.to = NA, 
-                       map = TRUE) {
-  
-  require(raster, rgdal)
-  
-  # use transform==TRUE if the polygon is not in the same coordinate system as
-  # the output raster, setting proj.from & proj.to to the appropriate
-  # projections
-  if (transform == TRUE) {
-    proj4string(shp) <- proj.from
-    shp <- spTransform(shp, proj.to)
-  }
-  
-  # convert the shapefile to a raster based on a standardised background
-  # raster
-  r <- rasterize(shp, mask.raster)
-  # set the cells associated with the shapfile to the specified value
-  r[!is.na(r)] <- value
-  # merge the new raster with the mask raster and export to the working
-  # directory as a tif file
-  r <- mask(merge(r, mask.raster), mask.raster, filename = label, format = "GTiff",
-            overwrite = T)
-  
-  # plot map of new raster
-  if (map == TRUE) {
-    plot(r, main = label, axes = F, box = F)
-  }
-  
-  names(r) <- label
-  return(r)
-}
