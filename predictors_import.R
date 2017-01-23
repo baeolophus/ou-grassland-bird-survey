@@ -98,7 +98,7 @@ writeRaster(easements.raster.presence.absence,
             format="GTiff")
 
 #Re-import to see they will work.
-easement.raster.test<-raster("conservation_easements_raster.tif")
+easement.raster.test<-raster("conservation_easements_CalcAcres_raster.tif")
 
 #Plot with vector to see that they match!  (Also did this in QGIS where I can zoom in more easily.)
 plot(easement.raster.test)
