@@ -9,34 +9,8 @@ library(sp)
 library(rgdal)
 library(raster)
 library(rgeos)
+library(gdalUtils)
 
-#NASS- raster, each year has its own
-#https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php
-#Includes switchgrass code, so even if switchgrass not found in OK could do analysis nationwide??
-#30 meter resolution.
-#switchgrass appears to be rare to non-existent in OK in both years.
-
-NASS2013<-raster('bigfiles/cdl_30m_r_ok_2013_utm14.tif')
-NASS2014<-raster('bigfiles/cdl_30m_r_ok_2014_utm14.tif')
-NLCD2011<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
-plot(NASS2013)
-plot(NASS2014)
-plot(NLCD2011)
-
-extract2013<-getValues(NASS2013)
-unique(values(NASS2013))
-
-#test merge with bioclim.  5 minute resolution.
-bio18<-raster('bio_5m_bil/bio18.bil')
-bio19<-raster('bio_5m_bil/bio19.bil')
-
-#add extent to NASS so can be merged with bioclim.
-#download smallest resolution bioclim?
-
-predictors.brick<-brick(NASS2013,
-                    NASS2014,
-                    bio18,
-                    bio19)
 
 #RASTERIZING VECTORS
 #Create temporary directory in place with enough space to hold 5-10+ GB of temporary files.
@@ -81,14 +55,17 @@ writeOGR(obj=censusblocks,
 #gives errors about area fields (field width problem),
 #but I don't want that one, so I'm not worrying.  Other values appear correctly in QGIS.
 
-library(gdalUtils)
 
 gdal_setInstallation()
 valid_install <- !is.null(getOption("gdalUtils_gdalPath"))
 if(require(raster) && require(rgdal) && valid_install)
 {
-test.raster<-gdal_rasterize(src_datasource = "E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/censusblocks_utm.shp",
-                             dst_filename = "E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/r_censusblock_raster.tiff",
+test.raster<-gdal_rasterize(src_datasource = paste(file.path(getwd()), 
+                                                   "/censusblocks_utm.shp",
+                                                   sep=""),
+                             dst_filename = paste(file.path(getwd()),
+                                                  "/r_censusblock_raster.tiff",
+                                                  sep=""),
                              a = "POP10KM",
                             # tr = c(30, 30),
                             ts = c(r@ncols, r@nrows),
@@ -161,3 +138,31 @@ easement.raster.test<-raster("conservation_easements_CalcAcres_raster.tif")
 #Plot with vector to see that they match!  (Also did this in QGIS where I can zoom in more easily.)
 plot(easement.raster.test)
 plot(easements, add=TRUE)
+
+##NASS- raster, each year has its own
+#https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php
+#Includes switchgrass code, so even if switchgrass not found in OK could do analysis nationwide??
+#30 meter resolution.
+#switchgrass appears to be rare to non-existent in OK in both years.
+
+NASS2013<-raster('bigfiles/cdl_30m_r_ok_2013_utm14.tif')
+NASS2014<-raster('bigfiles/cdl_30m_r_ok_2014_utm14.tif')
+NLCD2011<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
+plot(NASS2013)
+plot(NASS2014)
+plot(NLCD2011)
+
+extract2013<-getValues(NASS2013)
+unique(values(NASS2013))
+
+#test merge with bioclim.  5 minute resolution.
+bio18<-raster('bio_5m_bil/bio18.bil')
+bio19<-raster('bio_5m_bil/bio19.bil')
+
+#add extent to NASS so can be merged with bioclim.
+#download smallest resolution bioclim?
+
+predictors.brick<-brick(NASS2013,
+                        NASS2014,
+                        bio18,
+                        bio19)
