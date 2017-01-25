@@ -9,6 +9,7 @@ library(sp)
 library(rgdal)
 library(raster)
 library(ggplot2)
+library(rgeos)
 
 #NASS- raster, each year has its own
 #https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php
@@ -38,18 +39,94 @@ predictors.brick<-brick(NASS2013,
                     bio18,
                     bio19)
 
+#RASTERIZING VECTORS
+#Create temporary directory in place with enough space to hold 5-10+ GB of temporary files.
+rasterOptions()$tmpdir
+rasterOptions(tmpdir="E:/Documents/R/temp")
+
+#Create UTM CRS.
+
+grs80.14<-CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
+
+#Create masking raster y out of Oklahoma.
+blank_oklahoma<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
+
+r <- raster(censusblocks, resolution=res(blank_oklahoma))
+
+
 #Import census blocks for Oklahoma.
 censusblocks<-readOGR(dsn="E:\\Downloads\\tabblock2010_40_pophu",
                       layer="tabblock2010_40_pophu")
 
-str(censusblocks)
-head(censusblocks)
-#Get out population count field.
+#convert to UTM before calculating area.
+censusblocks <- spTransform(censusblocks,
+                         CRSobj=grs80.14)
 
-ggplot(data=censusblocks)+
-  geom_polygon(mapping=aes(color=POP10))
+#Calculate area for each polygon.
+censusblocks$calcarea <- gArea(censusblocks,
+                           byid = TRUE)
 
-#import census data geodatabase
+#Get out population count field and divide by area for density.
+censusblocks$density_kmsquare <- (censusblocks$POP10/censusblocks$calcarea)*1000*1000
+
+#Check calculations so you know what values should be in raster.
+summary(censusblocks$density_kmsquare)
+
+#Write UTM file to bring in for use in rgdal's gdal_rasterize.
+writeOGR(obj=censusblocks,
+         dsn=file.path(getwd()),
+         layer="censusblocks", 
+         driver="ESRI Shapefile")
+#gives errors about area fields (field width problem),
+#but I don't want that one, so I'm not worrying.  Other values appear correctly in QGIS.
+
+
+
+library(gdalUtils)
+
+gdal_setInstallation()
+valid_install <- !is.null(getOption("gdalUtils_gdalPath"))
+if(require(raster) && require(rgdal) && valid_install)
+{
+test.raster<-gdal_rasterize(src_datasource = "E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/censusblocks.shp",
+                             dst_filename = "E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/r_censusblock_raster.tiff",
+                             a = "dnsty_k",
+                            # tr = c(30, 30),
+                            ts = c(r@ncols, r@nrows),
+                            l = "censusblocks",
+                            verbose=TRUE,
+                            output_Raster=TRUE,
+                            q=FALSE
+                             )
+}
+#originally was getting error.
+#I tried these things and they didn't fix.
+#http://gis.stackexchange.com/questions/217320/rasterizing-lines-with-gdal-rasterize-in-r-return-no-result-and-status-1
+#I think the problem was I had the wrong name of the field.
+
+censusraster<-raster("r_censusblock_raster.tiff")
+
+summary(censusraster)
+#gdal_rasterize -a dnsty_k -tr 30.0 30.0 -l censusblocks
+#E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/censusblocks.shp
+#E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/cnss.tif
+'"C:\Program Files\QGIS 2.16.1\bin\gdal_rasterize.exe" 
+-a "density_kmsquare" -l "censusblocks" -tr 30 30
+"E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/censusblocks.shp" "E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/r_censusblock_raster.tif"' 
+census.block.density <- rasterize(x = censusblocks,
+                                        y = r,
+                                        field = "density_kmsquare")
+
+#Write these two files as GeoTiffs.  (Tried .grd default files but they gave many errors and do not load in QGIS.)
+writeRaster(census.block.density,
+            filename = "censusblock_density_raster.tif",
+            format="GTiff")
+#Re-import to see they will work.
+censusblock.density.raster.test<-raster("censusblock_density_raster.tif")
+
+
+
+#import easement data geodatabase
 
 # The input file geodatabase
 fgdb<-"E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/easements_EASEAREA_ok_3276698_01/easements/easement_a_ok.gdb"
@@ -62,10 +139,6 @@ easements<-readOGR(dsn=fgdb,
                    layer="easement_a_ok")
 
 plot(easements)
-
-#Create masking raster y out of study area extent
-blank_oklahoma<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
-blank_oklahoma<-setValues(NLCD2011, 0)
 
 #Transform polygon to same projection as blank raster.
 grs80.14<-CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
