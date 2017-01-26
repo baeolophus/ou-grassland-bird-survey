@@ -139,6 +139,12 @@ easement.raster.test<-raster("conservation_easements_CalcAcres_raster.tif")
 plot(easement.raster.test)
 plot(easements, add=TRUE)
 
+#NLCD 2011
+#Getting neighborhood values.
+NLCD2011<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
+plot(NLCD2011) #check the raster is there
+
+
 ##NASS- raster, each year has its own
 #https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php
 #Includes switchgrass code, so even if switchgrass not found in OK could do analysis nationwide??
@@ -147,13 +153,14 @@ plot(easements, add=TRUE)
 
 NASS2013<-raster('bigfiles/cdl_30m_r_ok_2013_utm14.tif')
 NASS2014<-raster('bigfiles/cdl_30m_r_ok_2014_utm14.tif')
-NLCD2011<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
 plot(NASS2013)
 plot(NASS2014)
-plot(NLCD2011)
 
 extract2013<-getValues(NASS2013)
 unique(values(NASS2013))
+
+
+#Test merging all raster layers into a brick for prediction.
 
 #test merge with bioclim.  5 minute resolution.
 bio18<-raster('bio_5m_bil/bio18.bil')
