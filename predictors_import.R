@@ -144,6 +144,23 @@ plot(easements, add=TRUE)
 NLCD2011<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
 plot(NLCD2011) #check the raster is there
 
+#Need to create one raster for each landcover type I want to know about in the neighborhood.
+
+#"open spaces"
+#"croplands"
+#"brush"
+#"forest"
+
+focalWeight() #create weights matrix
+#Get a neighborhood sum just testing to make sure i understand
+
+#function??
+#Then create 0/1 rasters for each land cover type I want
+
+#Then get sums
+
+#Then divide whole raster by number of pixels in each neighborhood
+
 
 ##NASS- raster, each year has its own
 #https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php
