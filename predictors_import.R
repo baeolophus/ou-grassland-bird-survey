@@ -145,8 +145,22 @@ NLCD2011<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_survey
 plot(NLCD2011) #check the raster is there
 
 #Need to create one raster for each landcover type I want to know about in the neighborhood.
-
+#code adapted from: https://stat.ethz.ch/pipermail/r-sig-geo/2012-March/014598.html
 #"open spaces"
+NLCD2011_open_space <- NLCD2011
+#Which cell values are open space
+#read from metadata available in folder
+NLCD_open_space <- c(71, 81, 82, 95)
+#71 grasslands
+#81 hay/pasture
+#82 crops
+#95 herbaceous wetlands
+
+NLCD2011_open_space[NLCD2011_open_space %in% NLCD_open_space] <- 1
+#Change all other values to 0.
+NLCD2011_open_space[!NLCD2011_open_space %in% c(1)] <- 0
+plot(NLCD2011_open_space)
+
 #"croplands"
 #"brush"
 #"forest"
