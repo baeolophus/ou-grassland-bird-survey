@@ -160,21 +160,42 @@ NLCD2011_open_space[NLCD2011_open_space %in% NLCD_open_space] <- 1
 #Change all other values to 0.
 NLCD2011_open_space[!NLCD2011_open_space %in% c(1)] <- 0
 plot(NLCD2011_open_space)
-
+writeRaster(NLCD2011_open_space,
+            filename = "NLCD2011_open_space.tif",
+            format="GTiff")
 #"croplands"
 #"brush"
 #"forest"
 
-focalWeight() #create weights matrix
-#Get a neighborhood sum just testing to make sure i understand
+#testing that I understand how the cells/focal sum/mean works.
+par(mfrow=c(1,2))
+r <- raster(ncols=5, nrows=6, xmn=0)
+r[] <- rep(c(0,1), ncell(r)/2)
 
-#function??
-#Then create 0/1 rasters for each land cover type I want
+r.p<-focal(x = r,
+           w = matrix(1/25, 
+                      nrow = 5, 
+                      ncol = 5)
+)
+plot(r)
+plot(r.p)
 
-#Then get sums
+matrix(values(r.p), nrow=6, ncol=5, byrow = TRUE)
+matrix(values(r), nrow=6, ncol=5, byrow = TRUE)
 
-#Then divide whole raster by number of pixels in each neighborhood
+#Get a neighborhood for 5x5 (150 x 150 m).
+NLCD2011_open_space_sums_5cells <- focal(x = NLCD2011_open_space,
+                                         w = matrix(1/25, 
+                                                    nrow = 5, 
+                                                    ncol = 5)
+                                         )
 
+writeRaster(NLCD2011_open_space_sums_5cells,
+            filename = "NLCD2011_open_space_sums_5cells.tif",
+            format="GTiff")
+
+par(mfrow=c(1,1))
+plot(NLCD2011_open_space_sums_5cells)
 
 ##NASS- raster, each year has its own
 #https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php
@@ -204,3 +225,4 @@ predictors.brick<-brick(NASS2013,
                         NASS2014,
                         bio18,
                         bio19)
+
