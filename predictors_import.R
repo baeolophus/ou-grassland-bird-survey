@@ -197,6 +197,319 @@ writeRaster(NLCD2011_open_space_sums_5cells,
 par(mfrow=c(1,1))
 plot(NLCD2011_open_space_sums_5cells)
 
+#Writing a function to do this.
+nlcd.lumped.raster.neighborhoods <- function (datasource,
+                                              prefix,
+                                              lumped_name,
+                                              what_cell_values,
+                                              neighborhood_size_in_pixels,
+                                              data_writing_format
+){
+  #Confirm temporary directory in place with enough space to hold 5-10+ GB of temporary files.
+  rasterOptions()$tmpdir
+  rasterOptions(tmpdir="E:/Documents/R/temp")
+  
+  #copy datasource to new layer
+  data_copy <- datasource
+  
+  #change all cell values of interest to 1
+  data_copy[data_copy %in% what_cell_values] <- 1
+  #Change all other values to 0
+  data_copy[!data_copy %in% c(1)] <- 0
+
+  #write this as a raster file.
+  writeRaster(data_copy,
+              filename = paste(prefix,
+                               lumped_name,
+                               ".tif",
+                               sep= "_"),
+              format = data_writing_format,
+              overwrite = TRUE)
+  
+  #put the variable out for use in R
+  assign (paste(prefix,
+                   lumped_name,
+                   sep= "_"),
+             data_copy,
+          pos = ".GlobalEnv")
+ 
+  #Get a neighborhood for n x n pixels.
+  neighborhood <- focal(x = data_copy,
+                                           w = matrix(1/(neighborhood_size_in_pixels^2), 
+                                                      nrow = neighborhood_size_in_pixels, 
+                                                      ncol = neighborhood_size_in_pixels)
+  )
+  
+  #write as a raster file.
+  writeRaster(neighborhood,
+              filename = paste(prefix,
+                               lumped_name,
+                               neighborhood_size_in_pixels,
+                               "cells.tif",
+                               sep= "_"),
+              format = data_writing_format,
+              overwrite = TRUE)
+  
+  #put the variable out for use in R
+  assign (paste(prefix,
+                lumped_name,
+                neighborhood_size_in_pixels,
+                "cells",
+                sep= "_"),
+          neighborhood,
+          pos = ".GlobalEnv")
+  
+  par(mfrow=c(1,2))
+  plot(data_copy)
+  plot(neighborhood)
+  
+}
+
+values(NLCD2011)
+
+#undeveloped open space
+#11 open water
+#31 barren land
+#71 grasslands
+#81 hay/pasture
+#82 crops
+#95 herbaceous wetlands
+
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "undev_openspace",
+                                  what_cell_values = c(11,
+                                                       31,
+                                                       71,
+                                                       81,
+                                                       82,
+                                                       95), #grasslands only (71)
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "undev_openspace",
+                                  what_cell_values = c(11,
+                                                       31,
+                                                       71,
+                                                       81,
+                                                       82,
+                                                       95), 
+                                  neighborhood_size_in_pixels = 15, #15 x 15 = 450 x 450 m
+                                  data_writing_format = "GTiff")
+
+#11 open water
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "openwater11",
+                                  what_cell_values = c(11),
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "openwater11",
+                                  what_cell_values = c(11),
+                                  neighborhood_size_in_pixels = 15,
+                                  data_writing_format = "GTiff")
+
+#21 developed open space
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "developed_openspace21",
+                                  what_cell_values = c(21),
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "developed_openspace21",
+                                  what_cell_values = c(21),
+                                  neighborhood_size_in_pixels = 15,
+                                  data_writing_format = "GTiff")
+
+#22 low development
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "dev_low22",
+                                  what_cell_values = c(22),
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "dev_low22",
+                                  what_cell_values = c(22),
+                                  neighborhood_size_in_pixels = 15,
+                                  data_writing_format = "GTiff")
+
+#23 med development
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "dev_med23",
+                                  what_cell_values = c(23),
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "dev_med23",
+                                  what_cell_values = c(23),
+                                  neighborhood_size_in_pixels = 15,
+                                  data_writing_format = "GTiff")
+
+
+#24 high development
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "dev_high24",
+                                  what_cell_values = c(24),
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "dev_high24",
+                                  what_cell_values = c(24),
+                                  neighborhood_size_in_pixels = 15,
+                                  data_writing_format = "GTiff")
+
+
+#31 barren land
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "barren31",
+                                  what_cell_values = c(31), 
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "barren31",
+                                  what_cell_values = c(31), 
+                                  neighborhood_size_in_pixels = 15, #15 x 15 = 450 x 450 m
+                                  data_writing_format = "GTiff")
+
+
+
+#forest 41, 42, 43
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "forest41to43",
+                                  what_cell_values = c(41,
+                                                       42,
+                                                       43), 
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "forest41to43",
+                                  what_cell_values = c(41,
+                                                       42,
+                                                       43), 
+                                  neighborhood_size_in_pixels = 15, #15 x 15 = 450 x 450 m
+                                  data_writing_format = "GTiff")
+
+
+#shrub/scrub 52
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "shrub52",
+                                  what_cell_values = c(52), 
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "shrub52",
+                                  what_cell_values = c(52), 
+                                  neighborhood_size_in_pixels = 15, #15 x 15 = 450 x 450 m
+                                  data_writing_format = "GTiff")
+
+
+#71 grasslands
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "grasslands71",
+                                  what_cell_values = c(71), #grasslands only (71)
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "grasslands71",
+                                  what_cell_values = c(71), #grasslands only (71)
+                                  neighborhood_size_in_pixels = 15, #15 x 15 = 450 x 450 m
+                                  data_writing_format = "GTiff")
+
+#81 pasture/hay
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "pasturehay81",
+                                  what_cell_values = c(81),
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "pasturehay81",
+                                  what_cell_values = c(81),
+                                  neighborhood_size_in_pixels = 15, #15 x 15 = 450 x 450 m
+                                  data_writing_format = "GTiff")
+
+
+
+#82 croplands
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "croplands82",
+                                  what_cell_values = c(82),
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "croplands82",
+                                  what_cell_values = c(82),
+                                  neighborhood_size_in_pixels = 15, #15 x 15 = 450 x 450 m
+                                  data_writing_format = "GTiff")
+
+
+
+#90 woody wetlands
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "woodywetlands90",
+                                  what_cell_values = c(90),
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "woodywetlands90",
+                                  what_cell_values = c(90),
+                                  neighborhood_size_in_pixels = 15, #15 x 15 = 450 x 450 m
+                                  data_writing_format = "GTiff")
+
+
+
+
+#95 emergent herbaceous wetlands
+
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "herbwetlands95",
+                                  what_cell_values = c(95),
+                                  neighborhood_size_in_pixels = 5,
+                                  data_writing_format = "GTiff")
+nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
+                                  prefix = "NLCD2011",
+                                  lumped_name = "herwetlands95",
+                                  what_cell_values = c(95),
+                                  neighborhood_size_in_pixels = 15, #15 x 15 = 450 x 450 m
+                                  data_writing_format = "GTiff")
+
+
+
+
+
+
+
+
+
 ##NASS- raster, each year has its own
 #https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php
 #Includes switchgrass code, so even if switchgrass not found in OK could do analysis nationwide??
