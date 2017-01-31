@@ -265,7 +265,6 @@ nlcd.lumped.raster.neighborhoods <- function (datasource,
   
 }
 
-values(NLCD2011)
 
 #undeveloped open space
 #11 open water
