@@ -144,6 +144,10 @@ plot(easements, add=TRUE)
 NLCD2011<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
 plot(NLCD2011) #check the raster is there
 
+NLCD2011_undev_openspace<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/undevopenspace.tif")
+plot(NLCD2011_undev_openspace) #check the raster is there
+
+
 #Need to create one raster for each landcover type I want to know about in the neighborhood.
 #code adapted from: https://stat.ethz.ch/pipermail/r-sig-geo/2012-March/014598.html
 #"open spaces"
@@ -504,10 +508,123 @@ nlcd.lumped.raster.neighborhoods (datasource = NLCD2011,
 
 
 
+nlcd.single.landcover <- function (datasource,
+                                              prefix,
+                                              lumped_name,
+                                              what_cell_values,
+                                   data_writing_format
+){
+  #Confirm temporary directory in place with enough space to hold 5-10+ GB of temporary files.
+  rasterOptions()$tmpdir
+  rasterOptions(tmpdir="E:/Documents/R/temp")
+  
+  #copy datasource to new layer
+  data_copy <- datasource
+  
+  #change all cell values of interest to 1
+  data_copy[data_copy %in% what_cell_values] <- 1
+  #Change all other values to 0
+  data_copy[!data_copy %in% c(1)] <- 0
+  
+  #write this as a raster file.
+  writeRaster(data_copy,
+              filename = paste0(prefix,
+                               lumped_name,
+                               ".tif"),
+              format = data_writing_format,
+              overwrite = TRUE)
+  
+  #put the variable out for use in R
+  assign (paste(prefix,
+                lumped_name,
+                sep= "_"),
+          data_copy,
+          pos = ".GlobalEnv")
+}
 
 
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "undev_openspace",
+                      what_cell_values = c(11,
+                                           31,
+                                           71,
+                                           81,
+                                           82,
+                                           95),
+                      data_writing_format = "GTiff")
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "openwater11",
+                      what_cell_values = c(11),
+                      data_writing_format = "GTiff")
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "developed_openspace21",
+                      what_cell_values = c(21),
+                      data_writing_format = "GTiff")
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "dev_low22",
+                      what_cell_values = c(22),
+                      data_writing_format = "GTiff")
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "dev_med23",
+                      what_cell_values = c(23),
+                      data_writing_format = "GTiff")
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "dev_high24",
+                      what_cell_values = c(24),
+                      data_writing_format = "GTiff")
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "barren31",
+                      what_cell_values = c(31),
+                      data_writing_format = "GTiff")
 
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "forest41to43",
+                      what_cell_values = c(41,
+                                           42,
+                                           43),
+                      data_writing_format = "GTiff")
 
+##
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "shrub52",
+                      what_cell_values = c(52),
+                      data_writing_format = "GTiff")
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "grasslands71",
+                      what_cell_values = c(71),
+                      data_writing_format = "GTiff")
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "pasturehay81",
+                      what_cell_values = c(81),
+                      data_writing_format = "GTiff")
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "croplands82",
+                      what_cell_values = c(82),
+                      data_writing_format = "GTiff")
+
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "woodywetlands90",
+                      what_cell_values = c(90),
+                      data_writing_format = "GTiff")
+
+nlcd.single.landcover(datasource = NLCD2011,
+                      prefix = "NLCD2011_",
+                      lumped_name = "herbwetlands95",
+                      what_cell_values = c(95),
+                      data_writing_format = "GTiff")
 
 ##NASS- raster, each year has its own
 #https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php
