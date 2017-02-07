@@ -148,6 +148,30 @@ NLCD2011_undev_openspace<-raster("E:/Documents/college/OU-postdoc/research/grass
 plot(NLCD2011_undev_openspace) #check the raster is there
 
 
+openwater <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/openwater11.tif")
+plot(openwater)
+
+dev_openspace21 <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/dev_openspace21.tif")
+plot(dev_openspace21)
+
+dev_low22 <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/dev_low22.tif")
+plot(dev_low22)
+
+dev_med23 <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/dev_med23.tif")
+plot(dev_med23)
+
+dev_high24 <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/dev_high24.tif")
+plot(dev_high24)
+
+scrub <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/scrub52.tif")
+plot(scrub)
+
+croplands <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/croplands82.tif")
+plot(croplands)
+
+
+
+
 ##NASS- raster, each year has its own
 #https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php
 #Includes switchgrass code, so even if switchgrass not found in OK could do analysis nationwide??
