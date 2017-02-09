@@ -126,10 +126,11 @@ easements.raster.CalcAcres <- rasterize(x = easements,
 #Write these two files as GeoTiffs.  (Tried .grd default files but they gave many errors and do not load in QGIS.)
 writeRaster(easements.raster.CalcAcres,
             filename = "conservation_easements_CalcAcres_raster.tif",
-            format="GTiff")
+            format="GTiff",
+            overwrite = TRUE)
 
 writeRaster(easements.raster.presence.absence,
-            filename = "conservation_easements_CalcAcres_raster.tif",
+            filename = "conservation_easements_presenceabsence_raster.tif",
             format="GTiff")
 
 #Re-import to see they will work.
