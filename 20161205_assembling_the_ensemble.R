@@ -10,17 +10,17 @@ rasterOptions(tmpdir="E:/Documents/R/temp")
 
 #Bring in predictor data.
 #import bioclim layers
-bio_12_list <- list.files(path = "E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/bio_12",
-                               pattern = "bil$",
-                               full.names = TRUE)
+bio_utm_list <- list.files(path = paste0(getwd(),
+                                         "/bio_12_utm"),
+                               pattern = "tif$",
+                               full.names = FALSE)
+bio_utm_files <- paste0("bio_12_utm/",
+                        bio_utm_list)
 
-for(i in bio_12_list) { assign(unlist(strsplit(i,
-                                                     "[./]"))[9], #splits filenames at / and and . to eliminate folder name and file type.
+for(i in bio_utm_files) { assign(unlist(strsplit(i,
+                                                     "[./]"))[2], #splits filenames at / and and . to eliminate folder name and file type.
                                      raster(i)) } 
 
-bio <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLayer'])
-bio_stack <- stack (lapply(bio, get))
-crs(bio_stack) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"  #http://www.worldclim.org/format
 
 popdensity_census_raster<-raster("r_censusblock_raster.tiff")
 
@@ -37,58 +37,17 @@ for(i in nlcdrasters_files) { assign(unlist(strsplit(i,
                                                      "[./]"))[2], #splits filenames at / and and . to eliminate folder name and file type.
                                      raster(i)) } 
 
-
+predictors <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLayer'])
+predictors_stack <- stack (lapply(predictors, get))
 #using get lets the middle code take the character names of raster layers and stack everything that is a raster layer
 #Using lapply on the list lets it do this to all the rasters.
-plot(brick_test[[19]])
 
-predictor_brick<-brick(bio1,
-                    bio2,
-                    bio3,
-                    bio4,
-                    bio5,
-                    bio6,
-                    bio7,
-                    bio8,
-                    bio9,
-                    bio10,
-                    bio11,
-                    bio12,
-                    bio13,
-                    bio14,
-                    bio15,
-                    bio16,
-                    bio17,
-                    bio18,
-                    bio19,
-                    popdensity_census_raster,
-                    easement_acres,
-                    easement_yesno,
-                    NLCD2011)
-
+extent(predictors_stack)
 
 #crop to extent of study area
 studyarea.extent<-extent(-103,-94,
                          33,38) # define the extent
-studyarea.bioclim<-crop(bio_stack,
-                        studyarea.extent)
-predictors <- addLayer(studyarea.bioclim,
-         popdensity_census_raster)
 
-
-extent(popdensity_census_raster)
-extent(studyarea.bioclim)
-
-grs80.14<-CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
-
-utm.bioclim <- projectRaster(from = studyarea.bioclim, 
-              to = popdensity_census_raster)
-
-writeRaster(utm.bioclim,
-            filename = names(utm.bioclim),
-            format = "GTiff",
-            bylayer = TRUE,
-            overwrite = TRUE)
 
 #Bring in whole response data set as a spatial object including presence/absence.
 
