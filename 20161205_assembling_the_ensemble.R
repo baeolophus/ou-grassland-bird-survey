@@ -4,28 +4,45 @@ library(sp)
 library(rgdal)
 library(dplyr)
 
+rasterOptions()$tmpdir
+rasterOptions(tmpdir="E:/Documents/R/temp")
+
+
 #Bring in predictor data.
 #import bioclim layers
-bio1<-raster('bio_5m_bil/bio1.bil')
-bio2<-raster('bio_5m_bil/bio2.bil')
-bio3<-raster('bio_5m_bil/bio3.bil')
-bio4<-raster('bio_5m_bil/bio4.bil')
-bio5<-raster('bio_5m_bil/bio5.bil')
-bio6<-raster('bio_5m_bil/bio6.bil')
-bio7<-raster('bio_5m_bil/bio7.bil')
-bio8<-raster('bio_5m_bil/bio8.bil')
-bio9<-raster('bio_5m_bil/bio9.bil')
-bio10<-raster('bio_5m_bil/bio10.bil')
-bio11<-raster('bio_5m_bil/bio11.bil')
-bio12<-raster('bio_5m_bil/bio12.bil')
-bio13<-raster('bio_5m_bil/bio13.bil')
-bio14<-raster('bio_5m_bil/bio14.bil')
-bio15<-raster('bio_5m_bil/bio15.bil')
-bio16<-raster('bio_5m_bil/bio16.bil')
-bio17<-raster('bio_5m_bil/bio17.bil')
-bio18<-raster('bio_5m_bil/bio18.bil')
-bio19<-raster('bio_5m_bil/bio19.bil')
-bioclimlayer<-brick(bio1,
+bio_12_list <- list.files(path = "E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/bio_12",
+                               pattern = "bil$",
+                               full.names = TRUE)
+
+for(i in bio_12_list) { assign(unlist(strsplit(i,
+                                                     "[./]"))[9], #splits filenames at / and and . to eliminate folder name and file type.
+                                     raster(i)) } 
+
+bio <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLayer'])
+bio_stack <- stack (lapply(bio, get))
+crs(bio_stack) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"  #http://www.worldclim.org/format
+
+popdensity_census_raster<-raster("r_censusblock_raster.tiff")
+
+easement_acres <- raster("conservation_easements_CalcAcres_raster.tif")
+easement_yesno <- raster("conservation_easements_presenceabsence_raster.tif")
+
+nlcdrasters_list <- list.files(paste0(getwd(), "/nlcd_processing"),
+                               pattern = "tif$",
+                               full.names = FALSE)
+nlcdrasters_files <- paste0("nlcd_processing/",
+                          nlcdrasters_list)
+                   
+for(i in nlcdrasters_files) { assign(unlist(strsplit(i,
+                                                     "[./]"))[2], #splits filenames at / and and . to eliminate folder name and file type.
+                                     raster(i)) } 
+
+
+#using get lets the middle code take the character names of raster layers and stack everything that is a raster layer
+#Using lapply on the list lets it do this to all the rasters.
+plot(brick_test[[19]])
+
+predictor_brick<-brick(bio1,
                     bio2,
                     bio3,
                     bio4,
@@ -43,14 +60,35 @@ bioclimlayer<-brick(bio1,
                     bio16,
                     bio17,
                     bio18,
-                    bio19)
+                    bio19,
+                    popdensity_census_raster,
+                    easement_acres,
+                    easement_yesno,
+                    NLCD2011)
 
 
 #crop to extent of study area
 studyarea.extent<-extent(-103,-94,
                          33,38) # define the extent
-studyarea.bioclim<-crop(bioclimlayer,
+studyarea.bioclim<-crop(bio_stack,
                         studyarea.extent)
+predictors <- addLayer(studyarea.bioclim,
+         popdensity_census_raster)
+
+
+extent(popdensity_census_raster)
+extent(studyarea.bioclim)
+
+grs80.14<-CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
+
+utm.bioclim <- projectRaster(from = studyarea.bioclim, 
+              to = popdensity_census_raster)
+
+writeRaster(utm.bioclim,
+            filename = names(utm.bioclim),
+            format = "GTiff",
+            bylayer = TRUE,
+            overwrite = TRUE)
 
 #Bring in whole response data set as a spatial object including presence/absence.
 
