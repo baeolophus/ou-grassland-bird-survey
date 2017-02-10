@@ -38,113 +38,63 @@ for(i in nlcdrasters_files) { assign(unlist(strsplit(i,
                                      raster(i)) } 
 
 predictors <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLayer'])
+
+extent(grasslands71_15cell)
+extent(bio10_12)
+extent(popdensity_census_raster)
+extent(easement_acres)
+extent(easement_yesno)
+extent(nlcd_ok_utm14)
+
+
 predictors_stack <- stack (lapply(predictors, get))
 #using get lets the middle code take the character names of raster layers and stack everything that is a raster layer
 #Using lapply on the list lets it do this to all the rasters.
 
-extent(predictors_stack)
+#Define study area extent based on predictors.
+studyarea.extent <- extent(predictors_stack)
 
-#crop to extent of study area
-studyarea.extent<-extent(-103,-94,
-                         33,38) # define the extent
-
-
+#########################
+#Responses
 #Bring in whole response data set as a spatial object including presence/absence.
+complete.dataset.for.sdm <- read.csv(file = "completedatasetforsdm.csv")
+complete.dataset.for.sdm.DICK<-dplyr::filter(complete.dataset.for.sdm,
+                                             SPEC=="DICK")
 
-#bring in data and metadata, join for species locations.
-pointcount.data<-read.csv(file="pointcount_data.csv")
-#bring in the manually corrected file
-pointcount.metadata.manually.corrected<-read.csv(file="pointcount_metadata.csv")
-#merge the files so every row has all metadata attached.
-pointcounts.complete<-left_join(pointcount.data,
-                                pointcount.metadata.manually.corrected,
-                                by=c("Date",
-                                     "Observer",
-                                     "Location",
-                                     "Point"))
-
-#double-check always that row counts for pointcount.data and pointcounts.complete are the same!
-#if they are not, go back to data manipulation code and run checks to look for duplicates.
-
-
-pointcounts.complete.na<-filter(pointcounts.complete,
-                                !is.na(Latitude)&
-                                  !is.na(Longitude))
-#SET SPECIES HERE
-pointcounts.complete.na.dick<-filter(pointcounts.complete.na,
-                                     Species=="DICK")
-
+#Get rid of NA for lat/long values.
+complete.dataset.for.sdm.DICK<-na.omit(complete.dataset.for.sdm.DICK)
 
 #extract values for analysis
-bioclim.dick<-as.data.frame(extract(x=studyarea.bioclim,
-                                    y=c(pointcounts.complete.na.dick$Longitude,
-                                        pointcounts.complete.na.dick$Latitude)))
+predictors_stack.DICK<-as.data.frame(extract(x=predictors_stack,
+                                    y=c(complete.dataset.for.sdm.DICK$Longitude,
+                                        complete.dataset.for.sdm.DICK$Latitude)))
 
 
-subs.bioclim<-cbind(pointcounts.complete.na.dick[,c("Longitude",
+subs.bioclim<-cbind(complete.dataset.for.sdm[,c("Longitude",
                                                     "Latitude")],
-                    na.omit(bioclim.dick))
-subs.bioclim$response<-1
+                    na.omit(predictors_stack.DICK))
 
-
-
-nosightings.dick<-filter(pointcounts.complete.na,
-                         Species!="DICK")
-
-(absences<-group_by(nosightings.dick,
-                    Date,
-                    Observer,
-                    Location,
-                    Point)%>%
-  
-  summarize(Sightings=n()))
-
-(presences<-group_by(pointcounts.complete.na.dick,
-                     Date,
-                     Observer,
-                     Location,
-                     Point)%>%
-  
-  summarize(Sightings=n()))
-
-pcs.sans.bird<-anti_join(x=absences,
-                         y=presences,
-                         by=c("Date",
-                              "Observer",
-                              "Location",
-                              "Point"))
-
-#join to gps for bg/absence points.
-bg.draft<-left_join(pcs.sans.bird,
-                    pointcount.metadata.manually.corrected,
-                    by=c("Date",
-                         "Observer",
-                         "Location",
-                         "Point"))
-bg<-bg.draft[,c("Longitude",
-                "Latitude")]
-coordinates(bg)<-c("Longitude",
-                   "Latitude")
-bg.bioclim.dick<-as.data.frame(extract(studyarea.bioclim,
-                                       bg))
-bgpoints<-as.data.frame(bg@coords)
-colnames(bgpoints)<-c("Longitude","Latitude")
-
-bg.bioclim.dick<-cbind(as.data.frame(bgpoints),
-                       bg.bioclim.dick)
-
-bg.bioclim.dick$response<-0
-
-tree.data.dick<-rbind(bg.bioclim.dick,
+tree.data.DICK<-rbind(bg.bioclim.DICK,
                       subs.bioclim)
 
-coordinates(tree.data.dick)<-c("Longitude", "Latitude")
+coordinates(tree.data.DICK)<-c("Longitude", "Latitude")
 #make it spatial
-proj4string(tree.data.dick)<-CRS(as.character(
+proj4string(tree.data.DICK)<-CRS(as.character(
   "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+#use this: proj4string(data) <- CRS("+proj=longlat + ellps=WGS84")
+#Then convert to utm
+alldata.DICK <- spTransform(tree.data.DICK,
+                            CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
 
-#generate random points
+##################################
+#Generate support sets
+#start by generating random points within the study area.
 
+# coerce to a SpatialPolygons object
+studyarea.extent.poly <- as(studyarea.extent,
+                            'SpatialPolygons')  
+
+#if above works, delete#########
 studyarea.extent<-Polygon(
   matrix(c(-103, 33,
            -103, 38,
@@ -157,14 +107,17 @@ studyarea.extent<-Polygon(
 
 #I think I can combine this with polygon() above and use in all places.
 studyarea.extent.polygons<-SpatialPolygons(list(Polygons(list(studyarea.extent), "studyarea")))
+####################end delete
 
-random.points<-spsample(x=studyarea.extent, #should be able to use the spatial polygon here too.
+
+random.points<-spsample(x=studyarea.extent, #should be able to use the spatial polygon here too.  or studyarea.extent.poly
                         n=1000,
                         type="random")
 
+#Fix up projections here.
 proj4string(random.points)<-CRS(as.character(
   "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
-proj4string(tree.data.dick)<-CRS(as.character(
+proj4string(tree.data.DICK)<-CRS(as.character(
   "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 
 plot(random.points)
@@ -174,7 +127,7 @@ plot(random.points)
 #they got much from: http://stackoverflow.com/questions/26620373/spatialpolygons-creating-a-set-of-polygons-in-r-from-coordinates
 
 #set the radius for the plots
-radius <- 1 #radius in decimal degrees
+radius <- 1 #radius in decimal degrees.  Units should be different with everything in utm now.
 #get the centroids from the random.points spatial points object.
 
 centroids<-data.frame(
@@ -252,7 +205,7 @@ spatial.support.set<-function(whichrandombox,
 
 list.test<-lapply(1:1000,
                   FUN=spatial.support.set,
-                  spatialdataset=tree.data.dick)
+                  spatialdataset=tree.data.DICK)
 
 
 weights<-lapply(list.test,
