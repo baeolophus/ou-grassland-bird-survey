@@ -710,8 +710,7 @@ complete.dataset.for.sdm<-dplyr::arrange(complete.dataset.for.sdm,
 
 #now select species to get smaller datasets that are easily used.
 
-complete.dataset.for.sdm.dick<-dplyr::filter(complete.dataset.for.sdm,
-                                             SPEC=="DICK")
+write.csv(complete.dataset.for.sdm,
+          "completedatasetforsdm.csv")
 
-write.csv(complete.dataset.for.sdm.dick,
-          file = "completedatasetforsdm.DICK.csv")
+
