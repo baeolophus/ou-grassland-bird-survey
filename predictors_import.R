@@ -188,17 +188,39 @@ extract2013<-getValues(NASS2013)
 unique(values(NASS2013))
 
 
-#Test merging all raster layers into a brick for prediction.
+#bioclim to UTM
+#import bioclim layers
+bio_12_list <- list.files(path = "E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/bio_12",
+                          pattern = "bil$",
+                          full.names = TRUE)
 
-#test merge with bioclim.  5 minute resolution.
-bio18<-raster('bio_5m_bil/bio18.bil')
-bio19<-raster('bio_5m_bil/bio19.bil')
+for(i in bio_12_list) { assign(unlist(strsplit(i,
+                                               "[./]"))[9], #splits filenames at / and and . to eliminate folder name and file type.
+                               raster(i)) } 
 
-#add extent to NASS so can be merged with bioclim.
-#download smallest resolution bioclim?
+bio <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLayer'])
+bio_stack <- stack (lapply(bio, get))
+crs(bio_stack) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"  #http://www.worldclim.org/format
 
-predictors.brick<-brick(NASS2013,
-                        NASS2014,
-                        bio18,
-                        bio19)
+popdensity_census_raster<-raster("r_censusblock_raster.tiff")
+
+studyarea.extent<-extent(-103,-94,
+                         33,38) # define the extent
+studyarea.bioclim<-crop(bio_stack,
+                        studyarea.extent)
+
+#show they are in different CRS with different extents
+extent(popdensity_census_raster)
+extent(studyarea.bioclim)
+
+#project to the smaller extent and the crs of popdensity_census_raster (Which was made with NLCD)
+utm.bioclim <- projectRaster(from = studyarea.bioclim, 
+                             to = popdensity_census_raster)
+
+#write the new file to smaller files that I can import later  without re-processing
+writeRaster(utm.bioclim,
+            filename = names(utm.bioclim),
+            format = "GTiff",
+            bylayer = TRUE,
+            overwrite = TRUE)
 
