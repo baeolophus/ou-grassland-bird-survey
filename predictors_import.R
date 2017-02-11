@@ -67,8 +67,8 @@ test.raster<-gdal_rasterize(src_datasource = paste(file.path(getwd()),
                                                   "/r_censusblock_raster.tiff",
                                                   sep=""),
                              a = "POP10KM",
-                            # tr = c(30, 30),
-                            ts = c(r@ncols, r@nrows),
+                             tr = c(30, 30),
+                           # ts = c(r@ncols, r@nrows),
                             l = "censusblocks_utm",
                             verbose=TRUE,
                             output_Raster=TRUE,
@@ -81,7 +81,7 @@ test.raster<-gdal_rasterize(src_datasource = paste(file.path(getwd()),
 #I think the problem was I had the wrong name of the field.
 
 censusraster<-raster("r_censusblock_raster.tiff")
-plot(censusraster)
+extent(censusraster)
 
 #gdal_rasterize -a dnsty_k -tr 30.0 30.0 -l censusblocks
 #E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/censusblocks.shp
