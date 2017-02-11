@@ -24,6 +24,8 @@ for(i in bio_utm_files) { assign(unlist(strsplit(i,
 
 popdensity_census_raster<-raster("r_censusblock_raster.tiff")
 
+
+
 easement_acres <- raster("conservation_easements_CalcAcres_raster.tif")
 easement_yesno <- raster("conservation_easements_presenceabsence_raster.tif")
 
@@ -39,17 +41,59 @@ for(i in nlcdrasters_files) { assign(unlist(strsplit(i,
 
 predictors <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLayer'])
 
+predictors.list <- as.list(lapply(predictors, get))
+#using get lets the middle code take the character names of raster layers and stack everything that is a raster layer
+#Using lapply on the list lets it do this to all the rasters.
+
+
 extent(grasslands71_15cell)
-extent(bio10_12)
-extent(popdensity_census_raster)
 extent(easement_acres)
 extent(easement_yesno)
 extent(nlcd_ok_utm14)
 
 
-predictors_stack <- stack (lapply(predictors, get))
-#using get lets the middle code take the character names of raster layers and stack everything that is a raster layer
+extent(bio10_12)
+extent(popdensity_census_raster)
+
+
+studyarea.extent <- c(139321.6,
+                      921001.6,
+                      3704685,
+                      4126455)
+
+extended.predictors <- lapply(predictors.list,
+                              FUN = extend,
+                              y = studyarea.extent,
+                              value=NA)
+
+test<-extend (censusraster,
+               y= studyarea.extent,
+               value = NA)
+resample.test <- resample (censusraster,
+                           y = nlcd_ok_utm14)
+writeRaster(resample.test,
+            filename = "resample_test.tif",
+            format="GTiff",
+            overwrite = TRUE)
+
+resample.test
+
+predictors.list[[2]]
+extended.predictors[[2]]
+predictors.list[[3]]
+extended.predictors[[3]]
+
+lapply(extended.predictors,
+       FUN = extent)
+
+predictors_stack <- stack (extended.predictors)
+
+extent(extended.predictors)
 #Using lapply on the list lets it do this to all the rasters.
+
+#Then write the rasters by layer
+
+#Then import the final thingies.
 
 #Define study area extent based on predictors.
 studyarea.extent <- extent(predictors_stack)
