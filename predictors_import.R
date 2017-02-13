@@ -83,6 +83,17 @@ test.raster<-gdal_rasterize(src_datasource = paste(file.path(getwd()),
 censusraster<-raster("r_censusblock_raster.tiff")
 extent(censusraster)
 
+#no matter what it won't extend to correct origin and resolution, so here is code to resample:
+resample.census <- resample (censusraster,
+                           y = nlcd_ok_utm14)
+writeRaster(resample.census,
+            filename = "resample_census_utm_30m.tif",
+            format="GTiff",
+            overwrite = TRUE)
+
+resample.test<- raster("resample_census_utm_30m.tif")
+plot(resample.test)
+
 #gdal_rasterize -a dnsty_k -tr 30.0 30.0 -l censusblocks
 #E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/censusblocks.shp
 #E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/cnss.tif
@@ -139,54 +150,6 @@ easement.raster.test<-raster("conservation_easements_CalcAcres_raster.tif")
 #Plot with vector to see that they match!  (Also did this in QGIS where I can zoom in more easily.)
 plot(easement.raster.test)
 plot(easements, add=TRUE)
-
-#NLCD 2011
-#Getting neighborhood values.
-NLCD2011<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
-plot(NLCD2011) #check the raster is there
-
-NLCD2011_undev_openspace<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/undevopenspace.tif")
-plot(NLCD2011_undev_openspace) #check the raster is there
-
-
-openwater <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/openwater11.tif")
-plot(openwater)
-
-dev_openspace21 <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/dev_openspace21.tif")
-plot(dev_openspace21)
-
-dev_low22 <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/dev_low22.tif")
-plot(dev_low22)
-
-dev_med23 <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/dev_med23.tif")
-plot(dev_med23)
-
-dev_high24 <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/dev_high24.tif")
-plot(dev_high24)
-
-scrub <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/scrub52.tif")
-plot(scrub)
-
-croplands <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/nlcd_processing/croplands82.tif")
-plot(croplands)
-
-
-
-
-##NASS- raster, each year has its own
-#https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php
-#Includes switchgrass code, so even if switchgrass not found in OK could do analysis nationwide??
-#30 meter resolution.
-#switchgrass appears to be rare to non-existent in OK in both years.
-
-NASS2013<-raster('bigfiles/cdl_30m_r_ok_2013_utm14.tif')
-NASS2014<-raster('bigfiles/cdl_30m_r_ok_2014_utm14.tif')
-plot(NASS2013)
-plot(NASS2014)
-
-extract2013<-getValues(NASS2013)
-unique(values(NASS2013))
-
 
 #bioclim to UTM
 #import bioclim layers
