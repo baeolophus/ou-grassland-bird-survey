@@ -22,7 +22,7 @@ for(i in bio_utm_files) { assign(unlist(strsplit(i,
                                      raster(i)) } 
 
 
-popdensity_census_raster<-raster("r_censusblock_raster.tiff")
+popdensity_census_raster <- raster("resample_census_utm_30m.tif")
 
 
 
@@ -50,10 +50,10 @@ extent(grasslands71_15cell)
 extent(easement_acres)
 extent(easement_yesno)
 extent(nlcd_ok_utm14)
+extent(popdensity_census_raster)
 
 
 extent(bio10_12)
-extent(popdensity_census_raster)
 
 
 studyarea.extent <- c(139321.6,
@@ -66,17 +66,7 @@ extended.predictors <- lapply(predictors.list,
                               y = studyarea.extent,
                               value=NA)
 
-test<-extend (censusraster,
-               y= studyarea.extent,
-               value = NA)
-resample.test <- resample (censusraster,
-                           y = nlcd_ok_utm14)
-writeRaster(resample.test,
-            filename = "resample_test.tif",
-            format="GTiff",
-            overwrite = TRUE)
 
-resample.test
 
 predictors.list[[2]]
 extended.predictors[[2]]
