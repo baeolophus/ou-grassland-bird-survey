@@ -45,46 +45,16 @@ predictors.list <- as.list(lapply(predictors, get))
 #using get lets the middle code take the character names of raster layers and stack everything that is a raster layer
 #Using lapply on the list lets it do this to all the rasters.
 
-
+#checking extents are same
 extent(grasslands71_15cell)
 extent(easement_acres)
 extent(easement_yesno)
 extent(nlcd_ok_utm14)
 extent(popdensity_census_raster)
-
-
 extent(bio10_12)
 
 
-studyarea.extent <- c(139321.6,
-                      921001.6,
-                      3704685,
-                      4126455)
-
-extended.predictors <- lapply(predictors.list,
-                              FUN = extend,
-                              y = studyarea.extent,
-                              value=NA)
-
-
-
-predictors.list[[2]]
-extended.predictors[[2]]
-predictors.list[[3]]
-extended.predictors[[3]]
-
-lapply(extended.predictors,
-       FUN = extent)
-
-predictors_stack <- stack (extended.predictors)
-
-extent(extended.predictors)
-#Using lapply on the list lets it do this to all the rasters.
-
-#Then write the rasters by layer
-
-#Then import the final thingies.
-
+predictors_stack <- stack (predictors.list)
 #Define study area extent based on predictors.
 studyarea.extent <- extent(predictors_stack)
 
@@ -98,27 +68,29 @@ complete.dataset.for.sdm.DICK<-dplyr::filter(complete.dataset.for.sdm,
 #Get rid of NA for lat/long values.
 complete.dataset.for.sdm.DICK<-na.omit(complete.dataset.for.sdm.DICK)
 
-#extract values for analysis
-predictors_stack.DICK<-as.data.frame(extract(x=predictors_stack,
-                                    y=c(complete.dataset.for.sdm.DICK$Longitude,
-                                        complete.dataset.for.sdm.DICK$Latitude)))
-
-
-subs.bioclim<-cbind(complete.dataset.for.sdm[,c("Longitude",
-                                                    "Latitude")],
-                    na.omit(predictors_stack.DICK))
-
-tree.data.DICK<-rbind(bg.bioclim.DICK,
-                      subs.bioclim)
-
-coordinates(tree.data.DICK)<-c("Longitude", "Latitude")
+#make it spatial, remembering these values are lat/long in decimal degrees
+coordinates(complete.dataset.for.sdm.DICK)<-c("Longitude", "Latitude")
 #make it spatial
-proj4string(tree.data.DICK)<-CRS(as.character(
-  "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+proj4string(complete.dataset.for.sdm.DICK)<-CRS(as.character("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 #use this: proj4string(data) <- CRS("+proj=longlat + ellps=WGS84")
 #Then convert to utm
-alldata.DICK <- spTransform(tree.data.DICK,
+alldata.DICK.utm <- spTransform(complete.dataset.for.sdm.DICK,
                             CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+
+proj4string(alldata.DICK.utm)
+
+plot(alldata.DICK.utm)
+
+#extract values for analysis
+predictors_stack.DICK<-as.data.frame(extract(x=predictors_stack,
+                                    y=c(alldata.DICK.utm$Longitude,
+                                        alldata.DICK.utm$Latitude)))
+
+
+latlong.predictors.DICK<-cbind(coordinates(alldata.DICK.utm),
+                    predictors_stack.DICK,
+                    row.names = NULL)
+
 
 ##################################
 #Generate support sets
@@ -144,7 +116,7 @@ studyarea.extent.polygons<-SpatialPolygons(list(Polygons(list(studyarea.extent),
 ####################end delete
 
 
-random.points<-spsample(x=studyarea.extent, #should be able to use the spatial polygon here too.  or studyarea.extent.poly
+random.points<-spsample(x=studyarea.extent.poly, #should be able to use the spatial polygon here too.  or studyarea.extent.poly
                         n=1000,
                         type="random")
 

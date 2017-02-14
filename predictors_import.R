@@ -165,20 +165,19 @@ bio <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLayer'])
 bio_stack <- stack (lapply(bio, get))
 crs(bio_stack) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"  #http://www.worldclim.org/format
 
-popdensity_census_raster<-raster("r_censusblock_raster.tiff")
-
-studyarea.extent<-extent(-103,-94,
-                         33,38) # define the extent
+studyarea.extent.latlong<-extent(-103,-94,
+                         33,38) # define the extent for latlong to get a smaller file
 studyarea.bioclim<-crop(bio_stack,
-                        studyarea.extent)
+                        studyarea.extent.latlong)
 
 #show they are in different CRS with different extents
-extent(popdensity_census_raster)
+nlcd_ok_utm14 <- raster("nlcd_processing/nlcd_ok_utm14.tif")
+extent(nlcd_ok_utm14)
 extent(studyarea.bioclim)
 
 #project to the smaller extent and the crs of popdensity_census_raster (Which was made with NLCD)
 utm.bioclim <- projectRaster(from = studyarea.bioclim, 
-                             to = popdensity_census_raster)
+                             to = nlcd_ok_utm14)
 
 #write the new file to smaller files that I can import later  without re-processing
 writeRaster(utm.bioclim,
