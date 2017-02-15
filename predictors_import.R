@@ -10,6 +10,7 @@ library(rgdal)
 library(raster)
 library(rgeos)
 library(gdalUtils)
+library(maptools)
 
 
 #RASTERIZING VECTORS
@@ -24,6 +25,7 @@ grs80.14<-CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +
 #Create masking raster y out of Oklahoma.
 blank_oklahoma<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
 
+##################################
 #Import census blocks for Oklahoma.
 censusblocks<-readOGR(dsn="E:\\Documents\\college\\OU-postdoc\\research\\grassland_bird_surveys\\GIS_layers_original\\tabblock2010_40_pophu",
                       layer="tabblock2010_40_pophu")
@@ -32,6 +34,23 @@ censusblocks<-readOGR(dsn="E:\\Documents\\college\\OU-postdoc\\research\\grassla
 #convert to UTM before calculating area.
 censusblocks <- spTransform(censusblocks,
                          CRSobj=grs80.14)
+
+####
+#Also create a single dissolved polygon of oklahoma.
+ok_state_vector_smallest <- unionSpatialPolygons(censusblocks,
+                                                 censusblocks$STATEFP10)
+
+ok_state_vector_smallest_pdf <- as(ok_state_vector_smallest,
+                                   "SpatialPolygonsDataFrame")
+
+writeOGR(obj=ok_state_vector_smallest_pdf,
+         dsn=file.path(getwd()),
+         layer="ok_state_vector_smallest_pdf", 
+         layer_options = "RESIZE=YES",
+         driver="ESRI Shapefile")
+
+
+###
 #Get resolution of blank raster AFTER converting to UTM.
 #Is needed later in gdal rasterize for dimensions of new raster.
 r <- raster(censusblocks, resolution=res(blank_oklahoma))
@@ -94,10 +113,7 @@ writeRaster(resample.census,
 resample.test<- raster("resample_census_utm_30m.tif")
 plot(resample.test)
 
-#gdal_rasterize -a dnsty_k -tr 30.0 30.0 -l censusblocks
-#E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/censusblocks.shp
-#E:/Dropbox/work/ougrassland/ou-grassland-bird-survey/cnss.tif
-
+##################################
 #CONSERVATION EASEMENTS TO RASTERS
 ##The other way of making rasters for smaller, simpler files.
 #import easement data geodatabase
@@ -132,7 +148,7 @@ easements.raster.presence.absence <- rasterize(x = easements,
 #Second, how many acres exist in that easement?
 easements.raster.CalcAcres <- rasterize(x = easements,
                                                y = blank_oklahoma,
-                                               field = "CalcAcres")
+                                               field = "CalcAcres") #should have added background = 0, ended up clip-masking in qgis
 
 #Write these two files as GeoTiffs.  (Tried .grd default files but they gave many errors and do not load in QGIS.)
 writeRaster(easements.raster.CalcAcres,
@@ -151,6 +167,7 @@ easement.raster.test<-raster("conservation_easements_CalcAcres_raster.tif")
 plot(easement.raster.test)
 plot(easements, add=TRUE)
 
+##################################
 #bioclim to UTM
 #import bioclim layers
 bio_12_list <- list.files(path = "E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/bio_12",
@@ -185,4 +202,63 @@ writeRaster(utm.bioclim,
             format = "GTiff",
             bylayer = TRUE,
             overwrite = TRUE)
+##################################
+#Masking all rasters and data.
 
+#Import oklahoma polygon mask.
+ok_vector <- readOGR(dsn=getwd(),
+                      layer="ok_state_vector_smallest_pdf")
+
+plot(ok_vector)
+
+#Mask rasters
+rasterOptions()$tmpdir
+rasterOptions(tmpdir="E:/Documents/R/temp")
+
+
+#Bring in predictor data.
+#import bioclim layers
+bio_utm_list <- list.files(path = paste0(getwd(),
+                                         "/bio_12_utm"),
+                           pattern = "tif$",
+                           full.names = FALSE)
+bio_utm_files <- paste0("bio_12_utm/",
+                        bio_utm_list)
+
+for(i in bio_utm_files) { assign(unlist(strsplit(i,
+                                                 "[./]"))[2], #splits filenames at / and and . to eliminate folder name and file type.
+                                 raster(i)) } 
+
+
+resample_census_utm_30m <- raster("resample_census_utm_30m.tif")
+
+
+
+conservation_easements_CalcAcres_raster <- raster("conservation_easements_CalcAcres_raster.tif")
+conservation_easements_presenceabsence_raster <- raster("conservation_easements_presenceabsence_raster.tif")
+
+nlcdrasters_list <- list.files(paste0(getwd(), "/nlcd_processing"),
+                               pattern = "tif$",
+                               full.names = FALSE)
+nlcdrasters_files <- paste0("nlcd_processing/",
+                            nlcdrasters_list)
+
+for(i in nlcdrasters_files) { assign(unlist(strsplit(i,
+                                                     "[./]"))[2], #splits filenames at / and and . to eliminate folder name and file type.
+                                     raster(i)) } 
+
+predictors <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLayer'])
+
+predictors.list <- as.list(lapply(predictors, get))
+#using get lets the middle code take the character names of raster layers and stack everything that is a raster layer
+#Using lapply on the list lets it do this to all the rasters.
+
+
+predictors_stack <- stack (predictors.list)
+
+masked_predictors <- mask (predictors_stack[[1]],
+                           ok_vector,
+                           updatevalue = NA)
+
+plot(masked_predictors)
+#Subset responses.
