@@ -22,12 +22,12 @@ for(i in bio_utm_files) { assign(unlist(strsplit(i,
                                      raster(i)) } 
 
 
-popdensity_census_raster <- raster("resample_census_utm_30m.tif")
+resample_census_utm_30m <- raster("resample_census_utm_30m.tif")
 
 
 
-easement_acres <- raster("conservation_easements_CalcAcres_raster.tif")
-easement_yesno <- raster("conservation_easements_presenceabsence_raster.tif")
+conservation_easements_CalcAcres_raster <- raster("conservation_easements_CalcAcres_raster.tif")
+conservation_easements_presenceabsence_raster <- raster("conservation_easements_presenceabsence_raster.tif")
 
 nlcdrasters_list <- list.files(paste0(getwd(), "/nlcd_processing"),
                                pattern = "tif$",
@@ -44,14 +44,6 @@ predictors <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLay
 predictors.list <- as.list(lapply(predictors, get))
 #using get lets the middle code take the character names of raster layers and stack everything that is a raster layer
 #Using lapply on the list lets it do this to all the rasters.
-
-#checking extents are same
-extent(grasslands71_15cell)
-extent(easement_acres)
-extent(easement_yesno)
-extent(nlcd_ok_utm14)
-extent(popdensity_census_raster)
-extent(bio10_12)
 
 
 predictors_stack <- stack (predictors.list)
@@ -87,9 +79,10 @@ predictors_stack.DICK<-as.data.frame(extract(x=predictors_stack,
                                         alldata.DICK.utm$Latitude)))
 
 
-latlong.predictors.DICK<-cbind(coordinates(alldata.DICK.utm),
-                    predictors_stack.DICK,
-                    row.names = NULL)
+latlong.predictors.DICK<-cbind("presence" = alldata.DICK.utm$presence,
+                               coordinates(alldata.DICK.utm),
+                               predictors_stack.DICK,
+                               row.names = NULL)
 
 
 ##################################
@@ -100,17 +93,6 @@ latlong.predictors.DICK<-cbind(coordinates(alldata.DICK.utm),
 studyarea.extent.poly <- as(studyarea.extent,
                             'SpatialPolygons')  
 
-#if above works, delete#########
-studyarea.extent<-Polygon(
-  matrix(c(-103, 33,
-           -103, 38,
-           -94, 38,
-           -94, 33,
-           -103, 33),
-         nrow=5, ncol=2,
-         byrow=TRUE)
-)
-
 #I think I can combine this with polygon() above and use in all places.
 studyarea.extent.polygons<-SpatialPolygons(list(Polygons(list(studyarea.extent), "studyarea")))
 ####################end delete
@@ -120,10 +102,8 @@ random.points<-spsample(x=studyarea.extent.poly, #should be able to use the spat
                         n=1000,
                         type="random")
 
-#Fix up projections here.
+#give it correct project like sightings.
 proj4string(random.points)<-CRS(as.character(
-  "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
-proj4string(tree.data.DICK)<-CRS(as.character(
   "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
 
 plot(random.points)
@@ -133,7 +113,8 @@ plot(random.points)
 #they got much from: http://stackoverflow.com/questions/26620373/spatialpolygons-creating-a-set-of-polygons-in-r-from-coordinates
 
 #set the radius for the plots
-radius <- 1 #radius in decimal degrees.  Units should be different with everything in utm now.
+radius <- 50000 #radius in meters. =50,000 = 50 km = 200 x 200 km boxes
+
 #get the centroids from the random.points spatial points object.
 
 centroids<-data.frame(
@@ -175,6 +156,7 @@ polys <- SpatialPolygons(
 # Create SpatialPolygonDataFrame -- this step is required to output multiple polygons.
 polys.df <- SpatialPolygonsDataFrame(polys, data.frame(id=ID, row.names=ID))
 
+plot(random.points)
 plot(polys.df,
      add=TRUE)
 
@@ -188,8 +170,22 @@ spatial.support.set<-function(whichrandombox,
   sample.size.good<-ifelse(length(spatial.support.set)>10, 1, 0)
   #need to have the minimum data requirement in here too.
   library(rpart)
-  tree.test<-rpart(response~bio1+
-                     bio2,
+  vars <- paste(predictors,collapse="+")
+  frmla <- paste("presence ~", vars)
+  as.formula(frmla)
+  
+  #single test
+  tree.test<-rpart(frmla,
+                   data=latlong.predictors.DICK,
+                   method="class",
+                   control=rpart.control(cp=0.0000000000000000000000000001))
+  
+  tree.test.raster.prediction<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
+                                               model=tree.test)
+  plot(tree.test.raster.prediction)
+  #end single test
+ 
+  tree.test<-rpart(frmla,
                    data=spatialdataset,
                    method="class",
                    control=rpart.control(cp=0.0000000000000000000000000001))
@@ -209,35 +205,31 @@ spatial.support.set<-function(whichrandombox,
   #if I choose to include more than one model type.
 }
 
+#Then apply the function for each support set
 list.test<-lapply(1:1000,
                   FUN=spatial.support.set,
                   spatialdataset=tree.data.DICK)
 
 
+#Get the weights out, which is the support set sample size at each pixel
 weights<-lapply(list.test,
                 "[",
                 2)
 weights<-as.vector(unlist(weights))
 
+#remove one level of list on the remaining support sets
 predictions.support.sets<-unlist(lapply(list.test,
                                  "[",
                                  1))
 
+#Stack all the support sets (this will work because they have been extended with NA in non-support-set regions)
 predictions.support.sets.stacked<-raster::stack(predictions.support.sets)
 
-#names(predictions.support.sets)[1:2] <- c('x', 'y')
-#x and y seems necessary, cannot rename these or mosaic gives error in do.call below.
-#predictions.support.sets$fun <- mean
-#predictions.support.sets$na.rm <- TRUE
-
-#ensemble.mosaic <- do.call(mosaic, predictions.support.sets) #This works
-
-#predictions.support.sets2<-predictions.support.sets
-#predictions.support.sets2$fun<-raster::weighted
-
+#Run the ensemble by using weighted mean.  The weight is by number of support sets.
 ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
                                   list(predictions.support.sets.stacked,
                                        weights,
                                        TRUE))
 
+#Plot the mosaic.
 plot(ensemble.weighted.mosaic)
