@@ -11,10 +11,10 @@ rasterOptions(tmpdir="E:/Documents/R/temp")
 #Bring in predictor data.
 #import bioclim layers
 bio_utm_list <- list.files(path = paste0(getwd(),
-                                         "/bio_12_utm"),
+                                         "/bio_12_ok_shape"),
                                pattern = "tif$",
                                full.names = FALSE)
-bio_utm_files <- paste0("bio_12_utm/",
+bio_utm_files <- paste0("bio_12_ok_shape/",
                         bio_utm_list)
 
 for(i in bio_utm_files) { assign(unlist(strsplit(i,
@@ -27,7 +27,7 @@ resample_census_utm_30m <- raster("resample_census_utm_30m.tif")
 
 
 conservation_easements_CalcAcres_raster <- raster("conservation_easements_CalcAcres_raster.tif")
-conservation_easements_presenceabsence_raster <- raster("conservation_easements_presenceabsence_raster.tif")
+conservation_easements_presenceabsence_raster <- raster("conservation_easements_presenceabsence_raster-okmask.tif")
 
 nlcdrasters_list <- list.files(paste0(getwd(), "/nlcd_processing"),
                                pattern = "tif$",
@@ -48,17 +48,15 @@ predictors.list <- as.list(lapply(predictors, get))
 
 predictors_stack <- stack (predictors.list)
 #Define study area extent based on predictors.
-studyarea.extent <- extent(predictors_stack)
+(studyarea.extent <- extent(predictors_stack))
 
 #########################
 #Responses
-#Bring in whole response data set as a spatial object including presence/absence.
-complete.dataset.for.sdm <- read.csv(file = "completedatasetforsdm.csv")
+#Bring in whole response data set (with NA lat/long already removed) as a spatial object including presence/absence.
+#Is already in utm
+complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.csv")
 complete.dataset.for.sdm.DICK<-dplyr::filter(complete.dataset.for.sdm,
                                              SPEC=="DICK")
-
-#Get rid of NA for lat/long values.
-complete.dataset.for.sdm.DICK<-na.omit(complete.dataset.for.sdm.DICK)
 
 #make it spatial, remembering these values are lat/long in decimal degrees
 coordinates(complete.dataset.for.sdm.DICK)<-c("Longitude", "Latitude")
