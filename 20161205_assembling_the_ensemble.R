@@ -58,27 +58,24 @@ complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.cs
 complete.dataset.for.sdm.DICK<-dplyr::filter(complete.dataset.for.sdm,
                                              SPEC=="DICK")
 
-#make it spatial, remembering these values are lat/long in decimal degrees
+#make it spatial, remembering these values were converted from lat/long to UTM already in data manipulation file.
 coordinates(complete.dataset.for.sdm.DICK)<-c("Longitude", "Latitude")
 #make it spatial
-proj4string(complete.dataset.for.sdm.DICK)<-CRS(as.character("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
-#use this: proj4string(data) <- CRS("+proj=longlat + ellps=WGS84")
-#Then convert to utm
-alldata.DICK.utm <- spTransform(complete.dataset.for.sdm.DICK,
-                            CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+proj4string(complete.dataset.for.sdm.DICK)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
 
-proj4string(alldata.DICK.utm)
+#check it worked
+proj4string(complete.dataset.for.sdm.DICK)
 
-plot(alldata.DICK.utm)
+plot(complete.dataset.for.sdm.DICK)
 
 #extract values for analysis
 predictors_stack.DICK<-as.data.frame(extract(x=predictors_stack,
-                                    y=c(alldata.DICK.utm$Longitude,
-                                        alldata.DICK.utm$Latitude)))
+                                    y=c(complete.dataset.for.sdm.DICK$Longitude,
+                                        complete.dataset.for.sdm.DICK$Latitude)))
 
 
-latlong.predictors.DICK<-cbind("presence" = alldata.DICK.utm$presence,
-                               coordinates(alldata.DICK.utm),
+latlong.predictors.DICK<-cbind("presence" = complete.dataset.for.sdm.DICK$presence,
+                               coordinates(complete.dataset.for.sdm.DICK),
                                predictors_stack.DICK,
                                row.names = NULL)
 
@@ -175,8 +172,7 @@ spatial.support.set<-function(whichrandombox,
   #single test
   tree.test<-rpart(frmla,
                    data=latlong.predictors.DICK,
-                   method="class",
-                   control=rpart.control(cp=0.0000000000000000000000000001))
+                   method="class")
   
   tree.test.raster.prediction<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
                                                model=tree.test)
