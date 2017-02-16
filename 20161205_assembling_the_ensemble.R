@@ -72,18 +72,17 @@ plot(complete.dataset.for.sdm.DICK,
      pch = complete.dataset.for.sdm.DICK$presence)
 
 #extract values for analysis
-predictors_stack.DICK<-as.data.frame(extract(x=predictors_stack,
-                                    y=c(complete.dataset.for.sdm.DICK$Longitude,
-                                        complete.dataset.for.sdm.DICK$Latitude)))
-
 predictors_stack.DICK<-extract(x=predictors_stack,
-                                             y=complete.dataset.for.sdm.DICK)
+                               y=complete.dataset.for.sdm.DICK)
+predictors_stack.DICK.df <- as.data.frame(predictors_stack.DICK)
 
 latlong.predictors.DICK<-cbind("presence" = complete.dataset.for.sdm.DICK$presence,
                                coordinates(complete.dataset.for.sdm.DICK),
-                               predictors_stack.DICK,
+                               predictors_stack.DICK.df,
                                row.names = NULL)
-
+#has to be spatial for function to work so re-add that
+coordinates(latlong.predictors.DICK) <- c("Longitude", "Latitude")
+proj4string(latlong.predictors.DICK)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
 
 ##################################
 #Generate support sets
@@ -93,18 +92,13 @@ latlong.predictors.DICK<-cbind("presence" = complete.dataset.for.sdm.DICK$presen
 studyarea.extent.poly <- as(studyarea.extent,
                             'SpatialPolygons')  
 
-#I think I can combine this with polygon() above and use in all places.
-studyarea.extent.polygons<-SpatialPolygons(list(Polygons(list(studyarea.extent), "studyarea")))
-####################end delete
-
-
 random.points<-spsample(x=studyarea.extent.poly, #should be able to use the spatial polygon here too.  or studyarea.extent.poly
                         n=1000,
                         type="random")
 
 #give it correct project like sightings.
-proj4string(random.points)<-CRS(as.character(
-  "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+proj4string(random.points)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+
 
 plot(random.points)
 #create squares around them, these will be support set extents.
@@ -151,7 +145,7 @@ polys <- SpatialPolygons(
   },
   split(square, row(square)), ID),
   proj4string=CRS(as.character(
-    "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0")))
+    "+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")))
 
 # Create SpatialPolygonDataFrame -- this step is required to output multiple polygons.
 polys.df <- SpatialPolygonsDataFrame(polys, data.frame(id=ID, row.names=ID))
@@ -174,43 +168,35 @@ spatial.support.set<-function(whichrandombox,
   frmla <- paste("presence ~", vars)
   as.formula(frmla)
   
-  #single test
-  tree.test<-rpart(frmla,
-                   data=latlong.predictors.DICK,
-                   method="class")
-  summary(tree.test)
-  tree.test.raster.prediction<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
-                                               model=tree.test)
-  plot(tree.test.raster.prediction,
-       breaks = c(0, 0.25, 0.50, 0.75, 1.00),
-       col = c("gray","yellow","green","darkgreen"))
-  #end single test
- 
   tree.test<-rpart(frmla,
                    data=spatialdataset,
-                   method="class",
-                   control=rpart.control(cp=0.0000000000000000000000000001))
+                   method="anova",
+                   control=rpart.control(cp=0.001))
   #create prediction map for illustration purposes
-  support.set.bioclim<-crop(studyarea.bioclim,
+  support.set<-crop(predictors_stack,
                             extent(polys.df[whichrandombox,]))
-  tree.test.raster.prediction<-raster::predict(object=support.set.bioclim, #raster object, probably use bioclim.extent,
+  tree.test.raster.prediction<-raster::predict(object=support.set, #raster object, probably use bioclim.extent,
                                                model=tree.test)
   plot(tree.test.raster.prediction)
   tree.test.raster.prediction.extended<-extend(x=tree.test.raster.prediction,
-                                      y=extent(studyarea.extent.polygons),
+                                      y=extent(studyarea.extent.poly),
                                       value=NA)
   return(list(tree.test.raster.prediction.extended,
-              sample.size.good))
+              sample.size.good,
+              tree.test))
   
   #I could even do the mean of several kinds of models as the prediction for each square
   #if I choose to include more than one model type.
 }
 
-#Then apply the function for each support set
-list.test<-lapply(1:1000,
-                  FUN=spatial.support.set,
-                  spatialdataset=tree.data.DICK)
+#Some info on tuning rpart.
+#https://stat.ethz.ch/R-manual/R-devel/library/rpart/html/rpart.control.html
+#http://stackoverflow.com/questions/20993073/the-result-of-rpart-is-just-with-1-root
 
+#Then apply the function for each support set
+list.test<-lapply(1:2,
+                  FUN=spatial.support.set,
+                  spatialdataset=latlong.predictors.DICK)
 
 #Get the weights out, which is the support set sample size at each pixel
 weights<-lapply(list.test,
