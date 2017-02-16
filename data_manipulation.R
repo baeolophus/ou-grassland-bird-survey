@@ -7,7 +7,7 @@ library(rgeos) # for spatial distance and topology operations
 library(dplyr) # data manipulation
 library(geosphere) #distances between transects
 library(lubridate) #dates for year
-library(fuzzyjoin)
+library(fuzzyjoin) #for getting ebird data out by spatial location
 #####
 
 #import gpx files of where transects and point counts should be
@@ -713,4 +713,36 @@ complete.dataset.for.sdm<-dplyr::arrange(complete.dataset.for.sdm,
 write.csv(complete.dataset.for.sdm,
           "completedatasetforsdm.csv")
 
+#Masking for just oklahoma
+
+#Import oklahoma polygon mask.
+ok_vector <- readOGR(dsn=getwd(),
+                     layer="ok_state_vector_smallest_pdf")
+
+ok_vector <- spTransform(ok_vector,
+                         CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+plot(ok_vector)
+
+##make it spatial, remembering these values are lat/long in decimal degrees
+#eliminate missing values first.
+complete.dataset.for.sdm.na <- complete.dataset.for.sdm %>%
+  dplyr::filter(!is.na(Longitude) & !is.na(Latitude))
+coordinates(complete.dataset.for.sdm.na)<-c("Longitude", "Latitude")
+#make it spatial
+proj4string(complete.dataset.for.sdm.na)<-CRS(as.character("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+#use this: proj4string(data) <- CRS("+proj=longlat + ellps=WGS84")
+#Then convert to utm
+complete.dataset.for.sdm.na.utm <- spTransform(complete.dataset.for.sdm.na,
+                                CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+
+proj4string(complete.dataset.for.sdm.na.utm)
+
+#Subset responses.
+oklahoma.dataset.for.sdm.na.utm<-complete.dataset.for.sdm.na.utm[ok_vector,]
+
+plot(oklahoma.dataset.for.sdm.na.utm)
+
+#Write to file
+write.csv(as.data.frame(oklahoma.dataset.for.sdm.na.utm),
+          "oklahomadatasetforsdm_naomit_utm.csv")
 
