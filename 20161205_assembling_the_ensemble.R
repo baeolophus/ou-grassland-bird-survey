@@ -27,7 +27,7 @@ resample_census_utm_30m <- raster("resample_census_utm_30m.tif")
 
 
 conservation_easements_CalcAcres_raster <- raster("conservation_easements_CalcAcres_raster.tif")
-conservation_easements_presenceabsence_raster <- raster("conservation_easements_presenceabsence_raster-okmask.tif")
+conservation_easements_presenceabsence_raster_okmask <- raster("conservation_easements_presenceabsence_raster_okmask.tif")
 
 nlcdrasters_list <- list.files(paste0(getwd(), "/nlcd_processing"),
                                pattern = "tif$",
@@ -56,7 +56,9 @@ predictors_stack <- stack (predictors.list)
 #Is already in utm
 complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.csv")
 complete.dataset.for.sdm.DICK<-dplyr::filter(complete.dataset.for.sdm,
-                                             SPEC=="DICK")
+                                             SPEC=="DICK",
+                                             month == 4 | month == 5 | month == 6)
+#to match transects and point counts, summer only.
 
 #make it spatial, remembering these values were converted from lat/long to UTM already in data manipulation file.
 coordinates(complete.dataset.for.sdm.DICK)<-c("Longitude", "Latitude")
@@ -66,13 +68,16 @@ proj4string(complete.dataset.for.sdm.DICK)<-CRS(as.character("+proj=utm +zone=14
 #check it worked
 proj4string(complete.dataset.for.sdm.DICK)
 
-plot(complete.dataset.for.sdm.DICK)
+plot(complete.dataset.for.sdm.DICK,
+     pch = complete.dataset.for.sdm.DICK$presence)
 
 #extract values for analysis
 predictors_stack.DICK<-as.data.frame(extract(x=predictors_stack,
                                     y=c(complete.dataset.for.sdm.DICK$Longitude,
                                         complete.dataset.for.sdm.DICK$Latitude)))
 
+predictors_stack.DICK<-extract(x=predictors_stack,
+                                             y=complete.dataset.for.sdm.DICK)
 
 latlong.predictors.DICK<-cbind("presence" = complete.dataset.for.sdm.DICK$presence,
                                coordinates(complete.dataset.for.sdm.DICK),
@@ -173,10 +178,12 @@ spatial.support.set<-function(whichrandombox,
   tree.test<-rpart(frmla,
                    data=latlong.predictors.DICK,
                    method="class")
-  
+  summary(tree.test)
   tree.test.raster.prediction<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
                                                model=tree.test)
-  plot(tree.test.raster.prediction)
+  plot(tree.test.raster.prediction,
+       breaks = c(0, 0.25, 0.50, 0.75, 1.00),
+       col = c("gray","yellow","green","darkgreen"))
   #end single test
  
   tree.test<-rpart(frmla,
