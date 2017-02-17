@@ -28,6 +28,7 @@ resample_census_utm_30m <- raster("resample_census_utm_30m.tif")
 
 conservation_easements_CalcAcres_raster <- raster("conservation_easements_CalcAcres_raster.tif")
 conservation_easements_presenceabsence_raster_okmask <- raster("conservation_easements_presenceabsence_raster_okmask.tif")
+plot(conservation_easements_presenceabsence_raster_okmask)
 
 nlcdrasters_list <- list.files(paste0(getwd(), "/nlcd_processing"),
                                pattern = "tif$",
@@ -197,6 +198,17 @@ spatial.support.set<-function(whichrandombox,
 list.test<-lapply(1:2,
                   FUN=spatial.support.set,
                   spatialdataset=latlong.predictors.DICK)
+
+tree.test<-rpart(frmla,
+               data=latlong.predictors.DICK,
+               method="anova",
+               control=rpart.control(cp=0.01)) #default control
+tree.test.raster.prediction<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
+                                           model=tree.test)
+
+plot(tree.test.raster.prediction)
+plot(tree.test)
+text(tree.test)
 
 #Get the weights out, which is the support set sample size at each pixel
 weights<-lapply(list.test,
