@@ -30,11 +30,11 @@ blank_oklahoma<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_
 censusblocks<-readOGR(dsn="E:\\Documents\\college\\OU-postdoc\\research\\grassland_bird_surveys\\GIS_layers_original\\tabblock2010_40_pophu",
                       layer="tabblock2010_40_pophu")
 
-
+proj4string(censusblocks)
 #convert to UTM before calculating area.
 censusblocks <- spTransform(censusblocks,
                          CRSobj=grs80.14)
-
+proj4string(censusblocks)
 ####
 #Also create a single dissolved polygon of oklahoma.
 ok_state_vector_smallest <- unionSpatialPolygons(censusblocks,
@@ -69,11 +69,14 @@ summary(censusblocks$POP10KM)
 writeOGR(obj=censusblocks,
          dsn=file.path(getwd()),
          layer="censusblocks_utm", 
-         layer_options = "RESIZE=YES",
+      #   layer_options = "RESIZE=YES", #This line appears unnecessary in future, but I did use it.
          driver="ESRI Shapefile")
 #gives errors about area fields (field width problem),
 #but I don't want that one, so I'm not worrying.  Other values appear correctly in QGIS.
-
+censusblocks_utm<-readOGR(dsn=getwd(),
+                          layer="censusblocks_utm")
+proj4string(censusblocks_utm)
+#somehow it looks the towgs setting in the writing of it.
 
 gdal_setInstallation()
 valid_install <- !is.null(getOption("gdalUtils_gdalPath"))
@@ -148,7 +151,8 @@ easements.raster.presence.absence <- rasterize(x = easements,
 #Second, how many acres exist in that easement?
 easements.raster.CalcAcres <- rasterize(x = easements,
                                                y = blank_oklahoma,
-                                               field = "CalcAcres") #should have added background = 0, ended up clip-masking in qgis
+                                               field = "CalcAcres",
+                                        background = 0) #should have added background = 0, then need to clip-mask in qgis (gdalwarp)
 
 #Write these two files as GeoTiffs.  (Tried .grd default files but they gave many errors and do not load in QGIS.)
 writeRaster(easements.raster.CalcAcres,
