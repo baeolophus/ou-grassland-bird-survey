@@ -26,7 +26,7 @@ resample_census_utm_30m <- raster("resample_census_utm_30m.tif")
 
 
 
-conservation_easements_CalcAcres_raster <- raster("conservation_easements_CalcAcres_raster.tif")
+conservation_easements_CalcAcres_raster <- raster("conservation_easements_CalcAcres_raster_okmask.tif")
 conservation_easements_presenceabsence_raster_okmask <- raster("conservation_easements_presenceabsence_raster_okmask.tif")
 plot(conservation_easements_presenceabsence_raster_okmask)
 
@@ -207,6 +207,7 @@ tree.test.raster.prediction<-raster::predict(object=predictors_stack, #raster ob
                                            model=tree.test)
 
 plot(tree.test.raster.prediction)
+points(latlong.predictors.DICK[latlong.predictors.DICK$presence==1,])
 plot(tree.test)
 text(tree.test)
 
