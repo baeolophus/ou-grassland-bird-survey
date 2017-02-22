@@ -3,41 +3,49 @@ library(raster)
 library(sp)
 library(rgdal)
 library(dplyr)
+library(caret)
+library(rpart)
 
 rasterOptions()$tmpdir
 rasterOptions(tmpdir="E:/Documents/R/temp")
 
 
 #Bring in predictor data.
+gispath <- "E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed"
 #import bioclim layers
-bio_utm_list <- list.files(path = paste0(getwd(),
+bio_utm_list <- list.files(path = paste0(gispath,
                                          "/bio_12_ok_shape"),
                                pattern = "tif$",
                                full.names = FALSE)
-bio_utm_files <- paste0("bio_12_ok_shape/",
+bio_utm_files <- paste0(gispath,
+                        "/bio_12_ok_shape/",
                         bio_utm_list)
 
 for(i in bio_utm_files) { assign(unlist(strsplit(i,
-                                                     "[./]"))[2], #splits filenames at / and and . to eliminate folder name and file type.
+                                                     "[./]"))[10], #splits filenames at / and and . to eliminate folder name and file type.
                                      raster(i)) } 
 
 
-resample_census_utm_30m <- raster("resample_census_utm_30m.tif")
+resample_census_utm_30m <- raster(paste0(gispath,
+                                         "/resample_census_utm_30m.tif"))
 
 
 
-conservation_easements_CalcAcres_raster <- raster("conservation_easements_CalcAcres_raster_okmask.tif")
-conservation_easements_presenceabsence_raster_okmask <- raster("conservation_easements_presenceabsence_raster_okmask.tif")
+conservation_easements_CalcAcres_raster <- raster(paste0(gispath,
+                                                         "/conservation_easements_CalcAcres_raster_okmask.tif"))
+conservation_easements_presenceabsence_raster_okmask <- raster(paste0(gispath,
+                                                                      "/conservation_easements_presenceabsence_raster_okmask.tif"))
 plot(conservation_easements_presenceabsence_raster_okmask)
 
-nlcdrasters_list <- list.files(paste0(getwd(), "/nlcd_processing"),
+nlcdrasters_list <- list.files(paste0(gispath, "/nlcd_processing"),
                                pattern = "tif$",
                                full.names = FALSE)
-nlcdrasters_files <- paste0("nlcd_processing/",
+nlcdrasters_files <- paste0(gispath,
+                            "/nlcd_processing/",
                           nlcdrasters_list)
                    
 for(i in nlcdrasters_files) { assign(unlist(strsplit(i,
-                                                     "[./]"))[2], #splits filenames at / and and . to eliminate folder name and file type.
+                                                     "[./]"))[10], #splits filenames at / and and . to eliminate folder name and file type.
                                      raster(i)) } 
 
 predictors <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLayer'])
@@ -81,9 +89,34 @@ latlong.predictors.DICK<-cbind("presence" = complete.dataset.for.sdm.DICK$presen
                                coordinates(complete.dataset.for.sdm.DICK),
                                predictors_stack.DICK.df,
                                row.names = NULL)
+
+latlong.predictors.DICK.spatial <-cbind("presence" = complete.dataset.for.sdm.DICK$presence,
+                               coordinates(complete.dataset.for.sdm.DICK),
+                               predictors_stack.DICK.df,
+                               row.names = NULL)
 #has to be spatial for function to work so re-add that
-coordinates(latlong.predictors.DICK) <- c("Longitude", "Latitude")
-proj4string(latlong.predictors.DICK)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+coordinates(latlong.predictors.DICK.spatial) <- c("Longitude", "Latitude")
+proj4string(latlong.predictors.DICK.spatial)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+##################################
+#Subsample for training and cross-validation.
+
+set.seed(6798256)
+
+#need to alter this so they don't overlap spatially (Fink et al. 2010)
+#create grid and only use certain grids for each.
+
+trainIndex <- createDataPartition(latlong.predictors.DICK$presence,
+                                  p = .8, #80% to training
+                                  list = FALSE, 
+                                  times = 1)
+
+
+head(trainIndex)
+
+training <- latlong.predictors.DICK[ trainIndex,]
+training.nolatlong <- training[,c(1,4:54)]
+testing  <- latlong.predictors.DICK[-trainIndex,]
+testing.nolatlong <- testing[,c(1,4:54)]
 
 ##################################
 #Generate support sets
@@ -161,8 +194,10 @@ plot(polys.df,
 spatial.support.set<-function(whichrandombox,
                               spatialdataset){
   spatial.support.set<-spatialdataset[polys.df[whichrandombox,],]
+  #A line here with caret
+  training <- #use about 2/3 of data from support set.
   #I think there should be a line that turns it back into regular data?
-  sample.size.good<-ifelse(length(spatial.support.set)>10, 1, 0)
+  sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
   #need to have the minimum data requirement in here too.
   library(rpart)
   vars <- paste(predictors,collapse="+")
@@ -203,13 +238,29 @@ tree.test<-rpart(frmla,
                data=latlong.predictors.DICK,
                method="anova",
                control=rpart.control(cp=0.01)) #default control
+
+#will predict:raster work with caret models?
+
+rpart_fit <- train(presence ~ .,
+                   data = training.nolatlong,
+                   method = "rpart",
+                   metric="RMSE")
+rpart_fit
+#Make sure rpart uses ANOVA version http://stackoverflow.com/questions/30357212/caret-and-rpart-definining-method
+
+
 tree.test.raster.prediction<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
-                                           model=tree.test)
+                                           model=rpart_fit,
+                                           progress = "text")
 
 plot(tree.test.raster.prediction)
-points(latlong.predictors.DICK[latlong.predictors.DICK$presence==1,])
-plot(tree.test)
-text(tree.test)
+beepr::beep() #notification on completion
+
+
+plot(rpart_fit$finalModel)
+plot(rpart_fit, metric = "RMSE")
+text(rpart_fit$finalModel)
+plot(t$finalModel) text(t$finalModel)
 
 #Get the weights out, which is the support set sample size at each pixel
 weights<-lapply(list.test,
@@ -233,3 +284,10 @@ ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
 
 #Plot the mosaic.
 plot(ensemble.weighted.mosaic)
+
+#########################################
+#Once predictions made, evaluation of model.
+#RMSE (root mean square error)
+
+#AUC
+
