@@ -100,7 +100,7 @@ proj4string(latlong.predictors.DICK.spatial)<-CRS(as.character("+proj=utm +zone=
 ##################################
 #Subsample for training and cross-validation.
 
-set.seed(6798256)
+set.seed(6798257)
 
 #need to alter this so they don't overlap spatially (Fink et al. 2010)
 #create grid and only use certain grids for each.
@@ -117,6 +117,63 @@ training <- latlong.predictors.DICK[ trainIndex,]
 training.nolatlong <- training[,c(1,4:54)]
 testing  <- latlong.predictors.DICK[-trainIndex,]
 testing.nolatlong <- testing[,c(1,4:54)]
+
+plot(testing[,c("Longitude","Latitude")],
+     pch = 25,
+     bg = training$presence
+)
+points(training[,c("Longitude","Latitude")],
+       pch = 22,
+       bg = as.numeric(training$presence) + 2
+       ) #squares
+
+#testing fold validation
+
+foldIndex <- createFolds(y = latlong.predictors.DICK$presence,
+                         k = 5,
+                         returnTrain = TRUE)
+#customize this by geography
+
+
+fitControl <- trainControl(## 5-fold CV
+  method = "cv",
+  number = 5,
+  index = foldIndex#,
+  #indexOut = #geographic subsampling
+  )
+
+fitControl <- trainControl(method = 'none', summaryFunction = twoClassSummary)
+
+rpart_fit_5 <- train(presence ~ ., data = training, 
+                 method = "rf",
+                 trControl=trainControl(method="cv",number=5))
+beepr::beep()
+latlong.predictors.DICK$presence <- as.factor(latlong.predictors.DICK$presence)
+summary(rpart_fit_5)
+plot(rpart_fit_5$finalModel)
+
+text(rpart_fit_5$finalModel)
+pred <- predict(rpart_fit_5, newdata = latlong.predictors.DICK.spatial@data[-foldIndex[[1]],])
+
+postResample(pred = pred, obs = latlong.predictors.DICK.spatial@data[-foldIndex[[1]], "presence"])
+
+#for spatially uniform test data
+#http://stackoverflow.com/questions/32862606/taking-random-point-from-list-of-points-per-grid-square
+#Do this sampling n times (200?  250?)
+
+plot(latlong.predictors.DICK.spatial@data[-foldIndex[[1]], c("Longitude", "Latitude")])
+
+
+tree.test.raster.prediction.rf<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
+                                             model=rpart_fit_5,
+                                             progress = "text")
+
+
+
+plot(tree.test.raster.prediction.rf)
+beepr::beep() #notification on completion
+
+
 
 ##################################
 #Generate support sets
@@ -246,12 +303,15 @@ rpart_fit <- train(presence ~ .,
                    method = "rpart",
                    metric="RMSE")
 rpart_fit
+
 #Make sure rpart uses ANOVA version http://stackoverflow.com/questions/30357212/caret-and-rpart-definining-method
 
 
 tree.test.raster.prediction<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
                                            model=rpart_fit,
                                            progress = "text")
+
+rpart_fit_5
 
 plot(tree.test.raster.prediction)
 beepr::beep() #notification on completion
@@ -261,6 +321,14 @@ plot(rpart_fit$finalModel)
 plot(rpart_fit, metric = "RMSE")
 text(rpart_fit$finalModel)
 plot(t$finalModel) text(t$finalModel)
+
+
+#trying five-fold CV
+rpart_fit5 <- train(presence ~ .,
+                   data = training.nolatlong,
+                   method = "rpart",
+                   metric="RMSE")
+rpart_fit5
 
 #Get the weights out, which is the support set sample size at each pixel
 weights<-lapply(list.test,
@@ -275,6 +343,17 @@ predictions.support.sets<-unlist(lapply(list.test,
 
 #Stack all the support sets (this will work because they have been extended with NA in non-support-set regions)
 predictions.support.sets.stacked<-raster::stack(predictions.support.sets)
+
+#I think this shouldn't be weighted, doesn't make sense.
+# if you have a list of Raster objects, you can use do.call
+x <- predictions.support.sets
+names(x)[1:2] <- c('x', 'y')
+x$fun <- mean
+x$na.rm <- TRUE
+
+y <- do.call(mosaic, x)
+
+
 
 #Run the ensemble by using weighted mean.  The weight is by number of support sets.
 ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
