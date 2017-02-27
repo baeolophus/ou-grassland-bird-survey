@@ -181,14 +181,27 @@ summary(fm)
 text(rpart_fit_5$finalModel)
 pred <- predict(rpart_fit_5, newdata = latlong.predictors.DICK.spatial@data[-foldIndex[[1]],])
 
-http://stackoverflow.com/questions/32606375/rmse-calculation-for-random-forest-in-r
+#http://stackoverflow.com/questions/32606375/rmse-calculation-for-random-forest-in-r
 
 postResample(pred = pred, obs = latlong.predictors.DICK.spatial@data[-foldIndex[[1]], "presence"])
 #ROC, AUC, confusion matrix
 #https://www.biostars.org/p/87110/
 #different code: http://stackoverflow.com/questions/30366143/how-to-compute-roc-and-auc-under-roc-after-training-using-caret-in-r
-  
-  
+
+
+#Testing out randomForest not with caret
+training.nolatlong
+iris.rf <- randomForest(presence ~ ., data=training.nolatlong, ntree = 50,
+                        importance=TRUE,
+                        proximity=TRUE)
+
+bio12_plot <- partialPlot(iris.rf,
+                          training.nolatlong,
+                          bio12_12_OK, 
+                          "1")
+varImpPlot(iris.rf)
+plot(iris.rf)
+
 #for spatially uniform test data
 #http://stackoverflow.com/questions/32862606/taking-random-point-from-list-of-points-per-grid-square
 #Do this sampling n times (200?  250?)
@@ -196,8 +209,8 @@ postResample(pred = pred, obs = latlong.predictors.DICK.spatial@data[-foldIndex[
 plot(latlong.predictors.DICK.spatial@data[-foldIndex[[1]], c("Longitude", "Latitude")])
 
 
-tree.test.raster.prediction.rf<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
-                                             model=rpart_fit_5,
+tree.test.raster.prediction.iris.rf<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
+                                             model=iris.rf,
                                              progress = "text")
 
 
