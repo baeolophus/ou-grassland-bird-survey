@@ -150,13 +150,45 @@ rpart_fit_5 <- train(presence ~ ., data = training,
 beepr::beep()
 latlong.predictors.DICK$presence <- as.factor(latlong.predictors.DICK$presence)
 summary(rpart_fit_5)
-plot(rpart_fit_5$finalModel)
+fm <- rpart_fit_5$finalModel
+varImp(rpart_fit_5)
+print(rpart_fit_5)
+importance(fm)
+importance(fm, type=1)
+partialPlot(fm, 
+            training, 
+            bio12_12_OK)
+partialPlot(fm, 
+            training, 
+            undevopenspace_15cell,
+            "1")
+
+#http://stats.stackexchange.com/questions/93202/odds-ratio-from-decision-tree-and-random-forest
+#http://r.789695.n4.nabble.com/randomForest-PartialPlot-reg-td2551372.html shoudl not do the logit thing actually
+#Just go for target class (I want presence ie "1") and interpret higher as more likely.
+pdp<-boot::inv.logit(partialPlot(fm,training,undevopenspace_15cell, "1")$y)
+plot(pdp, type = "l")
+pdp2<-boot::inv.logit(partialPlot(fm,training,bio12_12_OK, "1")$y)
+plot(pdp2, type = "l")
+plot(fm)
+library(plotmo)
+plotmo(fm,
+       pmethod = "partdep",
+       degree1 = "undevopenspace_15cell",
+       type = "prob")
+summary(fm)
 
 text(rpart_fit_5$finalModel)
 pred <- predict(rpart_fit_5, newdata = latlong.predictors.DICK.spatial@data[-foldIndex[[1]],])
 
-postResample(pred = pred, obs = latlong.predictors.DICK.spatial@data[-foldIndex[[1]], "presence"])
+http://stackoverflow.com/questions/32606375/rmse-calculation-for-random-forest-in-r
 
+postResample(pred = pred, obs = latlong.predictors.DICK.spatial@data[-foldIndex[[1]], "presence"])
+#ROC, AUC, confusion matrix
+#https://www.biostars.org/p/87110/
+#different code: http://stackoverflow.com/questions/30366143/how-to-compute-roc-and-auc-under-roc-after-training-using-caret-in-r
+  
+  
 #for spatially uniform test data
 #http://stackoverflow.com/questions/32862606/taking-random-point-from-list-of-points-per-grid-square
 #Do this sampling n times (200?  250?)
