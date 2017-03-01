@@ -104,21 +104,20 @@ proj4string(latlong.predictors.DICK.spatial)<-CRS(as.character("+proj=utm +zone=
 state<-readOGR(dsn="E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
                       layer="ok_state_vector_smallest_pdf_3158")
 
-# coerce to a SpatialPolygons object
-state.poly <- as(state,
-                 'SpatialPolygons')  
-
+state<-spTransform(x = state,
+                           CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+)
 
 set.seed(6798257) #set seed for random points, and later the other random processes.
 random.points<-spsample(x=state, #should be able to use the spatial polygon here too.  or studyarea.extent.poly
                         n=100,
                         type="stratified")
 
-#give it correct project like sightings.
-proj4string(random.points)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+#confirm projection
+proj4string(random.points)
 
+plot(random.points) #view
 
-plot(random.points)
 #create squares around them, these will be support set extents.
 #How to make squares/rectangles, code/comments adapted from here:
 #http://neondataskills.org/working-with-field-data/Field-Data-Polygons-From-Centroids
@@ -127,7 +126,7 @@ plot(random.points)
 #set the radius for the plots
 
 radius.small <- 50000 #small radius in meters. =50,000 = 50 km = 100 x 100 km boxes #200 points
-radius.medium <- 125000 #med radius in meters. =125,000 = 125 km = 250 x 250 km boxes #100 points
+radius <- 125000 #med radius in meters. =125,000 = 125 km = 250 x 250 km boxes #100 points
 radius.large <- 250000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes #25 points
 
 #get the centroids from the random.points spatial points object.
