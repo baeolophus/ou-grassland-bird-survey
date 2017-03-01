@@ -111,7 +111,7 @@ state.poly <- as(state,
 
 set.seed(6798257) #set seed for random points, and later the other random processes.
 random.points<-spsample(x=state, #should be able to use the spatial polygon here too.  or studyarea.extent.poly
-                        n=200,
+                        n=100,
                         type="stratified")
 
 #give it correct project like sightings.
@@ -125,10 +125,10 @@ plot(random.points)
 #they got much from: http://stackoverflow.com/questions/26620373/spatialpolygons-creating-a-set-of-polygons-in-r-from-coordinates
 
 #set the radius for the plots
-radius <- 125000 #med radius in meters. =125,000 = 125 km = 250 x 250 km boxes
-radius <- 50000 #small radius in meters. =50,000 = 50 km = 100 x 100 km boxes
-radius <- 250000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes
-#25 random points
+
+radius.small <- 50000 #small radius in meters. =50,000 = 50 km = 100 x 100 km boxes #200 points
+radius.medium <- 125000 #med radius in meters. =125,000 = 125 km = 250 x 250 km boxes #100 points
+radius.large <- 250000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes #25 points
 
 #get the centroids from the random.points spatial points object.
 
