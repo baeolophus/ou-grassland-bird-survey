@@ -108,6 +108,8 @@ state<-readOGR(dsn="E:/Documents/college/OU-postdoc/research/grassland_bird_surv
 state.poly <- as(state,
                  'SpatialPolygons')  
 
+
+set.seed(6798257) #set seed for random points, and later the other random processes.
 random.points<-spsample(x=state, #should be able to use the spatial polygon here too.  or studyarea.extent.poly
                         n=200,
                         type="stratified")
@@ -220,7 +222,6 @@ list.test<-lapply(1:2,
                   FUN=spatial.support.set,
                   spatialdataset=latlong.predictors.DICK)
 
-set.seed(6798257)
 
 
 summary(rpart_fit_5)
