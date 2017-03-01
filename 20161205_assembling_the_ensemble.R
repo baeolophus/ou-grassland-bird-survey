@@ -197,8 +197,9 @@ iris.rf <- randomForest(presence ~ ., data=training.nolatlong, ntree = 50,
 
 bio12_plot <- partialPlot(iris.rf,
                           training.nolatlong,
-                          bio12_12_OK, 
+                          bio8_12_OK, 
                           "1")
+plot(bio12_plot)
 varImpPlot(iris.rf)
 plot(iris.rf)
 
@@ -209,13 +210,14 @@ plot(iris.rf)
 plot(latlong.predictors.DICK.spatial@data[-foldIndex[[1]], c("Longitude", "Latitude")])
 
 
-tree.test.raster.prediction.iris.rf<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
+tree.test.raster.prediction.iris.rf.prob<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
                                              model=iris.rf,
+                                             type = "prob",
                                              progress = "text")
 
+#details on how to do probability maps for classification http://evansmurphy.wixsite.com/evansspatial/random-forest-sdm
 
-
-plot(tree.test.raster.prediction.rf)
+plot(tree.test.raster.prediction.iris.rf.prob)
 beepr::beep() #notification on completion
 
 
@@ -223,14 +225,16 @@ beepr::beep() #notification on completion
 ##################################
 #Generate support sets
 #start by generating random points within the study area.
+state<-readOGR(dsn="E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
+                      layer="ok_state_vector_smallest_pdf_3158")
 
 # coerce to a SpatialPolygons object
-studyarea.extent.poly <- as(studyarea.extent,
-                            'SpatialPolygons')  
+state.poly <- as(state,
+                 'SpatialPolygons')  
 
-random.points<-spsample(x=studyarea.extent.poly, #should be able to use the spatial polygon here too.  or studyarea.extent.poly
-                        n=1000,
-                        type="random")
+random.points<-spsample(x=state, #should be able to use the spatial polygon here too.  or studyarea.extent.poly
+                        n=200,
+                        type="stratified")
 
 #give it correct project like sightings.
 proj4string(random.points)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
@@ -243,7 +247,9 @@ plot(random.points)
 #they got much from: http://stackoverflow.com/questions/26620373/spatialpolygons-creating-a-set-of-polygons-in-r-from-coordinates
 
 #set the radius for the plots
-radius <- 50000 #radius in meters. =50,000 = 50 km = 200 x 200 km boxes
+radius <- 125000 #med radius in meters. =125,000 = 125 km = 250 x 250 km boxes
+radius <- 50000 #small radius in meters. =50,000 = 50 km = 100 x 100 km boxes
+radius <- 250000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes
 
 #get the centroids from the random.points spatial points object.
 
@@ -287,6 +293,7 @@ polys <- SpatialPolygons(
 polys.df <- SpatialPolygonsDataFrame(polys, data.frame(id=ID, row.names=ID))
 
 plot(random.points)
+plot(tree.test.raster.prediction.iris.rf.prob)
 plot(polys.df,
      add=TRUE)
 
