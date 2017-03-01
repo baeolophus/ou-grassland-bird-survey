@@ -98,130 +98,6 @@ latlong.predictors.DICK.spatial <-cbind("presence" = complete.dataset.for.sdm.DI
 coordinates(latlong.predictors.DICK.spatial) <- c("Longitude", "Latitude")
 proj4string(latlong.predictors.DICK.spatial)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
 ##################################
-#Subsample for training and cross-validation.
-
-set.seed(6798257)
-
-#need to alter this so they don't overlap spatially (Fink et al. 2010)
-#create grid and only use certain grids for each.
-
-trainIndex <- createDataPartition(latlong.predictors.DICK$presence,
-                                  p = .8, #80% to training
-                                  list = FALSE, 
-                                  times = 1)
-
-
-head(trainIndex)
-
-training <- latlong.predictors.DICK[ trainIndex,]
-training.nolatlong <- training[,c(1,4:54)]
-testing  <- latlong.predictors.DICK[-trainIndex,]
-testing.nolatlong <- testing[,c(1,4:54)]
-
-plot(testing[,c("Longitude","Latitude")],
-     pch = 25,
-     bg = training$presence
-)
-points(training[,c("Longitude","Latitude")],
-       pch = 22,
-       bg = as.numeric(training$presence) + 2
-       ) #squares
-
-#testing fold validation
-
-foldIndex <- createFolds(y = latlong.predictors.DICK$presence,
-                         k = 5,
-                         returnTrain = TRUE)
-#customize this by geography
-
-
-fitControl <- trainControl(## 5-fold CV
-  method = "cv",
-  number = 5,
-  index = foldIndex#,
-  #indexOut = #geographic subsampling
-  )
-
-fitControl <- trainControl(method = 'none', summaryFunction = twoClassSummary)
-
-rpart_fit_5 <- train(presence ~ ., data = training, 
-                 method = "rf",
-                 trControl=trainControl(method="cv",number=5))
-beepr::beep()
-latlong.predictors.DICK$presence <- as.factor(latlong.predictors.DICK$presence)
-summary(rpart_fit_5)
-fm <- rpart_fit_5$finalModel
-varImp(rpart_fit_5)
-print(rpart_fit_5)
-importance(fm)
-importance(fm, type=1)
-partialPlot(fm, 
-            training, 
-            bio12_12_OK)
-partialPlot(fm, 
-            training, 
-            undevopenspace_15cell,
-            "1")
-
-#http://stats.stackexchange.com/questions/93202/odds-ratio-from-decision-tree-and-random-forest
-#http://r.789695.n4.nabble.com/randomForest-PartialPlot-reg-td2551372.html shoudl not do the logit thing actually
-#Just go for target class (I want presence ie "1") and interpret higher as more likely.
-pdp<-boot::inv.logit(partialPlot(fm,training,undevopenspace_15cell, "1")$y)
-plot(pdp, type = "l")
-pdp2<-boot::inv.logit(partialPlot(fm,training,bio12_12_OK, "1")$y)
-plot(pdp2, type = "l")
-plot(fm)
-library(plotmo)
-plotmo(fm,
-       pmethod = "partdep",
-       degree1 = "undevopenspace_15cell",
-       type = "prob")
-summary(fm)
-
-text(rpart_fit_5$finalModel)
-pred <- predict(rpart_fit_5, newdata = latlong.predictors.DICK.spatial@data[-foldIndex[[1]],])
-
-#http://stackoverflow.com/questions/32606375/rmse-calculation-for-random-forest-in-r
-
-postResample(pred = pred, obs = latlong.predictors.DICK.spatial@data[-foldIndex[[1]], "presence"])
-#ROC, AUC, confusion matrix
-#https://www.biostars.org/p/87110/
-#different code: http://stackoverflow.com/questions/30366143/how-to-compute-roc-and-auc-under-roc-after-training-using-caret-in-r
-
-
-#Testing out randomForest not with caret
-training.nolatlong
-iris.rf <- randomForest(presence ~ ., data=training.nolatlong, ntree = 50,
-                        importance=TRUE,
-                        proximity=TRUE)
-
-bio12_plot <- partialPlot(iris.rf,
-                          training.nolatlong,
-                          bio8_12_OK, 
-                          "1")
-plot(bio12_plot)
-varImpPlot(iris.rf)
-plot(iris.rf)
-
-#for spatially uniform test data
-#http://stackoverflow.com/questions/32862606/taking-random-point-from-list-of-points-per-grid-square
-#Do this sampling n times (200?  250?)
-
-plot(latlong.predictors.DICK.spatial@data[-foldIndex[[1]], c("Longitude", "Latitude")])
-
-
-tree.test.raster.prediction.iris.rf.prob<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
-                                             model=iris.rf,
-                                             type = "prob",
-                                             progress = "text")
-
-#details on how to do probability maps for classification http://evansmurphy.wixsite.com/evansspatial/random-forest-sdm
-
-plot(tree.test.raster.prediction.iris.rf.prob)
-beepr::beep() #notification on completion
-
-
-
 ##################################
 #Generate support sets
 #start by generating random points within the study area.
@@ -250,6 +126,7 @@ plot(random.points)
 radius <- 125000 #med radius in meters. =125,000 = 125 km = 250 x 250 km boxes
 radius <- 50000 #small radius in meters. =50,000 = 50 km = 100 x 100 km boxes
 radius <- 250000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes
+#25 random points
 
 #get the centroids from the random.points spatial points object.
 
@@ -343,44 +220,81 @@ list.test<-lapply(1:2,
                   FUN=spatial.support.set,
                   spatialdataset=latlong.predictors.DICK)
 
-tree.test<-rpart(frmla,
-               data=latlong.predictors.DICK,
-               method="anova",
-               control=rpart.control(cp=0.01)) #default control
-
-#will predict:raster work with caret models?
-
-rpart_fit <- train(presence ~ .,
-                   data = training.nolatlong,
-                   method = "rpart",
-                   metric="RMSE")
-rpart_fit
-
-#Make sure rpart uses ANOVA version http://stackoverflow.com/questions/30357212/caret-and-rpart-definining-method
+set.seed(6798257)
 
 
-tree.test.raster.prediction<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
-                                           model=rpart_fit,
-                                           progress = "text")
+summary(rpart_fit_5)
+fm <- rpart_fit_5$finalModel
+varImp(rpart_fit_5)
+print(rpart_fit_5)
+importance(fm)
+importance(fm, type=1)
+partialPlot(fm, 
+            training, 
+            bio12_12_OK)
+partialPlot(fm, 
+            training, 
+            undevopenspace_15cell,
+            "1")
 
-rpart_fit_5
+#http://stats.stackexchange.com/questions/93202/odds-ratio-from-decision-tree-and-random-forest
+#http://r.789695.n4.nabble.com/randomForest-PartialPlot-reg-td2551372.html shoudl not do the logit thing actually
+#Just go for target class (I want presence ie "1") and interpret higher as more likely.
+pdp<-boot::inv.logit(partialPlot(fm,training,undevopenspace_15cell, "1")$y)
+plot(pdp, type = "l")
+pdp2<-boot::inv.logit(partialPlot(fm,training,bio12_12_OK, "1")$y)
+plot(pdp2, type = "l")
+plot(fm)
+library(plotmo)
+plotmo(fm,
+       pmethod = "partdep",
+       degree1 = "undevopenspace_15cell",
+       type = "prob")
+summary(fm)
 
-plot(tree.test.raster.prediction)
+text(rpart_fit_5$finalModel)
+pred <- predict(rpart_fit_5, newdata = latlong.predictors.DICK.spatial@data[-foldIndex[[1]],])
+
+#http://stackoverflow.com/questions/32606375/rmse-calculation-for-random-forest-in-r
+
+postResample(pred = pred, obs = latlong.predictors.DICK.spatial@data[-foldIndex[[1]], "presence"])
+#ROC, AUC, confusion matrix
+#https://www.biostars.org/p/87110/
+#different code: http://stackoverflow.com/questions/30366143/how-to-compute-roc-and-auc-under-roc-after-training-using-caret-in-r
+
+
+#Testing out randomForest not with caret
+training.nolatlong
+iris.rf <- randomForest(presence ~ ., data=training.nolatlong, ntree = 50,
+                        importance=TRUE,
+                        proximity=TRUE)
+
+bio12_plot <- partialPlot(iris.rf,
+                          training.nolatlong,
+                          bio8_12_OK, 
+                          "1")
+plot(bio12_plot)
+varImpPlot(iris.rf)
+plot(iris.rf)
+
+#for spatially uniform test data
+#http://stackoverflow.com/questions/32862606/taking-random-point-from-list-of-points-per-grid-square
+#Do this sampling n times (200?  250?)
+
+plot(latlong.predictors.DICK.spatial@data[-foldIndex[[1]], c("Longitude", "Latitude")])
+
+
+tree.test.raster.prediction.iris.rf.prob<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
+                                                          model=iris.rf,
+                                                          type = "prob",
+                                                          progress = "text")
+
+#details on how to do probability maps for classification http://evansmurphy.wixsite.com/evansspatial/random-forest-sdm
+
+plot(tree.test.raster.prediction.iris.rf.prob)
 beepr::beep() #notification on completion
 
 
-plot(rpart_fit$finalModel)
-plot(rpart_fit, metric = "RMSE")
-text(rpart_fit$finalModel)
-plot(t$finalModel) text(t$finalModel)
-
-
-#trying five-fold CV
-rpart_fit5 <- train(presence ~ .,
-                   data = training.nolatlong,
-                   method = "rpart",
-                   metric="RMSE")
-rpart_fit5
 
 #Get the weights out, which is the support set sample size at each pixel
 weights<-lapply(list.test,
