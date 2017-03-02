@@ -326,3 +326,17 @@ plot(ensemble.weighted.mosaic)
 
 #AUC
 
+#http://evansmurphy.wixsite.com/evansspatial/random-forest-sdm start from here on eval
+rf.pred <- predict(rf.fit, sdata@data[,sel.vars], type="response")
+rf.prob <- as.data.frame(predict(rf.fit, sdata@data[,sel.vars], type="prob"))
+obs.pred <- data.frame(cbind(Observed=as.numeric(as.character(sdata@data[,"Present"])),
+                             PRED=as.numeric(as.character(rf.pred)), Prob1=rf.prob[,2],
+                             Prob0=rf.prob[,1]) )
+op <- (obs.pred$Observed == obs.pred$PRED)
+
+Here we display the percent correctly classified and the ROC plot.
+
+( pcc <- (length(op[op == "TRUE"]) / length(op))*100 )
+
+library(verification)
+roc.plot(obs.pred[,"Observed"], obs.pred[,"Prob1"])
