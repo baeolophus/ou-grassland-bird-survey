@@ -6,6 +6,7 @@ library(dplyr)
 library(caret)
 library(rpart)
 library(randomForest)
+library(ROCR)
 
 rasterOptions()$tmpdir
 rasterOptions(tmpdir="E:/Documents/R/temp")
@@ -180,7 +181,8 @@ plot(polys.df,
 
 spatial.support.set<-function(whichrandombox,
                               spatialdataset,
-                              ntree){
+                              ntree,
+                              predictor_stack){
   spatial.support.set<-spatialdataset[polys.df[whichrandombox,],]
   #I think there should be a line that turns it back into regular data?
   sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
@@ -192,10 +194,10 @@ spatial.support.set<-function(whichrandombox,
   as.formula(frmla)
   
   tree.test <- randomForest(frmla, 
-                          data=support.set.data,
+                          data = spatialdataset,
                           ntree = ntree,
-                          importance=TRUE,
-                          proximity=TRUE)
+                          importance = TRUE,
+                          proximity = TRUE)
   
   
   #tree.test<-rpart(frmla,
@@ -203,7 +205,7 @@ spatial.support.set<-function(whichrandombox,
    #                method="anova",
    #                control=rpart.control(cp=0.001))
   #create prediction map for illustration purposes
-  support.set<-crop(predictors_stack,
+  support.set<-crop(predictor_stack,
                             extent(polys.df[whichrandombox,]))
   tree.test.raster.prediction<-raster::predict(object=support.set, #raster object, probably use bioclim.extent,
                                                model=tree.test)
@@ -225,8 +227,10 @@ spatial.support.set<-function(whichrandombox,
 
 #Then apply the function for each support set
 list.test<-lapply(1:2,
-                  FUN=spatial.support.set,
-                  spatialdataset=latlong.predictors.DICK)
+                  FUN = spatial.support.set,
+                  spatialdataset = latlong.predictors.DICK,
+                  ntree = 50,
+                  predictor_stack = predictors_stack)
 
 
 
@@ -250,13 +254,6 @@ partialPlot(fm,
 
 #http://stackoverflow.com/questions/32606375/rmse-calculation-for-random-forest-in-r
 
-
-#ROC, AUC, confusion matrix
-#https://www.biostars.org/p/87110/
-#different code: http://stackoverflow.com/questions/30366143/how-to-compute-roc-and-auc-under-roc-after-training-using-caret-in-r
-
-
-#Testing out randomForest not with caret
 
 
 bio12_plot <- partialPlot(iris.rf,
@@ -291,6 +288,9 @@ weights<-lapply(list.test,
                 "[",
                 2)
 weights<-as.vector(unlist(weights))
+#The weights are 1 (have enough samples) and 0 (do not have enough samples, do not use)
+#For use in weighted.mean below.  It is a vector of weights per layer.  Since values are 1 if enough sample
+#then all are weighted equally if they are used.  If 0 (not enough sample size), then 0 weighted, not used.
 
 #remove one level of list on the remaining support sets
 predictions.support.sets<-unlist(lapply(list.test,
@@ -299,16 +299,6 @@ predictions.support.sets<-unlist(lapply(list.test,
 
 #Stack all the support sets (this will work because they have been extended with NA in non-support-set regions)
 predictions.support.sets.stacked<-raster::stack(predictions.support.sets)
-
-#I think this shouldn't be weighted, doesn't make sense.
-# if you have a list of Raster objects, you can use do.call
-x <- predictions.support.sets
-names(x)[1:2] <- c('x', 'y')
-x$fun <- mean
-x$na.rm <- TRUE
-
-y <- do.call(mosaic, x)
-
 
 
 #Run the ensemble by using weighted mean.  The weight is by number of support sets.
@@ -325,18 +315,30 @@ plot(ensemble.weighted.mosaic)
 #RMSE (root mean square error)
 
 #AUC
+#example code: http://stackoverflow.com/questions/30366143/how-to-compute-roc-and-auc-under-roc-after-training-using-caret-in-r
+#and https://www.biostars.org/p/87110/
 
-#http://evansmurphy.wixsite.com/evansspatial/random-forest-sdm start from here on eval
-rf.pred <- predict(rf.fit, sdata@data[,sel.vars], type="response")
-rf.prob <- as.data.frame(predict(rf.fit, sdata@data[,sel.vars], type="prob"))
-obs.pred <- data.frame(cbind(Observed=as.numeric(as.character(sdata@data[,"Present"])),
-                             PRED=as.numeric(as.character(rf.pred)), Prob1=rf.prob[,2],
-                             Prob0=rf.prob[,1]) )
-op <- (obs.pred$Observed == obs.pred$PRED)
+#later,  do in a loop or lapply for bootstrap/sampling of distribution.  for now just make sure this works.
+model.predictions <- extract(x = ensemble.weighted.mosaic,         #the raster containing predictions from which values are extracted
+                             y = spatial.evaluation.dataset        #evaluation data gps points in a spatial dataframe
+)
 
-Here we display the percent correctly classified and the ROC plot.
+model.predictions.presence <- as.data.frame(model.predictions$presence)
 
-( pcc <- (length(op[op == "TRUE"]) / length(op))*100 )
+pred <- prediction(predictions = model.predictions.presence,
+                   target = evaluation.dataset$presence)
 
-library(verification)
-roc.plot(obs.pred[,"Observed"], obs.pred[,"Prob1"])
+perf_AUC <- performance(pred,
+                     "auc") #Calculate the AUC value
+perf_RMSE <- performance(pred,
+                         "rmse")
+AUC=perf_AUC@y.values[[1]]
+
+###########
+#plot the actual ROC curve... fink et al. don't include this, do I want it?
+
+perf_ROC <- performance(pred,
+                     "tpr",
+                     "fpr") 
+plot(perf_ROC, main="ROC plot")
+text(0.5,0.5,paste("AUC = ",format(AUC, digits=5, scientific=FALSE)))
