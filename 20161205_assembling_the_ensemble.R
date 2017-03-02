@@ -5,6 +5,7 @@ library(rgdal)
 library(dplyr)
 library(caret)
 library(rpart)
+library(randomForest)
 
 rasterOptions()$tmpdir
 rasterOptions(tmpdir="E:/Documents/R/temp")
@@ -171,7 +172,6 @@ polys <- SpatialPolygons(
 polys.df <- SpatialPolygonsDataFrame(polys, data.frame(id=ID, row.names=ID))
 
 plot(random.points)
-plot(tree.test.raster.prediction.iris.rf.prob)
 plot(polys.df,
      add=TRUE)
 
@@ -179,22 +179,29 @@ plot(polys.df,
 
 
 spatial.support.set<-function(whichrandombox,
-                              spatialdataset){
+                              spatialdataset,
+                              ntree){
   spatial.support.set<-spatialdataset[polys.df[whichrandombox,],]
-  #A line here with caret
-  training <- #use about 2/3 of data from support set.
   #I think there should be a line that turns it back into regular data?
   sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
   #need to have the minimum data requirement in here too.
-  library(rpart)
+  support.set.data <- as.data.frame(spatial.support.set)
+  library(randomForest)
   vars <- paste(predictors,collapse="+")
   frmla <- paste("presence ~", vars)
   as.formula(frmla)
   
-  tree.test<-rpart(frmla,
-                   data=spatialdataset,
-                   method="anova",
-                   control=rpart.control(cp=0.001))
+  tree.test <- randomForest(frmla, 
+                          data=support.set.data,
+                          ntree = ntree,
+                          importance=TRUE,
+                          proximity=TRUE)
+  
+  
+  #tree.test<-rpart(frmla,
+    #               data=spatialdataset,
+   #                method="anova",
+   #                control=rpart.control(cp=0.001))
   #create prediction map for illustration purposes
   support.set<-crop(predictors_stack,
                             extent(polys.df[whichrandombox,]))
@@ -240,34 +247,17 @@ partialPlot(fm,
 #http://stats.stackexchange.com/questions/93202/odds-ratio-from-decision-tree-and-random-forest
 #http://r.789695.n4.nabble.com/randomForest-PartialPlot-reg-td2551372.html shoudl not do the logit thing actually
 #Just go for target class (I want presence ie "1") and interpret higher as more likely.
-pdp<-boot::inv.logit(partialPlot(fm,training,undevopenspace_15cell, "1")$y)
-plot(pdp, type = "l")
-pdp2<-boot::inv.logit(partialPlot(fm,training,bio12_12_OK, "1")$y)
-plot(pdp2, type = "l")
-plot(fm)
-library(plotmo)
-plotmo(fm,
-       pmethod = "partdep",
-       degree1 = "undevopenspace_15cell",
-       type = "prob")
-summary(fm)
-
-text(rpart_fit_5$finalModel)
-pred <- predict(rpart_fit_5, newdata = latlong.predictors.DICK.spatial@data[-foldIndex[[1]],])
 
 #http://stackoverflow.com/questions/32606375/rmse-calculation-for-random-forest-in-r
 
-postResample(pred = pred, obs = latlong.predictors.DICK.spatial@data[-foldIndex[[1]], "presence"])
+
 #ROC, AUC, confusion matrix
 #https://www.biostars.org/p/87110/
 #different code: http://stackoverflow.com/questions/30366143/how-to-compute-roc-and-auc-under-roc-after-training-using-caret-in-r
 
 
 #Testing out randomForest not with caret
-training.nolatlong
-iris.rf <- randomForest(presence ~ ., data=training.nolatlong, ntree = 50,
-                        importance=TRUE,
-                        proximity=TRUE)
+
 
 bio12_plot <- partialPlot(iris.rf,
                           training.nolatlong,
