@@ -317,16 +317,17 @@ plot(ensemble.weighted.mosaic)
 #AUC
 #example code: http://stackoverflow.com/questions/30366143/how-to-compute-roc-and-auc-under-roc-after-training-using-caret-in-r
 #and https://www.biostars.org/p/87110/
-
+testing.spatial <- testing
+coordinates(testing.spatial) <- c("Longitude", "Latitude")
 #later,  do in a loop or lapply for bootstrap/sampling of distribution.  for now just make sure this works.
-model.predictions <- extract(x = ensemble.weighted.mosaic,         #the raster containing predictions from which values are extracted
-                             y = spatial.evaluation.dataset        #evaluation data gps points in a spatial dataframe
+model.predictions <- extract(x = tree.test.raster.prediction.iris.rf.prob, #ensemble.weighted.mosaic,         #the raster containing predictions from which values are extracted
+                             y = testing.spatial#spatial.evaluation.dataset        #evaluation data gps points in a spatial dataframe
 )
 
 model.predictions.presence <- as.data.frame(model.predictions$presence)
 
-pred <- prediction(predictions = model.predictions.presence,
-                   target = evaluation.dataset$presence)
+pred <- prediction(predictions = seq(from = 0, to = 1, length.out = length(testing.nolatlong$presence)),#model.predictions.presence,
+                   labels = testing.nolatlong$presence) #evaluation.dataset$presence)
 
 perf_AUC <- performance(pred,
                      "auc") #Calculate the AUC value
