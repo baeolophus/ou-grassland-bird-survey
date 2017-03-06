@@ -7,6 +7,7 @@ library(caret)
 library(rpart)
 library(randomForest)
 library(ROCR)
+library(beepr)
 
 rasterOptions()$tmpdir
 rasterOptions(tmpdir="E:/Documents/R/temp")
@@ -188,28 +189,22 @@ spatial.support.set<-function(whichrandombox,
   sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
   #need to have the minimum data requirement in here too.
   support.set.data <- as.data.frame(spatial.support.set)
-  library(randomForest)
-  vars <- paste(predictors,collapse="+")
-  frmla <- paste("presence ~", vars)
-  as.formula(frmla)
+  support.set.data$Longitude <- NULL
+  support.set.data$Latitude <- NULL
+  #These two columns should be taken out because not predicting on them.
   
-  tree.test <- randomForest(frmla, 
+  library(randomForest)
+  tree.test <- randomForest(presence ~ ., 
                           data = support.set.data,
                           ...) #This allows all other random forest arguments to be set at the spatial.support.set function level.
   
-  
-  #tree.test<-rpart(frmla,
-    #               data=spatialdataset,
-   #                method="anova",
-   #                control=rpart.control(cp=0.001))
-  #create prediction map for illustration purposes
   support.set<-crop(predictor_stack,
                             extent(polys.df[whichrandombox,]))
   tree.test.raster.prediction<-raster::predict(object=support.set, #raster object, probably use bioclim.extent,
                                                model=tree.test)
   plot(tree.test.raster.prediction)
   tree.test.raster.prediction.extended<-extend(x=tree.test.raster.prediction,
-                                      y=extent(studyarea.extent.poly),
+                                      y=studyarea.extent,
                                       value=NA)
   return(list(tree.test.raster.prediction.extended,
               sample.size.good,
@@ -223,12 +218,125 @@ spatial.support.set<-function(whichrandombox,
 #Then apply the function for each support set
 list.test<-lapply(1:2,
                   FUN = spatial.support.set,
-                  spatialdataset = latlong.predictors.DICK,
+                  spatialdataset = latlong.predictors.DICK.spatial,
                   predictor_stack = predictors_stack,
                   ntree = 50)
+beep()
+###########################
+#test with single dataframes
+spatial.support.set<-latlong.predictors.DICK.spatial[polys.df[1,],]
+#I think there should be a line that turns it back into regular data?
+sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
+#need to have the minimum data requirement in here too.
+support.set.data <- as.data.frame(spatial.support.set)
+support.set.data$Longitude <- NULL
+support.set.data$Latitude <- NULL
+
+library(randomForest)
+library(microbenchmark)
+tree.test <- randomForest(presence ~ ., 
+                          data = support.set.data,
+                          ntree = 50) #This allows all other random forest arguments to be set at the spatial.support.set function level.
+#ca 1 sec run
+
+support.set<-crop(predictors_stack,
+                  extent(polys.df[1,]))
 
 
+microbenchmark(tree.test.raster.prediction<-raster::predict(object=support.set, #raster object, probably use bioclim.extent,
+                                             model=tree.test), times = 1) #28 min
+plot(tree.test.raster.prediction)
+microbenchmark(tree.test.raster.prediction.extended<-extend(x=tree.test.raster.prediction,
+                                             y=studyarea.extent,
+                                             value=NA), times = 1)
+beepr()
 
+##########################
+#Mosaic function
+#Get the weights out, which is the support set sample size at each pixel
+weights<-lapply(list.test,
+                "[",
+                2)
+weights<-as.vector(unlist(weights))
+#The weights are 1 (have enough samples) and 0 (do not have enough samples, do not use)
+#For use in weighted.mean below.  It is a vector of weights per layer.  Since values are 1 if enough sample
+#then all are weighted equally if they are used.  If 0 (not enough sample size), then 0 weighted, not used.
+
+#remove one level of list on the remaining support sets
+predictions.support.sets<-unlist(lapply(list.test,
+                                        "[",
+                                        1))
+
+#Stack all the support sets (this will work because they have been extended with NA in non-support-set regions)
+predictions.support.sets.stacked<-raster::stack(predictions.support.sets)
+
+
+#Run the ensemble by using weighted mean.  The weight is by number of support sets.
+ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
+                                  list(predictions.support.sets.stacked,
+                                       weights,
+                                       TRUE))
+
+#Plot the mosaic.
+plot(ensemble.weighted.mosaic)
+
+#function version.
+ensemble.function <- function (list.of.rasters) {
+  weights<-lapply(list.of.rasters,
+                  "[",
+                  2)
+  weights<-as.vector(unlist(weights))
+  #The weights are 1 (have enough samples) and 0 (do not have enough samples, do not use)
+  #For use in weighted.mean below.  It is a vector of weights per layer.  Since values are 1 if enough sample
+  #then all are weighted equally if they are used.  If 0 (not enough sample size), then 0 weighted, not used.
+  
+  #remove one level of list on the remaining support sets
+  predictions.support.sets<-unlist(lapply(list.of.rasters,
+                                          "[",
+                                          1))
+  
+  #Stack all the support sets (this will work because they have been extended with NA in non-support-set regions)
+  predictions.support.sets.stacked<-raster::stack(predictions.support.sets)
+  
+  
+  #Run the ensemble by using weighted mean.  The weight is by number of support sets.
+  ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
+                                    list(predictions.support.sets.stacked,
+                                         weights,
+                                         TRUE))
+  
+  #Plot the mosaic.  Remove this line when I transfer to AWS.
+  plot(ensemble.weighted.mosaic)
+  
+  #create file here in .eps or .pdf.
+  
+  return(ensemble.weighted.mosaic)
+}
+
+
+############################
+#Run small, medium, and large support set models.
+support.small.list <- lapply(1:2,
+                             FUN = spatial.support.set,
+                             spatialdataset = latlong.predictors.DICK.spatial,
+                             predictor_stack = predictors_stack,
+                             ntree = 50)
+
+
+support.medium.list <- lapply(1:2,
+                             FUN = spatial.support.set,
+                             spatialdataset = latlong.predictors.DICK.spatial,
+                             predictor_stack = predictors_stack,
+                             ntree = 50)
+support.large.list <- lapply(1:2,
+                             FUN = spatial.support.set,
+                             spatialdataset = latlong.predictors.DICK.spatial,
+                             predictor_stack = predictors_stack,
+                             ntree = 50)
+beepr()
+
+############################
+#Statewide model
 summary(rpart_fit_5)
 fm <- rpart_fit_5$finalModel
 varImp(rpart_fit_5)
@@ -276,34 +384,6 @@ tree.test.raster.prediction.iris.rf.prob<-raster::predict(object=predictors_stac
 plot(tree.test.raster.prediction.iris.rf.prob)
 beepr::beep() #notification on completion
 
-
-
-#Get the weights out, which is the support set sample size at each pixel
-weights<-lapply(list.test,
-                "[",
-                2)
-weights<-as.vector(unlist(weights))
-#The weights are 1 (have enough samples) and 0 (do not have enough samples, do not use)
-#For use in weighted.mean below.  It is a vector of weights per layer.  Since values are 1 if enough sample
-#then all are weighted equally if they are used.  If 0 (not enough sample size), then 0 weighted, not used.
-
-#remove one level of list on the remaining support sets
-predictions.support.sets<-unlist(lapply(list.test,
-                                 "[",
-                                 1))
-
-#Stack all the support sets (this will work because they have been extended with NA in non-support-set regions)
-predictions.support.sets.stacked<-raster::stack(predictions.support.sets)
-
-
-#Run the ensemble by using weighted mean.  The weight is by number of support sets.
-ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
-                                  list(predictions.support.sets.stacked,
-                                       weights,
-                                       TRUE))
-
-#Plot the mosaic.
-plot(ensemble.weighted.mosaic)
 
 #########################################
 #Once predictions made, evaluation of model.
