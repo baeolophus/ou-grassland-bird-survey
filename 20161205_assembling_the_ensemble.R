@@ -181,8 +181,8 @@ plot(polys.df,
 
 spatial.support.set<-function(whichrandombox,
                               spatialdataset,
-                              ntree,
-                              predictor_stack){
+                              predictor_stack,
+                              ...){
   spatial.support.set<-spatialdataset[polys.df[whichrandombox,],]
   #I think there should be a line that turns it back into regular data?
   sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
@@ -194,10 +194,8 @@ spatial.support.set<-function(whichrandombox,
   as.formula(frmla)
   
   tree.test <- randomForest(frmla, 
-                          data = spatialdataset,
-                          ntree = ntree,
-                          importance = TRUE,
-                          proximity = TRUE)
+                          data = support.set.data,
+                          ...) #This allows all other random forest arguments to be set at the spatial.support.set function level.
   
   
   #tree.test<-rpart(frmla,
@@ -216,9 +214,6 @@ spatial.support.set<-function(whichrandombox,
   return(list(tree.test.raster.prediction.extended,
               sample.size.good,
               tree.test))
-  
-  #I could even do the mean of several kinds of models as the prediction for each square
-  #if I choose to include more than one model type.
 }
 
 #Some info on tuning rpart.
@@ -229,8 +224,8 @@ spatial.support.set<-function(whichrandombox,
 list.test<-lapply(1:2,
                   FUN = spatial.support.set,
                   spatialdataset = latlong.predictors.DICK,
-                  ntree = 50,
-                  predictor_stack = predictors_stack)
+                  predictor_stack = predictors_stack,
+                  ntree = 50)
 
 
 
