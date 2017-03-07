@@ -177,6 +177,25 @@ plot(random.points)
 plot(polys.df,
      add=TRUE)
 
+
+#http://r-sig-geo.2731867.n2.nabble.com/Efficient-way-to-obtain-gridded-count-of-overlapping-polygons-td6034590.html
+#Checking that the three scales
+microbenchmark(countoverlapping.medium <- rasterize(polys, nlcd_ok_utm14, fun = 'count') , times = 1)
+beginCluster()
+microbenchmark(countoverlapping.medium <- clusterR(nlcd_ok_utm14, #raster
+                                                   fun = rasterize,
+                                                   args = list(x = polys,
+                                                               fun = 'count',
+                                                               mask = TRUE)),
+  times = 1)
+
+
+countoverlapping.medium.values <- as.data.frame(countoverlapping.medium)
+summary(countoverlapping.medium.values[,1], na.rm = TRUE)
+sd(countoverlapping.medium.values[,1], na.rm = TRUE)
+
+endCluster()
+
 #Now, function for subsetting and running the test on each subset.
 
 
@@ -242,7 +261,9 @@ tree.test <- randomForest(presence ~ .,
 support.set<-crop(predictors_stack,
                   extent(polys.df[1,]))
 
-
+beginCluster()
+preds_rf<- clusterR(rast, raster::predict, args = list(model = model))
+endCluster()
 microbenchmark(tree.test.raster.prediction<-raster::predict(object=support.set, #raster object, probably use bioclim.extent,
                                              model=tree.test), times = 1) #28 min
 plot(tree.test.raster.prediction)
