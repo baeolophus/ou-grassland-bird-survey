@@ -12,7 +12,6 @@ library(beepr)
 rasterOptions()$tmpdir
 rasterOptions(tmpdir="E:/Documents/R/temp")
 
-
 #Bring in predictor data.
 gispath <- "E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed"
 #import bioclim layers
@@ -112,8 +111,11 @@ state<-spTransform(x = state,
 )
 
 set.seed(6798257) #set seed for random points, and later the other random processes.
+
+random.stratified.support.sets <- function (numberofpoints,
+                                            radius){ #radius = 1/2 of a square side
 random.points<-spsample(x=state, #should be able to use the spatial polygon here too.  or studyarea.extent.poly
-                        n=100,
+                        n=numberofpoints,
                         type="stratified")
 
 #confirm projection
@@ -125,13 +127,6 @@ plot(random.points) #view
 #How to make squares/rectangles, code/comments adapted from here:
 #http://neondataskills.org/working-with-field-data/Field-Data-Polygons-From-Centroids
 #they got much from: http://stackoverflow.com/questions/26620373/spatialpolygons-creating-a-set-of-polygons-in-r-from-coordinates
-
-#set the radius for the plots
-
-radius.small <- 50000 #small radius in meters. =50,000 = 50 km = 100 x 100 km boxes #200 points
-radius <- 125000 #med radius in meters. =125,000 = 125 km = 250 x 250 km boxes #100 points
-radius.large <- 250000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes #25 points
-
 #get the centroids from the random.points spatial points object.
 
 centroids<-data.frame(
@@ -176,32 +171,96 @@ polys.df <- SpatialPolygonsDataFrame(polys, data.frame(id=ID, row.names=ID))
 plot(random.points)
 plot(polys.df,
      add=TRUE)
+return(list(polys, polys.df))
+}
 
+radius.small <- 50000 #small radius in meters. =50,000 = 50 km = 100 x 100 km boxes #200 points
+radius.medium <- 125000 #med radius in meters. =125,000 = 125 km = 250 x 250 km boxes #100 points
+radius.large <- 250000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes #25 points
+
+polys.small <- random.stratified.support.sets(numberofpoints = 200,
+                                              radius.small)
+polys.small.p <- unlist(polys.small[[1]])
+polys.small.df <- unlist(polys.small[[2]])
+
+polys.medium <- random.stratified.support.sets(numberofpoints = 100,
+                                               radius.medium)
+polys.medium.p <- unlist(polys.medium[[1]])
+polys.medium.df <- unlist(polys.medium[[2]])
+
+polys.large <- random.stratified.support.sets(numberofpoints = 25,
+                                              radius.large)
+polys.large.p <- unlist(polys.large[[1]])
+polys.large.df <- unlist(polys.large[[2]])
 
 #http://r-sig-geo.2731867.n2.nabble.com/Efficient-way-to-obtain-gridded-count-of-overlapping-polygons-td6034590.html
-#Checking that the three scales
-microbenchmark(countoverlapping.medium <- rasterize(polys, nlcd_ok_utm14, fun = 'count') , times = 1)
+#Checking that the three scales have similar numbers of overlaps
+
 beginCluster()
-microbenchmark(countoverlapping.medium <- clusterR(nlcd_ok_utm14, #raster
+microbenchmark(countoverlapping.small <- clusterR(nlcd_ok_utm14, #raster
                                                    fun = rasterize,
-                                                   args = list(x = polys,
+                                                   args = list(x = polys.small.p,
                                                                fun = 'count',
-                                                               mask = TRUE)),
+                                                               update = TRUE,
+                                                               updateValue = '!NA')),
   times = 1)
+plot(countoverlapping.small)
+plot(state, add = TRUE)
+countoverlapping.small.values <- as.data.frame(countoverlapping.small)
+countoverlapping.small.values$set <- "small"
+summary(countoverlapping.small.values[,1], na.rm = TRUE)
+sd(countoverlapping.small.values[,1], na.rm = TRUE)
 
-
+microbenchmark(countoverlapping.medium <- clusterR(nlcd_ok_utm14, #raster
+                                                  fun = rasterize,
+                                                  args = list(x = polys.medium.p,
+                                                              fun = 'count',
+                                                              update = TRUE,
+                                                              updateValue = '!NA')),
+               times = 1)
+plot(countoverlapping.medium)
+plot(state, add = TRUE)
 countoverlapping.medium.values <- as.data.frame(countoverlapping.medium)
+countoverlapping.medium.values$set <- "medium"
 summary(countoverlapping.medium.values[,1], na.rm = TRUE)
 sd(countoverlapping.medium.values[,1], na.rm = TRUE)
 
+microbenchmark(countoverlapping.small <- clusterR(nlcd_ok_utm14, #raster
+                                                  fun = rasterize,
+                                                  args = list(x = polys.small.p,
+                                                              fun = 'count',
+                                                              update = TRUE,
+                                                              updateValue = '!NA')),
+               times = 1)
+plot(countoverlapping.small)
+plot(state, add = TRUE)
+countoverlapping.large.values <- as.data.frame(countoverlapping.large)
+countoverlapping.large.values$set <- "large"
+summary(countoverlapping.large.values[,1], na.rm = TRUE)
+sd(countoverlapping.large.values[,1], na.rm = TRUE)
+
+overlaps <- bind_rows(countoverlapping.small.values,
+          countoverlapping.medium.values,
+          countoverlapping.large.values)
+
+colnames(overlaps) <- c("overlapsperpixel", "set")
+
 endCluster()
 
+overlaps.lm <- lm (overlapsperpixel ~ set,
+                   data = overlaps)
+library(car)
+Anova(overlaps.lm,
+      type = 3)
+
+#########################
 #Now, function for subsetting and running the test on each subset.
 
 
 spatial.support.set<-function(whichrandombox,
                               spatialdataset,
                               predictor_stack,
+                              polys.df,
                               ...){
   spatial.support.set<-spatialdataset[polys.df[whichrandombox,],]
   #I think there should be a line that turns it back into regular data?
@@ -230,17 +289,7 @@ spatial.support.set<-function(whichrandombox,
               tree.test))
 }
 
-#Some info on tuning rpart.
-#https://stat.ethz.ch/R-manual/R-devel/library/rpart/html/rpart.control.html
-#http://stackoverflow.com/questions/20993073/the-result-of-rpart-is-just-with-1-root
 
-#Then apply the function for each support set
-list.test<-lapply(1:2,
-                  FUN = spatial.support.set,
-                  spatialdataset = latlong.predictors.DICK.spatial,
-                  predictor_stack = predictors_stack,
-                  ntree = 50)
-beep()
 ###########################
 #test with single dataframes
 spatial.support.set<-latlong.predictors.DICK.spatial[polys.df[1,],]
@@ -262,7 +311,7 @@ support.set<-crop(predictors_stack,
                   extent(polys.df[1,]))
 
 beginCluster()
-preds_rf<- clusterR(rast, raster::predict, args = list(model = model))
+microbenchmark(preds_rf<- clusterR(support.set, raster::predict, args = list(model = tree.test)), times = 1)
 endCluster()
 microbenchmark(tree.test.raster.prediction<-raster::predict(object=support.set, #raster object, probably use bioclim.extent,
                                              model=tree.test), times = 1) #28 min
@@ -270,9 +319,12 @@ plot(tree.test.raster.prediction)
 microbenchmark(tree.test.raster.prediction.extended<-extend(x=tree.test.raster.prediction,
                                              y=studyarea.extent,
                                              value=NA), times = 1)
-beepr()
+beep()
 
-##########################
+
+
+############################
+#assemble the support set lists into a model prediction surface.
 #Mosaic function
 #Get the weights out, which is the support set sample size at each pixel
 weights<-lapply(list.test,
@@ -333,44 +385,79 @@ ensemble.function <- function (list.of.rasters) {
   
   return(ensemble.weighted.mosaic)
 }
-
-
 ############################
 #Run small, medium, and large support set models.
+#parameters
+ntree <- 50
+importance <- FALSE
 support.small.list <- lapply(1:2,
                              FUN = spatial.support.set,
                              spatialdataset = latlong.predictors.DICK.spatial,
                              predictor_stack = predictors_stack,
-                             ntree = 50)
-
+                             polys.df = polys.small,
+                             ntree = ntree,
+                             importance = importance)
 
 support.medium.list <- lapply(1:2,
-                             FUN = spatial.support.set,
-                             spatialdataset = latlong.predictors.DICK.spatial,
-                             predictor_stack = predictors_stack,
-                             ntree = 50)
+                              FUN = spatial.support.set,
+                              spatialdataset = latlong.predictors.DICK.spatial,
+                              predictor_stack = predictors_stack,
+                              polys.df = polys.medium,
+                              ntree = ntree,
+                              importance = importance)
 support.large.list <- lapply(1:2,
                              FUN = spatial.support.set,
                              spatialdataset = latlong.predictors.DICK.spatial,
                              predictor_stack = predictors_stack,
-                             ntree = 50)
-beepr()
+                             polys.df = polys.large,
+                             ntree = ntree,
+                             importance = importance)
+support.small.ensemble <- ensemble.function(support.small.list)
+support.medium.ensemble <- ensemble.function(support.medium.list)
+support.large.ensemble <- ensemble.function(support.large.list)
+
+
+
+beepr()#small, medium, large
 
 ############################
 #Statewide model
-summary(rpart_fit_5)
-fm <- rpart_fit_5$finalModel
-varImp(rpart_fit_5)
-print(rpart_fit_5)
-importance(fm)
-importance(fm, type=1)
-partialPlot(fm, 
+statewide.data <- latlong.predictors.DICK
+statewide.data$Longitude <- NULL
+statewide.data$Latitude <- NULL
+#These two columns should be taken out because not predicting on them.
+
+tree.statewide <- randomForest(presence ~ ., 
+                          data = statewide.data,
+                          ntree = ntree,
+                          importance = TRUE) 
+
+beginCluster()
+tree.statewide.raster.prediction.prob<-clusterR(predictors_stack,
+                                                raster::predict,
+                                                args = list(model = tree.statewide,
+                                                            type = "prob",
+                                                            progress = "text"))
+
+endCluster()
+plot(tree.statewide.raster.prediction)
+#pdf or eps of map here generated here too
+
+summary(tree.statewide)
+varImp(tree.statewide)
+varImpPlot(tree.statewide)
+print(tree.statewide)
+importance(tree.statewide)
+importance(tree.statewide, type=1)
+
+#Go through top 20? variables in partialPlot
+partialPlot(tree.statewide, 
             training, 
             bio12_12_OK)
-partialPlot(fm, 
+partialPlot(tree.statewide, 
             training, 
             undevopenspace_15cell,
-            "1")
+            "1") #using 1 as reference ie presence
 
 #http://stats.stackexchange.com/questions/93202/odds-ratio-from-decision-tree-and-random-forest
 #http://r.789695.n4.nabble.com/randomForest-PartialPlot-reg-td2551372.html shoudl not do the logit thing actually
@@ -378,27 +465,10 @@ partialPlot(fm,
 
 #http://stackoverflow.com/questions/32606375/rmse-calculation-for-random-forest-in-r
 
-
-
-bio12_plot <- partialPlot(iris.rf,
-                          training.nolatlong,
-                          bio8_12_OK, 
-                          "1")
-plot(bio12_plot)
-varImpPlot(iris.rf)
-plot(iris.rf)
-
 #for spatially uniform test data
 #http://stackoverflow.com/questions/32862606/taking-random-point-from-list-of-points-per-grid-square
 #Do this sampling n times (200?  250?)
 
-plot(latlong.predictors.DICK.spatial@data[-foldIndex[[1]], c("Longitude", "Latitude")])
-
-
-tree.test.raster.prediction.iris.rf.prob<-raster::predict(object=predictors_stack, #raster object, probably use bioclim.extent,
-                                                          model=iris.rf,
-                                                          type = "prob",
-                                                          progress = "text")
 
 #details on how to do probability maps for classification http://evansmurphy.wixsite.com/evansspatial/random-forest-sdm
 
