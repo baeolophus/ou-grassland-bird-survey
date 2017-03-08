@@ -278,14 +278,18 @@ spatial.support.set<-function(whichrandombox,
                           data = support.set.data,
                           ...) #This allows all other random forest arguments to be set at the spatial.support.set function level.
   
-  support.set<-crop(predictor_stack,
+  support.set <- crop(predictor_stack,
                             extent(polys.df[whichrandombox,]))
-  tree.test.raster.prediction<-raster::predict(object=support.set, #raster object, probably use bioclim.extent,
-                                               model=tree.test)
+  beginCluster() #use raster's multicore clustering to automatically use more cores and speed up predict and extend
+  tree.test.raster.prediction <- clusterR(support.set,
+                                          fun = raster::predict,
+                                          args = list(model = tree.test))
   plot(tree.test.raster.prediction)
-  tree.test.raster.prediction.extended<-extend(x=tree.test.raster.prediction,
-                                      y=studyarea.extent,
-                                      value=NA)
+  tree.test.raster.prediction.extended <- clusterR(tree.test.raster.prediction,
+                                                   fun = extend,
+                                                   args = list(y = studyarea.extent,
+                                                               value = NA))
+  endCluster()
   return(list(tree.test.raster.prediction.extended,
               sample.size.good,
               tree.test))
@@ -313,13 +317,16 @@ support.set<-crop(predictors_stack,
 
 beginCluster()
 microbenchmark(preds_rf<- clusterR(support.set, raster::predict, args = list(model = tree.test)), times = 1)
-endCluster()
-microbenchmark(tree.test.raster.prediction<-raster::predict(object=support.set, #raster object, probably use bioclim.extent,
-                                             model=tree.test), times = 1) #28 min
+
+microbenchmark(tree.test.raster.prediction <- raster::predict(object = support.set, #raster object, probably use bioclim.extent,
+                                             model = tree.test), times = 1) #28 min
 plot(tree.test.raster.prediction)
-microbenchmark(tree.test.raster.prediction.extended<-extend(x=tree.test.raster.prediction,
-                                             y=studyarea.extent,
-                                             value=NA), times = 1)
+microbenchmark(tree.test.raster.prediction.extended <- clusterR(tree.test.raster.prediction,
+                                                                fun = extend,
+                                                                args = list(y=studyarea.extent,
+                                                                            value=NA)),
+               times = 1)
+endCluster()
 beep()
 
 
