@@ -176,21 +176,27 @@ plot(polys.df,
 return(list(polys, polys.df))
 }
 
-radius.small <- 50000 #small radius in meters. =50,000 = 50 km = 100 x 100 km boxes #200 points
-radius.medium <- 125000 #med radius in meters. =125,000 = 125 km = 250 x 250 km boxes #100 points
-radius.large <- 250000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes #25 points
+radius.small <- 60000 #small radius in meters. =6,000 = 60 km = 120 x 120 km boxes #200 points
+radius.medium <- 100000 #med radius in meters. =100,000 = 100 km = 200 x 200 km boxes #75 points
+radius.large <- 225000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes #20 points
 
 polys.small <- random.stratified.support.sets(numberofpoints = 200,
                                               radius.small)
 polys.small.p <- unlist(polys.small[[1]])
 polys.small.df <- unlist(polys.small[[2]])
 
-polys.medium <- random.stratified.support.sets(numberofpoints = 100,
-                                               radius.medium)
-polys.medium.p <- unlist(polys.medium[[1]])
-polys.medium.df <- unlist(polys.medium[[2]])
+#polys.medium <- random.stratified.support.sets(numberofpoints = 100,
+#                                               radius.medium)
+#polys.medium.p <- unlist(polys.medium[[1]])
+#polys.medium.df <- unlist(polys.medium[[2]])
 
-polys.large <- random.stratified.support.sets(numberofpoints = 25,
+polys.medium2 <- random.stratified.support.sets(numberofpoints = 75,
+                                               radius.medium)
+polys.medium2.p <- unlist(polys.medium2[[1]])
+polys.medium2.df <- unlist(polys.medium2[[2]])
+
+
+polys.large <- random.stratified.support.sets(numberofpoints = 20,
                                               radius.large)
 polys.large.p <- unlist(polys.large[[1]])
 polys.large.df <- unlist(polys.large[[2]])
@@ -219,6 +225,16 @@ microbenchmark(countoverlapping.medium <- clusterR(nlcd_ok_utm14, #raster
 plot(countoverlapping.medium)
 plot(state, add = TRUE)
 
+microbenchmark(countoverlapping.medium2 <- clusterR(nlcd_ok_utm14, #raster
+                                                   fun = rasterize,
+                                                   args = list(x = polys.medium2.p,
+                                                               fun = 'count',
+                                                               update = TRUE,
+                                                               updateValue = '!NA')),
+               times = 1)
+plot(countoverlapping.medium2)
+plot(state, add = TRUE)
+
 microbenchmark(countoverlapping.large <- clusterR(nlcd_ok_utm14, #raster
                                                   fun = rasterize,
                                                   args = list(x = polys.large.p,
@@ -227,34 +243,50 @@ microbenchmark(countoverlapping.large <- clusterR(nlcd_ok_utm14, #raster
                                                               updateValue = '!NA')),
                times = 1)
 plot(countoverlapping.large)
-plot(state, add = TRUE)
+plot(state)
 
 sampling.overlaps <- spsample(state,
-                              type = "regular")
+                              type = "regular",
+                              n = 50)
 plot(sampling.overlaps, add= TRUE)
 
 overlaps.small.sample <- as.data.frame(extract(x = countoverlapping.small,
                                  y = sampling.overlaps))
 overlaps.small.sample$set <- "small"
+colnames(overlaps.small.sample) <- c("overlapsperpixel", "set")
 overlaps.medium.sample <- as.data.frame(extract(x = countoverlapping.medium,
                                  y = sampling.overlaps))
 overlaps.medium.sample$set <- "medium"
+colnames(overlaps.medium.sample) <- c("overlapsperpixel", "set")
+
+overlaps.medium2.sample <- as.data.frame(extract(x = countoverlapping.medium2,
+                                                y = sampling.overlaps))
+overlaps.medium2.sample$set <- "medium2"
+colnames(overlaps.medium2.sample) <- c("overlapsperpixel", "set")
+
 overlaps.large.sample <- as.data.frame(extract(x = countoverlapping.large,
                                  y = sampling.overlaps))
 overlaps.large.sample$set <- "large"
+colnames(overlaps.large.sample) <- c("overlapsperpixel", "set")
+min(overlaps.large.sample$overlapsperpixel)
 
-overlaps <- bind_rows(countoverlapping.small.values,
-          countoverlapping.medium.values,
-          countoverlapping.large.values)
+overlaps <- bind_rows(overlaps.small.sample,
+                      overlaps.medium2.sample,
+                      overlaps.large.sample)
 
 colnames(overlaps) <- c("overlapsperpixel", "set")
-
+overlaps$set <- as.factor(overlaps$set)
 endCluster()
 
 overlaps.lm <- lm (overlapsperpixel ~ set,
                    data = overlaps)
 anova(overlaps.lm)
-
+plot(overlapsperpixel ~ set,
+     data = overlaps)
+library(multcomp)
+anova.tukey<-glht(overlaps.lm,
+                  linfct=mcp(set="Tukey"))
+summary(anova.tukey)
 #########################
 #Now, function for subsetting and running the test on each subset.
 
@@ -463,25 +495,68 @@ beepr::beep() #notification on completion
 #AUC
 #example code: http://stackoverflow.com/questions/30366143/how-to-compute-roc-and-auc-under-roc-after-training-using-caret-in-r
 #and https://www.biostars.org/p/87110/
-testing.spatial <- testing
-coordinates(testing.spatial) <- c("Longitude", "Latitude")
+evaluation.spatial <- testing
+coordinates(evaluation.spatial) <- c("Longitude", "Latitude")
 #later,  do in a loop or lapply for bootstrap/sampling of distribution.  for now just make sure this works.
-model.predictions <- extract(x = tree.test.raster.prediction.iris.rf.prob, #ensemble.weighted.mosaic,         #the raster containing predictions from which values are extracted
-                             y = testing.spatial#spatial.evaluation.dataset        #evaluation data gps points in a spatial dataframe
-)
+
+#http://stats.idre.ucla.edu/r/faq/how-can-i-generate-bootstrap-statistics-in-r/
+#http://gsif.r-forge.r-project.org/sample.grid.html
+
+spatial.sampling.evaluation <- function (evaluation.spatial,
+                                   cell.size,
+                                   n,
+                                   typeofeval, #typeofeval is "rmse" or "auc" for performance function.
+                                   prediction.raster) { #the model full prediction map
+
+list.of.object.spdf.and.grid <- sample.grid(evaluation.spatial, #spatial dataframe
+                                            cell.size, #maybe 10 or 100 km?
+                                            n) #maximum number of samples per grid cell
+
+iteration.testing.spatial <- list.of.object.spdf.and.grid[[1]]
+
+model.predictions <- extract(x = prediction.raster,
+                             #the raster containing predictions from which values are extracted
+                             y = iteration.testing.spatial
+                             #spatial.evaluation.dataset
+                             )
 
 model.predictions.presence <- as.data.frame(model.predictions$presence)
 
-pred <- prediction(predictions = seq(from = 0, to = 1, length.out = length(testing.nolatlong$presence)),#model.predictions.presence,
+pred <- prediction(predictions = iteration.testing.spatial$presence,#model.predictions.presence,
                    labels = testing.nolatlong$presence) #evaluation.dataset$presence)
+
+perf <- performance(pred,
+                    typeofeval)
+return(perf)
+}
+
+spatial.sampling.evaluation(evaluation.spatial,
+                            cell.size = 1000,
+                            n = 10,
+                            typeofeval = "rmse")
 
 perf_AUC <- performance(pred,
                      "auc") #Calculate the AUC value
-perf_RMSE <- performance(pred,
-                         "rmse")
-AUC=perf_AUC@y.values[[1]]
 
-###########
+AUC=perf_AUC@y.values[[1]]
+###############################
+#evaluate small, med, large, and statewide, then plot bootstrap distributions and calculation mean and sd for AUC and RMSE
+
+statewide.sampling.rmse <- replicate(50,
+          spatial.sampling.evaluation,
+          cell.size = 1000,
+          n = 10,
+          typeofeval = "rmse",
+          prediction.raster = tree.statewide.raster.prediction.prob)
+
+#repeat for these
+support.small.ensemble
+support.medium.ensemble
+support.large.ensemble
+
+#Then repeat for AUC
+
+###############################
 #plot the actual ROC curve... fink et al. don't include this, do I want it?
 
 perf_ROC <- performance(pred,
