@@ -208,10 +208,6 @@ microbenchmark(countoverlapping.small <- clusterR(nlcd_ok_utm14, #raster
   times = 1)
 plot(countoverlapping.small)
 plot(state, add = TRUE)
-countoverlapping.small.values <- as.data.frame(countoverlapping.small)
-countoverlapping.small.values$set <- "small"
-summary(countoverlapping.small.values[,1], na.rm = TRUE)
-sd(countoverlapping.small.values[,1], na.rm = TRUE)
 
 microbenchmark(countoverlapping.medium <- clusterR(nlcd_ok_utm14, #raster
                                                   fun = rasterize,
@@ -222,24 +218,30 @@ microbenchmark(countoverlapping.medium <- clusterR(nlcd_ok_utm14, #raster
                times = 1)
 plot(countoverlapping.medium)
 plot(state, add = TRUE)
-countoverlapping.medium.values <- as.data.frame(countoverlapping.medium)
-countoverlapping.medium.values$set <- "medium"
-summary(countoverlapping.medium.values[,1], na.rm = TRUE)
-sd(countoverlapping.medium.values[,1], na.rm = TRUE)
 
-microbenchmark(countoverlapping.small <- clusterR(nlcd_ok_utm14, #raster
+microbenchmark(countoverlapping.large <- clusterR(nlcd_ok_utm14, #raster
                                                   fun = rasterize,
-                                                  args = list(x = polys.small.p,
+                                                  args = list(x = polys.large.p,
                                                               fun = 'count',
                                                               update = TRUE,
                                                               updateValue = '!NA')),
                times = 1)
-plot(countoverlapping.small)
+plot(countoverlapping.large)
 plot(state, add = TRUE)
-countoverlapping.large.values <- as.data.frame(countoverlapping.large)
-countoverlapping.large.values$set <- "large"
-summary(countoverlapping.large.values[,1], na.rm = TRUE)
-sd(countoverlapping.large.values[,1], na.rm = TRUE)
+
+sampling.overlaps <- spsample(state,
+                              type = "regular")
+plot(sampling.overlaps, add= TRUE)
+
+overlaps.small.sample <- as.data.frame(extract(x = countoverlapping.small,
+                                 y = sampling.overlaps))
+overlaps.small.sample$set <- "small"
+overlaps.medium.sample <- as.data.frame(extract(x = countoverlapping.medium,
+                                 y = sampling.overlaps))
+overlaps.medium.sample$set <- "medium"
+overlaps.large.sample <- as.data.frame(extract(x = countoverlapping.large,
+                                 y = sampling.overlaps))
+overlaps.large.sample$set <- "large"
 
 overlaps <- bind_rows(countoverlapping.small.values,
           countoverlapping.medium.values,
