@@ -2,6 +2,7 @@
 library(beepr)
 library(caret)
 library(dplyr)
+library(GSIF)
 library(microbenchmark)
 library(randomForest)
 library(raster)
@@ -185,18 +186,12 @@ polys.small <- random.stratified.support.sets(numberofpoints = 200,
 polys.small.p <- unlist(polys.small[[1]])
 polys.small.df <- unlist(polys.small[[2]])
 
-#polys.medium <- random.stratified.support.sets(numberofpoints = 100,
-#                                               radius.medium)
-#polys.medium.p <- unlist(polys.medium[[1]])
-#polys.medium.df <- unlist(polys.medium[[2]])
-
-polys.medium2 <- random.stratified.support.sets(numberofpoints = 75,
+polys.medium <- random.stratified.support.sets(numberofpoints = 75,
                                                radius.medium)
-polys.medium2.p <- unlist(polys.medium2[[1]])
-polys.medium2.df <- unlist(polys.medium2[[2]])
+polys.medium.p <- unlist(polys.medium[[1]])
+polys.medium.df <- unlist(polys.medium[[2]])
 
-
-polys.large <- random.stratified.support.sets(numberofpoints = 20,
+polys.large <- random.stratified.support.sets(numberofpoints = 25,
                                               radius.large)
 polys.large.p <- unlist(polys.large[[1]])
 polys.large.df <- unlist(polys.large[[2]])
@@ -225,16 +220,6 @@ microbenchmark(countoverlapping.medium <- clusterR(nlcd_ok_utm14, #raster
 plot(countoverlapping.medium)
 plot(state, add = TRUE)
 
-microbenchmark(countoverlapping.medium2 <- clusterR(nlcd_ok_utm14, #raster
-                                                   fun = rasterize,
-                                                   args = list(x = polys.medium2.p,
-                                                               fun = 'count',
-                                                               update = TRUE,
-                                                               updateValue = '!NA')),
-               times = 1)
-plot(countoverlapping.medium2)
-plot(state, add = TRUE)
-
 microbenchmark(countoverlapping.large <- clusterR(nlcd_ok_utm14, #raster
                                                   fun = rasterize,
                                                   args = list(x = polys.large.p,
@@ -259,11 +244,6 @@ overlaps.medium.sample <- as.data.frame(extract(x = countoverlapping.medium,
 overlaps.medium.sample$set <- "medium"
 colnames(overlaps.medium.sample) <- c("overlapsperpixel", "set")
 
-overlaps.medium2.sample <- as.data.frame(extract(x = countoverlapping.medium2,
-                                                y = sampling.overlaps))
-overlaps.medium2.sample$set <- "medium2"
-colnames(overlaps.medium2.sample) <- c("overlapsperpixel", "set")
-
 overlaps.large.sample <- as.data.frame(extract(x = countoverlapping.large,
                                  y = sampling.overlaps))
 overlaps.large.sample$set <- "large"
@@ -271,7 +251,7 @@ colnames(overlaps.large.sample) <- c("overlapsperpixel", "set")
 min(overlaps.large.sample$overlapsperpixel)
 
 overlaps <- bind_rows(overlaps.small.sample,
-                      overlaps.medium2.sample,
+                      overlaps.medium.sample,
                       overlaps.large.sample)
 
 colnames(overlaps) <- c("overlapsperpixel", "set")
@@ -501,6 +481,7 @@ coordinates(evaluation.spatial) <- c("Longitude", "Latitude")
 
 #http://stats.idre.ucla.edu/r/faq/how-can-i-generate-bootstrap-statistics-in-r/
 #http://gsif.r-forge.r-project.org/sample.grid.html
+#http://www.stat.wisc.edu/~larget/stat302/chap3.pdf #bootstrapping/sampling
 
 spatial.sampling.evaluation <- function (evaluation.spatial,
                                    cell.size,
