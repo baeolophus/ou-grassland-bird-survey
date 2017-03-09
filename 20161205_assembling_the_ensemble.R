@@ -1,6 +1,5 @@
 #libraries needed
 library(beepr)
-library(caret)
 library(dplyr)
 library(GSIF)
 library(microbenchmark)
@@ -296,51 +295,18 @@ spatial.support.set<-function(whichrandombox,
   tree.test.raster.prediction <- clusterR(support.set,
                                           fun = raster::predict,
                                           args = list(model = tree.test))
+  endCluster()
   plot(tree.test.raster.prediction)
+  beginCluster()
   tree.test.raster.prediction.extended <- clusterR(tree.test.raster.prediction,
-                                                   fun = extend,
-                                                   args = list(y = studyarea.extent,
+                                                   fun = raster::extend,
+                                                   args = list(studyarea.extent,
                                                                value = NA))
   endCluster()
   return(list(tree.test.raster.prediction.extended,
               sample.size.good,
               tree.test))
 }
-
-
-###########################
-#test with single dataframes
-spatial.support.set<-latlong.predictors.DICK.spatial[polys.medium.df[1,],]
-#I think there should be a line that turns it back into regular data?
-sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
-#need to have the minimum data requirement in here too.
-support.set.data <- as.data.frame(spatial.support.set)
-support.set.data$Longitude <- NULL
-support.set.data$Latitude <- NULL
-
-
-tree.test <- randomForest(presence ~ ., 
-                          data = support.set.data,
-                          ntree = 50) #This allows all other random forest arguments to be set at the spatial.support.set function level.
-#ca 1 sec run
-
-support.set<-crop(predictors_stack,
-                  extent(polys.medium.df[1,]))
-
-beginCluster()
-microbenchmark(preds_rf<- clusterR(support.set, raster::predict, args = list(model = tree.test)), times = 1)
-
-microbenchmark(tree.test.raster.prediction <- raster::predict(object = support.set, #raster object, probably use bioclim.extent,
-                                             model = tree.test), times = 1) #28 min
-plot(tree.test.raster.prediction)
-microbenchmark(tree.test.raster.prediction.extended <- clusterR(tree.test.raster.prediction,
-                                                                fun = extend,
-                                                                args = list(y=studyarea.extent,
-                                                                            value=NA)),
-               times = 1)
-endCluster()
-beep()
-
 
 
 ############################
@@ -382,11 +348,11 @@ ensemble.function <- function (list.of.rasters) {
 #parameters
 ntree <- 50
 importance <- FALSE
-support.small.list <- lapply(1:2,
+support.small.list <- lapply(1,
                              FUN = spatial.support.set,
                              spatialdataset = latlong.predictors.DICK.spatial,
                              predictor_stack = predictors_stack,
-                             polys.df = polys.small,
+                             polys.df = polys.small.df,
                              ntree = ntree,
                              importance = importance)
 
@@ -394,14 +360,14 @@ support.medium.list <- lapply(1:2,
                               FUN = spatial.support.set,
                               spatialdataset = latlong.predictors.DICK.spatial,
                               predictor_stack = predictors_stack,
-                              polys.df = polys.medium,
+                              polys.df = polys.medium.df,
                               ntree = ntree,
                               importance = importance)
 support.large.list <- lapply(1:2,
                              FUN = spatial.support.set,
                              spatialdataset = latlong.predictors.DICK.spatial,
                              predictor_stack = predictors_stack,
-                             polys.df = polys.large,
+                             polys.df = polys.large.df,
                              ntree = ntree,
                              importance = importance)
 support.small.ensemble <- ensemble.function(support.small.list)
@@ -410,7 +376,7 @@ support.large.ensemble <- ensemble.function(support.large.list)
 
 
 
-beepr()#small, medium, large
+beep()#small, medium, large
 
 ############################
 #Statewide model
@@ -576,3 +542,37 @@ ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
 
 #Plot the mosaic.
 plot(ensemble.weighted.mosaic)
+
+#test with single dataframes
+spatial.support.set<-latlong.predictors.DICK.spatial[polys.medium.df[1,],]
+#I think there should be a line that turns it back into regular data?
+sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
+#need to have the minimum data requirement in here too.
+support.set.data <- as.data.frame(spatial.support.set)
+support.set.data$Longitude <- NULL
+support.set.data$Latitude <- NULL
+
+
+tree.test <- randomForest(presence ~ ., 
+                          data = support.set.data,
+                          ntree = 50) #This allows all other random forest arguments to be set at the spatial.support.set function level.
+#ca 1 sec run
+
+support.set<-crop(predictors_stack,
+                  extent(polys.medium.df[1,]))
+
+beginCluster()
+microbenchmark(preds_rf<- clusterR(support.set, raster::predict, args = list(model = tree.test)), times = 1)
+
+microbenchmark(tree.test.raster.prediction <- raster::predict(object = support.set, #raster object, probably use bioclim.extent,
+                                                              model = tree.test), times = 1) #28 min
+plot(tree.test.raster.prediction)
+microbenchmark(tree.test.raster.prediction.extended <- clusterR(tree.test.raster.prediction,
+                                                                fun = extend,
+                                                                args = list(y=studyarea.extent,
+                                                                            value=NA)),
+               times = 1)
+endCluster()
+beep()
+
+
