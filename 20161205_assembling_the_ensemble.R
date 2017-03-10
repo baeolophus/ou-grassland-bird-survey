@@ -101,6 +101,8 @@ latlong.predictors.DICK.spatial <-cbind("presence" = complete.dataset.for.sdm.DI
 #has to be spatial for function to work so re-add that
 coordinates(latlong.predictors.DICK.spatial) <- c("Longitude", "Latitude")
 proj4string(latlong.predictors.DICK.spatial)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+rm(complete.dataset.for.sdm) #free up memory
+rm(predictors_stack.DICK)
 ##################################
 ##################################
 #Generate support sets
@@ -176,25 +178,6 @@ plot(polys.df,
 return(list(polys, polys.df))
 }
 
-radius.small <- 60000 #small radius in meters. =6,000 = 60 km = 120 x 120 km boxes #200 points
-radius.medium <- 100000 #med radius in meters. =100,000 = 100 km = 200 x 200 km boxes #75 points
-radius.large <- 225000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes #20 points
-
-polys.small <- random.stratified.support.sets(numberofpoints = 200,
-                                              radius.small)
-polys.small.p <- unlist(polys.small[[1]])
-polys.small.df <- unlist(polys.small[[2]])
-
-polys.medium <- random.stratified.support.sets(numberofpoints = 75,
-                                               radius.medium)
-polys.medium.p <- unlist(polys.medium[[1]])
-polys.medium.df <- unlist(polys.medium[[2]])
-
-polys.large <- random.stratified.support.sets(numberofpoints = 25,
-                                              radius.large)
-polys.large.p <- unlist(polys.large[[1]])
-polys.large.df <- unlist(polys.large[[2]])
-
 #########################
 #Now, function for subsetting and running the test on each subset.
 
@@ -204,6 +187,9 @@ spatial.support.set<-function(whichrandombox,
                               predictor_stack,
                               polys.df,
                               ...){
+  #create temporary raster files on large drive because they occupy 10-30 GB
+  rasterOptions()$tmpdir
+  rasterOptions(tmpdir="E:/Documents/R/temp")
   spatial.support.set<-spatialdataset[polys.df[whichrandombox,],]
   #I think there should be a line that turns it back into regular data?
   sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
@@ -225,13 +211,10 @@ spatial.support.set<-function(whichrandombox,
                                           fun = raster::predict,
                                           args = list(model = tree.test))
   endCluster()
-  plot(tree.test.raster.prediction)
-  beginCluster()
-  tree.test.raster.prediction.extended <- clusterR(tree.test.raster.prediction,
-                                                   fun = raster::extend,
-                                                   args = list(studyarea.extent,
-                                                               value = NA))
-  endCluster()
+  tree.test.raster.prediction.extended <- raster::extend(x = tree.test.raster.prediction,
+                                                         y = studyarea.extent,
+                                                         value = NA)
+
   return(list(tree.test.raster.prediction.extended,
               sample.size.good,
               tree.test))
@@ -260,11 +243,16 @@ ensemble.function <- function (list.of.rasters) {
   
   
   #Run the ensemble by using weighted mean.  The weight is by number of support sets.
-  ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
-                                    list(predictions.support.sets.stacked,
-                                         weights,
-                                         TRUE))
-  
+ # ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
+ #                                  list(predictions.support.sets.stacked,
+ #                                       weights,
+ #                                         TRUE))
+  beginCluster()
+  ensemble.weighted.mosaic<-clusterR(x = predictions.support.sets.stacked,
+                                     fun = raster::weighted.mean,
+                                     w = weights,
+                                     na.rm = TRUE)
+  endCluster()
   #Plot the mosaic.  Remove this line when I transfer to AWS.
   plot(ensemble.weighted.mosaic)
   
@@ -277,6 +265,14 @@ ensemble.function <- function (list.of.rasters) {
 #parameters
 ntree <- 50
 importance <- FALSE
+radius.small <- 60000 #small radius in meters. =6,000 = 60 km = 120 x 120 km boxes #200 points
+radius.medium <- 100000 #med radius in meters. =100,000 = 100 km = 200 x 200 km boxes #75 points
+radius.large <- 225000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes #25 points
+
+polys.small <- random.stratified.support.sets(numberofpoints = 200,
+                                              radius.small)
+polys.small.p <- unlist(polys.small[[1]])
+polys.small.df <- unlist(polys.small[[2]])
 support.small.list <- lapply(1,
                              FUN = spatial.support.set,
                              spatialdataset = latlong.predictors.DICK.spatial,
@@ -285,6 +281,10 @@ support.small.list <- lapply(1,
                              ntree = ntree,
                              importance = importance)
 
+polys.medium <- random.stratified.support.sets(numberofpoints = 75,
+                                               radius.medium)
+polys.medium.p <- unlist(polys.medium[[1]])
+polys.medium.df <- unlist(polys.medium[[2]])
 support.medium.list <- lapply(1:2,
                               FUN = spatial.support.set,
                               spatialdataset = latlong.predictors.DICK.spatial,
@@ -292,6 +292,12 @@ support.medium.list <- lapply(1:2,
                               polys.df = polys.medium.df,
                               ntree = ntree,
                               importance = importance)
+
+polys.large <- random.stratified.support.sets(numberofpoints = 25,
+                                              radius.large)
+polys.large.p <- unlist(polys.large[[1]])
+polys.large.df <- unlist(polys.large[[2]])
+
 support.large.list <- lapply(1:2,
                              FUN = spatial.support.set,
                              spatialdataset = latlong.predictors.DICK.spatial,
@@ -320,30 +326,24 @@ tree.statewide <- randomForest(presence ~ .,
                           importance = TRUE) 
 
 beginCluster()
-tree.statewide.raster.prediction.prob<-clusterR(predictors_stack,
+microbenchmark(tree.statewide.raster.prediction.prob<-clusterR(predictors_stack,
                                                 raster::predict,
                                                 args = list(model = tree.statewide,
-                                                            type = "prob",
-                                                            progress = "text"))
+                                                          #  type = "prob",
+                                                            progress = "text")), times = 1) #3.7 hours
 
 endCluster()
-plot(tree.statewide.raster.prediction)
+plot(tree.statewide.raster.prediction.prob)
 #pdf or eps of map here generated here too
 
-summary(tree.statewide)
-varImp(tree.statewide)
 varImpPlot(tree.statewide)
 print(tree.statewide)
-importance(tree.statewide)
-importance(tree.statewide, type=1)
+tree.statewide.varimp <- data.frame(importance(tree.statewide))
 
-#Go through top 20? variables in partialPlot
+#Go through top 30 variables in partialPlot
 partialPlot(tree.statewide, 
-            training, 
-            bio12_12_OK)
-partialPlot(tree.statewide, 
-            training, 
-            undevopenspace_15cell,
+            statewide.data, 
+            grasslands71_15cell,
             "1") #using 1 as reference ie presence
 
 #http://stats.stackexchange.com/questions/93202/odds-ratio-from-decision-tree-and-random-forest
@@ -358,10 +358,6 @@ partialPlot(tree.statewide,
 
 
 #details on how to do probability maps for classification http://evansmurphy.wixsite.com/evansspatial/random-forest-sdm
-
-plot(tree.test.raster.prediction.iris.rf.prob)
-beepr::beep() #notification on completion
-
 
 #########################################
 #Once predictions made, evaluation of model.
