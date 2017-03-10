@@ -39,7 +39,6 @@ conservation_easements_CalcAcres_raster <- raster(paste0(gispath,
                                                          "/conservation_easements_CalcAcres_raster_okmask.tif"))
 conservation_easements_presenceabsence_raster_okmask <- raster(paste0(gispath,
                                                                       "/conservation_easements_presenceabsence_raster_okmask.tif"))
-plot(conservation_easements_presenceabsence_raster_okmask)
 
 nlcdrasters_list <- list.files(paste0(gispath, "/nlcd_processing"),
                                pattern = "tif$",
@@ -80,9 +79,6 @@ proj4string(complete.dataset.for.sdm.DICK)<-CRS(as.character("+proj=utm +zone=14
 
 #check it worked
 proj4string(complete.dataset.for.sdm.DICK)
-
-plot(complete.dataset.for.sdm.DICK,
-     pch = complete.dataset.for.sdm.DICK$presence)
 
 #extract values for analysis
 predictors_stack.DICK<-extract(x=predictors_stack,
@@ -125,7 +121,7 @@ random.points<-spsample(x=state, #should be able to use the spatial polygon here
 #confirm projection
 proj4string(random.points)
 
-plot(random.points) #view
+#plot(random.points) #view
 
 #create squares around them, these will be support set extents.
 #How to make squares/rectangles, code/comments adapted from here:
@@ -172,9 +168,9 @@ polys <- SpatialPolygons(
 # Create SpatialPolygonDataFrame -- this step is required to output multiple polygons.
 polys.df <- SpatialPolygonsDataFrame(polys, data.frame(id=ID, row.names=ID))
 
-plot(random.points)
-plot(polys.df,
-     add=TRUE)
+#plot(random.points)
+#plot(polys.df,
+#     add=TRUE)
 return(list(polys, polys.df))
 }
 
@@ -254,10 +250,9 @@ ensemble.function <- function (list.of.rasters) {
                                      na.rm = TRUE)
   endCluster()
   #Plot the mosaic.  Remove this line when I transfer to AWS.
-  plot(ensemble.weighted.mosaic)
-  
   #create file here in .eps or .pdf.
-  
+  plot(ensemble.weighted.mosaic)
+
   return(ensemble.weighted.mosaic)
 }
 ############################
@@ -333,14 +328,17 @@ microbenchmark(tree.statewide.raster.prediction.prob<-clusterR(predictors_stack,
                                                             progress = "text")), times = 1) #3.7 hours
 
 endCluster()
-plot(tree.statewide.raster.prediction.prob)
+
 #pdf or eps of map here generated here too
+plot(tree.statewide.raster.prediction.prob)
 
 varImpPlot(tree.statewide)
 print(tree.statewide)
 tree.statewide.varimp <- data.frame(importance(tree.statewide))
 
 #Go through top 30 variables in partialPlot
+#pdf
+
 partialPlot(tree.statewide, 
             statewide.data, 
             grasslands71_15cell,
@@ -366,8 +364,9 @@ partialPlot(tree.statewide,
 #AUC
 #example code: http://stackoverflow.com/questions/30366143/how-to-compute-roc-and-auc-under-roc-after-training-using-caret-in-r
 #and https://www.biostars.org/p/87110/
-evaluation.spatial <- testing
+evaluation.spatial <- latlong.predictors.DICK.spatial
 coordinates(evaluation.spatial) <- c("Longitude", "Latitude")
+prediction.raster<-tree.statewide.raster.prediction.prob
 #later,  do in a loop or lapply for bootstrap/sampling of distribution.  for now just make sure this works.
 
 #http://stats.idre.ucla.edu/r/faq/how-can-i-generate-bootstrap-statistics-in-r/
@@ -392,112 +391,55 @@ model.predictions <- extract(x = prediction.raster,
                              #spatial.evaluation.dataset
                              )
 
-model.predictions.presence <- as.data.frame(model.predictions$presence)
+#model.predictions.presence <- as.data.frame(model.predictions$presence)
 
-pred <- prediction(predictions = iteration.testing.spatial$presence,#model.predictions.presence,
-                   labels = testing.nolatlong$presence) #evaluation.dataset$presence)
+pred <- prediction(predictions = model.predictions,#model.predictions.presence,
+                   labels = iteration.testing.spatial$presence) #evaluation.dataset$presence)
 
 perf <- performance(pred,
                     typeofeval)
-return(perf)
+return(perf@y.values[[1]])
 }
 
-spatial.sampling.evaluation(evaluation.spatial,
-                            cell.size = 1000,
-                            n = 10,
-                            typeofeval = "rmse")
-
-perf_AUC <- performance(pred,
-                     "auc") #Calculate the AUC value
-
-AUC=perf_AUC@y.values[[1]]
 ###############################
 #evaluate small, med, large, and statewide, then plot bootstrap distributions and calculation mean and sd for AUC and RMSE
+spatial.sampling.evaluation <- latlong.predictors.DICK.spatial #replace with evaluation dataset
+cell.size <- c(10000, 10000)
+n <- 10
 
 statewide.sampling.rmse <- replicate(50,
-          spatial.sampling.evaluation,
-          cell.size = 1000,
-          n = 10,
-          typeofeval = "rmse",
-          prediction.raster = tree.statewide.raster.prediction.prob)
+          expr = do.call (what = spatial.sampling.evaluation,
+                          args = list(evaluation.spatial= latlong.predictors.DICK.spatial,
+                                      cell.size,
+                                      n,
+                                      typeofeval = "rmse",
+                                      prediction.raster = tree.statewide.raster.prediction.prob)))
 
 #repeat for these
 support.small.ensemble
 support.medium.ensemble
 support.large.ensemble
 
+boxplot(cbind("Small" = statewide.sampling.rmse,
+              "Medium" = statewide.sampling.rmse,
+              "Large" = statewide.sampling.rmse,
+              "Statewide" = statewide.sampling.rmse),
+        xlab = "Support set size",
+        ylab = "AUC")
+
+
 #Then repeat for AUC
 
-###############################
-#plot the actual ROC curve... fink et al. don't include this, do I want it?
-
-perf_ROC <- performance(pred,
-                     "tpr",
-                     "fpr") 
-plot(perf_ROC, main="ROC plot")
-text(0.5,0.5,paste("AUC = ",format(AUC, digits=5, scientific=FALSE)))
-
-#############################
-#############################
-#############################
-#ensemble mosaic non-function version in case needed later
-#Get the weights out, which is the support set sample size at each pixel
-weights<-lapply(list.test,
-                "[",
-                2)
-weights<-as.vector(unlist(weights))
-#The weights are 1 (have enough samples) and 0 (do not have enough samples, do not use)
-#For use in weighted.mean below.  It is a vector of weights per layer.  Since values are 1 if enough sample
-#then all are weighted equally if they are used.  If 0 (not enough sample size), then 0 weighted, not used.
-
-#remove one level of list on the remaining support sets
-predictions.support.sets<-unlist(lapply(list.test,
-                                        "[",
-                                        1))
-
-#Stack all the support sets (this will work because they have been extended with NA in non-support-set regions)
-predictions.support.sets.stacked<-raster::stack(predictions.support.sets)
-
-
-#Run the ensemble by using weighted mean.  The weight is by number of support sets.
-ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
-                                  list(predictions.support.sets.stacked,
-                                       weights,
-                                       TRUE))
-
-#Plot the mosaic.
-plot(ensemble.weighted.mosaic)
-
-#test with single dataframes
-spatial.support.set<-latlong.predictors.DICK.spatial[polys.medium.df[1,],]
-#I think there should be a line that turns it back into regular data?
-sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
-#need to have the minimum data requirement in here too.
-support.set.data <- as.data.frame(spatial.support.set)
-support.set.data$Longitude <- NULL
-support.set.data$Latitude <- NULL
-
-
-tree.test <- randomForest(presence ~ ., 
-                          data = support.set.data,
-                          ntree = 50) #This allows all other random forest arguments to be set at the spatial.support.set function level.
-#ca 1 sec run
-
-support.set<-crop(predictors_stack,
-                  extent(polys.medium.df[1,]))
-
-beginCluster()
-microbenchmark(preds_rf<- clusterR(support.set, raster::predict, args = list(model = tree.test)), times = 1)
-
-microbenchmark(tree.test.raster.prediction <- raster::predict(object = support.set, #raster object, probably use bioclim.extent,
-                                                              model = tree.test), times = 1) #28 min
-plot(tree.test.raster.prediction)
-microbenchmark(tree.test.raster.prediction.extended <- clusterR(tree.test.raster.prediction,
-                                                                fun = extend,
-                                                                args = list(y=studyarea.extent,
-                                                                            value=NA)),
-               times = 1)
-endCluster()
-beep()
-
-
+statewide.sampling.auc <- replicate(50,
+                                    expr = do.call (what = spatial.sampling.evaluation,
+                                                    args = list(evaluation.spatial= latlong.predictors.DICK.spatial,
+                                                                cell.size,
+                                                                n,
+                                                                typeofeval = "auc",
+                                                                prediction.raster = tree.statewide.raster.prediction.prob)))
+boxplot(cbind("Small" = ,
+              "Medium" = ,
+              "Large" = ,
+              "Statewide" = statewide.sampling.rmse),
+        xlab = "Support set size",
+        ylab = "AUC")
