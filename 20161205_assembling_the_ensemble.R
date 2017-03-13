@@ -85,7 +85,7 @@ predictors_stack.DICK<-extract(x=predictors_stack,
                                y=complete.dataset.for.sdm.DICK)
 predictors_stack.DICK.df <- as.data.frame(predictors_stack.DICK)
 
-latlong.predictors.DICK<-cbind("presence" = complete.dataset.for.sdm.DICK$presence,
+latlong.predictors.DICK<-cbind("presence" = as.factor(complete.dataset.for.sdm.DICK$presence),
                                coordinates(complete.dataset.for.sdm.DICK),
                                predictors_stack.DICK.df,
                                row.names = NULL)
@@ -293,13 +293,13 @@ polys.large <- random.stratified.support.sets(numberofpoints = 25,
 polys.large.p <- unlist(polys.large[[1]])
 polys.large.df <- unlist(polys.large[[2]])
 
-support.large.list <- lapply(1:2,
+microbenchmark(support.large.list <- lapply(1:2,
                              FUN = spatial.support.set,
                              spatialdataset = latlong.predictors.DICK.spatial,
                              predictor_stack = predictors_stack,
                              polys.df = polys.large.df,
                              ntree = ntree,
-                             importance = importance)
+                             importance = importance), times = 1)
 support.small.ensemble <- ensemble.function(support.small.list)
 support.medium.ensemble <- ensemble.function(support.medium.list)
 support.large.ensemble <- ensemble.function(support.large.list)
