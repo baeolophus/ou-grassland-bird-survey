@@ -1,14 +1,16 @@
 #libraries used in this file.
-library(tools)
-library(sp) # R's base package for vector data types
-library(raster) # better printing of spatial objects, export shapefiles
-library(rgdal) # for reading different spatial file formats
-library(rgeos) # for spatial distance and topology operations
+#library(tools)
+#library(sp) # R's base package for vector data types
+#library(raster) # better printing of spatial objects, export shapefiles
+#library(rgdal) # for reading different spatial file formats
+#library(rgeos) # for spatial distance and topology operations
 library(dplyr) # data manipulation
 library(geosphere) #distances between transects
 library(lubridate) #dates for year
 library(fuzzyjoin) #for getting ebird data out by spatial location
 #####
+
+source(file = "source_transect_data.R")
 
 #######################
 #Polishing up data formats and combining the different sources.
