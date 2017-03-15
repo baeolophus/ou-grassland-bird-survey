@@ -29,6 +29,10 @@ transect.complete <- transect.complete %>%
                              whattodowiththisrecord == "KEEP",
                              whattodowiththissighting == "KEEP")
 
+
+#transect labels by the already gps-checked newspotnames.
+transect.complete$newspotname <- substring(transect.complete$START.newspotnames, 1, 6)
+
 #Calculate perpendicular point where bird is
 bird.points <- data.frame(destPointRhumb(p = matrix(c(transect.complete$sighting.LON, transect.complete$sighting.LAT), ncol = 2),
                                                            b = transect.complete$Angle..deg.,
@@ -48,7 +52,7 @@ Region.Area <- gArea(state, byid=TRUE)
 
 #format transects with distance, Sample.Label (transectID), Effort (line length), Region Label, Area (area of the region).
 transect_for_distance <- data.frame ("distance" = perpendicular.distance,
-                                     "Sample.Label" = paste(substring(transect.complete$START.newspotnames, 1, 6), transect.complete$Date),
+                                     "Sample.Label" = paste(transect.complete$newspotname),
                                      "Effort" = transect.complete$transect.distance,
                                      "Region.Label" = "Oklahoma",
                                      "Area" = Region.Area,
@@ -61,10 +65,20 @@ transect_for_distance <- data.frame ("distance" = perpendicular.distance,
                                      )
                                      
 
-testing <- transect_for_distance %>%
-  group_by(Sample.Label, Effort) %>%
-  summarize()
-                                    
+round.to <- function(x, roundtonearest) {
+  round(x/roundtonearest)*roundtonearest
+}
+
+transect_for_distance$effort_round <- round.to(transect_for_distance$Effort, 3)
+
+effort.truncation <- transect_for_distance %>%
+  group_by(Sample.Label) %>%
+  summarize("min" = min(Effort),
+            "max" = max(Effort),
+            "diff" = max(Effort)-min(Effort),
+            "mean" = mean(Effort),
+            "Effortused" = ifelse(diff > 10, min(Effort), mean(Effort)))
+                         
 ds.dick <- ds(transect_for_distance,
               truncation = "10%",
               transect = "line",
