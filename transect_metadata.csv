@@ -91,7 +91,7 @@
 90,05/27/13,JGK,Wichita Mountains Wildlife Refuge,WMWR-C,NA,NA,90,WMWR-C start (JGK),WMWR-C end (JGK),,,KEEP,06:32,34.68919,-98.7052,10.00%,0-5,07:48,34.70447,-98.70435,70.00%,10 to 15,,,
 91,06/24/13,JGK,Wichita Mountains Wildlife Refuge,WMWR-D,NA,NA,91,WMWR-D end (JDR),WMWR-D end (JGK),,,KEEP,08:43,34.72474,-98.58597,60.00%,10-15 N,09:39,34.74276,-98.58656,40.00%,10-15 gusty,,,
 92,06/24/13,JGK,Wichita Mountains Wildlife Refuge,WMWR-H,NA,NA,92,WMWR-H end (JDR),WMWR-H end (JGK),,,KEEP,07:16,34.74181,-98.59221,55.00%,5-10 N,08:27,34.72474,-98.59232,45.00%,10-15 N,,,
-93,05/16/14,Josh,Cimmaron Bluffs,C,NA,NA,93,CIMB-C2,CIMB-C1,"End point way too far west, error?  Double observer?",Appears to have been a typo. Other observer in pair (Kristen) had more accurate endpoint.,KEEP,10:35,36.81493,-99.34182,30,10 to 15,11:45,36.81494,-99.34183,30,10 to 15,,,
+93,05/16/14,Josh,Cimmaron Bluffs,C,NA,NA,93,CIMB-C2,CIMB-C1,"End point way too far west, error?  Double observer?",Appears to have been a typo. Other observer in pair (Kristen) had more accurate endpoint.,DOUBLE,10:35,36.81493,-99.34182,30,10 to 15,11:45,36.79803,-99.34174,30,10 to 15,,,
 94,05/16/14,Josh,Cimmaron Bluffs,F,NA,NA,94,CIMB-F2,CIMB-F1,double observer?,"Yes, use data from Josh",KEEP,07:51,36.84125,-99.33715,40,0 to 5,10:10,36.81688,-99.3371,50,5 to 10,,,
 95,05/01/14,Josh,Drummond Flats,E,NA,NA,95,DRMD-E1,DRMD-E2,,,KEEP,08:29,36.30376,-98.05978,0,10 to 15,09:44,36.32546,-98.05982,0,15 to 20,,,
 96,05/01/14,Josh,Drummond Flats,F,NA,NA,96,DRMD-F1,DRMD-F2,,,KEEP,10:02,36.32738,-98.06699,0,15 to 20,11:07,36.30404,-98.06857,0,15 to 20,,,
