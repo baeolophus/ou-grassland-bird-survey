@@ -87,6 +87,8 @@ summary(ds.dick)
 ds.gof(ds.dick)
 
 #Point count analysis
+
+source(file = "source_pointcount_data.R")
 #here a section to count up total number of visits per PC, tag back on to data file.
 
 #Then function as above.
