@@ -31,7 +31,7 @@ transect.complete <- transect.complete %>%
 
 
 #transect labels by the already gps-checked newspotnames.
-transect.complete$newspotname <- substring(transect.complete$START.newspotnames, 1, 6)
+transect.complete$newspotname <- as.factor(substring(transect.complete$START.newspotnames, 1, 6))
 
 #Calculate perpendicular point where bird is
 bird.points <- data.frame(destPointRhumb(p = matrix(c(transect.complete$sighting.LON, transect.complete$sighting.LAT), ncol = 2),
@@ -50,10 +50,21 @@ state<-spTransform(x = state,
 )
 Region.Area <- gArea(state, byid=TRUE)
 
+#Calculating effort for each transect
+transect.effort <- transect.complete %>%
+  group_by(newspotname) %>%
+  summarize("Effort" = sum(transect.distance))
+#sum the effort for repeat visits to line. pg 294 in Buckland et al. 2001 (Introduction to Distance Sampling)
+
+#Then join it back onto transect.complete
+transect.complete<- left_join(transect.complete,
+                              transect.effort)
+
 #format transects with distance, Sample.Label (transectID), Effort (line length), Region Label, Area (area of the region).
 transect_for_distance <- data.frame ("distance" = perpendicular.distance,
-                                     "Sample.Label" = paste(transect.complete$newspotname),
-                                     "Effort" = transect.complete$transect.distance,
+                                     "Sample.Label" = transect.complete$newspotname,
+                                     "start" = transect.complete$START.newspotnames,
+                                     "Effort" = transect.complete$Effort,
                                      "Region.Label" = "Oklahoma",
                                      "Area" = Region.Area,
                                      "size" = transect.complete$Quantity.corrected,
@@ -65,20 +76,7 @@ transect_for_distance <- data.frame ("distance" = perpendicular.distance,
                                      )
                                      
 
-round.to <- function(x, roundtonearest) {
-  round(x/roundtonearest)*roundtonearest
-}
-
-transect_for_distance$effort_round <- round.to(transect_for_distance$Effort, 3)
-
-effort.truncation <- transect_for_distance %>%
-  group_by(Sample.Label) %>%
-  summarize("min" = min(Effort),
-            "max" = max(Effort),
-            "diff" = max(Effort)-min(Effort),
-            "mean" = mean(Effort),
-            "Effortused" = ifelse(diff > 10, min(Effort), mean(Effort)))
-                         
+                      
 ds.dick <- ds(transect_for_distance,
               truncation = "10%",
               transect = "line",
