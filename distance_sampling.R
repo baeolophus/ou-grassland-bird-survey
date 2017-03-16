@@ -70,17 +70,38 @@ transect_for_distance <- data.frame ("distance" = perpendicular.distance,
 ds.dick <- ds(transect_for_distance,
               truncation = "10%",
               transect = "line",
-              formula = ~ covar.obs + covar.time + covar.days.into.surveys + covar.year
+              formula = ~ covar.obs
               )
 plot(ds.dick)
 summary(ds.dick)
 ds.gof(ds.dick)
+
+#model summarizing from help file
+## model summaries
+model.sel.bin <- data.frame(name=c("Pooled f(0)", "Stratum covariate",
+                                   "Full stratification"),
+                            aic=c(pooled.binned$ddf$criterion,
+                                  strat.covar.binned$ddf$criterion,
+                                  full.strat.binned.North$ddf$criterion+
+                                    full.strat.binned.South$ddf$criterion))
+
+# Note model with stratum as covariate is most parsimonious
+print(model.sel.bin)
 
 #Point count analysis
 
 source(file = "source_pointcount_data.R")
 #here a section to count up total number of visits per PC, tag back on to data file.
 pointcounts.complete$newspotname.area <- as.factor(pointcounts.complete$StandardizedLocationName.y)
+
+pointcounts.complete <- pointcounts.complete %>%
+  filter(Species == "DICK",
+         !is.na(Longitude),
+         !is.na(Latitude),
+         !is.na(Angle..deg.),
+         !is.na(Distance..m.),
+         whattodowiththisrecord == "KEEP",
+         whattodowiththissighting == "KEEP")
 #Calculating effort for each transect
 pointcounts.effort <- pointcounts.complete %>%
   group_by(newspotnames) %>%
@@ -90,13 +111,13 @@ pointcounts.effort <- pointcounts.complete %>%
 pointcounts.complete <- left_join(pointcounts.complete,
                                   pointcounts.effort)
 
-#format transects with distance, Sample.Label (transectID), Effort (line length), Region Label, Area (area of the region).
-pointcounts_for_distance <- data.frame ("distance" = pointcounts.complete$Distance..m.,
+#format transects with distance, Sample.Label (transectID), Effort (number of visits), Region Label, Area (area of the region).
+pointcounts_for_distance <- data.frame ("distance" = as.numeric(pointcounts.complete$Distance..m.),
                                      "Sample.Label" = pointcounts.complete$newspotnames,
-                                     "Effort" = pointcounts.complete$Effort,
+                                     "Effort" = as.numeric(pointcounts.complete$Effort),
                                      "Region.Label" = "Oklahoma",
                                      "Area" = Region.Area,
-                                     "size" = pointcounts.complete$Quantity,
+                                     "size" = as.numeric(pointcounts.complete$Quantity),
                                      "covar.obs" = pointcounts.complete$Observer,
                                      "covar.days.into.surveys" = pointcounts.complete$ebird.day-min(pointcounts.complete$ebird.day),
                                      "covar.time" = pointcounts.complete$ebird.time,
