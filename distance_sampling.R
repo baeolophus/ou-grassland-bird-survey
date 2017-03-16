@@ -22,9 +22,7 @@ transect.complete <- transect.complete %>%
                              !is.na(sighting.LON),
                              !is.na(sighting.LAT),
                              !is.na(Angle..deg.),
-                             !is.na(Distance..m.),
-                             whattodowiththisrecord == "KEEP",
-                             whattodowiththissighting == "KEEP")
+                             !is.na(Distance..m.))
 
 
 #transect labels by the already gps-checked newspotnames.
@@ -99,9 +97,7 @@ pointcounts.complete <- pointcounts.complete %>%
          !is.na(Longitude),
          !is.na(Latitude),
          !is.na(Angle..deg.),
-         !is.na(Distance..m.),
-         whattodowiththisrecord == "KEEP",
-         whattodowiththissighting == "KEEP")
+         !is.na(Distance..m.))
 #Calculating effort for each transect
 pointcounts.effort <- pointcounts.complete %>%
   group_by(newspotnames) %>%

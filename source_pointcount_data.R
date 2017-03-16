@@ -38,3 +38,7 @@ pointcounts.complete$hours<-as.numeric(sapply(timebits.pc, "[", 1))
 pointcounts.complete$minutes<-as.numeric(sapply(timebits.pc, "[", 2))
 pointcounts.complete$ebird.time<-pointcounts.complete$hours+pointcounts.complete$minutes/60
 
+pointcounts.complete <- pointcounts.complete %>%
+  filter(whattodowiththisrecord == "KEEP",
+         whattodowiththissighting == "KEEP")
+

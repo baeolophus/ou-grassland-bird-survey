@@ -96,3 +96,9 @@ transect.complete$Quantity.corrected<-as.numeric(as.character(transect.complete$
 
 #View(transect.complete[is.na(transect.complete$Quantity.corrected),c("Quantity.corrected", "Quantity")])
 #checks that all NAs are reasonable (no value given in original Quantity)
+
+
+transect.complete <- transect.complete %>%
+  filter(whattodowiththisrecord == "KEEP",
+         whattodowiththissighting == "KEEP")
+
