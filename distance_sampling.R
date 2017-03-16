@@ -4,6 +4,15 @@ library(rgeos)
 library(rgdal)
 library(sp)
 
+#Get area of region for both types of analysis
+state<-readOGR(dsn="E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
+               layer="ok_state_vector_smallest_pdf_3158")
+
+state<-spTransform(x = state,
+                   CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+)
+Region.Area <- gArea(state, byid=TRUE)
+
 #Transect analysis
 #import data
 source(file = "source_transect_data.R")
@@ -29,14 +38,7 @@ bird.points <- data.frame(destPointRhumb(p = matrix(c(transect.complete$sighting
 perpendicular.distance <- dist2gc(p1 = matrix(c(transect.complete$Start.LON, transect.complete$Start.LAT), ncol = 2),
                                   p2 = matrix(c(transect.complete$End.LON, transect.complete$End.LAT), ncol = 2),
                                   p3 = bird.points)
-#Get area of region
-state<-readOGR(dsn="E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
-               layer="ok_state_vector_smallest_pdf_3158")
 
-state<-spTransform(x = state,
-                   CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
-)
-Region.Area <- gArea(state, byid=TRUE)
 
 #Calculating effort for each transect
 transect.effort <- transect.complete %>%
@@ -78,5 +80,35 @@ ds.gof(ds.dick)
 
 source(file = "source_pointcount_data.R")
 #here a section to count up total number of visits per PC, tag back on to data file.
+pointcounts.complete$newspotname.area <- as.factor(pointcounts.complete$StandardizedLocationName.y)
+#Calculating effort for each transect
+pointcounts.effort <- pointcounts.complete %>%
+  group_by(newspotnames) %>%
+  distinct(Date, Observer)%>%
+  summarize("Effort" = n())
 
-#Then function as above.
+pointcounts.complete <- left_join(pointcounts.complete,
+                                  pointcounts.effort)
+
+#format transects with distance, Sample.Label (transectID), Effort (line length), Region Label, Area (area of the region).
+pointcounts_for_distance <- data.frame ("distance" = pointcounts.complete$Distance..m.,
+                                     "Sample.Label" = pointcounts.complete$newspotnames,
+                                     "Effort" = pointcounts.complete$Effort,
+                                     "Region.Label" = "Oklahoma",
+                                     "Area" = Region.Area,
+                                     "size" = pointcounts.complete$Quantity,
+                                     "covar.obs" = pointcounts.complete$Observer,
+                                     "covar.days.into.surveys" = pointcounts.complete$ebird.day-min(pointcounts.complete$ebird.day),
+                                     "covar.time" = pointcounts.complete$ebird.time,
+                                     "covar.month" = as.factor(pointcounts.complete$month),
+                                     "covar.year" = as.factor(pointcounts.complete$year)
+)
+
+pc.dick <- ds(pointcounts_for_distance,
+              truncation = "10%",
+              transect = "point",
+              formula = ~ covar.obs
+)
+plot(pc.dick)
+summary(pc.dick)
+ds.gof(pc.dick)
