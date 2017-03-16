@@ -227,16 +227,15 @@ pointcounts.complete$SAMPLING_EVENT_ID<-paste(pointcounts.complete$datasource,
                                               pointcounts.complete$Point,
                                            sep="_")
 
-
+##############################
 #Creating one record per species per survey (PC or transect) as we can only have one each.
+#Because it is simple presence/absence we can just select one randomly.
 pc.species.per.transect<-dplyr::group_by(pointcounts.complete,
                                          SAMPLING_EVENT_ID,
                                          Species)%>%
   do(.,
      sample_n(., 1))%>%ungroup(.)
 pc.combine<-dplyr::filter(pc.species.per.transect,
-                          whattodowiththisrecord=="KEEP",
-                          whattodowiththissighting=="KEEP",
                           Distance..m.<500)%>%
                           select(.,
                    datasource,
@@ -261,8 +260,6 @@ tr.species.per.transect<-dplyr::group_by(transect.complete,
      sample_n(., 1))%>%ungroup(.)
 
 tr.combine<-dplyr::filter(tr.species.per.transect,
-                          whattodowiththisrecord=="KEEP",
-                          whattodowiththissighting=="KEEP",
                           Distance..m.<500)%>%
                           select(.,
                    datasource,
