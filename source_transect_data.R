@@ -97,6 +97,15 @@ transect.complete$Quantity.corrected<-as.numeric(as.character(transect.complete$
 #View(transect.complete[is.na(transect.complete$Quantity.corrected),c("Quantity.corrected", "Quantity")])
 #checks that all NAs are reasonable (no value given in original Quantity)
 
+#Generate transect midpoints for when one location is desired for the transect.
+#Before doing the same thing to the transects we have to generate the transect midpoint.
+transect.midPoints <- midPoint(p1 = matrix(c(transect.complete$Start.LON, transect.complete$Start.LAT),
+                                           ncol=2),
+                               p2 = matrix(c(transect.complete$End.LON, transect.complete$End.LAT),
+                                           ncol=2))
+transect.complete$midpoint.LON<-transect.midPoints[,1]
+transect.complete$midpoint.LAT<-transect.midPoints[,2]
+
 
 transect.complete <- transect.complete %>%
   filter(whattodowiththisrecord == "KEEP",
