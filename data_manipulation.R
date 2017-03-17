@@ -1,13 +1,9 @@
 #libraries used in this file.
-#library(tools)
-#library(sp) # R's base package for vector data types
-#library(raster) # better printing of spatial objects, export shapefiles
-#library(rgdal) # for reading different spatial file formats
-#library(rgeos) # for spatial distance and topology operations
 library(dplyr) # data manipulation
+library(fuzzyjoin) #for getting ebird data out by spatial location
 library(geosphere) #distances between transects
 library(lubridate) #dates for year
-library(fuzzyjoin) #for getting ebird data out by spatial location
+library(rgdal) # for reading different spatial file formats
 #####
 
 #Polishing up data formats and combining the different sources.
@@ -89,7 +85,7 @@ ebird.effort_distance_km.cutoff <- signif(max(transect.complete$transect.distanc
 #First filter checklists to OK only with effort matching ours and
 #eliminate non-primary checklists (where people submitted more than one checklist for one birding event)
 #and casual counts.
-ebird.cleaned.test<-gathered.ebird.data.all%>%
+ebird.cleaned<-gathered.ebird.data.all%>%
   filter(PRIMARY_CHECKLIST_FLAG==1, #get only the first checklist for an event
          STATE_PROVINCE=="Oklahoma",
          EFFORT_HRS <= ebird.effort_hrs.cutoff, #get only transects that are < in time to match our data.
@@ -110,7 +106,7 @@ ebird.cleaned.test<-gathered.ebird.data.all%>%
 #######################
 #Get primary keys for all three datasets.
 
-ebird.sampling.ids<-dplyr::select(ebird.cleaned.test,
+ebird.sampling.ids<-dplyr::select(ebird.cleaned,
                                   YEAR,
                                   DAY,
                                   TIME,
@@ -195,6 +191,8 @@ ebird.complete<-dplyr::filter(ebird.cleaned,
 ebird.complete$datasource<-"EBIRD"
 transect.complete$datasource<-"TRANSECT"
 pointcounts.complete$datasource<-"POINTCOUNT"
+
+#Join with name table to have common, banding code, and scientific names.
 pointcounts.complete<-left_join(pointcounts.complete,
                                          aou.codes,
                                          by=c("Species"="SPEC"))
@@ -230,6 +228,12 @@ pointcounts.complete$SAMPLING_EVENT_ID<-paste(pointcounts.complete$datasource,
 ##############################
 #Creating one record per species per survey (PC or transect) as we can only have one each.
 #Because it is simple presence/absence we can just select one randomly.
+#This gets one random species sighting per point count or transect.
+#For point counts, there is only one lat/long.
+#The midpoint of the transect is used so it doesn't matter which one is selected.
+#However, if we later decided to use exact sightings, replace longitude and latitude with sighting.LON and sighting.LAT
+#and it gives you the point on the transect where the observer was for that randomly selected sighting per species.
+
 pc.species.per.transect<-dplyr::group_by(pointcounts.complete,
                                          SAMPLING_EVENT_ID,
                                          Species)%>%
@@ -251,8 +255,6 @@ pc.combine<-dplyr::filter(pc.species.per.transect,
                    Quantity
                    )
 
-#This gets one species sighting per transect so we have one row per species per transect while still retaining detailed location data.
-#There may be a better way (first sighting?  last sighting?) but this will do for now.
 tr.species.per.transect<-dplyr::group_by(transect.complete,
                                          SAMPLING_EVENT_ID,
                                          Possible.Species)%>%
@@ -270,28 +272,36 @@ tr.combine<-dplyr::filter(tr.species.per.transect,
                    ebird.time,
                    Observer,
                    SCINAME,
-                   Longitude=sighting.LON,
-                   Latitude=sighting.LAT,
+                   Longitude=midpoint.LON,
+                   Latitude=midpoint.LAT,
                    Quantity=Quantity.corrected)
-oursurveys.combined<-bind_rows(tr.combine,
-                                      pc.combine)
 
+#combine the point counts and the transects
+oursurveys.combined<-bind_rows(tr.combine,
+                               pc.combine)
+#remove the groupings I used earlier.
 oursurveys.combined<-ungroup(oursurveys.combined)
 
+#our data are presence/absence only for the species in each sampling event.
+#This generates presence/absence rows for all species by each sampling event.
 oursurveys.generate.presence<-dplyr::filter(oursurveys.combined,
                                              !is.na(SCINAME)) %>%
+  #Get everything that has a scientific name (this eliminates "sp" entries and unknowns).
                                tidyr::spread(key=SCINAME,
                                              value=Quantity, 
-                                             fill=0) %>% #whereever there is an empty row, create 0
+                                             fill=0) %>%
+  #spread out so that the key values (SCINAME) become different columns, and wherever there is an empty row, insert 0 in cell.
                                tidyr::gather(key=SCINAME,
                                              value=Quantity,
-                                             one_of(pull.these.columns.from.ebird)) %>% #gather all the species columns
+                                             one_of(pull.these.columns.from.ebird)) %>%
+  #gather all the species columns back now that the zero rows have been generated.
                                dplyr::arrange(SAMPLING_EVENT_ID)
-oursurveys.generate.presence$Quantity<-as.character(oursurveys.generate.presence$Quantity)
+  #arrange by sampling event ID so that all entries from a survey date/observer are in same region for ease of reading.
+
 #necessary to convert to character to combine with ebird
+oursurveys.generate.presence$Quantity<-as.character(oursurveys.generate.presence$Quantity)
 
-str(oursurveys.generate.presence)
-
+#Select ebird columns and give appropriate names to match.
 combine.ebird<-select(ebird.complete,
                       datasource,
                       SAMPLING_EVENT_ID,
@@ -306,12 +316,15 @@ combine.ebird<-select(ebird.complete,
                       Quantity) %>%
                 dplyr::arrange(SAMPLING_EVENT_ID)
 
-#all have same columns in same order though with different names.
+#check that all have same columns in same order though with different names.
 str(combine.ebird)
 str(oursurveys.generate.presence)
+
+#combine.
 complete.dataset.for.sdm<-rbind(oursurveys.generate.presence,
                                     combine.ebird)
 
+#Then generate new quantity and presence/absence columns, as ebird quantity includes "x" for presence.
 complete.dataset.for.sdm$quantity.numeric<-gsub("X",
                                                 9999999999,
                                                 complete.dataset.for.sdm$Quantity,
@@ -323,48 +336,53 @@ complete.dataset.for.sdm$SCINAME.space<-gsub("_",
                                                 complete.dataset.for.sdm$SCINAME,
                                                 fixed=TRUE)
 
-
+#Add back in the species codes and the common names to go with the already-present scientific names.
 complete.dataset.for.sdm<-left_join(complete.dataset.for.sdm,
                                          aou.codes[,c("SPEC",
                                                       "COMMONNAME",
                                                       "SCINAME")],
                                          by=c("SCINAME.space"="SCINAME"))
+#Rearrange the dataset so that if viewed in a spreadsheet it will be organized by datasource and sampling event ID (primary key).
 complete.dataset.for.sdm<-dplyr::arrange(complete.dataset.for.sdm,
                                          datasource,
                                          SAMPLING_EVENT_ID)
 
-#now select species to get smaller datasets that are easily used.
-
+#Write this to a file.  includes records without lat/long.
 write.csv(complete.dataset.for.sdm,
           "completedatasetforsdm.csv")
 
 #Masking for just oklahoma
 
 #Import oklahoma polygon mask.
-ok_vector <- readOGR(dsn=getwd(),
-                     layer="ok_state_vector_smallest_pdf")
+state<-readOGR(dsn="E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
+               layer="ok_state_vector_smallest_pdf_3158")
 
-ok_vector <- spTransform(ok_vector,
-                         CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
-plot(ok_vector)
+state<-spTransform(x = state,
+                   CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+)
 
-##make it spatial, remembering these values are lat/long in decimal degrees
+##make it spatial (needed to do the spatial subset), remembering these values are lat/long in decimal degrees
 #eliminate missing values first.
 complete.dataset.for.sdm.na <- complete.dataset.for.sdm %>%
   dplyr::filter(!is.na(Longitude) & !is.na(Latitude))
-coordinates(complete.dataset.for.sdm.na)<-c("Longitude", "Latitude")
+
 #make it spatial
+coordinates(complete.dataset.for.sdm.na)<-c("Longitude", "Latitude")
+
+#specify projection
 proj4string(complete.dataset.for.sdm.na)<-CRS(as.character("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
-#use this: proj4string(data) <- CRS("+proj=longlat + ellps=WGS84")
+
 #Then convert to utm
 complete.dataset.for.sdm.na.utm <- spTransform(complete.dataset.for.sdm.na,
                                 CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
-
+#confirm UTM
 proj4string(complete.dataset.for.sdm.na.utm)
 
-#Subset responses.
-oklahoma.dataset.for.sdm.na.utm<-complete.dataset.for.sdm.na.utm[ok_vector,]
+#Subset responses to get it to match the Oklahoma boundary for species distribution predictor rasters.
+#Doesn't remove anything actually.
+oklahoma.dataset.for.sdm.na.utm<-complete.dataset.for.sdm.na.utm[state,]
 
+#View the records.
 plot(oklahoma.dataset.for.sdm.na.utm)
 
 #Write to file
