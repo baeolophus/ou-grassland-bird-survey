@@ -69,7 +69,7 @@ predictors_stack <- stack (predictors.list)
 complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.csv")
 complete.dataset.for.sdm.DICK<-dplyr::filter(complete.dataset.for.sdm,
                                              SPEC=="DICK",
-                                             month == 4 | month == 5 | month == 6)
+                                             month == 4 |onth == 5 | month == 6 | month == 7)
 #to match transects and point counts, summer only.
 
 #make it spatial, remembering these values were converted from lat/long to UTM already in data manipulation file.
