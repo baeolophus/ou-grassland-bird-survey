@@ -48,6 +48,8 @@ transect.effort <- transect.complete %>%
 transect.complete<- left_join(transect.complete,
                               transect.effort)
 
+
+transect.function <- function(species) {
 #format transects with distance, Sample.Label (transectID), Effort (line length), Region Label, Area (area of the region).
 transect_for_distance <- data.frame ("distance" = perpendicular.distance,
                                      "Sample.Label" = transect.complete$newspotname,
@@ -58,33 +60,103 @@ transect_for_distance <- data.frame ("distance" = perpendicular.distance,
                                      "size" = transect.complete$Quantity.corrected,
                                      "covar.obs" = transect.complete$Observer,
                                      "covar.days.into.surveys" = transect.complete$ebird.day-min(transect.complete$ebird.day),
-                                     "covar.time" = transect.complete$ebird.time,
                                      "covar.month" = as.factor(transect.complete$month),
+                                     "covar.time" = transect.complete$ebird.time,
                                      "covar.year" = as.factor(transect.complete$year)
                                      )
                                      
 
                       
-ds.dick <- ds(transect_for_distance,
+line.hn.null <- ds(transect_for_distance,
               truncation = "10%",
               transect = "line",
-              formula = ~ covar.obs
+              formula = ~ 1,
+              key = "hn",
+              adjustment = NULL
               )
-plot(ds.dick)
-summary(ds.dick)
-ds.gof(ds.dick)
+
+line.hn.covar.obs <- ds(transect_for_distance,
+                  truncation = "10%",
+                  transect = "line",
+                  formula = ~ covar.obs,
+                  key = "hn",
+                  adjustment = NULL
+                  )
+
+line.hn.covar.obs.days <- ds(transect_for_distance,
+                  truncation = "10%",
+                  transect = "line",
+                  formula = ~ covar.obs + covar.days.into.surveys,
+                  key = "hn",
+                  adjustment = NULL
+                  )
+
+line.hn.covar.obs.time <- ds(transect_for_distance,
+                  truncation = "10%",
+                  transect = "line",
+                  formula = ~ covar.obs + covar.time,
+                  key = "hn",
+                  adjustment = NULL
+                  )
+
+line.hn.covar.obs.time.year <- ds(transect_for_distance,
+                             truncation = "10%",
+                             transect = "line",
+                             formula = ~ covar.obs + covar.time + covar.year,
+                             key = "hn",
+                             adjustment = NULL
+)
+
+line.hn.covar.days.time.year <- ds(transect_for_distance,
+                                  truncation = "10%",
+                                  transect = "line",
+                                  formula = ~ covar.days.into.surveys + covar.time + covar.year,
+                                  key = "hn",
+                                  adjustment = NULL
+)
+
+line.hn.covar.days.time.year <- ds(transect_for_distance,
+                                   truncation = "10%",
+                                   transect = "line",
+                                   formula = ~ covar.obs + covar.month + covar.time + covar.year,
+                                   key = "hr",
+                                   adjustment = NULL
+)
+
+gof <- ds.gof(line.hn.covar.days.time.year)
+
+gof[[2]]$ks$Dn
+
+plot(line.hn.covar.obs.time)
+summary(line.hn.covar.obs.time)
+ds.gof(line.hn.covar.obs.time)
 
 #model summarizing from help file
 ## model summaries
-model.sel.bin <- data.frame(name=c("Pooled f(0)", "Stratum covariate",
-                                   "Full stratification"),
-                            aic=c(pooled.binned$ddf$criterion,
-                                  strat.covar.binned$ddf$criterion,
-                                  full.strat.binned.North$ddf$criterion+
-                                    full.strat.binned.South$ddf$criterion))
+model.sel.bin <- data.frame(name = c("HN Null", 
+                                   "HN obs",
+                                   "HN obs + time",
+                                   "HN obs + month",
+                                   "HN obs + year",
+                                   "HN obs + time + month",
+                                   "HN obs + time + year",
+                                   "HN obs + month + year",
+                                   "HN Date/Time Only (month + time + year)"),
+                            aic = c(line.hn.null$ddf$criterion,
+                                  line.hn.covar.obs$ddf$criterion,
+                                  line.hn.covar.obs.days$ddf$criterion,
+                                  line.hn.covar.obs.time$ddf$criterion,
+                                  line.hn.covar.obs.time.year$ddf$criterion,
+                                  line.hn.covar.days.time.year$ddf$criterion),
+                            gof.sig.is.bad = c(ds.gof(line.hn.covar.days.time.year)[[3]]))
 
 # Note model with stratum as covariate is most parsimonious
 print(model.sel.bin)
+
+summarize_ds_models(line.hn.covar.days.time.year,
+                    output = "plain")
+
+}
 
 #Point count analysis
 
