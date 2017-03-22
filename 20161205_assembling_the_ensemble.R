@@ -15,7 +15,11 @@ rasterOptions()$tmpdir
 rasterOptions(tmpdir="E:/Documents/R/temp")
 
 #Bring in predictor data.
+#Path on my computer
 gispath <- "E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed"
+#Path on AWS
+gispath <- "E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed"
+
 #import bioclim layers
 bio_utm_list <- list.files(path = paste0(gispath,
                                          "/bio_12_ok_shape"),
@@ -210,7 +214,14 @@ spatial.support.set<-function(whichrandombox,
   tree.test.raster.prediction.extended <- raster::extend(x = tree.test.raster.prediction,
                                                          y = studyarea.extent,
                                                          value = NA)
-
+  writeRaster(tree.test.raster.prediction.extended,
+              filename = paste0("tree.test.raster.prediction.extended",
+                                whichrandombox,
+                                ".tif"),
+              format="GTiff",
+              overwrite = TRUE)
+  #remove all temporary files.
+  removeTmpFiles(h=0)
   return(list(tree.test.raster.prediction.extended,
               sample.size.good,
               tree.test))
@@ -252,6 +263,11 @@ ensemble.function <- function (list.of.rasters) {
   #Plot the mosaic.  Remove this line when I transfer to AWS.
   #create file here in .eps or .pdf.
   plot(ensemble.weighted.mosaic)
+  writeRaster(ensemble.weighted.mosaic,
+              filename = paste0("ensemble.weighted.mosaic",
+                                ".tif"),
+              format="GTiff",
+              overwrite = TRUE)
 
   return(ensemble.weighted.mosaic)
 }
@@ -330,6 +346,11 @@ microbenchmark(tree.statewide.raster.prediction.prob<-clusterR(predictors_stack,
 endCluster()
 
 #pdf or eps of map here generated here too
+writeRaster(tree.statewide.raster.prediction.prob,
+            filename = paste0("tree.statewide.raster.prediction.prob",
+                              ".tif"),
+            format="GTiff",
+            overwrite = TRUE)
 plot(tree.statewide.raster.prediction.prob)
 
 varImpPlot(tree.statewide)
@@ -367,8 +388,6 @@ partialPlot(tree.statewide,
 evaluation.spatial <- latlong.predictors.DICK.spatial
 coordinates(evaluation.spatial) <- c("Longitude", "Latitude")
 prediction.raster<-tree.statewide.raster.prediction.prob
-#later,  do in a loop or lapply for bootstrap/sampling of distribution.  for now just make sure this works.
-
 #http://stats.idre.ucla.edu/r/faq/how-can-i-generate-bootstrap-statistics-in-r/
 #http://gsif.r-forge.r-project.org/sample.grid.html
 #http://www.stat.wisc.edu/~larget/stat302/chap3.pdf #bootstrapping/sampling
