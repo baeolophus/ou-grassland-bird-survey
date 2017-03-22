@@ -53,7 +53,6 @@ transect.complete<- left_join(transect.complete,
 #format transects with distance, Sample.Label (transectID), Effort (line length), Region Label, Area (area of the region).
   transect_for_distance <- data.frame ("distance" = perpendicular.distance,
                                        "Sample.Label" = transect.complete$newspotname,
-                                       "start" = transect.complete$START.newspotnames,
                                        "Effort" = transect.complete$Effort,
                                        "Region.Label" = "Oklahoma",
                                        "Area" = Region.Area,
@@ -114,16 +113,15 @@ processing.function.with.models.built.in <- function (Species,
                                                                    "point"),
                                                       dataset) {
 
-  dataset <- dataset %>%
+  dataset <- na.omit(dataset) %>%
     filter_(Species == Species)
  
-  uniform <- ds(dataset,
-                truncation = "10%",
-                transect = transect,
-                formula = ~ 1,
-                key = "unif",
-                adjustment = "cos"
-  )
+ # uniform <- ds(dataset,
+ #               truncation = "10%",
+  #               transect = transect,
+  #               formula = ~ 1,
+    #             key = "unif",
+ #                adjustment = "cos")
   
   hn.null <- ds(dataset,
                      truncation = "10%",
@@ -271,8 +269,7 @@ processing.function.with.models.built.in <- function (Species,
   
   
 
-summary.table <- summarize_ds_models(uniform,
-                      hn.null,
+summary.table <- summarize_ds_models(hn.null,
                       hn.covar.obs,
                       hn.covar.obs.time,
                       hn.covar.obs.month,
@@ -291,14 +288,31 @@ summary.table <- summarize_ds_models(uniform,
                       hr.covar.obs.year.month,
                       hr.covar.obs.time.month.year,
                       output = "plain")
+
+list.of.models <- list(hn.null,
+                       hn.covar.obs,
+                       hn.covar.obs.time,
+                       hn.covar.obs.month,
+                       hn.covar.obs.year,
+                       hn.covar.obs.time.month,
+                       hn.covar.obs.time.year,
+                       hn.covar.obs.year.month,
+                       hn.covar.obs.time.month.year,
+                       hr.null,
+                       hr.covar.obs,
+                       hr.covar.obs.time,
+                       hr.covar.obs.month,
+                       hr.covar.obs.year,
+                       hr.covar.obs.time.month,
+                       hr.covar.obs.time.year,
+                       hr.covar.obs.year.month,
+                       hr.covar.obs.time.month.year)
 #print csv of summary table
 ##
-test <- summarize_ds_models(line.hn.covar.days.time.year,
-                     output = "plain")
 
 #Select the AICs within the top deltaAIC = 0-5 and get the gof, density and abundance estimates (mean, SE, CV).
-names.of.top.models <- test %>%
-  filter(`Delta AIC`<5)%>%
+names.of.top.models <- summary.table %>%
+  filter(`Delta AIC` < 2)%>% #models within 1-2 AIC of best have good suppport (Burnham and Anderson book)
   select(Model)
 
 bestmodels.names <- as.character(names.of.top.models$Model)
@@ -308,12 +322,25 @@ list.of.models.for.summary <- mget(bestmodels.names)
 list.of.estimates <- lapply(list.of.models.for.summary,
                             FUN = summary)
 
-list.of.estimates[[1]]$dht$individuals$N
-list.of.estimates[[1]][[2]][[2]][3]
+level.2 <- lapply(list.of.estimates,
+       '[[',
+       2)
+level.2.2 <- lapply(level.2,
+                    '[[',
+                    2)
 
-lapply('[',
-       c)
+level.2.2.3 <- lapply(level.2.2,
+                      '[[',
+                      3)
+
+
+model.estimates <- do.call(rbind, level.2.2.3)
 #print csv of gof and estimates
+
+return(list(length(dataset$Species),
+            model.estimates,
+            summary.table,
+            list.of.models))
 
 }
 
@@ -324,6 +351,7 @@ lapply('[',
 dick.line <- processing.function.with.models.built.in (Species = "DICK",
                                                      transect = "line",
                                                      dataset = transect_for_distance)
-dick.pc <- processing.function.with.models.built.in (Species = "DICK",
+dick.pc <- processing.function.with.models.built.in(Species = "DICK",
                                                        transect = "point",
                                                      dataset = pointcounts_for_distance)
+beepr::beep()
