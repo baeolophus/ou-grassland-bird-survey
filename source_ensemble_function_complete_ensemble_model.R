@@ -34,62 +34,68 @@ complete.ensemble.model <- function (SPECIES) {
   #has to be spatial for function to work so re-add that
   coordinates(latlong.predictors.SPECIES.spatial) <- c("Longitude", "Latitude")
   proj4string(latlong.predictors.SPECIES.spatial)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
-  rm(complete.dataset.for.sdm) #free up memory
-  rm(predictors_stack.SPECIES)
+  
+  #free up memory
+  rm(predictors_stack.SPECIES)  
+  rm(predictors_stack.SPECIES.df) 
   ##################################
-  #functions
-  source("source_ensemble_support_set_generation.R")
-  source("source_ensemble_support_set_subsetting_trees.R")
-  source("source_ensemble_support_set_ensemble_mosaic.R")
-  source("source_ensemble_spatial_sampling_evaluation.R")
+  #load functions
+  source("source_ensemble_function_support_set_generation.R")
+  source("source_ensemble_function_support_set_subsetting_trees.R")
+  source("source_ensemble_function_support_set_ensemble_mosaic.R")
+  source("source_ensemble_function_spatial_sampling_evaluation.R")
   ############################
   #Run small, medium, and large support set models.
-  #parameters
-  ntree <- 50
-  importance <- FALSE
-  radius.small <- 60000 #small radius in meters. =6,000 = 60 km = 120 x 120 km boxes #200 points
-  radius.medium <- 100000 #med radius in meters. =100,000 = 100 km = 200 x 200 km boxes #75 points
-  radius.large <- 225000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes #25 points
   
-  polys.small <- random.stratified.support.sets(numberofpoints = 200,
+  #small support sets
+  polys.small <- random.stratified.support.sets(numberofpoints = numberofpoints.small,
                                                 radius.small)
   polys.small.p <- unlist(polys.small[[1]])
   polys.small.df <- unlist(polys.small[[2]])
-  support.small.list <- lapply(1,
+  microbenchmark.small <- microbenchmark(
+    support.small.list <- lapply(1:numberofpoints.small,
                                FUN = spatial.support.set,
                                spatialdataset = latlong.predictors.SPECIES.spatial,
                                predictor_stack = predictors_stack,
                                polys.df = polys.small.df,
                                ntree = ntree,
-                               importance = importance)
+                               importance = importance),
+  support.small.ensemble <- ensemble.function(support.small.list),
+  times = 1)
   
-  polys.medium <- random.stratified.support.sets(numberofpoints = 75,
+  #medium support sets
+  polys.medium <- random.stratified.support.sets(numberofpoints = numberofpoints.medium,
                                                  radius.medium)
   polys.medium.p <- unlist(polys.medium[[1]])
   polys.medium.df <- unlist(polys.medium[[2]])
-  support.medium.list <- lapply(1:2,
+  microbenchmark.medium <- microbenchmark(
+  support.medium.list <- lapply(1:numberofpoints.medium,
                                 FUN = spatial.support.set,
                                 spatialdataset = latlong.predictors.SPECIES.spatial,
                                 predictor_stack = predictors_stack,
                                 polys.df = polys.medium.df,
                                 ntree = ntree,
-                                importance = importance)
+                                importance = importance),
   
-  polys.large <- random.stratified.support.sets(numberofpoints = 25,
+  support.medium.ensemble <- ensemble.function(support.medium.list),
+  times = 1)
+  
+  #large support sets
+  polys.large <- random.stratified.support.sets(numberofpoints = numberofpoints.large,
                                                 radius.large)
   polys.large.p <- unlist(polys.large[[1]])
   polys.large.df <- unlist(polys.large[[2]])
-  
-  microbenchmark(support.large.list <- lapply(1:2,
+  microbenchmark.large <- microbenchmark(
+  support.large.list <- lapply(1:numberofpoints.large,
                                               FUN = spatial.support.set,
                                               spatialdataset = latlong.predictors.SPECIES.spatial,
                                               predictor_stack = predictors_stack,
                                               polys.df = polys.large.df,
                                               ntree = ntree,
-                                              importance = importance), times = 1)
-  support.small.ensemble <- ensemble.function(support.small.list)
-  support.medium.ensemble <- ensemble.function(support.medium.list)
-  support.large.ensemble <- ensemble.function(support.large.list)
+                                              importance = importance),
+
+  support.large.ensemble <- ensemble.function(support.large.list),
+  times = 1)
   
   
   
@@ -97,33 +103,40 @@ complete.ensemble.model <- function (SPECIES) {
   
   ############################
   #Statewide model
+  
   statewide.data <- latlong.predictors.SPECIES
   statewide.data$Longitude <- NULL
   statewide.data$Latitude <- NULL
   #These two columns should be taken out because not predicting on them.
-  
+  microbenchmark.statewide <- microbenchmark (
   tree.statewide <- randomForest(presence ~ ., 
                                  data = statewide.data,
                                  ntree = ntree,
-                                 importance = TRUE) 
+                                 importance = TRUE),
   
-  beginCluster()
-  microbenchmark(tree.statewide.raster.prediction.prob<-clusterR(predictors_stack,
+  beginCluster(),
+  tree.statewide.raster.prediction.prob<-clusterR(predictors_stack,
                                                                  raster::predict,
                                                                  args = list(model = tree.statewide,
-                                                                             #  type = "prob",
-                                                                             progress = "text")), times = 1) #3.7 hours
+                                                                             type = "prob",
+                                                                             progress = "text")), #3.7 hours
   
-  endCluster()
-  
+  endCluster(),
+  times = 1)
   #pdf or eps of map here generated here too
   writeRaster(tree.statewide.raster.prediction.prob,
               filename = paste0("tree.statewide.raster.prediction.prob",
                                 ".tif"),
               format="GTiff",
               overwrite = TRUE)
+
   plot(tree.statewide.raster.prediction.prob)
   
+  saveRDS(tree.statewide,
+          file = paste0(SPECIES,
+                        "treestatewide")
+          )
+
   varImpPlot(tree.statewide)
   print(tree.statewide)
   tree.statewide.varimp <- data.frame(importance(tree.statewide))
@@ -203,9 +216,27 @@ complete.ensemble.model <- function (SPECIES) {
   boxplot(cbind("Small" = ,
                 "Medium" = ,
                 "Large" = ,
-                "Statewide" = statewide.sampling.rmse),
+                "Statewide" = statewide.sampling.auc),
           xlab = "Support set size",
           ylab = "AUC")
+  
+  ####################
+  #report microbenchmark values for each model
+  microbenchmark.statewide$model <- "statewide"
+  microbenchmark.large$model <- "large"
+  microbenchmark.medium$model <- "medium"
+  microbenchmark.small$model <- "small"
+  
+  microbenchmarks <- rbind(microbenchmark.statewide,
+                           microbenchmark.large,
+                           microbenchmark.medium,
+                           microbenchmark.small)
+  
+  microbenchmarks$Species <- SPECIES
+  #####################
+  return(list(microbenchmarks,
+         statewide.sampling.rmse,
+         statewide.sampling.auc))
   
   #####################
   #Delete temporary file directory at end of species processing.
