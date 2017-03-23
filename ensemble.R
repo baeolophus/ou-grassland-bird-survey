@@ -23,6 +23,18 @@ source("source_ensemble_predictor_import.R")
 #Is already in utm
 complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.csv")
 
+#parameters for random forest models and support set sizes.
+#random forest parameters
+ntree <- 50
+importance <- FALSE
+#support set dimensions/samples
+radius.small <- 60000 #small radius in meters. =6,000 = 60 km = 120 x 120 km boxes #200 points
+radius.medium <- 100000 #med radius in meters. =100,000 = 100 km = 200 x 200 km boxes #75 points
+radius.large <- 225000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes #25 points
+numberofpoints.small <- 200
+numberofpoints.medium <- 75
+numberofpoints.large <- 25
+
 #Run the ensemble
 source("source_ensemble_complete_ensemble_model.R")
 
