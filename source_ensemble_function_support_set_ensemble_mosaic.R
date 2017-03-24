@@ -37,7 +37,9 @@ ensemble.function <- function (list.of.rasters) {
   #create file here in .eps or .pdf.
   plot(ensemble.weighted.mosaic)
   writeRaster(ensemble.weighted.mosaic,
-              filename = paste0("ensemble.weighted.mosaic",
+              filename = paste0(SPECIES,
+                                "ensemble.weighted.mosaic",
+                                deparse(substitute(list.of.rasters)),
                                 ".tif"),
               format="GTiff",
               overwrite = TRUE)

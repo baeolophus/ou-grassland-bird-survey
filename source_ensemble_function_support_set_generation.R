@@ -75,4 +75,9 @@ random.stratified.support.sets <- function (numberofpoints,
   #plot(polys.df,
   #     add=TRUE)
   return(list(polys, polys.df))
+  saveRDS(file = paste0(SPECIES,
+                        "polygons",
+                        numberofpoints)
+                        )
+  )
 }

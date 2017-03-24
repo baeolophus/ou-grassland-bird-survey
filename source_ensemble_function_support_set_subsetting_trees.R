@@ -20,7 +20,7 @@ spatial.support.set<-function(whichrandombox,
                             ...) #This allows all other random forest arguments to be set at the spatial.support.set function level.
   saveRDS(tree.test,
           file = paste0(SPECIES,
-                        "treetest",
+                        "tree",
                         whichrandombox,
                         deparse(substitute(polys.df))
                         )
@@ -36,8 +36,9 @@ spatial.support.set<-function(whichrandombox,
                                                          y = studyarea.extent,
                                                          value = NA)
   writeRaster(tree.test.raster.prediction.extended,
-              filename = paste0(SPECIES,
-                                "_tree.test.raster.prediction.extended",
+             filename = paste0(SPECIES,
+                                "_treetestrasterpredictionextended",
+                                deparse(substitute(polys.df)),
                                 whichrandombox,
                                 ".tif"),
               format="GTiff",

@@ -62,7 +62,7 @@ complete.ensemble.model <- function (SPECIES) {
                                importance = importance),
   support.small.ensemble <- ensemble.function(support.small.list),
   times = 1)
-  
+
   #medium support sets
   polys.medium <- random.stratified.support.sets(numberofpoints = numberofpoints.medium,
                                                  radius.medium)
@@ -79,7 +79,7 @@ complete.ensemble.model <- function (SPECIES) {
   
   support.medium.ensemble <- ensemble.function(support.medium.list),
   times = 1)
-  
+
   #large support sets
   polys.large <- random.stratified.support.sets(numberofpoints = numberofpoints.large,
                                                 radius.large)
@@ -96,9 +96,7 @@ complete.ensemble.model <- function (SPECIES) {
 
   support.large.ensemble <- ensemble.function(support.large.list),
   times = 1)
-  
-  
-  
+
   beep()#small, medium, large
   
   ############################
@@ -125,17 +123,12 @@ complete.ensemble.model <- function (SPECIES) {
   times = 1)
   #pdf or eps of map here generated here too
   writeRaster(tree.statewide.raster.prediction.prob,
-              filename = paste0("tree.statewide.raster.prediction.prob",
+              filename = paste0(SPECIES,
+                                "tree.statewide.raster.prediction.prob",
                                 ".tif"),
               format="GTiff",
               overwrite = TRUE)
 
-  plot(tree.statewide.raster.prediction.prob)
-  
-  saveRDS(tree.statewide,
-          file = paste0(SPECIES,
-                        "treestatewide")
-          )
 
   varImpPlot(tree.statewide)
   print(tree.statewide)
@@ -173,16 +166,10 @@ complete.ensemble.model <- function (SPECIES) {
   
   ###############################
   #Dataset preparation
-  evaluation.spatial <- latlong.predictors.SPECIES.spatial
-  coordinates(evaluation.spatial) <- c("Longitude", "Latitude")
   prediction.raster<-tree.statewide.raster.prediction.prob
   
   ###############################
   #evaluate small, med, large, and statewide, then plot bootstrap distributions and calculation mean and sd for AUC and RMSE
-  spatial.sampling.evaluation <- latlong.predictors.SPECIES.spatial #replace with evaluation dataset
-  cell.size <- c(10000, 10000)
-  n <- 10
-  
   statewide.sampling.rmse <- replicate(50,
                                        expr = do.call (what = spatial.sampling.evaluation,
                                                        args = list(evaluation.spatial= latlong.predictors.SPECIES.spatial,
@@ -191,21 +178,8 @@ complete.ensemble.model <- function (SPECIES) {
                                                                    typeofeval = "rmse",
                                                                    prediction.raster = tree.statewide.raster.prediction.prob)))
   
-  #repeat for these
-  support.small.ensemble
-  support.medium.ensemble
-  support.large.ensemble
-  
-  boxplot(cbind("Small" = statewide.sampling.rmse,
-                "Medium" = statewide.sampling.rmse,
-                "Large" = statewide.sampling.rmse,
-                "Statewide" = statewide.sampling.rmse),
-          xlab = "Support set size",
-          ylab = "AUC")
-  
-  
+
   #Then repeat for AUC
-  
   statewide.sampling.auc <- replicate(50,
                                       expr = do.call (what = spatial.sampling.evaluation,
                                                       args = list(evaluation.spatial= latlong.predictors.SPECIES.spatial,
@@ -213,13 +187,33 @@ complete.ensemble.model <- function (SPECIES) {
                                                                   n,
                                                                   typeofeval = "auc",
                                                                   prediction.raster = tree.statewide.raster.prediction.prob)))
-  boxplot(cbind("Small" = ,
-                "Medium" = ,
-                "Large" = ,
+  
+  #print figures of both
+  svg(file = paste0(SPECIES,
+                    "-RMSE",
+                    ".svg"), 
+      width = plot.width,
+      height = plot.height)
+  boxplot(cbind("Small" = small.sampling.rmse,
+                "Medium" = medium.sampling.rmse,
+                "Large" = largesampling.rmse,
+                "Statewide" = statewide.sampling.rmse),
+          xlab = "Support set size",
+          ylab = "RMSE")
+  
+  dev.off()
+  svg(file = paste0(SPECIES,
+                    "-AUC",
+                    ".svg"), 
+      width = plot.width,
+      height = plot.height)
+  boxplot(cbind("Small" = small.sampling.auc,
+                "Medium" = medium.sampling.auc,
+                "Large" = largesampling.auc,
                 "Statewide" = statewide.sampling.auc),
           xlab = "Support set size",
           ylab = "AUC")
-  
+  dev.off()
   ####################
   #report microbenchmark values for each model
   microbenchmark.statewide$model <- "statewide"
@@ -234,9 +228,20 @@ complete.ensemble.model <- function (SPECIES) {
   
   microbenchmarks$Species <- SPECIES
   #####################
-  return(list(microbenchmarks,
-         statewide.sampling.rmse,
-         statewide.sampling.auc))
+  results <- list(microbenchmarks,
+                  statewide.sampling.rmse,
+                  statewide.sampling.auc,
+                  small.sampling.rmse,
+                  small.sampling.auc,
+                  medium.sampling.rmse,
+                  medium.sampling.auc,
+                  large.sampling.rmse,
+                  large.sampling.auc,
+                  tree.statewide)
+  saveRDS(results,
+          file = paste0(SPECIES,
+                        "-ensembleresults"))
+  return(results)
   
   #####################
   #Delete temporary file directory at end of species processing.

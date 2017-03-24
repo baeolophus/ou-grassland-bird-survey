@@ -34,6 +34,11 @@ radius.large <- 225000 #large radius in meters. =250,000 = 250 km = 500 x 500 km
 numberofpoints.small <- 200
 numberofpoints.medium <- 75
 numberofpoints.large <- 25
+evaluation.spatial <- latlong.predictors.SPECIES.spatial #replace with evaluation dataset
+cell.size <- c(10000, 10000)
+n <- 10 #number of samples to take from each evaluation grid
+plot.width <- 7 #svg plot dimensions in inches
+plot.height <- 5
 
 #Run the ensemble
 source("source_ensemble_complete_ensemble_model.R")
