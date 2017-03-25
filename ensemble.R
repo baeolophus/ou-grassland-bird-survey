@@ -34,7 +34,13 @@ radius.large <- 225000 #large radius in meters. =250,000 = 250 km = 500 x 500 km
 numberofpoints.small <- 200
 numberofpoints.medium <- 75
 numberofpoints.large <- 25
-evaluation.spatial <- latlong.predictors.SPECIES.spatial #replace with evaluation dataset
+
+#bring in evaluation dataset and make it spatial object
+evaluation.spatial <- read.csv(file = "oklahoma_evaluation_datasetforsdm_naomit_utm.csv") 
+coordinates(evaluation.spatial) <- c("Longitude", "Latitude")
+proj4string(evaluation.spatial) <- CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
+
+#evaluation grid size
 cell.size <- c(10000, 10000)
 n <- 10 #number of samples to take from each evaluation grid
 plot.width <- 7 #svg plot dimensions in inches

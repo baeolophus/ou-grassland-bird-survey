@@ -1,6 +1,5 @@
 #libraries used in this file.
 library(dplyr) # data manipulation
-library(fuzzyjoin) #for getting ebird data out by spatial location
 library(geosphere) #distances between transects
 library(lubridate) #dates for year
 library(rgdal) # for reading different spatial file formats
@@ -33,15 +32,15 @@ pull.these.columns.from.ebird<-gsub(" ", "_", as.character(does.it.have.match$SC
 
 ####################
 #ebird import
-ebird2013<-read.csv(file="bigfiles\\studyarea_ebird2013.csv")
-ebird2014<-read.csv(file="bigfiles\\studyarea_ebird2014.csv")
+ebird2011<-read.csv(file="E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ebird_data/oklahoma_ebird2011.csv")
+ebird2012<-read.csv(file="E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ebird_data/oklahoma_ebird2012.csv")
 
 #select only species columns from our surveys plus the metadata columns.
-selected.ebird.sp.2013<-dplyr::select(ebird2013, #original dataframe
+selected.ebird.sp.2011<-dplyr::select(ebird2011, #original dataframe
                              1:19, #metadata columns from original dataframe
                              one_of(pull.these.columns.from.ebird)) #select species in our surveys
 
-selected.ebird.sp.2014<-dplyr::select(ebird2014, #original dataframe
+selected.ebird.sp.2012<-dplyr::select(ebird2012, #original dataframe
                                       1:19, #metadata columns from original dataframe
                                       one_of(pull.these.columns.from.ebird)) #select species in our surveys
 
@@ -50,13 +49,13 @@ selected.ebird.sp.2014<-dplyr::select(ebird2014, #original dataframe
 #http://stackoverflow.com/questions/28972386/retain-attributes-when-using-gather-from-tidyr-attributes-are-not-identical
 #The values seem okay so I'm leaving it for now.
 #It already gives days where absences occured.  Will need to filter so they are complete counts that give absences.
-gathered.ebird.data.2013<-selected.ebird.sp.2013%>%
+gathered.ebird.data.2011<-selected.ebird.sp.2011%>%
   mutate_each(funs(as.character),
               one_of(pull.these.columns.from.ebird))%>%
   tidyr::gather(key=species,
                 value=Quantity,
                 one_of(pull.these.columns.from.ebird))
-gathered.ebird.data.2014<-selected.ebird.sp.2014%>%
+gathered.ebird.data.2012<-selected.ebird.sp.2012%>%
   mutate_each(funs(as.character), 
               one_of(pull.these.columns.from.ebird))%>%
   tidyr::gather(key=species, 
@@ -65,11 +64,35 @@ gathered.ebird.data.2014<-selected.ebird.sp.2014%>%
 
 
 #Then combine into one big ebird file
-gathered.ebird.data.all<-rbind(gathered.ebird.data.2013,
-                               gathered.ebird.data.2014)
+gathered.ebird.data.all<-rbind(gathered.ebird.data.2011,
+                               gathered.ebird.data.2012)
 
 ########################
 #Check on effort for transects
+summary(transect.complete$lengthoftransect.time,
+    na.rm=TRUE)/60
+summary(transect.complete$transect.distance,
+    na.rm=TRUE)/1000
+
+transect.complete$SAMPLING_EVENT_ID<-paste(transect.complete$Date,
+                                           transect.complete$Observer,
+                                           transect.complete$Location,
+                                           transect.complete$Transect,
+                                           sep="_")
+
+narrowed <- transect.complete %>% group_by(SAMPLING_EVENT_ID) %>%
+  distinct(SAMPLING_EVENT_ID, .keep_all = TRUE)
+ungroup(narrowed) %>% summarize (meantime = mean(lengthoftransect.time/60, na.rm = TRUE),
+             meanlength = mean(transect.distance/1000, na.rm = TRUE),
+             sdtime = sd(lengthoftransect.time/60, na.rm = TRUE),
+             sdlength = sd(transect.distance/1000, na.rm = TRUE),
+             minlength = min(transect.distance/1000, na.rm = TRUE),
+             maxlength = max(transect.distance/1000, na.rm = TRUE),
+             mintime = min(lengthoftransect.time/60, na.rm = TRUE),
+             maxtime = max(lengthoftransect.time/60, na.rm = TRUE))
+
+##############################
+
 #get maximum length of transect (/60 to convert to hrs to compare to ebird), rounded to 2 sig digits.
 ebird.effort_hrs.cutoff <- signif(max(transect.complete$lengthoftransect.time,
                                   na.rm=TRUE)/60,
@@ -85,7 +108,7 @@ ebird.effort_distance_km.cutoff <- signif(max(transect.complete$transect.distanc
 #First filter checklists to OK only with effort matching ours and
 #eliminate non-primary checklists (where people submitted more than one checklist for one birding event)
 #and casual counts.
-ebird.cleaned<-gathered.ebird.data.all%>%
+ebird.complete<-gathered.ebird.data.all%>%
   filter(PRIMARY_CHECKLIST_FLAG==1, #get only the first checklist for an event
          STATE_PROVINCE=="Oklahoma",
          EFFORT_HRS <= ebird.effort_hrs.cutoff, #get only transects that are < in time to match our data.
@@ -103,84 +126,6 @@ ebird.cleaned<-gathered.ebird.data.all%>%
 #(see http://www.birds.cornell.edu/MyYardCounts).
 #Email from cornell said the ebird reference dataset IS complete counts only.
 
-#######################
-#Get primary keys for all three datasets.
-
-ebird.sampling.ids<-dplyr::select(ebird.cleaned,
-                                  YEAR,
-                                  DAY,
-                                  TIME,
-                                  SAMPLING_EVENT_ID,
-                                  LONGITUDE,
-                                  LATITUDE)%>%
-  dplyr::distinct(SAMPLING_EVENT_ID, #primary key
-                  .keep_all=TRUE)
-
-transect.primary.keys<-dplyr::select(transect.complete, 
-                                     Date,
-                                     Observer,
-                                     Location,
-                                     spot=Transect,
-                                     ebird.day,
-                                     ebird.time,
-                                     year,
-                                     Longitude=Start.LON, 
-                                     Latitude=Start.LAT)%>%
-  dplyr::distinct(Date, Observer, Location, spot, #primary key combo
-                  .keep_all=TRUE)
-pointcount.primary.keys<-dplyr::select(pointcounts.complete, 
-                                     Date, 
-                                     Observer, 
-                                     Location,
-                                     spot=Point,
-                                     ebird.day,
-                                     ebird.time,
-                                     year,
-                                     Longitude, 
-                                     Latitude)%>%
-  dplyr::distinct(Date, Observer, Location, spot, #primary key combo
-                  .keep_all=TRUE)
-
-primary.keys<-rbind(transect.primary.keys,
-                    pointcount.primary.keys)
-
-
-###########################
-#Now to find out which dates and times and locations overlap from ours to ebird.
-
-#Use spatial buffer for point counts and transects
-#15 km buff
-sampling.ids.that.we.input<-fuzzyjoin::geo_left_join(x=primary.keys,
-                                        y=ebird.sampling.ids,
-                               max_dist=15,
-                               unit="km",
-                               by=c("Longitude"="LONGITUDE", 
-                                    "Latitude"="LATITUDE"))%>%
-  filter(.,
-       DAY==ebird.day,
-       YEAR==year,
-       TIME>=(ebird.time-1)&TIME<=(ebird.time+1))%>% #everything within one hour plus or minus
-  #Then get out which ebird checklist codes, these are the ones that will be eliminated.
-  distinct(SAMPLING_EVENT_ID)
-
-#get the list of the ebird sampling_ids that overlap.
-omit.these<-as.character(sampling.ids.that.we.input[,1])
-
-complete.list.of.jeremy.samples<-c("S18101887", #Grady County WMA point counts on 4/17/2014. PCs
-                               "S18137660", #Tallgrass Prairie Preserve on 4/23/2014. transect.
-                               "S18137507", #Rita Blanca point counts on 4/25/2014. PCs
-                               "S18434697", #Cimmaron Bluffs WMA on 5/16/2014 transects
-                               "S18434249") #Cimmaron Hills WMA on 5/17/2014 transects
-#These are all from Jeremy.
-#These are all included in the filtered "omit.these" so it works for known ebird samples.
-#It is unclear how many other people entered surveys or "presurvey" birds,
-#so we will eliminate all sampling events in the "omit.these" list.
-
-#filter out the overlapping 14 samples.
-ebird.complete<-dplyr::filter(ebird.cleaned,
-                     !(SAMPLING_EVENT_ID %in% omit.these))
-
-
 ###############
 ##MAKING COMBINED SINGLE DATA SHEET for presence/absence data
 ###############
@@ -189,19 +134,6 @@ ebird.complete<-dplyr::filter(ebird.cleaned,
 ###############
 #Specify data sources for impending combination.
 ebird.complete$datasource<-"EBIRD"
-transect.complete$datasource<-"TRANSECT"
-pointcounts.complete$datasource<-"POINTCOUNT"
-
-#Join with name table to have common, banding code, and scientific names.
-pointcounts.complete<-left_join(pointcounts.complete,
-                                         aou.codes,
-                                         by=c("Species"="SPEC"))
-pointcounts.complete$SCINAME<-gsub(" ", "_", as.character(pointcounts.complete$SCINAME))
-transect.complete<-left_join(transect.complete,
-                                aou.codes,
-                                by=c("Possible.Species"="SPEC"))
-transect.complete$SCINAME<-gsub(" ", "_", as.character(transect.complete$SCINAME))
-
 
 ebird.complete$SCINAME.spaces<-gsub("_", " ", as.character(ebird.complete$species))
 ebird.complete<-left_join(ebird.complete,
@@ -211,98 +143,9 @@ ebird.complete<-left_join(ebird.complete,
 ebird.complete$SCINAME<-gsub(" ", "_", as.character(ebird.complete$SCINAME.spaces))
 
 
-#Create primary key single columns for our data with same name as ebird primary key (SAMPLING_EVENT_ID)
-transect.complete$SAMPLING_EVENT_ID<-paste(transect.complete$datasource,
-                                           transect.complete$Date,
-                                           transect.complete$Observer,
-                                           transect.complete$Location,
-                                           transect.complete$Transect,
-                                           sep="_")
-pointcounts.complete$SAMPLING_EVENT_ID<-paste(pointcounts.complete$datasource,
-                                              pointcounts.complete$Date,
-                                              pointcounts.complete$Observer,
-                                              pointcounts.complete$Location,
-                                              pointcounts.complete$Point,
-                                           sep="_")
-
 ##############################
-#Creating one record per species per survey (PC or transect) as we can only have one each.
-#Because it is simple presence/absence we can just select one randomly.
-#This gets one random species sighting per point count or transect.
-#For point counts, there is only one lat/long.
-#The midpoint of the transect is used so it doesn't matter which one is selected.
-#However, if we later decided to use exact sightings, replace longitude and latitude with sighting.LON and sighting.LAT
-#and it gives you the point on the transect where the observer was for that randomly selected sighting per species.
-
-pc.species.per.transect<-dplyr::group_by(pointcounts.complete,
-                                         SAMPLING_EVENT_ID,
-                                         Species)%>%
-  do(.,
-     sample_n(., 1))%>%ungroup(.)
-pc.combine<-dplyr::filter(pc.species.per.transect,
-                          Distance..m.<500)%>%
-                          select(.,
-                   datasource,
-                   SAMPLING_EVENT_ID,
-                   year,
-                   month,
-                   ebird.day,
-                   ebird.time,
-                   Observer,
-                   SCINAME,
-                   Longitude,
-                   Latitude,
-                   Quantity
-                   )
-
-tr.species.per.transect<-dplyr::group_by(transect.complete,
-                                         SAMPLING_EVENT_ID,
-                                         Possible.Species)%>%
-  do(.,
-     sample_n(., 1))%>%ungroup(.)
-
-tr.combine<-dplyr::filter(tr.species.per.transect,
-                          Distance..m.<500)%>%
-                          select(.,
-                   datasource,
-                   SAMPLING_EVENT_ID,
-                   year,
-                   month,
-                   ebird.day,
-                   ebird.time,
-                   Observer,
-                   SCINAME,
-                   Longitude=midpoint.LON,
-                   Latitude=midpoint.LAT,
-                   Quantity=Quantity.corrected)
-
-#combine the point counts and the transects
-oursurveys.combined<-bind_rows(tr.combine,
-                               pc.combine)
-#remove the groupings I used earlier.
-oursurveys.combined<-ungroup(oursurveys.combined)
-
-#our data are presence/absence only for the species in each sampling event.
-#This generates presence/absence rows for all species by each sampling event.
-oursurveys.generate.presence<-dplyr::filter(oursurveys.combined,
-                                             !is.na(SCINAME)) %>%
-  #Get everything that has a scientific name (this eliminates "sp" entries and unknowns).
-                               tidyr::spread(key=SCINAME,
-                                             value=Quantity, 
-                                             fill=0) %>%
-  #spread out so that the key values (SCINAME) become different columns, and wherever there is an empty row, insert 0 in cell.
-                               tidyr::gather(key=SCINAME,
-                                             value=Quantity,
-                                             one_of(pull.these.columns.from.ebird)) %>%
-  #gather all the species columns back now that the zero rows have been generated.
-                               dplyr::arrange(SAMPLING_EVENT_ID)
-  #arrange by sampling event ID so that all entries from a survey date/observer are in same region for ease of reading.
-
-#necessary to convert to character to combine with ebird
-oursurveys.generate.presence$Quantity<-as.character(oursurveys.generate.presence$Quantity)
-
 #Select ebird columns and give appropriate names to match.
-combine.ebird<-select(ebird.complete,
+complete.dataset.for.sdm<-select(ebird.complete,
                       datasource,
                       SAMPLING_EVENT_ID,
                       year=YEAR,
@@ -316,13 +159,6 @@ combine.ebird<-select(ebird.complete,
                       Quantity) %>%
                 dplyr::arrange(SAMPLING_EVENT_ID)
 
-#check that all have same columns in same order though with different names.
-str(combine.ebird)
-str(oursurveys.generate.presence)
-
-#combine.
-complete.dataset.for.sdm<-rbind(oursurveys.generate.presence,
-                                    combine.ebird)
 
 #Then generate new quantity and presence/absence columns, as ebird quantity includes "x" for presence.
 complete.dataset.for.sdm$quantity.numeric<-gsub("X",
@@ -349,7 +185,7 @@ complete.dataset.for.sdm<-dplyr::arrange(complete.dataset.for.sdm,
 
 #Write this to a file.  includes records without lat/long.
 write.csv(complete.dataset.for.sdm,
-          "completedatasetforsdm.csv")
+          "evaluation_datasetforsdm.csv")
 
 #Masking for just oklahoma
 
@@ -387,5 +223,5 @@ plot(oklahoma.dataset.for.sdm.na.utm)
 
 #Write to file
 write.csv(as.data.frame(oklahoma.dataset.for.sdm.na.utm),
-          "oklahomadatasetforsdm_naomit_utm.csv")
+          "oklahoma_evaluation_datasetforsdm_naomit_utm.csv")
 
