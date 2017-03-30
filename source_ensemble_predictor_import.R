@@ -30,15 +30,15 @@ conservation_easements_CalcAcres_raster <- raster(paste0(gispath,
 conservation_easements_presenceabsence_raster_okmask <- raster(paste0(gispath,
                                                                       "/conservation_easements_presenceabsence_raster_okmask.tif"))
 
-nlcdrasters_list <- list.files(paste0(gispath, "/nlcd_processing"),
+nlcdrasters_list <- list.files(paste0(gispath, "/nlcd_processing/nlcd_cropped_to_ok_census"),
                                pattern = "tif$",
                                full.names = FALSE)
 nlcdrasters_files <- paste0(gispath,
-                            "/nlcd_processing/",
+                            "/nlcd_processing/nlcd_cropped_to_ok_census/",
                             nlcdrasters_list)
 
 for(i in nlcdrasters_files) { assign(unlist(strsplit(i,
-                                                     "[./]"))[10], #splits filenames at / and and . to eliminate folder name and file type.
+                                                     "[./]"))[11], #splits filenames at / and and . to eliminate folder name and file type.
                                      raster(i)) } 
 
 predictors <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLayer'])
