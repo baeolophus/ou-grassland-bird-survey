@@ -86,12 +86,13 @@ ebird.effort_distance_km.cutoff <- signif(max(transect.complete$transect.distanc
 #eliminate non-primary checklists (where people submitted more than one checklist for one birding event)
 #and casual counts.
 ebird.cleaned<-gathered.ebird.data.all%>%
-  filter(PRIMARY_CHECKLIST_FLAG==1, #get only the first checklist for an event
+  dplyr::filter(PRIMARY_CHECKLIST_FLAG==1, #get only the first checklist for an event
          STATE_PROVINCE=="Oklahoma",
          EFFORT_HRS <= ebird.effort_hrs.cutoff, #get only transects that are < in time to match our data.
          EFFORT_DISTANCE_KM <= ebird.effort_distance_km.cutoff, #get only transects that are < in length to match our data
-         COUNT_TYPE!="P20") #eliminate casual counts
-
+         COUNT_TYPE!="P20", #eliminate casual counts
+        MONTH == 4 | MONTH == 5 | MONTH == 6| MONTH ==7)
+ 
 
 #from ebird documentation: "What kind of observation the sample is:
 #stationary (P21), traveling (P22, P34), 
@@ -265,6 +266,8 @@ tr.species.per.transect<-dplyr::group_by(transect.complete,
 
 tr.combine<-dplyr::filter(tr.species.per.transect,
                           Distance..m.<500)%>%
+                   mutate(effort_time = lengthoftransect.time/60,
+                          effort_length = transect.distance/1000)%>%
                           select(.,
                    datasource,
                    SAMPLING_EVENT_ID,
@@ -277,8 +280,8 @@ tr.combine<-dplyr::filter(tr.species.per.transect,
                    Longitude=midpoint.LON,
                    Latitude=midpoint.LAT,
                    Quantity=Quantity.corrected,
-                   effort_time = lengthoftransect.time/60,
-                   effort_length = transect.distance/1000)
+                   effort_time,
+                   effort_length)
 
 #combine the point counts and the transects
 oursurveys.combined<-bind_rows(tr.combine,
@@ -352,8 +355,7 @@ complete.dataset.for.sdm<-left_join(complete.dataset.for.sdm,
 #Take out only the months we will use.
 complete.dataset.for.sdm<-dplyr::arrange(complete.dataset.for.sdm,
                                          datasource,
-                                         SAMPLING_EVENT_ID) %>%
-  filter(month == 4 | month == 5 | month == 6 | month == 7)
+                                         SAMPLING_EVENT_ID)
 
 #Write this to a file.  includes records without lat/long.
 write.csv(complete.dataset.for.sdm,
@@ -396,4 +398,16 @@ plot(oklahoma.dataset.for.sdm.na.utm)
 #Write to file
 write.csv(as.data.frame(oklahoma.dataset.for.sdm.na.utm),
           "oklahomadatasetforsdm_naomit_utm.csv")
+
+#Get training sample size.
+samplesize <- as.data.frame(oklahoma.dataset.for.sdm.na.utm) %>% group_by(SAMPLING_EVENT_ID) %>%
+  distinct(SAMPLING_EVENT_ID, .keep_all = TRUE)
+#length of sample size is number of checklists
+
+#summarize by survey type
+samplesize %>% group_by(datasource) %>% summarize(n())
+# A tibble: 3 × 2
+#1      EBIRD  4651
+#2 POINTCOUNT   614
+#3   TRANSECT   158
 

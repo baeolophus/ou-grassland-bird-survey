@@ -113,8 +113,8 @@ ebird.complete<-gathered.ebird.data.all%>%
          STATE_PROVINCE=="Oklahoma",
          EFFORT_HRS <= ebird.effort_hrs.cutoff, #get only transects that are < in time to match our data.
          EFFORT_DISTANCE_KM <= ebird.effort_distance_km.cutoff, #get only transects that are < in length to match our data
-         COUNT_TYPE!="P20") #eliminate casual counts
-
+         COUNT_TYPE!="P20", #eliminate casual counts
+         MONTH == 4 | MONTH == 5 | MONTH == 6| MONTH ==7)
 
 #from ebird documentation: "What kind of observation the sample is:
 #stationary (P21), traveling (P22, P34), 
@@ -184,8 +184,7 @@ complete.dataset.for.sdm<-left_join(complete.dataset.for.sdm,
 #Take out only the months we will use.
 complete.dataset.for.sdm<-dplyr::arrange(complete.dataset.for.sdm,
                                          datasource,
-                                         SAMPLING_EVENT_ID) %>%
-  filter(month == 4 | month == 5 | month == 6 | month == 7)
+                                         SAMPLING_EVENT_ID)
 
 #Write this to a file.  includes records without lat/long.
 write.csv(complete.dataset.for.sdm,
@@ -229,3 +228,10 @@ plot(oklahoma.dataset.for.sdm.na.utm)
 write.csv(as.data.frame(oklahoma.dataset.for.sdm.na.utm),
           "oklahoma_evaluation_datasetforsdm_naomit_utm.csv")
 
+#Get eval sample size.
+samplesize <- as.data.frame(oklahoma.dataset.for.sdm.na.utm) %>% group_by(SAMPLING_EVENT_ID) %>%
+  distinct(SAMPLING_EVENT_ID, .keep_all = TRUE)
+#length of sample size is number of checklists
+
+#summarize by survey type
+samplesize %>% group_by(datasource) %>% summarize(n())
