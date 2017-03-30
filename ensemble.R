@@ -23,6 +23,7 @@ source("source_ensemble_predictor_import.R")
 #Is already in utm
 complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.csv")
 
+
 #parameters for random forest models and support set sizes.
 #random forest parameters
 ntree <- 50
@@ -45,6 +46,10 @@ cell.size <- c(10000, 10000)
 n <- 10 #number of samples to take from each evaluation grid
 plot.width <- 7 #svg plot dimensions in inches
 plot.height <- 5
+
+#email notifications
+sender <- "curryclairem.mail@gmail.com"
+recipients <- c("curryclairem.mail@gmail.com")
 
 #Run the ensemble
 source("source_ensemble_complete_ensemble_model.R")
