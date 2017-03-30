@@ -207,4 +207,16 @@ writeRaster(utm.bioclim,
             bylayer = TRUE,
             overwrite = TRUE)
 ##################################
+#Create mean time and length rasters to match other ok-census cropped files.
+
+writeRaster(effort.length.ok.census,
+            filename = "effort_length_ok_census_mask.tif",
+            format="GTiff",
+            overwrite = TRUE)
+
+writeRaster(effort.time.ok.census,
+            filename = "effort_time_ok_census_mask.tif",
+            format="GTiff",
+            overwrite = TRUE)
+
 

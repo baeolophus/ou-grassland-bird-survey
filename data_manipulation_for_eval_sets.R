@@ -156,7 +156,9 @@ complete.dataset.for.sdm<-select(ebird.complete,
                       SCINAME,
                       Longitude=LONGITUDE,
                       Latitude=LATITUDE,
-                      Quantity) %>%
+                      Quantity,
+                      effort_time = EFFORT_HRS,
+                      effort_length = EFFORT_DISTANCE_KM) %>%
                 dplyr::arrange(SAMPLING_EVENT_ID)
 
 

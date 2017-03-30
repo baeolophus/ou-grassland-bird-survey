@@ -252,7 +252,9 @@ pc.combine<-dplyr::filter(pc.species.per.transect,
                    SCINAME,
                    Longitude,
                    Latitude,
-                   Quantity
+                   Quantity,
+                   effort_time = lengthoftransect.time,
+                   effort_length = transect.distance
                    )
 
 tr.species.per.transect<-dplyr::group_by(transect.complete,
@@ -274,7 +276,9 @@ tr.combine<-dplyr::filter(tr.species.per.transect,
                    SCINAME,
                    Longitude=midpoint.LON,
                    Latitude=midpoint.LAT,
-                   Quantity=Quantity.corrected)
+                   Quantity=Quantity.corrected,
+                   effort_time = lengthoftransect.time,
+                   effort_length = transect.distance)
 
 #combine the point counts and the transects
 oursurveys.combined<-bind_rows(tr.combine,
@@ -313,7 +317,9 @@ combine.ebird<-select(ebird.complete,
                       SCINAME,
                       Longitude=LONGITUDE,
                       Latitude=LATITUDE,
-                      Quantity) %>%
+                      Quantity,
+                      effort_time = EFFORT_HRS,
+                      effort_length = EFFORT_DISTANCE_KM) %>%
                 dplyr::arrange(SAMPLING_EVENT_ID)
 
 #check that all have same columns in same order though with different names.
