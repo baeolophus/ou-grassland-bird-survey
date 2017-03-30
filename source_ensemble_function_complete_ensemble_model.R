@@ -3,11 +3,12 @@ library(randomForest)
 library(dplyr)
 library(raster)
 library(rgdal)
+library(mailR)
 library(microbenchmark)
 
 complete.ensemble.model <- function (SPECIES) {
   complete.dataset.for.sdm.SPECIES<-dplyr::filter(complete.dataset.for.sdm,
-                                                  SPEC==SPECIES,
+                                                  SPEC=="DICK", #SPECIES,
                                                   month == 4 | month == 5 | month == 6 | month == 7)
   #to match transects and point counts, summer only.
   
@@ -62,7 +63,17 @@ complete.ensemble.model <- function (SPECIES) {
                                importance = importance),
   support.small.ensemble <- ensemble.function(support.small.list),
   times = 1)
-
+  send.mail(from = sender,
+            to = recipients,
+            subject = paste0("Your small ensemble is complete for ",
+                             SPECIES),
+            body = "Go download files!  Onward!",
+            smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                        user.name = "curryclairem.mail@gmail.com",            
+                        passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+            authenticate = TRUE,
+            send = TRUE)
+  
   #medium support sets
   polys.medium <- random.stratified.support.sets(numberofpoints = numberofpoints.medium,
                                                  radius.medium)
@@ -79,6 +90,16 @@ complete.ensemble.model <- function (SPECIES) {
   
   support.medium.ensemble <- ensemble.function(support.medium.list),
   times = 1)
+  send.mail(from = sender,
+            to = recipients,
+            subject = paste0("Your medium ensemble is complete for ",
+                             SPECIES),
+            body = "Go download files!  Onward!",
+            smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                        user.name = "curryclairem.mail@gmail.com",            
+                        passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+            authenticate = TRUE,
+            send = TRUE)
 
   #large support sets
   polys.large <- random.stratified.support.sets(numberofpoints = numberofpoints.large,
@@ -96,6 +117,17 @@ complete.ensemble.model <- function (SPECIES) {
 
   support.large.ensemble <- ensemble.function(support.large.list),
   times = 1)
+  
+  send.mail(from = sender,
+            to = recipients,
+            subject = paste0("Your large ensemble is complete for ",
+                             SPECIES),
+            body = "Go download files!  Onward!",
+            smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                        user.name = "curryclairem.mail@gmail.com",            
+                        passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+            authenticate = TRUE,
+            send = TRUE)
 
   beep()#small, medium, large
   
@@ -117,7 +149,7 @@ complete.ensemble.model <- function (SPECIES) {
                                                                  raster::predict,
                                                                  args = list(model = tree.statewide,
                                                                              type = "prob",
-                                                                             progress = "text")), #3.7 hours
+                                                                             progress = "text")), 
   
   endCluster(),
   times = 1)
@@ -129,19 +161,42 @@ complete.ensemble.model <- function (SPECIES) {
               format="GTiff",
               overwrite = TRUE)
 
-
+  svg(file = paste0("DICK",#SPECIES,
+                    "-varimpplot",
+                    ".svg"), 
+      width = 10,#plot.width,
+      height = 8)#plot.height)
   varImpPlot(tree.statewide)
-  print(tree.statewide)
+  dev.off()
   tree.statewide.varimp <- data.frame(importance(tree.statewide))
   
   #Go through top 30 variables in partialPlot
   #pdf
+  #Get variable importances.
+  imp <- importance(tree.statewide)
+  #Order them.
+  impvar <- rownames(imp)[order(imp[, 1], decreasing=TRUE)]
+  #Create svg file of top 10 important variables.
+  svg(file = paste0("DICK",#SPECIES,
+                    "-partialplots",
+                    ".svg"),
+      width = 7, #plot.width,
+      height = 10)#plot.height*2)
+
+  par(mfrow = c(5,2))
+  for (i in 1:10) {
+    partialPlot(tree.statewide,
+                statewide.data, 
+                impvar[i],
+                which.class = "1",
+                xlab=impvar[i],
+                main=paste("Partial Dependence on", impvar[i]))
+  }
+
+  dev.off()
   
-  partialPlot(tree.statewide, 
-              statewide.data, 
-              grasslands71_15cell,
-              "1") #using 1 as reference ie presence
-  
+  #return graphics to 1 x 1 state.
+  par(mfrow = c(1,1))
   #http://stats.stackexchange.com/questions/93202/odds-ratio-from-decision-tree-and-random-forest
   #http://r.789695.n4.nabble.com/randomForest-PartialPlot-reg-td2551372.html shoudl not do the logit thing actually
   #Just go for target class (I want presence ie "1") and interpret higher as more likely.
@@ -155,6 +210,18 @@ complete.ensemble.model <- function (SPECIES) {
   
   #details on how to do probability maps for classification http://evansmurphy.wixsite.com/evansspatial/random-forest-sdm
   
+
+  send.mail(from = sender,
+            to = recipients,
+            subject = paste0("Your statewide model is complete for ",
+                             SPECIES),
+            body = "Go download files!  Onward!",
+            smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                        user.name = "curryclairem.mail@gmail.com",            
+                        passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+            authenticate = TRUE,
+            send = TRUE)
+  
   #########################################
   #Once predictions made, evaluation of model.
   #example code: http://stackoverflow.com/questions/30366143/how-to-compute-roc-and-auc-under-roc-after-training-using-caret-in-r
@@ -165,14 +232,11 @@ complete.ensemble.model <- function (SPECIES) {
   
   
   ###############################
-  #Dataset preparation
-  prediction.raster<-tree.statewide.raster.prediction.prob
-  
   ###############################
-  #evaluate small, med, large, and statewide, then plot bootstrap distributions and calculation mean and sd for AUC and RMSE
+  #evaluate then plot bootstrap distributions and calculation mean and sd for AUC and RMSE
   statewide.sampling.rmse <- replicate(50,
                                        expr = do.call (what = spatial.sampling.evaluation,
-                                                       args = list(evaluation.spatial= latlong.predictors.SPECIES.spatial,
+                                                       args = list(evaluation.spatial,
                                                                    cell.size,
                                                                    n,
                                                                    typeofeval = "rmse",
@@ -182,11 +246,74 @@ complete.ensemble.model <- function (SPECIES) {
   #Then repeat for AUC
   statewide.sampling.auc <- replicate(50,
                                       expr = do.call (what = spatial.sampling.evaluation,
-                                                      args = list(evaluation.spatial= latlong.predictors.SPECIES.spatial,
+                                                      args = list(evaluation.spatial,
                                                                   cell.size,
                                                                   n,
                                                                   typeofeval = "auc",
                                                                   prediction.raster = tree.statewide.raster.prediction.prob)))
+  
+  #small
+  #rmse
+  small.sampling.rmse <- replicate(50,
+                                       expr = do.call (what = spatial.sampling.evaluation,
+                                                       args = list(evaluation.spatial,
+                                                                   cell.size,
+                                                                   n,
+                                                                   typeofeval = "rmse",
+                                                                   prediction.raster = support.small.ensemble)))
+  
+  
+  #Then repeat for AUC
+  small.sampling.auc <- replicate(50,
+                                      expr = do.call (what = spatial.sampling.evaluation,
+                                                      args = list(evaluation.spatial,
+                                                                  cell.size,
+                                                                  n,
+                                                                  typeofeval = "auc",
+                                                                  prediction.raster = support.small.ensemble)))
+  
+  
+  #medium
+  #rmse
+  medium.sampling.rmse <- replicate(50,
+                                   expr = do.call (what = spatial.sampling.evaluation,
+                                                   args = list(evaluation.spatial,
+                                                               cell.size,
+                                                               n,
+                                                               typeofeval = "rmse",
+                                                               prediction.raster = support.medium.ensemble)))
+  
+  
+  #Then repeat for AUC
+  medium.sampling.auc <- replicate(50,
+                                  expr = do.call (what = spatial.sampling.evaluation,
+                                                  args = list(evaluation.spatial,
+                                                              cell.size,
+                                                              n,
+                                                              typeofeval = "auc",
+                                                              prediction.raster = support.medium.ensemble)))
+  
+  
+  #large
+  #rmse
+  large.sampling.rmse <- replicate(50,
+                                   expr = do.call (what = spatial.sampling.evaluation,
+                                                   args = list(evaluation.spatial,
+                                                               cell.size,
+                                                               n,
+                                                               typeofeval = "rmse",
+                                                               prediction.raster = support.large.ensemble)))
+  
+  
+  #Then repeat for AUC
+  large.sampling.auc <- replicate(50,
+                                  expr = do.call (what = spatial.sampling.evaluation,
+                                                  args = list(evaluation.spatial,
+                                                              cell.size,
+                                                              n,
+                                                              typeofeval = "auc",
+                                                              prediction.raster = support.large.ensemble)))
+  
   
   #print figures of both
   svg(file = paste0(SPECIES,
@@ -196,7 +323,7 @@ complete.ensemble.model <- function (SPECIES) {
       height = plot.height)
   boxplot(cbind("Small" = small.sampling.rmse,
                 "Medium" = medium.sampling.rmse,
-                "Large" = largesampling.rmse,
+                "Large" = large.sampling.rmse,
                 "Statewide" = statewide.sampling.rmse),
           xlab = "Support set size",
           ylab = "RMSE")
@@ -209,7 +336,7 @@ complete.ensemble.model <- function (SPECIES) {
       height = plot.height)
   boxplot(cbind("Small" = small.sampling.auc,
                 "Medium" = medium.sampling.auc,
-                "Large" = largesampling.auc,
+                "Large" = large.sampling.auc,
                 "Statewide" = statewide.sampling.auc),
           xlab = "Support set size",
           ylab = "AUC")
@@ -241,6 +368,20 @@ complete.ensemble.model <- function (SPECIES) {
   saveRDS(results,
           file = paste0(SPECIES,
                         "-ensembleresults"))
+  
+  sender <- "curryclairem.mail@gmail.com"
+  recipients <- c("curryclairem.mail@gmail.com")
+  send.mail(from = sender,
+            to = recipients,
+            subject = paste0("Everything is complete for ",
+                             SPECIES),
+            body = "Go download any remaining files!  Onward!",
+            smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                        user.name = "curryclairem.mail@gmail.com",            
+                        passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+            authenticate = TRUE,
+            send = TRUE)
+  
   return(results)
   
   #####################
