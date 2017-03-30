@@ -30,7 +30,9 @@ spatial.support.set<-function(whichrandombox,
   beginCluster() #use raster's multicore clustering to automatically use more cores and speed up predict and extend
   tree.test.raster.prediction <- clusterR(support.set,
                                           fun = raster::predict,
-                                          args = list(model = tree.test))
+                                          args = list(model = tree.test,
+                                                      type = "prob",
+                                                      progress = "text"))
   endCluster()
   tree.test.raster.prediction.extended <- raster::extend(x = tree.test.raster.prediction,
                                                          y = studyarea.extent,
