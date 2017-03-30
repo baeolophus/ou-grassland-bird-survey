@@ -208,6 +208,21 @@ writeRaster(utm.bioclim,
             overwrite = TRUE)
 ##################################
 #Create mean time and length rasters to match other ok-census cropped files.
+#Also get sample sizes here.
+get.mean.efforts.for.rasters <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.csv")
+
+narrowed <- get.mean.efforts.for.rasters %>% group_by(SAMPLING_EVENT_ID) %>%
+  distinct(SAMPLING_EVENT_ID, .keep_all = TRUE)
+#length of narrowed is sample size for training dataset.
+
+numbers <- ungroup(narrowed) %>% summarize (meantime = mean(effort_time, na.rm = TRUE),
+                                 meanlength = mean(effort_length, na.rm = TRUE))
+
+grs80.14<-CRS("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
+
+#Create masking raster y out of Oklahoma.
+blank_oklahoma_census<-raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/GIS_layers_original/land_use_land_cover_NLCD_ok_3276698_02/land_use_land_cover/nlcd_ok_utm14.tif")
+
 
 writeRaster(effort.length.ok.census,
             filename = "effort_length_ok_census_mask.tif",
