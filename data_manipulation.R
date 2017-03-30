@@ -277,8 +277,8 @@ tr.combine<-dplyr::filter(tr.species.per.transect,
                    Longitude=midpoint.LON,
                    Latitude=midpoint.LAT,
                    Quantity=Quantity.corrected,
-                   effort_time = lengthoftransect.time,
-                   effort_length = transect.distance)
+                   effort_time = lengthoftransect.time/60,
+                   effort_length = transect.distance/1000)
 
 #combine the point counts and the transects
 oursurveys.combined<-bind_rows(tr.combine,
@@ -349,9 +349,11 @@ complete.dataset.for.sdm<-left_join(complete.dataset.for.sdm,
                                                       "SCINAME")],
                                          by=c("SCINAME.space"="SCINAME"))
 #Rearrange the dataset so that if viewed in a spreadsheet it will be organized by datasource and sampling event ID (primary key).
+#Take out only the months we will use.
 complete.dataset.for.sdm<-dplyr::arrange(complete.dataset.for.sdm,
                                          datasource,
-                                         SAMPLING_EVENT_ID)
+                                         SAMPLING_EVENT_ID) %>%
+  filter(month == 4 | month == 5 | month == 6 | month == 7)
 
 #Write this to a file.  includes records without lat/long.
 write.csv(complete.dataset.for.sdm,
