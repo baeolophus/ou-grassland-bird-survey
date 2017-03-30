@@ -8,9 +8,7 @@ library(microbenchmark)
 
 complete.ensemble.model <- function (SPECIES) {
   complete.dataset.for.sdm.SPECIES<-dplyr::filter(complete.dataset.for.sdm,
-                                                  SPEC=="DICK", #SPECIES,
-                                                  month == 4 | month == 5 | month == 6 | month == 7)
-  #to match transects and point counts, summer only.
+                                                  SPEC=="DICK") #SPECIES)
   
   #make it spatial, remembering these values were converted from lat/long to UTM already in data manipulation file.
   coordinates(complete.dataset.for.sdm.SPECIES)<-c("Longitude", "Latitude")
