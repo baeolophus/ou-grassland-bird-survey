@@ -39,8 +39,8 @@ pointcounts.complete$minutes<-as.numeric(sapply(timebits.pc, "[", 2))
 pointcounts.complete$ebird.time<-pointcounts.complete$hours+pointcounts.complete$minutes/60
 
 #add distance and time effort.
-pointcounts.complete$lengthoftransect.time <- 8/60
-pointcounts.complete$transect.distance <- 0
+pointcounts.complete$lengthoftransect.time <- 8/60 #8 min point counts (via Jeremy)
+pointcounts.complete$transect.distance <- 0 #point counts don't move
 
 pointcounts.complete <- pointcounts.complete %>%
   filter(whattodowiththisrecord == "KEEP",
