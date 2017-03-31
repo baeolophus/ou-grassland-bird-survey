@@ -17,12 +17,21 @@ rasterOptions(tmpdir=paste0(getwd(),
 
 #Bring in predictor data.
 source("source_ensemble_predictor_import.R")
-#########################
+
 #Responses
 #Bring in whole response data set (with NA lat/long already removed) as a spatial object including presence/absence.
 #Is already in utm
 complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.csv")
 
+#bring in the two rasters needed for predict::raster stage but aren't lumped into main predictor_stack.
+#(effort is obtained from dataframes).
+effort_length <- raster("effort_length_ok_census_mask.tif")
+effort_time <- raster("effort_time_ok_census_mask.tif")
+
+#Create predictors_stack_with_all_variables to include a raster version of effort time and and effort length
+predictors_stack_with_all_variables <- addLayer(predictors_stack,
+                                                effort_time,
+                                                effort_length)
 
 #parameters for random forest models and support set sizes.
 #random forest parameters
