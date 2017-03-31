@@ -17,19 +17,18 @@ complete.ensemble.model <- function (SPECIES) {
   #check it worked
   proj4string(complete.dataset.for.sdm.SPECIES)
   #extract values for analysis
-  predictors_stack.SPECIES<-extract(x=predictors_stack,
-                                    y=complete.dataset.for.sdm.SPECIES)
+  predictors_stack.SPECIES<-extract(x = predictors_stack,
+                                    y = complete.dataset.for.sdm.SPECIES)
   predictors_stack.SPECIES.df <- as.data.frame(predictors_stack.SPECIES)
   
   latlong.predictors.SPECIES<-cbind("presence" = as.factor(complete.dataset.for.sdm.SPECIES$presence),
                                     coordinates(complete.dataset.for.sdm.SPECIES),
+                                    complete.dataset.for.sdm.SPECIES$effort_time,
+                                    complete.dataset.for.sdm.SPECIES$effort_length,
                                     predictors_stack.SPECIES.df,
                                     row.names = NULL)
   
-  latlong.predictors.SPECIES.spatial <-cbind("presence" = complete.dataset.for.sdm.SPECIES$presence,
-                                             coordinates(complete.dataset.for.sdm.SPECIES),
-                                             predictors_stack.SPECIES.df,
-                                             row.names = NULL)
+  latlong.predictors.SPECIES.spatial <- latlong.predictors.SPECIES
   #has to be spatial for function to work so re-add that
   coordinates(latlong.predictors.SPECIES.spatial) <- c("Longitude", "Latitude")
   proj4string(latlong.predictors.SPECIES.spatial)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
@@ -37,6 +36,9 @@ complete.ensemble.model <- function (SPECIES) {
   #free up memory
   rm(predictors_stack.SPECIES)  
   rm(predictors_stack.SPECIES.df) 
+  rm(complete.dataset.for.sdm.SPECIES)
+  gc()
+  
   ##################################
   #load functions
   source("source_ensemble_function_support_set_generation.R")
@@ -55,7 +57,7 @@ complete.ensemble.model <- function (SPECIES) {
     support.small.list <- lapply(1:numberofpoints.small,
                                FUN = spatial.support.set,
                                spatialdataset = latlong.predictors.SPECIES.spatial,
-                               predictor_stack = predictors_stack,
+                               predictor_stack = predictors_stack_with_all_variables,
                                polys.df = polys.small.df,
                                ntree = ntree,
                                importance = importance),
@@ -81,7 +83,7 @@ complete.ensemble.model <- function (SPECIES) {
   support.medium.list <- lapply(1:numberofpoints.medium,
                                 FUN = spatial.support.set,
                                 spatialdataset = latlong.predictors.SPECIES.spatial,
-                                predictor_stack = predictors_stack,
+                                predictor_stack = predictors_stack_with_all_variables,
                                 polys.df = polys.medium.df,
                                 ntree = ntree,
                                 importance = importance),
@@ -108,7 +110,7 @@ complete.ensemble.model <- function (SPECIES) {
   support.large.list <- lapply(1:numberofpoints.large,
                                               FUN = spatial.support.set,
                                               spatialdataset = latlong.predictors.SPECIES.spatial,
-                                              predictor_stack = predictors_stack,
+                                              predictor_stack = predictors_stack_with_all_variables,
                                               polys.df = polys.large.df,
                                               ntree = ntree,
                                               importance = importance),
@@ -143,7 +145,7 @@ complete.ensemble.model <- function (SPECIES) {
                                  importance = TRUE),
   
   beginCluster(),
-  tree.statewide.raster.prediction.prob<-clusterR(predictors_stack,
+  tree.statewide.raster.prediction.prob<-clusterR(predictors_stack_with_all_variables,
                                                                  raster::predict,
                                                                  args = list(model = tree.statewide,
                                                                              type = "prob",
@@ -366,9 +368,6 @@ complete.ensemble.model <- function (SPECIES) {
   saveRDS(results,
           file = paste0(SPECIES,
                         "-ensembleresults"))
-  
-  sender <- "curryclairem.mail@gmail.com"
-  recipients <- c("curryclairem.mail@gmail.com")
   send.mail(from = sender,
             to = recipients,
             subject = paste0("Everything is complete for ",
@@ -383,8 +382,47 @@ complete.ensemble.model <- function (SPECIES) {
   return(results)
   
   #####################
+  #remove the species-specific objects.
+  rm(latlong.predictors.SPECIES,
+     latlong.predictors.SPECIES.spatial,
+     polys.small,
+     polys.small.p,
+     polys.small.df,
+     microbenchmark.small,
+     support.small.list,
+     support.small.ensemble,
+     polys.medium,
+     polys.medium.p,
+     polys.medium.df,
+     microbenchmark.medium,
+     support.medium.list,
+     support.medium.ensemble,
+     polys.large,
+     polys.large.p,
+     polys.large.df,
+     microbenchmark.large,
+     support.large.list,
+     support.large.ensemble,
+     statewide.data,
+     microbenchmark.statewide,
+     tree.statewide,
+     tree.statewide.raster.prediction.prob,
+     tree.statewide.varimp,
+     imp,
+     impvar,
+     statewide.sampling.rmse,
+     statewide.sampling.auc,
+     small.sampling.rmse,
+     small.sampling.auc,
+     medium.sampling.rmse,
+     medium.sampling.auc,
+     large.sampling.rmse,
+     large.sampling.auc,
+     microbenchmarks,
+     results)
   #Delete temporary file directory at end of species processing.
   #http://stackoverflow.com/questions/18955305/setting-an-overwriteable-temporary-file-for-rasters-in-r?noredirect=1&lq=1
   unlink(file.path(getwd(),"rastertemp"),
          recursive = TRUE)
+  
 }
