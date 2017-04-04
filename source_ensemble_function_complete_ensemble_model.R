@@ -5,10 +5,10 @@ library(raster)
 library(rgdal)
 library(mailR)
 library(microbenchmark)
-
+SPECIES = "DICK"
 complete.ensemble.model <- function (SPECIES) {
   complete.dataset.for.sdm.SPECIES<-dplyr::filter(complete.dataset.for.sdm,
-                                                  SPEC=="DICK") #SPECIES)
+                                                  SPEC==SPECIES)
   
   #make it spatial, remembering these values were converted from lat/long to UTM already in data manipulation file.
   coordinates(complete.dataset.for.sdm.SPECIES)<-c("Longitude", "Latitude")
@@ -23,8 +23,8 @@ complete.ensemble.model <- function (SPECIES) {
   
   latlong.predictors.SPECIES<-cbind("presence" = as.factor(complete.dataset.for.sdm.SPECIES$presence),
                                     coordinates(complete.dataset.for.sdm.SPECIES),
-                                    complete.dataset.for.sdm.SPECIES$effort_time,
-                                    complete.dataset.for.sdm.SPECIES$effort_length,
+                                    "effort_time_ok_census_mask" = complete.dataset.for.sdm.SPECIES$effort_time,
+                                    "effort_length_ok_census_mask" = complete.dataset.for.sdm.SPECIES$effort_length,
                                     predictors_stack.SPECIES.df,
                                     row.names = NULL)
   
@@ -53,8 +53,9 @@ complete.ensemble.model <- function (SPECIES) {
                                                 radius.small)
   polys.small.p <- unlist(polys.small[[1]])
   polys.small.df <- unlist(polys.small[[2]])
+  beginCluster()
   microbenchmark.small <- microbenchmark(
-    support.small.list <- lapply(1:numberofpoints.small,
+    support.small.list <- lapply(1,#:numberofpoints.small,
                                FUN = spatial.support.set,
                                spatialdataset = latlong.predictors.SPECIES.spatial,
                                predictor_stack = predictors_stack_with_all_variables,
@@ -80,7 +81,7 @@ complete.ensemble.model <- function (SPECIES) {
   polys.medium.p <- unlist(polys.medium[[1]])
   polys.medium.df <- unlist(polys.medium[[2]])
   microbenchmark.medium <- microbenchmark(
-  support.medium.list <- lapply(1:numberofpoints.medium,
+  support.medium.list <- lapply(1,#:numberofpoints.medium,
                                 FUN = spatial.support.set,
                                 spatialdataset = latlong.predictors.SPECIES.spatial,
                                 predictor_stack = predictors_stack_with_all_variables,
@@ -107,7 +108,7 @@ complete.ensemble.model <- function (SPECIES) {
   polys.large.p <- unlist(polys.large[[1]])
   polys.large.df <- unlist(polys.large[[2]])
   microbenchmark.large <- microbenchmark(
-  support.large.list <- lapply(1:numberofpoints.large,
+  support.large.list <- lapply(1,#:numberofpoints.large,
                                               FUN = spatial.support.set,
                                               spatialdataset = latlong.predictors.SPECIES.spatial,
                                               predictor_stack = predictors_stack_with_all_variables,

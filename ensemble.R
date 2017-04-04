@@ -3,7 +3,7 @@ library(beepr)
 #library(dplyr)
 library(microbenchmark)
 #library(randomForest)
-#library(raster)
+library(raster)
 #library(rgdal)
 #library(ROCR)
 #library(rpart)
@@ -25,13 +25,17 @@ complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.cs
 
 #bring in the two rasters needed for predict::raster stage but aren't lumped into main predictor_stack.
 #(effort is obtained from dataframes).
-effort_length <- raster("effort_length_ok_census_mask.tif")
-effort_time <- raster("effort_time_ok_census_mask.tif")
+#file in working directory
+effort_length_ok_census_mask <- raster("effort_length_ok_census_mask.tif")
+effort_time_ok_census_mask <- raster("effort_time_ok_census_mask.tif")
+#local computer
+effort_length_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_length_ok_census_mask.tif")
+effort_time_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_time_ok_census_mask.tif")
 
 #Create predictors_stack_with_all_variables to include a raster version of effort time and and effort length
 predictors_stack_with_all_variables <- addLayer(predictors_stack,
-                                                effort_time,
-                                                effort_length)
+                                                effort_length_ok_census_mask,
+                                                effort_time_ok_census_mask)
 
 #parameters for random forest models and support set sizes.
 #random forest parameters
@@ -60,8 +64,8 @@ plot.height <- 5
 sender <- "curryclairem.mail@gmail.com"
 recipients <- c("curryclairem.mail@gmail.com")
 
-#Run the ensemble
-source("source_ensemble_complete_ensemble_model.R")
+#Bring in the ensemble function.
+source("source_ensemble_function_complete_ensemble_model.R")
 
 complete.ensemble.model(SPECIES = "DICK")
 complete.ensemble.model(SPECIES = "EAME")

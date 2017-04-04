@@ -27,12 +27,17 @@ spatial.support.set<-function(whichrandombox,
           )
   support.set <- crop(predictor_stack,
                       extent(polys.df[whichrandombox,]))
-  beginCluster() #use raster's multicore clustering to automatically use more cores and speed up predict and extend
-  tree.test.raster.prediction <- clusterR(support.set,
-                                          fun = raster::predict,
-                                          args = list(model = tree.test,
-                                                      type = "prob",
-                                                      progress = "text"))
+  beginCluster(type = "SOCK") #use raster's multicore clustering to automatically use more cores and speed up predict and extend
+  #use of clusterR is automatic in predict
+  tree.test.raster.prediction <- raster::predict(object = support.set,
+                                                 model = tree.test,
+                                                 type = "prob",
+                                                 progress = "text")
+    #clusterR(support.set,
+                                 #         fun = raster::predict,
+                                 #         args = list(model = tree.test,
+                                  #                    type = "prob",
+                                  #                    progress = "text"))
   endCluster()
   tree.test.raster.prediction.extended <- raster::extend(x = tree.test.raster.prediction,
                                                          y = studyarea.extent,

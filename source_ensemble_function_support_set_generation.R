@@ -79,5 +79,5 @@ random.stratified.support.sets <- function (numberofpoints,
                         "polygons",
                         numberofpoints)
                         )
-  )
+  
 }
