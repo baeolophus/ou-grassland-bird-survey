@@ -23,26 +23,18 @@ ensemble.function <- function (list.of.rasters) {
   
   
   #Run the ensemble by using weighted mean.  The weight is by number of support sets.
-  # ensemble.weighted.mosaic<-do.call(raster::weighted.mean,
-  #                                  list(predictions.support.sets.stacked,
-  #                                       weights,
-  #                                         TRUE))
-  beginCluster()
-  ensemble.weighted.mosaic<-clusterR(x = predictions.support.sets.stacked,
-                                     fun = raster::weighted.mean,
-                                     w = weights,
-                                     na.rm = TRUE)
-  endCluster()
-  #Plot the mosaic.  Remove this line when I transfer to AWS.
-  #create file here in .eps or .pdf.
-  plot(ensemble.weighted.mosaic)
-  writeRaster(ensemble.weighted.mosaic,
-              filename = paste0(SPECIES,
-                                "ensemble.weighted.mosaic",
-                                deparse(substitute(list.of.rasters)),
-                                ".tif"),
-              format="GTiff",
-              overwrite = TRUE)
-  
+  ensemble.weighted.mosaic <- raster::weighted.mean(predictions.support.sets.stacked,
+                                                    weights,
+                                                    na.rm = TRUE,
+                                                    filename = paste0(SPECIES,
+                                                           "_ensemble.weighted.mosaic",
+                                                           deparse(substitute(list.of.rasters)),
+                                                           ".tif"),
+                                                    format="GTiff",
+                                                    overwrite = TRUE,
+                                                    progress = "text")
+
+
+
   return(ensemble.weighted.mosaic)
 }
