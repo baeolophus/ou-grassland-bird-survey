@@ -1,17 +1,19 @@
-#This file reloads all the objects saved in the course of the ensemble.
+wdrasters_list <- list.files("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results",
+                             pattern = "tif$",
+                             full.names = FALSE)
+wdrasters_files <- paste0("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results",
+                          "/",
+                          wdrasters_list)
 
-readRDS(paste0(SPECIES,
-                        "-ensembleresults"))
-#contains statewide tree, microbenchmark, and AUC/RMSE for all.
+for(i in wdrasters_files) { assign(unlist(strsplit(i,
+                                                   "[/]"))[9], #splits filenames at / and and . to eliminate folder name and file type.
+                                   raster(i)) } 
 
-readRDS(all support set trees)
-readRDS(polygons)
+plot(HOLA_ensemble.weighted.mosaicsupport.large.list.tif)
+plot(HOLA_ensemble.weighted.mosaicsupport.medium.list.tif)
+plot(HOLA_ensemble.weighted.mosaicsupport.small.list.tif)
+plot(HOLA_tree.statewide.raster.prediction.prob.tif)
 
-library(raster)
+resultshola <- readRDS("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/HOLA_ensembleresults")
 
-stateraster <- 
-small raster <- 
-medium raster <- 
-large raster <- 
-
-#rasters for support sets also exist but are probably not needed.
+microbenchmark.results <- resultshola[[1]]
