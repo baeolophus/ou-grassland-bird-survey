@@ -6,7 +6,11 @@ library(sp)
 ##################################
 #Generate support sets
 #start by generating random points within the study area.
-state<-readOGR(dsn="E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
+#home computer
+#state<-readOGR(dsn="E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
+#               layer="ok_state_vector_smallest_pdf_3158")
+#aws file system
+state<-readOGR(dsn=getwd(),
                layer="ok_state_vector_smallest_pdf_3158")
 
 state<-spTransform(x = state,
