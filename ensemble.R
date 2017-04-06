@@ -1,5 +1,5 @@
 #libraries needed
-library(beepr)
+#library(beepr)
 #library(dplyr)
 library(microbenchmark)
 #library(randomForest)
@@ -8,6 +8,8 @@ library(raster)
 #library(ROCR)
 #library(rpart)
 #library(sp)
+
+setwd("/data/grassland_ensemble")
 
 #create temporary raster files on large drive because they occupy 10-30 GB
 rasterOptions()$tmpdir
@@ -25,12 +27,12 @@ complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.cs
 
 #bring in the two rasters needed for predict::raster stage but aren't lumped into main predictor_stack.
 #(effort is obtained from dataframes).
-#file in working directory
-effort_length_ok_census_mask <- raster("effort_length_ok_census_mask.tif")
-effort_time_ok_census_mask <- raster("effort_time_ok_census_mask.tif")
+#file in working directory AWS
+effort_length_ok_census_mask <- raster("effort/effort_length_ok_census_mask.tif")
+effort_time_ok_census_mask <- raster("effort/effort_time_ok_census_mask.tif")
 #local computer
-effort_length_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_length_ok_census_mask.tif")
-effort_time_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_time_ok_census_mask.tif")
+#effort_length_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_length_ok_census_mask.tif")
+#effort_time_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_time_ok_census_mask.tif")
 
 #Create predictors_stack_with_all_variables to include a raster version of effort time and and effort length
 predictors_stack_with_all_variables <- addLayer(predictors_stack,
@@ -39,7 +41,7 @@ predictors_stack_with_all_variables <- addLayer(predictors_stack,
 
 #parameters for random forest models and support set sizes.
 #random forest parameters
-ntree <- 50
+ntree <- 500
 importance <- FALSE
 #support set dimensions/samples
 radius.small <- 60000 #small radius in meters. =6,000 = 60 km = 120 x 120 km boxes #200 points
@@ -64,17 +66,48 @@ plot.height <- 5
 sender <- "curryclairem.mail@gmail.com"
 recipients <- c("curryclairem.mail@gmail.com")
 
-#Bring in the ensemble function.
-source("source_ensemble_function_complete_ensemble_model.R")
+#Bring in the ensemble function newly for each species.
+SPECIES <- "HOLA"
+source("source_ensemble_complete_ensemble_model.R")
 
-complete.ensemble.model(SPECIES = "DICK")
-complete.ensemble.model(SPECIES = "EAME")
-complete.ensemble.model(SPECIES = "WEME")
-complete.ensemble.model(SPECIES = "LASP")
-complete.ensemble.model(SPECIES = "NOBO")
-complete.ensemble.model(SPECIES = "GRSP")
-complete.ensemble.model(SPECIES = "CASP")
-complete.ensemble.model(SPECIES = "HOLA")
-complete.ensemble.model(SPECIES = "BHCO")
-complete.ensemble.model(SPECIES = "FISP")
-complete.ensemble.model(SPECIES = "UPSA")
+SPECIES <- "CASP"
+source("source_ensemble_complete_ensemble_model.R")
+
+SPECIES <- "FISP"
+source("source_ensemble_complete_ensemble_model.R")
+
+SPECIES <- "LASP"
+source("source_ensemble_complete_ensemble_model.R")
+
+SPECIES <- "GRSP"
+source("source_ensemble_complete_ensemble_model.R")
+
+SPECIES <- "DICK"
+source("source_ensemble_complete_ensemble_model.R")
+
+SPECIES <- "EAME"
+source("source_ensemble_complete_ensemble_model.R")
+
+SPECIES <- "WEME"
+source("source_ensemble_complete_ensemble_model.R")
+
+SPECIES <- "NOBO"
+source("source_ensemble_complete_ensemble_model.R")
+
+SPECIES <- "UPSA"
+source("source_ensemble_complete_ensemble_model.R")
+
+SPECIES <- "BHCO"
+source("source_ensemble_complete_ensemble_model.R")
+
+send.mail(from = sender,
+          to = recipients,
+          subject = paste0("Downgrade to free tier!!  Quick!",
+                           SPECIES),
+          body = "Downgrade server type to free tier.  Download all EBS data.  Terminate all!",
+          smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                      user.name = "curryclairem.mail@gmail.com",            
+                      passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+          authenticate = TRUE,
+          send = TRUE)
+
