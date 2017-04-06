@@ -17,7 +17,9 @@ spatial.support.set<-function(whichrandombox,
   library(randomForest)
   tree.test <- randomForest(presence ~ ., 
                             data = support.set.data,
+                            replace = FALSE,
                             ...) #This allows all other random forest arguments to be set at the spatial.support.set function level.
+ 
   saveRDS(tree.test,
           file = paste0(SPECIES,
                         "tree",
@@ -27,29 +29,26 @@ spatial.support.set<-function(whichrandombox,
           )
   support.set <- crop(predictor_stack,
                       extent(polys.df[whichrandombox,]))
-  beginCluster(type = "SOCK") #use raster's multicore clustering to automatically use more cores and speed up predict and extend
-  #use of clusterR is automatic in predict
-  tree.test.raster.prediction <- raster::predict(object = support.set,
+
+  tree.test.raster.prediction <-  raster::predict(object = support.set,
                                                  model = tree.test,
                                                  type = "prob",
-                                                 progress = "text")
-    #clusterR(support.set,
-                                 #         fun = raster::predict,
-                                 #         args = list(model = tree.test,
-                                  #                    type = "prob",
-                                  #                    progress = "text"))
-  endCluster()
+                                                 progress = "text",
+                                                 filename = paste0(SPECIES,
+                                                                   "_treetestrasterpredictionextended",
+                                                                   deparse(substitute(polys.df)),
+                                                                   whichrandombox,
+                                                                   ".tif"),
+                                                 format = "GTiff",
+                                                 overwrite = TRUE)
+
   tree.test.raster.prediction.extended <- raster::extend(x = tree.test.raster.prediction,
                                                          y = studyarea.extent,
                                                          value = NA)
-  writeRaster(tree.test.raster.prediction.extended,
-             filename = paste0(SPECIES,
-                                "_treetestrasterpredictionextended",
-                                deparse(substitute(polys.df)),
-                                whichrandombox,
-                                ".tif"),
-              format="GTiff",
-              overwrite = TRUE)
+  
+  return(list(tree.test.raster.prediction.extended,
+              sample.size.good))
+
   #remove all temporary files.
   removeTmpFiles(h=0)
 
