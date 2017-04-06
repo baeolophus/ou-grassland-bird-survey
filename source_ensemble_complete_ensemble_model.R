@@ -5,8 +5,8 @@ library(raster)
 library(rgdal)
 library(mailR)
 library(microbenchmark)
-SPECIES = "DICK"
-complete.ensemble.model <- function (SPECIES) {
+
+beginCluster()
   complete.dataset.for.sdm.SPECIES<-dplyr::filter(complete.dataset.for.sdm,
                                                   SPEC==SPECIES)
   
@@ -53,17 +53,18 @@ complete.ensemble.model <- function (SPECIES) {
                                                 radius.small)
   polys.small.p <- unlist(polys.small[[1]])
   polys.small.df <- unlist(polys.small[[2]])
-  beginCluster()
   microbenchmark.small <- microbenchmark(
-    support.small.list <- lapply(1,#:numberofpoints.small,
+    support.small.list <- lapply(1:2,#numberofpoints.small,
                                FUN = spatial.support.set,
                                spatialdataset = latlong.predictors.SPECIES.spatial,
                                predictor_stack = predictors_stack_with_all_variables,
                                polys.df = polys.small.df,
                                ntree = ntree,
                                importance = importance),
-  support.small.ensemble <- ensemble.function(support.small.list),
-  times = 1)
+    times = 1)
+  microbenchmark.small2 <- microbenchmark(support.small.ensemble <- ensemble.function(support.small.list),
+    times = 1)
+
   send.mail(from = sender,
             to = recipients,
             subject = paste0("Your small ensemble is complete for ",
@@ -81,16 +82,19 @@ complete.ensemble.model <- function (SPECIES) {
   polys.medium.p <- unlist(polys.medium[[1]])
   polys.medium.df <- unlist(polys.medium[[2]])
   microbenchmark.medium <- microbenchmark(
-  support.medium.list <- lapply(1,#:numberofpoints.medium,
+  support.medium.list <- lapply(1:2,#numberofpoints.medium,
                                 FUN = spatial.support.set,
                                 spatialdataset = latlong.predictors.SPECIES.spatial,
                                 predictor_stack = predictors_stack_with_all_variables,
                                 polys.df = polys.medium.df,
                                 ntree = ntree,
                                 importance = importance),
-  
-  support.medium.ensemble <- ensemble.function(support.medium.list),
   times = 1)
+  microbenchmark.medium2 <- microbenchmark(
+    support.medium.ensemble <- ensemble.function(support.medium.list),
+  times = 1)
+  
+ 
   send.mail(from = sender,
             to = recipients,
             subject = paste0("Your medium ensemble is complete for ",
@@ -108,16 +112,19 @@ complete.ensemble.model <- function (SPECIES) {
   polys.large.p <- unlist(polys.large[[1]])
   polys.large.df <- unlist(polys.large[[2]])
   microbenchmark.large <- microbenchmark(
-  support.large.list <- lapply(1,#:numberofpoints.large,
+  support.large.list <- lapply(1:2,#numberofpoints.large,
                                               FUN = spatial.support.set,
                                               spatialdataset = latlong.predictors.SPECIES.spatial,
                                               predictor_stack = predictors_stack_with_all_variables,
                                               polys.df = polys.large.df,
                                               ntree = ntree,
                                               importance = importance),
-
-  support.large.ensemble <- ensemble.function(support.large.list),
   times = 1)
+  microbenchmark.large2 <- microbenchmark(
+    support.large.ensemble <- ensemble.function(support.large.list),
+  times = 1)
+
+
   
   send.mail(from = sender,
             to = recipients,
@@ -130,8 +137,6 @@ complete.ensemble.model <- function (SPECIES) {
             authenticate = TRUE,
             send = TRUE)
 
-  beep()#small, medium, large
-  
   ############################
   #Statewide model
   
@@ -139,53 +144,46 @@ complete.ensemble.model <- function (SPECIES) {
   statewide.data$Longitude <- NULL
   statewide.data$Latitude <- NULL
   #These two columns should be taken out because not predicting on them.
-  beginCluster()
-  microbenchmark.statewide <- microbenchmark (
-  tree.statewide <- randomForest(presence ~ ., 
-                                 data = statewide.data,
-                                 ntree = ntree,
-                                 importance = TRUE),
-  
 
-  tree.statewide.raster.prediction.prob<-clusterR(predictors_stack_with_all_variables,
-                                                                 raster::predict,
-                                                                 args = list(model = tree.statewide,
-                                                                             type = "prob",
-                                                                             progress = "text")), 
-  
+  microbenchmark.statewide <- microbenchmark (tree.statewide <- randomForest(presence ~ ., 
+                                   data = statewide.data,
+                                   ntree = ntree,
+                                   replace = FALSE, #strobl et al. 2007
+                                   importance = TRUE),
+                                   times = 1)
+  microbenchmark.statewide2 <- microbenchmark (
+  tree.statewide.raster.prediction.prob <- raster::predict(predictors_stack_with_all_variables,
+                                                           model = tree.statewide,
+                                                           type = "prob",
+                                                           progress = "text",
+                                                           filename = paste0(SPECIES,
+                                                                             "_tree.statewide.raster.prediction.prob",
+                                                                             ".tif"),
+                                                           format="GTiff",
+                                                           overwrite = TRUE),
   times = 1)
   endCluster()
-  
-  microbenchmark.statewide.predonlynocluster <- microbenchmark (tree.statewide.raster.prediction.prob <-  raster::predict(object = predictors_stack_with_all_variables,
-                    model = tree.statewide,
-                    type = "prob",
-                    progress = "text"), times = 1)
-  
-  #pdf or eps of map here generated here too
-  writeRaster(tree.statewide.raster.prediction.prob,
-              filename = paste0(SPECIES,
-                                "tree.statewide.raster.prediction.prob",
-                                ".tif"),
-              format="GTiff",
-              overwrite = TRUE)
 
-  svg(file = paste0("DICK",#SPECIES,
+  svg(file = paste0(SPECIES,
                     "-varimpplot",
                     ".svg"), 
       width = 10,#plot.width,
       height = 8)#plot.height)
-  varImpPlot(tree.statewide)
+  varImpPlot(tree.statewide,
+             scale = FALSE)
   dev.off()
-  tree.statewide.varimp <- data.frame(importance(tree.statewide))
+  tree.statewide.varimp <- data.frame(importance(tree.statewide,
+                                                 scale = FALSE))
   
   #Go through top 30 variables in partialPlot
   #pdf
   #Get variable importances.
-  imp <- importance(tree.statewide)
+  imp <- importance(tree.statewide, 
+                    scale = FALSE)  #scale = false from strobl et al. 2007
   #Order them.
   impvar <- rownames(imp)[order(imp[, 1], decreasing=TRUE)]
   #Create svg file of top 10 important variables.
-  svg(file = paste0("DICK",#SPECIES,
+  svg(file = paste0(SPECIES,
                     "-partialplots",
                     ".svg"),
       width = 7, #plot.width,
@@ -205,6 +203,22 @@ complete.ensemble.model <- function (SPECIES) {
   
   #return graphics to 1 x 1 state.
   par(mfrow = c(1,1))
+  
+  #Then variable importance in cforest (Strobl et al. papers on bias).
+  my_cforest_control <- cforest_control(teststat = "quad",
+                                        testtype = "Univ",
+                                        mincriterion = 0,
+                                        ntree = ntree, 
+                                        mtry = floor(sqrt(ncol(statewide.data)))-1,
+                                        replace = FALSE)
+  
+  tree.statewide.cforest <- cforest(presence ~ .,
+                            data = statewide.data,
+                            controls = my_cforest_control)
+  
+  imp.cforest <- as.data.frame(varimp(tree.statewide.cforest))
+  varnames.cforest <- rownames(imp.cforest)[order(imp.cforest, decreasing=TRUE)]
+
   #http://stats.stackexchange.com/questions/93202/odds-ratio-from-decision-tree-and-random-forest
   #http://r.789695.n4.nabble.com/randomForest-PartialPlot-reg-td2551372.html shoudl not do the logit thing actually
   #Just go for target class (I want presence ie "1") and interpret higher as more likely.
@@ -355,11 +369,19 @@ complete.ensemble.model <- function (SPECIES) {
   microbenchmark.large$model <- "large"
   microbenchmark.medium$model <- "medium"
   microbenchmark.small$model <- "small"
+  microbenchmark.statewide2$model <- "statewide2"
+  microbenchmark.large2$model <- "large2"
+  microbenchmark.medium2$model <- "medium2"
+  microbenchmark.small2$model <- "small2"
   
   microbenchmarks <- rbind(microbenchmark.statewide,
                            microbenchmark.large,
                            microbenchmark.medium,
-                           microbenchmark.small)
+                           microbenchmark.small,
+                           microbenchmark.statewide2,
+                           microbenchmark.large2,
+                           microbenchmark.medium2,
+                           microbenchmark.small2)
   
   microbenchmarks$Species <- SPECIES
   #####################
@@ -372,7 +394,10 @@ complete.ensemble.model <- function (SPECIES) {
                   medium.sampling.auc,
                   large.sampling.rmse,
                   large.sampling.auc,
-                  tree.statewide)
+                  tree.statewide,
+                  tree.statewide.cforest,
+                  imp.cforest,
+                  varnames.cforest)
   saveRDS(results,
           file = paste0(SPECIES,
                         "-ensembleresults"))
@@ -386,8 +411,7 @@ complete.ensemble.model <- function (SPECIES) {
                         passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
             authenticate = TRUE,
             send = TRUE)
-  
-  return(results)
+
   
   #####################
   #remove the species-specific objects.
@@ -427,10 +451,17 @@ complete.ensemble.model <- function (SPECIES) {
      large.sampling.rmse,
      large.sampling.auc,
      microbenchmarks,
-     results)
+     results,
+     tree.statewide.cforest,
+     imp.cforest,
+     varnames.cforest,
+     microbenchmark.statewide2,
+     microbenchmark.large2,
+     microbenchmark.medium2,
+     microbenchmark.small2)
   #Delete temporary file directory at end of species processing.
   #http://stackoverflow.com/questions/18955305/setting-an-overwriteable-temporary-file-for-rasters-in-r?noredirect=1&lq=1
   unlink(file.path(getwd(),"rastertemp"),
          recursive = TRUE)
-  
-}
+
+
