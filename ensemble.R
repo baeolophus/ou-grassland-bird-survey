@@ -47,9 +47,9 @@ importance <- FALSE
 radius.small <- 60000 #small radius in meters. =6,000 = 60 km = 120 x 120 km boxes #200 points
 radius.medium <- 100000 #med radius in meters. =100,000 = 100 km = 200 x 200 km boxes #75 points
 radius.large <- 225000 #large radius in meters. =250,000 = 250 km = 500 x 500 km boxes #25 points
-numberofpoints.small <- 200
-numberofpoints.medium <- 75
-numberofpoints.large <- 25
+numberofpoints.small <- 100
+numberofpoints.medium <- 37
+numberofpoints.large <- 12
 
 #bring in evaluation dataset and make it spatial object
 evaluation.spatial <- read.csv(file = "oklahoma_evaluation_datasetforsdm_naomit_utm.csv") 
@@ -67,6 +67,12 @@ sender <- "curryclairem.mail@gmail.com"
 recipients <- c("curryclairem.mail@gmail.com")
 
 #Bring in the ensemble function newly for each species.
+SPECIES <- "EAME"
+source("source_ensemble_complete_ensemble_model.R")
+
+SPECIES <- "WEME"
+source("source_ensemble_complete_ensemble_model.R")
+
 SPECIES <- "HOLA"
 source("source_ensemble_complete_ensemble_model.R")
 
@@ -83,12 +89,6 @@ SPECIES <- "GRSP"
 source("source_ensemble_complete_ensemble_model.R")
 
 SPECIES <- "DICK"
-source("source_ensemble_complete_ensemble_model.R")
-
-SPECIES <- "EAME"
-source("source_ensemble_complete_ensemble_model.R")
-
-SPECIES <- "WEME"
 source("source_ensemble_complete_ensemble_model.R")
 
 SPECIES <- "NOBO"
