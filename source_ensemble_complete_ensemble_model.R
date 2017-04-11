@@ -21,7 +21,7 @@ beginCluster()
                                     y = complete.dataset.for.sdm.SPECIES)
   predictors_stack.SPECIES.df <- as.data.frame(predictors_stack.SPECIES)
   
-  latlong.predictors.SPECIES<-cbind("presence" = as.factor(complete.dataset.for.sdm.SPECIES$presence),
+  latlong.predictors.SPECIES<-cbind("presence" = complete.dataset.for.sdm.SPECIES$presence,
                                     coordinates(complete.dataset.for.sdm.SPECIES),
                                     "effort_time_ok_census_mask" = complete.dataset.for.sdm.SPECIES$effort_time,
                                     "effort_length_ok_census_mask" = complete.dataset.for.sdm.SPECIES$effort_length,
@@ -53,8 +53,15 @@ beginCluster()
                                                 radius.small)
   polys.small.p <- unlist(polys.small[[1]])
   polys.small.df <- unlist(polys.small[[2]])
+  
+  #create temporary raster files in a folder that can be deleted as the intermediate ones won't be needed later
+  rasterOptions()$tmpdir
+  rasterOptions(tmpdir=paste0(getwd(),
+                              "/rastertemp/",
+                              SPECIES,
+                              "/small"))
   microbenchmark.small <- microbenchmark(
-    support.small.list <- lapply(1:2,#numberofpoints.small,
+    support.small.list <- lapply(1:numberofpoints.small,
                                FUN = spatial.support.set,
                                spatialdataset = latlong.predictors.SPECIES.spatial,
                                predictor_stack = predictors_stack_with_all_variables,
@@ -62,8 +69,17 @@ beginCluster()
                                ntree = ntree,
                                importance = importance),
     times = 1)
+  rasterOptions(tmpdir=paste0(getwd(),
+                              "/rastertemp/",
+                              SPECIES,
+                              "/mosaic"))
   microbenchmark.small2 <- microbenchmark(support.small.ensemble <- ensemble.function(support.small.list),
     times = 1)
+  unlink(file.path(getwd(),
+                   "rastertemp",
+                   SPECIES,
+                   "small"),
+         recursive = TRUE)
 
   send.mail(from = sender,
             to = recipients,
@@ -81,8 +97,14 @@ beginCluster()
                                                  radius.medium)
   polys.medium.p <- unlist(polys.medium[[1]])
   polys.medium.df <- unlist(polys.medium[[2]])
+  
+  rasterOptions()$tmpdir
+  rasterOptions(tmpdir=paste0(getwd(),
+                              "/rastertemp/",
+                              SPECIES,
+                              "/medium"))
   microbenchmark.medium <- microbenchmark(
-  support.medium.list <- lapply(1:2,#numberofpoints.medium,
+  support.medium.list <- lapply(1:numberofpoints.medium,
                                 FUN = spatial.support.set,
                                 spatialdataset = latlong.predictors.SPECIES.spatial,
                                 predictor_stack = predictors_stack_with_all_variables,
@@ -90,10 +112,19 @@ beginCluster()
                                 ntree = ntree,
                                 importance = importance),
   times = 1)
+  rasterOptions(tmpdir=paste0(getwd(),
+                              "/rastertemp/",
+                              SPECIES,
+                              "/mosaic"))
   microbenchmark.medium2 <- microbenchmark(
     support.medium.ensemble <- ensemble.function(support.medium.list),
   times = 1)
-  
+  #remove medium temporary files
+  unlink(file.path(getwd(),
+                   "rastertemp",
+                   SPECIES,
+                   "medium"),
+         recursive = TRUE)
  
   send.mail(from = sender,
             to = recipients,
@@ -111,8 +142,12 @@ beginCluster()
                                                 radius.large)
   polys.large.p <- unlist(polys.large[[1]])
   polys.large.df <- unlist(polys.large[[2]])
+  rasterOptions(tmpdir=paste0(getwd(),
+                              "/rastertemp/",
+                              SPECIES,
+                              "/large"))
   microbenchmark.large <- microbenchmark(
-  support.large.list <- lapply(1:2,#numberofpoints.large,
+  support.large.list <- lapply(1:numberofpoints.large,
                                               FUN = spatial.support.set,
                                               spatialdataset = latlong.predictors.SPECIES.spatial,
                                               predictor_stack = predictors_stack_with_all_variables,
@@ -120,10 +155,19 @@ beginCluster()
                                               ntree = ntree,
                                               importance = importance),
   times = 1)
+  rasterOptions(tmpdir=paste0(getwd(),
+                              "/rastertemp/",
+                              SPECIES,
+                              "/mosaic"))
   microbenchmark.large2 <- microbenchmark(
     support.large.ensemble <- ensemble.function(support.large.list),
   times = 1)
-
+  #remove large temporary files
+  unlink(file.path(getwd(),
+                   "rastertemp",
+                   SPECIES,
+                   "large"),
+         recursive = TRUE)
 
   
   send.mail(from = sender,
@@ -145,6 +189,10 @@ beginCluster()
   statewide.data$Latitude <- NULL
   #These two columns should be taken out because not predicting on them.
 
+  rasterOptions(tmpdir=paste0(getwd(),
+                              "/rastertemp/",
+                              SPECIES,
+                              "/statewide"))
   microbenchmark.statewide <- microbenchmark (tree.statewide <- randomForest(presence ~ ., 
                                    data = statewide.data,
                                    ntree = ntree,
@@ -154,7 +202,7 @@ beginCluster()
   microbenchmark.statewide2 <- microbenchmark (
   tree.statewide.raster.prediction.prob <- raster::predict(predictors_stack_with_all_variables,
                                                            model = tree.statewide,
-                                                           type = "prob",
+                                                         #  type = "prob",
                                                            progress = "text",
                                                            filename = paste0(SPECIES,
                                                                              "_tree.statewide.raster.prediction.prob",
@@ -219,6 +267,28 @@ beginCluster()
   imp.cforest <- as.data.frame(varimp(tree.statewide.cforest))
   varnames.cforest <- rownames(imp.cforest)[order(imp.cforest, decreasing=TRUE)]
 
+  #Create svg file of top 10 important variables.
+  svg(file = paste0(SPECIES,
+                    "-partialplots-cforest",
+                    ".svg"),
+      width = 7, #plot.width,
+      height = 10)#plot.height*2)
+  
+  par(mfrow = c(5,2))
+  for (i in 1:10) {
+    partialPlot(tree.statewide,
+                statewide.data, 
+                varnames.cforest[i],
+                which.class = "1",
+                xlab=varnames.cforest[i],
+                main=paste("Partial Dependence on", varnames.cforest[i]))
+  }
+  
+  dev.off()
+  
+  #return graphics to 1 x 1 state.
+  par(mfrow = c(1,1))
+  
   #http://stats.stackexchange.com/questions/93202/odds-ratio-from-decision-tree-and-random-forest
   #http://r.789695.n4.nabble.com/randomForest-PartialPlot-reg-td2551372.html shoudl not do the logit thing actually
   #Just go for target class (I want presence ie "1") and interpret higher as more likely.
@@ -400,7 +470,7 @@ beginCluster()
                   varnames.cforest)
   saveRDS(results,
           file = paste0(SPECIES,
-                        "-ensembleresults"))
+                        "_ensembleresults"))
   send.mail(from = sender,
             to = recipients,
             subject = paste0("Everything is complete for ",
