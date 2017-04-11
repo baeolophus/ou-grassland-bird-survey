@@ -5,6 +5,7 @@ spatial.support.set<-function(whichrandombox,
                               predictor_stack,
                               polys.df,
                               ...){
+
   spatial.support.set<-spatialdataset[polys.df[whichrandombox,],]
   #I think there should be a line that turns it back into regular data?
   sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
@@ -32,7 +33,7 @@ spatial.support.set<-function(whichrandombox,
 
   tree.test.raster.prediction <-  raster::predict(object = support.set,
                                                  model = tree.test,
-                                                 type = "prob",
+                                               #  type = "prob",
                                                  progress = "text",
                                                  filename = paste0(SPECIES,
                                                                    "_treetestrasterpredictionextended",
@@ -45,11 +46,9 @@ spatial.support.set<-function(whichrandombox,
   tree.test.raster.prediction.extended <- raster::extend(x = tree.test.raster.prediction,
                                                          y = studyarea.extent,
                                                          value = NA)
-  
+
   return(list(tree.test.raster.prediction.extended,
               sample.size.good))
 
-  #remove all temporary files.
-  removeTmpFiles(h=0)
 
 }
