@@ -7,8 +7,10 @@ spatial.support.set<-function(whichrandombox,
                               ...){
 
   spatial.support.set<-spatialdataset[polys.df[whichrandombox,],]
-  #I think there should be a line that turns it back into regular data?
-  sample.size.good<-ifelse(length(spatial.support.set)>25, 1, 0)
+  sample.size.good<-ifelse(length(spatial.support.set$presence)>25 &
+                             length(unique(spatial.support.set$presence))>1,
+                           1, #if both conditions met for sample size and both 0/1s are present
+                           0) #if not, do not use (0 weight in ensemble step)
   #need to have the minimum data requirement in here too.
   support.set.data <- as.data.frame(spatial.support.set)
   support.set.data$Longitude <- NULL
