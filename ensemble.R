@@ -28,16 +28,16 @@ complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.cs
 #bring in the two rasters needed for predict::raster stage but aren't lumped into main predictor_stack.
 #(effort is obtained from dataframes).
 #file in working directory AWS
-effort_length_ok_census_mask <- raster("effort/effort_length_ok_census_mask.tif")
-effort_time_ok_census_mask <- raster("effort/effort_time_ok_census_mask.tif")
+effort_length <- raster("effort/effort_length.tif")
+effort_time <- raster("effort/effort_time.tif")
 #local computer
 #effort_length_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_length_ok_census_mask.tif")
 #effort_time_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_time_ok_census_mask.tif")
 
 #Create predictors_stack_with_all_variables to include a raster version of effort time and and effort length
 predictors_stack_with_all_variables <- addLayer(predictors_stack,
-                                                effort_length_ok_census_mask,
-                                                effort_time_ok_census_mask)
+                                                effort_length,
+                                                effort_time)
 
 #parameters for random forest models and support set sizes.
 #random forest parameters
