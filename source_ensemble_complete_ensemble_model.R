@@ -27,7 +27,8 @@ beginCluster()
                                     "effort_length_ok_census_mask" = complete.dataset.for.sdm.SPECIES$effort_length,
                                     predictors_stack.SPECIES.df,
                                     row.names = NULL)
-  
+  #land covers are factors.
+  latlong.predictors.SPECIES$nlcd_ok_utm14_okmask <- as.factor(latlong.predictors.SPECIES$nlcd_ok_utm14_okmask)
   latlong.predictors.SPECIES.spatial <- latlong.predictors.SPECIES
   #has to be spatial for function to work so re-add that
   coordinates(latlong.predictors.SPECIES.spatial) <- c("Longitude", "Latitude")
@@ -60,8 +61,18 @@ beginCluster()
                               "/rastertemp/",
                               SPECIES,
                               "/small"))
-  microbenchmark.small <- microbenchmark(
-    support.small.list <- lapply(1:numberofpoints.small,
+  send.mail(from = sender,
+            to = recipients,
+            subject = paste0("Your small ensemble is starting for ",
+                             SPECIES),
+            body = "Save the before and after in case microbenchmark crashes.",
+            smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                        user.name = "curryclairem.mail@gmail.com",            
+                        passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+            authenticate = TRUE,
+            send = TRUE)
+   microbenchmark.small <- microbenchmark(
+    support.small.list <- lapply(1:length(polys.small.df),
                                FUN = spatial.support.set,
                                spatialdataset = latlong.predictors.SPECIES.spatial,
                                predictor_stack = predictors_stack_with_all_variables,
@@ -103,8 +114,18 @@ beginCluster()
                               "/rastertemp/",
                               SPECIES,
                               "/medium"))
+  send.mail(from = sender,
+            to = recipients,
+            subject = paste0("Your medium ensemble is starting for ",
+                             SPECIES),
+            body = "Save the before and after in case microbenchmark crashes.",
+            smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                        user.name = "curryclairem.mail@gmail.com",            
+                        passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+            authenticate = TRUE,
+            send = TRUE)
   microbenchmark.medium <- microbenchmark(
-  support.medium.list <- lapply(1:numberofpoints.medium,
+  support.medium.list <- lapply(1:length(polys.medium.df),
                                 FUN = spatial.support.set,
                                 spatialdataset = latlong.predictors.SPECIES.spatial,
                                 predictor_stack = predictors_stack_with_all_variables,
@@ -146,8 +167,18 @@ beginCluster()
                               "/rastertemp/",
                               SPECIES,
                               "/large"))
+  send.mail(from = sender,
+            to = recipients,
+            subject = paste0("Your large ensemble is starting for ",
+                             SPECIES),
+            body = "Save the before and after in case microbenchmark crashes.",
+            smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                        user.name = "curryclairem.mail@gmail.com",            
+                        passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+            authenticate = TRUE,
+            send = TRUE)
   microbenchmark.large <- microbenchmark(
-  support.large.list <- lapply(1:numberofpoints.large,
+  support.large.list <- lapply(1:length(polys.large.df),
                                               FUN = spatial.support.set,
                                               spatialdataset = latlong.predictors.SPECIES.spatial,
                                               predictor_stack = predictors_stack_with_all_variables,
@@ -193,6 +224,16 @@ beginCluster()
                               "/rastertemp/",
                               SPECIES,
                               "/statewide"))
+  send.mail(from = sender,
+            to = recipients,
+            subject = paste0("Your statewide model is starting for ",
+                             SPECIES),
+            body = "Save the before and after in case microbenchmark crashes.",
+            smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                        user.name = "curryclairem.mail@gmail.com",            
+                        passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+            authenticate = TRUE,
+            send = TRUE)
   microbenchmark.statewide <- microbenchmark (tree.statewide <- randomForest(presence ~ ., 
                                    data = statewide.data,
                                    ntree = ntree,
