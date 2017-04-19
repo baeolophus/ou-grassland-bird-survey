@@ -1,8 +1,15 @@
 library(randomForest)
+library(party)
 library(raster)
+library(microbenchmark)
 
-iris.rf <- randomForest(Species ~ ., data=iris, replace = FALSE)
+iris.rf <- randomForest(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, data=iris, replace = FALSE)
+iris.cf <- cforest(Species ~ ., data = iris, control = cforest_unbiased(mtry = 3))
 
+m <- cforest(pa~., control=cforest_unbiased(mtry=3), data=v)
+f <- list(levels(v$red))
+names(f) <- 'red'
+pc <- predict(logo, m, OOB=TRUE, factors=f)
 
 Sepal.Length <- raster()
 Sepal.Length[] <- seq(from = min(iris$Sepal.Length), to = max(iris$Sepal.Length), length.out = ncell(Sepal.Length))
