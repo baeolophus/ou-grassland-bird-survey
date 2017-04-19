@@ -1,10 +1,12 @@
 #Ensemble function, calls on other functions.
 library(randomForest)
+library(caret)
 library(dplyr)
 library(raster)
 library(rgdal)
 library(mailR)
 library(microbenchmark)
+library(party)
 
 beginCluster()
   complete.dataset.for.sdm.SPECIES<-dplyr::filter(complete.dataset.for.sdm,
@@ -21,18 +23,38 @@ beginCluster()
                                     y = complete.dataset.for.sdm.SPECIES)
   predictors_stack.SPECIES.df <- as.data.frame(predictors_stack.SPECIES)
   
-  latlong.predictors.SPECIES<-cbind("presence" = complete.dataset.for.sdm.SPECIES$presence,
+  latlong.predictors.SPECIES.unsplit<-cbind(
+                                              "presence" = complete.dataset.for.sdm.SPECIES$presence,
                                     coordinates(complete.dataset.for.sdm.SPECIES),
-                                    "effort_time_ok_census_mask" = complete.dataset.for.sdm.SPECIES$effort_time,
-                                    "effort_length_ok_census_mask" = complete.dataset.for.sdm.SPECIES$effort_length,
+                                    "effort_time" = complete.dataset.for.sdm.SPECIES$effort_time,
+                                    "effort_length" = complete.dataset.for.sdm.SPECIES$effort_length,
                                     predictors_stack.SPECIES.df,
                                     row.names = NULL)
   #land covers are factors.
-  latlong.predictors.SPECIES$nlcd_ok_utm14_okmask <- as.factor(latlong.predictors.SPECIES$nlcd_ok_utm14_okmask)
+  latlong.predictors.SPECIES.unsplit$nlcd_ok_utm14_okmask <- as.factor(latlong.predictors.SPECIES.unsplit$nlcd_ok_utm14_okmask)
+
+  set.seed(78)
+  train <- createDataPartition(y = latlong.predictors.SPECIES.unsplit$presence,
+                              times = 1,
+                              p = 0.5,
+                              list = FALSE)
+  
+ 
+  latlong.predictors.SPECIES <- latlong.predictors.SPECIES.unsplit[train,]
+  latlong.predictors.SPECIES.eval <- latlong.predictors.SPECIES.unsplit[-train,]
+  
+  
+  #spatial versions
   latlong.predictors.SPECIES.spatial <- latlong.predictors.SPECIES
   #has to be spatial for function to work so re-add that
   coordinates(latlong.predictors.SPECIES.spatial) <- c("Longitude", "Latitude")
   proj4string(latlong.predictors.SPECIES.spatial)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+  #eval
+  latlong.predictors.SPECIES.eval.spatial <- latlong.predictors.SPECIES.eval
+  #has to be spatial for function to work so re-add that
+  coordinates(latlong.predictors.SPECIES.eval.spatial) <- c("Longitude", "Latitude")
+  proj4string(latlong.predictors.SPECIES.eval.spatial)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+  
   
   #free up memory
   rm(predictors_stack.SPECIES)  
@@ -50,6 +72,7 @@ beginCluster()
   #Run small, medium, and large support set models.
   
   #small support sets
+  #these are most memory intensive.
   polys.small <- random.stratified.support.sets(numberofpoints = numberofpoints.small,
                                                 radius.small)
   polys.small.p <- unlist(polys.small[[1]])
@@ -80,17 +103,28 @@ beginCluster()
                                ntree = ntree,
                                importance = importance),
     times = 1)
+  
+  microbenchmark.small$model <- "small"
+  saveRDS(microbenchmark.small,
+           file = paste0("/",
+                         SPECIES,
+                         "/",
+                         SPECIES,
+                         "microbenchmark_small1")) 
+  saveRDS(support.small.list,
+           file = paste0("/",
+                         SPECIES,
+                         "/",
+                         SPECIES,
+                         "_small_support_list"))
+  gc() 
+   
   rasterOptions(tmpdir=paste0(getwd(),
                               "/rastertemp/",
                               SPECIES,
                               "/mosaic"))
   microbenchmark.small2 <- microbenchmark(support.small.ensemble <- ensemble.function(support.small.list),
     times = 1)
-  unlink(file.path(getwd(),
-                   "rastertemp",
-                   SPECIES,
-                   "small"),
-         recursive = TRUE)
 
   send.mail(from = sender,
             to = recipients,
@@ -102,6 +136,22 @@ beginCluster()
                         passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
             authenticate = TRUE,
             send = TRUE)
+  
+  unlink(file.path(getwd(),
+                   "rastertemp",
+                   SPECIES,
+                   "small"),
+         recursive = TRUE)
+  rm(support.small.list)
+  gc()
+  
+  #report microbenchmark values
+  microbenchmark.small2$model <- "small2"
+  saveRDS(microbenchmark.small2,
+          file = paste0(SPECIES,
+                        "microbenchmark_small2"))
+  
+
   
   #medium support sets
   polys.medium <- random.stratified.support.sets(numberofpoints = numberofpoints.medium,
@@ -133,20 +183,37 @@ beginCluster()
                                 ntree = ntree,
                                 importance = importance),
   times = 1)
+  saveRDS(support.medium.list,
+          file = paste0("/",
+                        SPECIES,
+                        "/",
+                        SPECIES,
+                        "_medium_support_list"))
+  
+  microbenchmark.medium$model <- "medium"
+  saveRDS(microbenchmark.medium,
+          file = paste0("/",
+                        SPECIES,
+                        "/",
+                        SPECIES,
+                        "microbenchmarks_medium1"))
+
   rasterOptions(tmpdir=paste0(getwd(),
                               "/rastertemp/",
                               SPECIES,
                               "/mosaic"))
+  
   microbenchmark.medium2 <- microbenchmark(
     support.medium.ensemble <- ensemble.function(support.medium.list),
   times = 1)
-  #remove medium temporary files
-  unlink(file.path(getwd(),
-                   "rastertemp",
-                   SPECIES,
-                   "medium"),
-         recursive = TRUE)
- 
+  microbenchmark.medium2$model <- "medium2"
+  saveRDS(microbenchmark.medium2,
+          file = paste0("/",
+                        SPECIES,
+                        "/",
+                        SPECIES,
+                        "microbenchmarks_medium2"))
+  
   send.mail(from = sender,
             to = recipients,
             subject = paste0("Your medium ensemble is complete for ",
@@ -157,7 +224,16 @@ beginCluster()
                         passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
             authenticate = TRUE,
             send = TRUE)
-
+  #remove medium temporary files
+  unlink(file.path(getwd(),
+                   "rastertemp",
+                   SPECIES,
+                   "medium"),
+         recursive = TRUE)
+  rm(support.medium.list)
+  gc()
+  
+  
   #large support sets
   polys.large <- random.stratified.support.sets(numberofpoints = numberofpoints.large,
                                                 radius.large)
@@ -186,6 +262,25 @@ beginCluster()
                                               ntree = ntree,
                                               importance = importance),
   times = 1)
+  saveRDS(support.large.list,
+          file = paste0("/",
+                        SPECIES,
+                        "/",
+                        SPECIES,
+                        "_large_support_list"))
+  
+  microbenchmark.large$model <- "large"
+  microbenchmark.large2$model <- "large2"
+  microbenchmarks.large <- rbind(microbenchmark.large,
+                                 microbenchmark.large2)
+  saveRDS(microbenchmarks.large,
+          file = paste0("/",
+                        SPECIES,
+                        "/",
+                        SPECIES,
+                        "microbenchmarks_large"))
+  
+
   rasterOptions(tmpdir=paste0(getwd(),
                               "/rastertemp/",
                               SPECIES,
@@ -193,12 +288,6 @@ beginCluster()
   microbenchmark.large2 <- microbenchmark(
     support.large.ensemble <- ensemble.function(support.large.list),
   times = 1)
-  #remove large temporary files
-  unlink(file.path(getwd(),
-                   "rastertemp",
-                   SPECIES,
-                   "large"),
-         recursive = TRUE)
 
   
   send.mail(from = sender,
@@ -211,7 +300,15 @@ beginCluster()
                         passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
             authenticate = TRUE,
             send = TRUE)
-
+  #remove large temporary files
+  unlink(file.path(getwd(),
+                   "rastertemp",
+                   SPECIES,
+                   "large"),
+         recursive = TRUE)
+  rm(support.large.list)
+  gc()
+  
   ############################
   #Statewide model
   
@@ -245,14 +342,26 @@ beginCluster()
                                                            model = tree.statewide,
                                                          #  type = "prob",
                                                            progress = "text",
-                                                           filename = paste0(SPECIES,
+                                                           filename = paste0(
+                                                                             SPECIES,
                                                                              "_tree.statewide.raster.prediction.prob",
                                                                              ".tif"),
                                                            format="GTiff",
                                                            overwrite = TRUE),
   times = 1)
   endCluster()
+  microbenchmark.statewide$model <- "statewide"
+  microbenchmark.statewide2$model <- "statewide2"
+  microbenchmarks.statewide <- rbind(microbenchmark.statewide,
+                                     microbenchmark.statewide2)
+  saveRDS(microbenchmarks.statewide,
+          file = paste0(SPECIES,
+                        "microbenchmarks_statewide"))
 
+  
+  #statewide variable importance.
+  
+  #plot of variable importance from RF tree.
   svg(file = paste0(SPECIES,
                     "-varimpplot",
                     ".svg"), 
@@ -261,11 +370,12 @@ beginCluster()
   varImpPlot(tree.statewide,
              scale = FALSE)
   dev.off()
+  
+  #Create a dataframe of these values.
   tree.statewide.varimp <- data.frame(importance(tree.statewide,
                                                  scale = FALSE))
   
-  #Go through top 30 variables in partialPlot
-  #pdf
+  #Go through top 10 variables in partialPlot
   #Get variable importances.
   imp <- importance(tree.statewide, 
                     scale = FALSE)  #scale = false from strobl et al. 2007
@@ -283,7 +393,6 @@ beginCluster()
     partialPlot(tree.statewide,
                 statewide.data, 
                 impvar[i],
-                which.class = "1",
                 xlab=impvar[i],
                 main=paste("Partial Dependence on", impvar[i]))
   }
@@ -320,7 +429,6 @@ beginCluster()
     partialPlot(tree.statewide,
                 statewide.data, 
                 varnames.cforest[i],
-                which.class = "1",
                 xlab=varnames.cforest[i],
                 main=paste("Partial Dependence on", varnames.cforest[i]))
   }
@@ -329,6 +437,16 @@ beginCluster()
   
   #return graphics to 1 x 1 state.
   par(mfrow = c(1,1))
+  
+  #save variable importance results.
+  varimp <- list(tree.statewide,
+                 tree.statewide.cforest,
+                 imp.cforest,
+                 varnames.cforest)
+  saveRDS(varimp,
+          file = paste0(
+                        SPECIES,
+                        "tree_and_varimp"))
   
   #http://stats.stackexchange.com/questions/93202/odds-ratio-from-decision-tree-and-random-forest
   #http://r.789695.n4.nabble.com/randomForest-PartialPlot-reg-td2551372.html shoudl not do the logit thing actually
@@ -339,10 +457,6 @@ beginCluster()
   #for spatially uniform test data
   #http://stackoverflow.com/questions/32862606/taking-random-point-from-list-of-points-per-grid-square
   #Do this sampling n times (200?  250?)
-  
-  
-  #details on how to do probability maps for classification http://evansmurphy.wixsite.com/evansspatial/random-forest-sdm
-  
 
   send.mail(from = sender,
             to = recipients,
@@ -375,7 +489,15 @@ beginCluster()
                                                                    typeofeval = "rmse",
                                                                    prediction.raster = tree.statewide.raster.prediction.prob)))
   
-
+  statewide.sampling.rmse.sameyear <- replicate(50,
+                                       expr = do.call (what = spatial.sampling.evaluation,
+                                                       args = list(latlong.predictors.SPECIES.eval.spatial,
+                                                                   cell.size,
+                                                                   n,
+                                                                   typeofeval = "rmse",
+                                                                   prediction.raster = tree.statewide.raster.prediction.prob)))
+  
+  
   #Then repeat for AUC
   statewide.sampling.auc <- replicate(50,
                                       expr = do.call (what = spatial.sampling.evaluation,
@@ -384,9 +506,18 @@ beginCluster()
                                                                   n,
                                                                   typeofeval = "auc",
                                                                   prediction.raster = tree.statewide.raster.prediction.prob)))
+  statewide.sampling.auc.sameyear <- replicate(50,
+                                                expr = do.call (what = spatial.sampling.evaluation,
+                                                                args = list(latlong.predictors.SPECIES.eval.spatial,
+                                                                            cell.size,
+                                                                            n,
+                                                                            typeofeval = "auc",
+                                                                            prediction.raster = tree.statewide.raster.prediction.prob)))
+  
   
   #small
   #rmse
+  support.small.ensemble <- raster("EAME_ensemble.weighted.mosaicsupport.small.list.tif")
   small.sampling.rmse <- replicate(50,
                                        expr = do.call (what = spatial.sampling.evaluation,
                                                        args = list(evaluation.spatial,
@@ -407,6 +538,7 @@ beginCluster()
   
   
   #medium
+  support.medium.ensemble <- raster("EAME_ensemble.weighted.mosaicsupport.medium.list.tif")
   #rmse
   medium.sampling.rmse <- replicate(50,
                                    expr = do.call (what = spatial.sampling.evaluation,
@@ -428,6 +560,7 @@ beginCluster()
   
   
   #large
+  support.large.ensemble <- raster("EAME_ensemble.weighted.mosaicsupport.large.list.tif")
   #rmse
   large.sampling.rmse <- replicate(50,
                                    expr = do.call (what = spatial.sampling.evaluation,
@@ -459,7 +592,8 @@ beginCluster()
                 "Large" = large.sampling.rmse,
                 "Statewide" = statewide.sampling.rmse),
           xlab = "Support set size",
-          ylab = "RMSE")
+          ylab = "RMSE",
+          notch = TRUE)
   
   dev.off()
   svg(file = paste0(SPECIES,
@@ -472,19 +606,12 @@ beginCluster()
                 "Large" = large.sampling.auc,
                 "Statewide" = statewide.sampling.auc),
           xlab = "Support set size",
-          ylab = "AUC")
+          ylab = "AUC",
+          notch = TRUE)
   dev.off()
   ####################
-  #report microbenchmark values for each model
-  microbenchmark.statewide$model <- "statewide"
-  microbenchmark.large$model <- "large"
-  microbenchmark.medium$model <- "medium"
-  microbenchmark.small$model <- "small"
-  microbenchmark.statewide2$model <- "statewide2"
-  microbenchmark.large2$model <- "large2"
-  microbenchmark.medium2$model <- "medium2"
-  microbenchmark.small2$model <- "small2"
-  
+
+  #Create a final microbenchmarks file.
   microbenchmarks <- rbind(microbenchmark.statewide,
                            microbenchmark.large,
                            microbenchmark.medium,
@@ -495,23 +622,22 @@ beginCluster()
                            microbenchmark.small2)
   
   microbenchmarks$Species <- SPECIES
+  
+  write.csv(microbenchmarks,
+            file = paste0(SPECIES,
+                          "_microbenchmarks.csv"))
   #####################
-  results <- list(microbenchmarks,
-                  statewide.sampling.rmse,
+  results <- list(statewide.sampling.rmse,
                   statewide.sampling.auc,
                   small.sampling.rmse,
                   small.sampling.auc,
                   medium.sampling.rmse,
                   medium.sampling.auc,
                   large.sampling.rmse,
-                  large.sampling.auc,
-                  tree.statewide,
-                  tree.statewide.cforest,
-                  imp.cforest,
-                  varnames.cforest)
+                  large.sampling.auc)
   saveRDS(results,
           file = paste0(SPECIES,
-                        "_ensembleresults"))
+                        "_evaluation_results"))
   send.mail(from = sender,
             to = recipients,
             subject = paste0("Everything is complete for ",
@@ -525,26 +651,23 @@ beginCluster()
 
   
   #####################
-  #remove the species-specific objects.
+  #remove any remaining species-specific objects.
   rm(latlong.predictors.SPECIES,
      latlong.predictors.SPECIES.spatial,
      polys.small,
      polys.small.p,
      polys.small.df,
      microbenchmark.small,
-     support.small.list,
      support.small.ensemble,
      polys.medium,
      polys.medium.p,
      polys.medium.df,
      microbenchmark.medium,
-     support.medium.list,
      support.medium.ensemble,
      polys.large,
      polys.large.p,
      polys.large.df,
      microbenchmark.large,
-     support.large.list,
      support.large.ensemble,
      statewide.data,
      microbenchmark.statewide,
@@ -570,7 +693,7 @@ beginCluster()
      microbenchmark.large2,
      microbenchmark.medium2,
      microbenchmark.small2)
-  #Delete temporary file directory at end of species processing.
+  #Delete all remaining temporary file directory at end of species processing.
   #http://stackoverflow.com/questions/18955305/setting-an-overwriteable-temporary-file-for-rasters-in-r?noredirect=1&lq=1
   unlink(file.path(getwd(),"rastertemp"),
          recursive = TRUE)
