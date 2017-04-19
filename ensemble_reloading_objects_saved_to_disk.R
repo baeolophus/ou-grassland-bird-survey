@@ -1,7 +1,8 @@
-wdrasters_list <- list.files("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/HOLA_test",
+library(raster)
+wdrasters_list <- list.files("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/EAME",
                              pattern = "tif$",
                              full.names = FALSE)
-wdrasters_files <- paste0("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/HOLA_test",
+wdrasters_files <- paste0("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/EAME",
                           "/",
                           wdrasters_list)
 
@@ -9,11 +10,24 @@ for(i in wdrasters_files) { assign(unlist(strsplit(i,
                                                    "[/]"))[10], #splits filenames at / and and . to eliminate folder name and file type.
                                    raster(i)) } 
 
-plot(HOLA_ensemble.weighted.mosaicsupport.large.list.tif)
-plot(HOLA_ensemble.weighted.mosaicsupport.medium.list.tif)
-plot(HOLA_ensemble.weighted.mosaicsupport.small.list.tif)
-plot(HOLA_tree.statewide.raster.prediction.prob.tif)
+plot(EAME_ensemble.weighted.mosaicsupport.large.list.tif,
+     main = "large")
+plot(EAME_ensemble.weighted.mosaicsupport.medium.list.tif,
+     main = "medium")
+plot(EAME_ensemble.weighted.mosaicsupport.small.list.tif,
+     main = "small")
+plot(EAME_tree.statewide.raster.prediction.prob.tif,
+     main = "statewide")
 
-resultshola <- readRDS("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/HOLA_ensembleresults")
+resultsEAME <- readRDS("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/EAME_ensembleresults")
 
-microbenchmark.results <- resultshola[[1]]
+microbenchmark.results <- resultsEAME[[1]]
+
+list.of.rasters <- readRDS("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/EAME/EAME_small_support_list")
+r <-test[[1]][1]
+st <-stack(r)
+
+weights<-lapply(list.of.rasters,
+                "[",
+                2)
+weights<-as.vector(unlist(weights))
