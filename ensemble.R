@@ -30,6 +30,7 @@ complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.cs
 #file in working directory AWS
 effort_length <- raster("effort/effort_length.tif")
 effort_time <- raster("effort/effort_time.tif")
+time_of_day <- raster("effort/time_of_day.tif")
 #local computer
 #effort_length_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_length_ok_census_mask.tif")
 #effort_time_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_time_ok_census_mask.tif")
@@ -37,7 +38,8 @@ effort_time <- raster("effort/effort_time.tif")
 #Create predictors_stack_with_all_variables to include a raster version of effort time and and effort length
 predictors_stack_with_all_variables <- addLayer(predictors_stack,
                                                 effort_length,
-                                                effort_time)
+                                                effort_time,
+                                                time_of_day)
 
 #parameters for random forest models and support set sizes.
 #random forest parameters
