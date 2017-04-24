@@ -42,7 +42,7 @@ send.mail(from = sender,
           send = TRUE)
 
 microbenchmark1 <- microbenchmark(
-  support.list <- lapply(1,#:length(polys.df),
+  support.list <- lapply(1:length(polys.df),
                                FUN = spatial.support.set,
                                spatialdataset = latlong.predictors.SPECIES.spatial,
                                predictor_stack = predictors_stack_with_all_variables,
