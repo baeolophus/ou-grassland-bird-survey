@@ -10,7 +10,8 @@ library(party)
 
 beginCluster()
   complete.dataset.for.sdm.SPECIES<-dplyr::filter(complete.dataset.for.sdm,
-                                                  SPEC==SPECIES)
+                                                  SPEC==SPECIES,
+                                                  !is.na(ebird.time))
   
   #make it spatial, remembering these values were converted from lat/long to UTM already in data manipulation file.
   coordinates(complete.dataset.for.sdm.SPECIES)<-c("Longitude", "Latitude")
@@ -78,11 +79,11 @@ beginCluster()
                                                 radius = radius.small,
                                                 sizename = "small")
  
-  small.microbenchmark1 <- readRDS(file = paste0(SPECIES,
+  small.microbenchmark1 <- readRDS(file = paste(SPECIES,
                                                  "small",
                                                  "backup_microbenchmark1",
                                                  sep = "_"))
-  small.microbenchmark2 <- readRDS(file = paste0(SPECIES,
+  small.microbenchmark2 <- readRDS(file = paste(SPECIES,
                                                  "small",
                                                  "backup_microbenchmark2",
                                                  sep = "_"))
@@ -90,11 +91,11 @@ beginCluster()
   support.medium.ensemble <- create_support_set(numberofpoints = numberofpoints.medium,
                                                radius = radius.medium,
                                                sizename = "medium")
-  medium.microbenchmark1 <- readRDS(file = paste0(SPECIES,
+  medium.microbenchmark1 <- readRDS(file = paste(SPECIES,
                                                  "medium",
                                                  "backup_microbenchmark1",
                                                  sep = "_"))
-  medium.microbenchmark2 <- readRDS(file = paste0(SPECIES,
+  medium.microbenchmark2 <- readRDS(file = paste(SPECIES,
                                                  "medium",
                                                  "backup_microbenchmark2",
                                                  sep = "_"))
@@ -102,11 +103,11 @@ beginCluster()
   support.large.ensemble <- create_support_set(numberofpoints = numberofpoints.large,
                                                radius = radius.large,
                                                sizename = "large")
-  large.microbenchmark1 <- readRDS(file = paste0(SPECIES,
+  large.microbenchmark1 <- readRDS(file = paste(SPECIES,
                                                  "large",
                                                  "backup_microbenchmark1",
                                                  sep = "_"))
-  large.microbenchmark2 <- readRDS(file = paste0(SPECIES,
+  large.microbenchmark2 <- readRDS(file = paste(SPECIES,
                                                  "large",
                                                  "backup_microbenchmark2",
                                                  sep = "_"))
