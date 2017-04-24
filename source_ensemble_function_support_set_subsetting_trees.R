@@ -44,29 +44,10 @@ spatial.support.set<-function(whichrandombox,
                                                          y = studyarea.extent,
                                                          value = NA)
 
-  library(party)
-  #Then variable importance in cforest (Strobl et al. papers on bias).
-  my_cforest_control <- cforest_control(teststat = "quad",
-                                        testtype = "Univ",
-                                        mincriterion = 0, #max depth
-                                        ntree = ntree, 
-                                        mtry = floor(sqrt(ncol(spatialdataset)))-1,
-                                        replace = FALSE)
   
-  cforest_importance_tree <- cforest(presence ~ .,
-                                    data = support.set.data,
-                                    controls = my_cforest_control)
-  
-  imp.cforest <- as.data.frame(varimp(cforest_importance_tree))
-  ordered.varnames.cforest <- rownames(imp.cforest)[order(imp.cforest, decreasing=TRUE)]
-
   results.support.set <- list(tree.test.raster.prediction.extended,
                               sample.size.good,
-                              tree.test,
-                              cforest_importance_tree,
-                              imp.cforest,
-                              ordered.varnames.cforest)
+                              tree.test)
   return(results.support.set)
-
 
 }
