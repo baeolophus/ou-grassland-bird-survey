@@ -26,7 +26,7 @@ ensemble.function <- function (list.of.rasters) {
   ensemble.weighted.mosaic <- raster::weighted.mean(predictions.support.sets.stacked,
                                                     weights,
                                                     na.rm = TRUE,
-                                                    filename = paste(SPECIES,
+                                                    filename = paste0(SPECIES,
                                                                      "_",
                                                                       sizename,
                                                            "_products_ensembleweightedmosaic",
