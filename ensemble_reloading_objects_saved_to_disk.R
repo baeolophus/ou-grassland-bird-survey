@@ -1,33 +1,38 @@
+#This file reloads all the objects saved in the course of the ensemble.
+
+setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results")
+
+SPECIES <- "EAME"
+
+evalresults <- readRDS(file.path(
+               SPECIES,
+               paste0(
+               SPECIES,
+                        "_products_evaluation_results"))
+)
+#contains AUC/RMSE for all.
+
 library(raster)
-wdrasters_list <- list.files("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/EAME",
-                             pattern = "tif$",
-                             full.names = FALSE)
-wdrasters_files <- paste0("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/EAME",
-                          "/",
-                          wdrasters_list)
 
-for(i in wdrasters_files) { assign(unlist(strsplit(i,
-                                                   "[/]"))[10], #splits filenames at / and and . to eliminate folder name and file type.
-                                   raster(i)) } 
+stateraster <- raster(paste0(SPECIES, "/EAME_products_statewide.raster.prediction.prob.tif"))
+smallraster <- raster(paste0(SPECIES, "/EAME _ small _products_ensembleweightedmosaic .tif"))
+mediumraster <- raster(paste0(SPECIES, "/EAME _ medium _products_ensembleweightedmosaic .tif"))
+largeraster <- raster(paste0(SPECIES, "/EAME _ large _products_ensembleweightedmosaic .tif"))
 
-plot(EAME_ensemble.weighted.mosaicsupport.large.list.tif,
-     main = "large")
-plot(EAME_ensemble.weighted.mosaicsupport.medium.list.tif,
-     main = "medium")
-plot(EAME_ensemble.weighted.mosaicsupport.small.list.tif,
-     main = "small")
-plot(EAME_tree.statewide.raster.prediction.prob.tif,
-     main = "statewide")
+plot(smallraster)
+plot(mediumraster)
+plot(largeraster)
+plot(stateraster)
 
-resultsEAME <- readRDS("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/EAME_ensembleresults")
+#rasters for support sets also exist but are probably not needed.
 
-microbenchmark.results <- resultsEAME[[1]]
+#now the microbenchmarks
+microbenchmarks <- read.csv("EAME/EAME_products_microbenchmarks.csv")
+boxplot(x = microbenchmarks$model,
+     y = microbenchmarks$time,
+     notched = TRUE)
 
-list.of.rasters <- readRDS("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/EAME/EAME_small_support_list")
-r <-test[[1]][1]
-st <-stack(r)
+#support sets
+supportsets <- readRDS("EAME/EAME_large_intermediates_support_list")
 
-weights<-lapply(list.of.rasters,
-                "[",
-                2)
-weights<-as.vector(unlist(weights))
+polygons <- readRDS("EAME/EAME_large_intermediatefile_polys")
