@@ -430,11 +430,16 @@ beginCluster()
                     ".svg"), 
       width = plot.width,
       height = plot.height)
-  par(mfrow=c(4,2))
-  boxplot(cbind("Small, previous years" = small.sampling.rmse.diffyear,
-                "Medium, previous years" = medium.sampling.rmse.diffyear,
-                "Large, previous years" = large.sampling.rmse.diffyear,
-                "Statewide, previous years" = statewide.sampling.rmse.diffyear,
+  par(mfrow=c(2,1))
+  boxplot(cbind(
+                "Small, same years" = small.sampling.rmse.sameyear,
+                "Medium, same years" = medium.sampling.rmse.sameyear,
+                "Large, same years" = large.sampling.rmse.sameyear,
+                "Statewide, same years" = statewide.sampling.rmse.sameyear),
+          xlab = "",
+          ylab = "RMSE",
+          notch = TRUE)
+  boxplot(cbind(
                 "Small, same years" = small.sampling.rmse.sameyear,
                 "Medium, same years" = medium.sampling.rmse.sameyear,
                 "Large, same years" = large.sampling.rmse.sameyear,
@@ -442,23 +447,27 @@ beginCluster()
           xlab = "Support set size and evaluation type",
           ylab = "RMSE",
           notch = TRUE)
-  
   dev.off()
   svg(file = paste0(SPECIES,
                     "products_AUC",
                     ".svg"), 
       width = plot.width,
       height = plot.height)
-  par(mfrow=c(4,2))
-  boxplot(cbind("Small, previous years" = small.sampling.auc.diffyear,
-                "Medium, previous years" = medium.sampling.auc.diffyear,
-                "Large, previous years" = large.sampling.auc.diffyear,
-                "Statewide, previous years" = statewide.sampling.auc.diffyear,
-                "Small, same years" = small.sampling.auc.sameyear,
-                "Medium, same years" = medium.sampling.auc.sameyear,
-                "Large, same years" = large.sampling.auc.sameyear,
-                "Statewide, same years" = statewide.sampling.auc.sameyear),
-          xlab = "Support set size and evaluation type",
+  par(mfrow=c(2,1))
+  boxplot(cbind("Small, previous" = small.sampling.auc.diffyear,
+                "Medium, previous" = medium.sampling.auc.diffyear,
+                "Large, previous" = large.sampling.auc.diffyear,
+                "Statewide, previous" = statewide.sampling.auc.diffyear
+                ),
+          xlab = "",
+          ylab = "AUC",
+          notch = TRUE)
+  boxplot(cbind(
+                "Small, same" = small.sampling.auc.sameyear,
+                "Medium, same" = medium.sampling.auc.sameyear,
+                "Large, same" = large.sampling.auc.sameyear,
+                "Statewide, same" = statewide.sampling.auc.sameyear),
+          xlab = "Support set size, years",
           ylab = "AUC",
           notch = TRUE)
   dev.off()
@@ -466,13 +475,13 @@ beginCluster()
 
   #Create a final microbenchmarks file.
   microbenchmarks <- rbind(microbenchmark.statewide1,
-                           microbenchmark.large1,
-                           microbenchmark.medium1,
-                           microbenchmark.small1,
+                           large.microbenchmark1,
+                           medium.microbenchmark1,
+                           small.microbenchmark1,
                            microbenchmark.statewide2,
-                           microbenchmark.large2,
-                           microbenchmark.medium2,
-                           microbenchmark.small2)
+                           large.microbenchmark2,
+                           medium.microbenchmark2,
+                           small.microbenchmark2)
   
   microbenchmarks$Species <- SPECIES
   
