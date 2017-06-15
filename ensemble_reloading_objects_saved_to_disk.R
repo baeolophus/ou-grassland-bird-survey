@@ -36,3 +36,15 @@ boxplot(x = microbenchmarks$model,
 supportsets <- readRDS("EAME/EAME_large_intermediates_support_list")
 
 polygons <- readRDS("EAME/EAME_large_intermediatefile_polys")
+
+#read partial plots from statewide trees.
+statewidevarimp <- readRDS("EAME/EAME_statewide_products_tree_and_varimp")
+
+
+#loading Rdata gets the rest!
+
+partialPlot(tree.statewide,
+            statewide.data, 
+            varnames.cforest[1],
+            xlab=varnames.cforest[1],
+            main=paste("Partial Dependence on", varnames.cforest[1]))
