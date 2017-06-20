@@ -1,8 +1,17 @@
 ##################################
 #process the future bioclim layers the same way as bioclim (though use the ok_mask_resample to make sure I don't need to crop again later)
 #import bioclim layers
+setwd("/data/grassland_ensemble")
+library(raster)
+library(rgdal)
+
+#create temporary raster files on large drive because they occupy 10-30 GB
+rasterOptions()$tmpdir
+rasterOptions(tmpdir=paste0(getwd(),
+                            "/rastertemp"))
+
 future_list <- list.files(path = file.path(getwd(),
-                                           "future6"),
+                                           "bc45z"),
                           pattern = "tif$",
                           full.names = TRUE)
 
@@ -26,11 +35,7 @@ extent(studyarea.future_stack)
 
 #project to the smaller extent and the crs of popdensity_census_raster (Which was made with NLCD)
 utm.future <- projectRaster(from = studyarea.future_stack, 
-                            to = okcensus,
-                            filename = names(studyarea.future_stack),
-                            format = "GTiff",
-                            bylayer = TRUE,
-                            overwrite = TRUE)
+                            to = okcensus)
 
 #Now upload and clip/mask them to ok state polygon.
 state<-readOGR(dsn=getwd(),
@@ -40,28 +45,7 @@ state<-spTransform(x = state,
 )
 
 future_OK <- mask(utm.future,
-                  state,
-                  filename = names(future_OK),
-                  format = "GTiff",
-                  bylayer = TRUE,
-                  overwrite = TRUE)
-
-#write the new file to smaller files that I can import later  without re-processing
-writeRaster(future_OK)
-
-
-
-future_crop_list <- list.files(path = "E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/he45bi50",
-                               pattern = "tif$",
-                               full.names = TRUE)
-
-for(i in future_crop_list) { assign(unlist(strsplit(i,
-                                                    "[./]"))[10], #splits filenames at / and and . to eliminate folder name and file type.
-                                    raster(i)) } 
-
-future_crop <- as.list(ls()[sapply(ls(), function(x) class(get(x))) == 'RasterLayer'])
-future_crop_stack <- stack (lapply(future_crop, get))
-
+                  state)
 
 #write the new file to smaller files that I can import later  without re-processing
 writeRaster(future_OK,
@@ -70,4 +54,4 @@ writeRaster(future_OK,
             bylayer = TRUE,
             overwrite = TRUE)
 
-##################################
+
