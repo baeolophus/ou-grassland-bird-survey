@@ -2,7 +2,7 @@
 
 setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results")
 
-SPECIES <- "EAME"
+SPECIES <- "NOBO"
 
 evalresults <- readRDS(file.path(
                SPECIES,
@@ -14,34 +14,53 @@ evalresults <- readRDS(file.path(
 
 library(raster)
 
-stateraster <- raster(paste0(SPECIES, "/EAME_products_statewide.raster.prediction.prob.tif"))
-smallraster <- raster(paste0(SPECIES, "/EAME _ small _products_ensembleweightedmosaic .tif"))
-mediumraster <- raster(paste0(SPECIES, "/EAME _ medium _products_ensembleweightedmosaic .tif"))
-largeraster <- raster(paste0(SPECIES, "/EAME _ large _products_ensembleweightedmosaic .tif"))
+stateraster <- raster(paste0(SPECIES,
+                             "/",
+                             SPECIES,
+                             "_products_statewide.raster.prediction.prob.tif"))
+smallraster <- raster(paste0(SPECIES,
+                             "/",
+                             SPECIES,
+                             "_small_products_ensembleweightedmosaic.tif"))
+mediumraster <- raster(paste0(SPECIES,
+                              "/",
+                              SPECIES,
+                              "_medium_products_ensembleweightedmosaic.tif"))
+largeraster <- raster(paste0(SPECIES,
+                             "/",
+                             SPECIES,
+                             "_large_products_ensembleweightedmosaic.tif"))
+options(scipen=999)
+pdf(file = paste0(SPECIES,
+                  "/",
+                  SPECIES,
+                  "_maps.pdf"),
+    width = 18,
+    height = 9)
+par(mfrow = c(2,2))
 
-plot(smallraster)
-plot(mediumraster)
-plot(largeraster)
-plot(stateraster)
+plot(stateraster,
+     main = "statewide")
+plot(largeraster,
+     main = "large")
+plot(mediumraster,
+     main = "medium")
+plot(smallraster,
+     main = "small")
 
-#rasters for support sets also exist but are probably not needed.
-
-#now the microbenchmarks
-microbenchmarks <- read.csv("EAME/EAME_products_microbenchmarks.csv")
-boxplot(x = microbenchmarks$model,
-     y = microbenchmarks$time,
-     notched = TRUE)
-
-#support sets
-supportsets <- readRDS("EAME/EAME_large_intermediates_support_list")
-
-polygons <- readRDS("EAME/EAME_large_intermediatefile_polys")
+dev.off()
+options(scipen=0)
 
 #read partial plots from statewide trees.
 statewidevarimp <- readRDS("EAME/EAME_statewide_products_tree_and_varimp")
 
 
 #loading Rdata gets the rest!
+load(paste0("~/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/",
+            SPECIES,
+            "/",
+            SPECIES,
+            "_rdata.RData"
 
 partialPlot(tree.statewide,
             statewide.data, 
