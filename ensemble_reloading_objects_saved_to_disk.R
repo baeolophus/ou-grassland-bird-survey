@@ -2,17 +2,13 @@
 
 setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results")
 
-SPECIES <- "NOBO"
+SPECIES <- "HOLA"
 
-evalresults <- readRDS(file.path(
-               SPECIES,
-               paste0(
-               SPECIES,
-                        "_products_evaluation_results"))
-)
-#contains AUC/RMSE for all.
-
+library(dplyr)
+library(ggplot2)
+library(randomForest)
 library(raster)
+library(tidyr)
 
 stateraster <- raster(paste0(SPECIES,
                              "/",
@@ -60,10 +56,83 @@ load(paste0("~/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/en
             SPECIES,
             "/",
             SPECIES,
-            "_rdata.RData"
+            "_rdata.RData"))
 
-partialPlot(tree.statewide,
-            statewide.data, 
-            varnames.cforest[1],
-            xlab=varnames.cforest[1],
-            main=paste("Partial Dependence on", varnames.cforest[1]))
+evalresults <- readRDS(file.path(
+  SPECIES,
+  paste0(
+    SPECIES,
+    "_products_evaluation_results"))
+)
+#contains AUC/RMSE for all.
+eval.df <- data.frame(evalresults)
+
+listerrornames <- c("statewide.sampling.rmse.sameyear",
+                    "statewide.sampling.auc.sameyear",
+                    "small.sampling.rmse.sameyear",
+                    "small.sampling.auc.sameyear",
+                    "medium.sampling.rmse.sameyear",
+                    "medium.sampling.auc.sameyear",
+                    "large.sampling.rmse.sameyear",
+                    "large.sampling.auc.sameyear",
+                    "statewide.sampling.rmse.diffyear",
+                    "statewide.sampling.auc.diffyear",
+                    "small.sampling.rmse.diffyear",
+                    "small.sampling.auc.diffyear",
+                    "medium.sampling.rmse.diffyear",
+                    "medium.sampling.auc.diffyear",
+                    "large.sampling.rmse.diffyear",
+                    "large.sampling.auc.diffyear")
+colnames(eval.df) <- listerrornames
+
+eval.df.sep <- gather_(eval.df,
+                      key_col = "errordescriptor",
+                     value_col = "errornum",
+                     gather_cols = listerrornames) %>%
+  separate_(col = "errordescriptor",
+            into = c("scale",
+                     "sampling",
+                     "errortype",
+                     "year"))
+
+eval.df.sep$scale <- as.factor(eval.df.sep$scale)
+levels(eval.df.sep$scale) <- c("statewide",
+                       "large",
+                       "medium",
+                       "small")
+
+pdf(file = paste0(SPECIES,
+                  "/",
+                  SPECIEs,
+                  "_error.pdf"),
+    width = 5,
+    height = 5)
+ggplot(data = eval.df.sep) + 
+  geom_boxplot(mapping = aes(x = scale,
+                             y = errornum),
+               notch = TRUE)+
+  facet_wrap(errortype ~ year,
+             scales = "free_y")+
+  theme_classic()
+dev.off()
+
+
+#Create file of top 10 important variables.
+pdf(file = paste0(SPECIES,
+                  "/",
+                  SPECIES,
+                  "_statewide_partialplots-cforest",
+                  ".pdf"),
+    width = 7, #plot.width,
+    height = 10)#plot.height*2)
+
+par(mfrow = c(5,2))
+for (i in 1:10) {
+  partialPlot(tree.statewide,
+              statewide.data, 
+              varnames.cforest[i],
+              xlab=varnames.cforest[i],
+              main=paste("Partial Dependence on", varnames.cforest[i]))
+}
+
+dev.off()
