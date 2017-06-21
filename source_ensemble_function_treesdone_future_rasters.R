@@ -1,13 +1,14 @@
 #Now, function for subsetting and running the test on each subset.
 
 trees.already.done.raster.generation <-function(whichrandombox,
-                              predictor_stack,
-                              polys.df,
-                              trees,
-                              ...){
-
+                                                predictor_stack,
+                                                polys.df,
+                                                trees,
+                                                ...){
+  
   support.set <- crop(predictor_stack,
-                      extent(polys.df[whichrandombox,]))
+                      extent(polys.df[whichrandombox,]),
+                      progress = "text")
   
   tree.test.raster.prediction <-  raster::predict(object = support.set,
                                                   model = trees[[whichrandombox]],
