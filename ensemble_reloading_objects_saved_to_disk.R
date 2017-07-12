@@ -2,7 +2,17 @@
 
 setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results")
 
+SPECIES <- "NOBO"
+SPECIES <- "UPSA"
 SPECIES <- "HOLA"
+SPECIES <- "CASP"
+SPECIES <- "FISP"
+SPECIES <- "LASP"
+SPECIES <- "GRSP"
+SPECIES <- "DICK"
+SPECIES <- "EAME"
+SPECIES <- "WEME"
+SPECIES <- "BHCO"
 
 library(dplyr)
 library(ggplot2)
@@ -46,10 +56,6 @@ plot(smallraster,
 
 dev.off()
 options(scipen=0)
-
-#read partial plots from statewide trees.
-statewidevarimp <- readRDS("EAME/EAME_statewide_products_tree_and_varimp")
-
 
 #loading Rdata gets the rest!
 load(paste0("~/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/",
@@ -103,7 +109,7 @@ levels(eval.df.sep$scale) <- c("statewide",
 
 pdf(file = paste0(SPECIES,
                   "/",
-                  SPECIEs,
+                  SPECIES,
                   "_error.pdf"),
     width = 5,
     height = 5)
@@ -113,6 +119,8 @@ ggplot(data = eval.df.sep) +
                notch = TRUE)+
   facet_wrap(errortype ~ year,
              scales = "free_y")+
+  xlab("scale") +
+  ylab("error value") +
   theme_classic()
 dev.off()
 
@@ -132,7 +140,8 @@ for (i in 1:10) {
               statewide.data, 
               varnames.cforest[i],
               xlab=varnames.cforest[i],
-              main=paste("Partial Dependence on", varnames.cforest[i]))
+              main = "",
+              ylab = "partial dependence")
 }
 
 dev.off()
