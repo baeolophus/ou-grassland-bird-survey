@@ -11,20 +11,10 @@ rasterOptions(tmpdir=paste0(getwd(),
                             "/rastertemp"))
 
 SPECIES <- "EAME"
-sizename <- "largef"
-sizename_for_reading <- "large"
+
 #email notifications
 sender <- "curryclairem.mail@gmail.com"
 recipients <- c("curryclairem.mail@gmail.com")
-
-#load trees
-statewide_products_tree_and_varimp <- readRDS(paste0(SPECIES,
-                                                     "_statewide_products_tree_and_varimp"))
-#1 is tree.statewide,
-#2 is tree.statewide.cforest,
-#3 is imp.cforest,
-#4 is varnames.cforest
-tree.statewide <- statewide_products_tree_and_varimp[[1]]
 
 #load future source rasters for prediction.
 #Bring in predictor data.
@@ -42,28 +32,68 @@ future_predictors_stack_with_all_variables <- addLayer(predictors_stack,
                                                        time_of_day)
 
 
+
+
+
+
+
+#statewide
+
+#load trees
+statewide_products_tree_and_varimp <- readRDS(paste0(SPECIES,
+                                                     "_statewide_products_tree_and_varimp"))
+#1 is tree.statewide,
+#2 is tree.statewide.cforest,
+#3 is imp.cforest,
+#4 is varnames.cforest
+tree.statewide <- statewide_products_tree_and_varimp[[1]]
 #run.
+rasterOptions()$tmpdir
+rasterOptions(tmpdir=paste0(getwd(),
+                            "/rastertemp/",
+                            SPECIES,
+                            "/statewide"))
+
+tempdir() #check for correct temporary directory from new .Renviron file placed in home directory.
+
+send.mail(from = sender,
+          to = recipients,
+          subject = paste0("statewide starts for ",
+                           SPECIES),
+          body = "hope it works eh",
+          smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                      user.name = "curryclairem.mail@gmail.com",            
+                      passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+          authenticate = TRUE,
+          send = TRUE)
 microbenchmark.statewide.future <- microbenchmark (
   future.tree.statewide.raster.prediction.prob <- raster::predict(future_predictors_stack_with_all_variables,
                                                                   model = tree.statewide,
                                                                   progress = "text",
-                                                                  filename = paste0(
-                                                                    SPECIES,
-                                                                    "_products_future_statewide.raster.prediction.prob",
-                                                                    ".tif"),
+                                                                  filename = paste0(SPECIES,
+                                                                                    "_products_future_statewide_raster_prediction_prob",
+                                                                                    ".tif"),
                                                                   format="GTiff",
                                                                   overwrite = TRUE),
   times = 1)
 
-
 microbenchmark.statewide.future$model <- "statewidefuture"
+microbenchmark.statewide.future$Species <- SPECIES
 
 saveRDS(microbenchmark.statewide.future,
         file = paste0(SPECIES,
-                      "backup_microbenchmarks_statewide_future"))
+                      "product_microbenchmarks_statewide_future"))
 
-
-
+send.mail(from = sender,
+          to = recipients,
+          subject = paste0("statewide is complete for ",
+                           SPECIES),
+          body = "Go download files!  Onward!",
+          smtp = list(host.name = "smtp.gmail.com", port = 465, 
+                      user.name = "curryclairem.mail@gmail.com",            
+                      passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
+          authenticate = TRUE,
+          send = TRUE)
 
 future_processing <- function (
   predictor_stack,
@@ -74,7 +104,7 @@ future_processing <- function (
   
   #load function to generate rasters when current trees are already made.
   source("source_ensemble_function_treesdone_future_rasters.R") #trees.already.done.raster.generation
-  source("source_ensemble_function_support_set_ensemble_mosaic.R") #ensemble.function
+  source("source_ensemble_function_fromtreesdone_support_set_ensemble_mosaic.R") #ensemble.function
   environment(trees.already.done.raster.generation) <- environment()
   environment(ensemble.function) <- environment()
   
@@ -107,7 +137,7 @@ future_processing <- function (
   send.mail(from = sender,
             to = recipients,
             subject = paste0(sizename,
-                             " future ensemble is starting for ",
+                             " ensemble is starting for ",
                              SPECIES),
             body = "Save the before and after in case microbenchmark crashes.",
             smtp = list(host.name = "smtp.gmail.com", port = 465, 
@@ -116,7 +146,7 @@ future_processing <- function (
             authenticate = TRUE,
             send = TRUE)
   
-  #spatial support sets
+  #spatial support sets contain these:
   #list(tree.test.raster.prediction.extended,
   #    sample.size.good,
   #     tree.test)
@@ -143,23 +173,23 @@ future_processing <- function (
                         weights,
                         tree.list)
   
+  print("ensembling now")
   microbenchmarkfuture2 <- microbenchmark(support.ensemble <- ensemble.function(support.list),
                                           times = 1)
   
   
   #report microbenchmark values
-  microbenchmark2$model <- paste0(sizename, "2")
-  saveRDS(microbenchmark2,
+  microbenchmarkfuture2$model <- paste0(sizename, "2")
+  saveRDS(microbenchmarkfuture2,
           file = paste(SPECIES,
                        sizename,
-                       "backup_microbenchmark2",
+                       "product_microbenchmark2",
                        sep = "_"))
   
-  microbenchmarks.future <- rbind(microbenchmark.statewide.future,
-                                  microbenchmark2)
-  microbenchmarks.future$Species <- SPECIES
+
+  microbenchmarkfuture2$Species <- SPECIES
   
-  write.csv(microbenchmarks.future,
+  write.csv(microbenchmarkfuture2,
             file = paste0(SPECIES,
                           "_products_microbenchmarks_future.csv"))
   
@@ -205,5 +235,4 @@ EAME_future_small <- future_processing (predictor_stack = future_predictors_stac
                                         SPECIES = "EAME",
                                         sizename_for_reading = "small",
                                         sizename = "small_future")
-
 
