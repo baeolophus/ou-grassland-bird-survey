@@ -9,7 +9,7 @@ trees.already.done.raster.generation <-function(whichrandombox,
   support.set <- crop(predictor_stack,
                       extent(polys.df[whichrandombox,]),
                       progress = "text")
-  
+  print(paste0("predicting", whichrandombox))
   tree.test.raster.prediction <-  raster::predict(object = support.set,
                                                   model = trees[[whichrandombox]],
                                                   progress = "text",
@@ -21,7 +21,7 @@ trees.already.done.raster.generation <-function(whichrandombox,
                                                                     ".tif"),
                                                   format = "GTiff",
                                                   overwrite = TRUE)
-  
+  print(paste0("extending", whichrandombox))
   tree.test.raster.prediction.extended <- raster::extend(x = tree.test.raster.prediction,
                                                          y = studyarea.extent,
                                                          value = NA)
