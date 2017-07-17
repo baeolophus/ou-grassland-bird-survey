@@ -1,6 +1,6 @@
 #This file reloads all the objects saved in the course of the ensemble.
 
-setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results")
+setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
 
 SPECIES <- "NOBO"
 SPECIES <- "UPSA"
@@ -58,7 +58,7 @@ dev.off()
 options(scipen=0)
 
 #loading Rdata gets the rest!
-load(paste0("~/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/",
+load(paste0("~/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current/",
             SPECIES,
             "/",
             SPECIES,
