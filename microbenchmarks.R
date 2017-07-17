@@ -36,7 +36,7 @@ mb.df.sep <- separate(mb.df,
                                    "runtype"),
                           model,
                       sep = -2)
-
+boxplot(time ~ runtype, data = mb.df.sep)
 mb.summed <- group_by(mb.df.sep,
                       scale,
                       Species) %>%
@@ -54,6 +54,7 @@ mb.summed$statewide <- rep(statewide.values$runtime, 4)
 mb.summed$ratio <- mb.summed$runtime/mb.summed$statewide
 
 boxplot(mb.summed$ratio~mb.summed$scale)
+boxplot()
 
 #add in evaluation results
 
