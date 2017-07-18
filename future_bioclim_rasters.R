@@ -10,7 +10,7 @@ rasterOptions()$tmpdir
 rasterOptions(tmpdir=paste0(getwd(),
                             "/rastertemp"))
 
-SPECIES <- "EAME"
+SPECIES <- "GRSP"
 
 #email notifications
 sender <- "curryclairem.mail@gmail.com"
@@ -77,12 +77,16 @@ microbenchmark.statewide.future <- microbenchmark (
                                                                   overwrite = TRUE),
   times = 1)
 
-microbenchmark.statewide.future$model <- "statewidefuture"
+microbenchmark.statewide.future$model <- "statewidefuture2"
 microbenchmark.statewide.future$Species <- SPECIES
 
 saveRDS(microbenchmark.statewide.future,
         file = paste0(SPECIES,
-                      "product_microbenchmarks_statewide_future"))
+                      "_product_microbenchmarks_statewide_future"))
+
+write.csv(microbenchmark.statewide.future,
+          file = paste0(SPECIES,
+                        "_product_microbenchmarks_statewide_future.csv"))
 
 send.mail(from = sender,
           to = recipients,
@@ -191,6 +195,8 @@ future_processing <- function (
   
   write.csv(microbenchmarkfuture2,
             file = paste0(SPECIES,
+                          "_",
+                          sizename,
                           "_products_microbenchmarks_future.csv"))
   
   send.mail(from = sender,
@@ -221,18 +227,64 @@ future_processing <- function (
 
 
 
-EAME_future_large <- future_processing (predictor_stack = future_predictors_stack_with_all_variables,
-                                        SPECIES = "EAME",
+future_large <- future_processing (predictor_stack = future_predictors_stack_with_all_variables,
+                                        SPECIES,
                                         sizename_for_reading = "large",
                                         sizename = "large_future")
 
-EAME_future_medium <- future_processing (predictor_stack = future_predictors_stack_with_all_variables,
-                                         SPECIES = "EAME",
+future_medium <- future_processing (predictor_stack = future_predictors_stack_with_all_variables,
+                                         SPECIES,
                                          sizename_for_reading = "medium",
                                          sizename = "medium_future")
 
-EAME_future_small <- future_processing (predictor_stack = future_predictors_stack_with_all_variables,
-                                        SPECIES = "EAME",
+future_small <- future_processing (predictor_stack = future_predictors_stack_with_all_variables,
+                                        SPECIES,
                                         sizename_for_reading = "small",
                                         sizename = "small_future")
+
+
+#threshold calculations
+source("threshold_calculations.R")
+stateraster <- raster(paste0(
+  SPECIES,
+  "_products_future_statewide_raster_prediction_prob.tif"))
+smallraster <- raster(paste0(
+  SPECIES,
+  "_small_future_products_ensembleweightedmosaic.tif"))
+
+mediumraster <- raster(paste0(
+  SPECIES,
+  "_medium_future_products_ensembleweightedmosaic.tif"))
+largeraster <- raster(paste0(
+  SPECIES,
+  "_large_future_products_ensembleweightedmosaic.tif"))
+
+small.area <- thresholds(SPECIES,
+                         "_small_future_products_ensembleweightedmosaic.tif",
+                         0.5)
+
+medium.area <- thresholds(SPECIES,
+                          "_medium_future_products_ensembleweightedmosaic.tif",
+                          0.5)
+
+large.area <- thresholds(SPECIES,
+                         "_large_future_products_ensembleweightedmosaic.tif",
+                         0.5)
+
+statewide.area <- thresholds(SPECIES,
+                             "_products_future_statewide_raster_prediction_prob.tif",
+                             0.5)
+
+future.areas <- data.frame("areakm2" = rbind(small.area,
+                      medium.area,
+                      large.area,
+                      statewide.area))
+
+future.areas$Species <- SPECIES
+future.areas$model <- "future"
+future.areas$threshold <- 0.5
+
+write.csv(future.areas,
+          file = paste0(SPECIES,
+                        "_products_future_map_areas.csv"))
 
