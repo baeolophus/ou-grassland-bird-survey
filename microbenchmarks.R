@@ -118,21 +118,16 @@ evalsforbinding <- do.call(rbind,
                                data.frame, 
                                stringsAsFactors=FALSE))
 
+errortypehere <- "auc"
+yearhere <- "sameyear"
 
 final.models.and.plots <- function (errortypehere,
                                     yearhere) {
   
-  #filter to get the year and error (auc or rmse)
+#filter to get the year and error (auc or rmse)
 evalsforbinding.filtered1 <- dplyr::filter(evalsforbinding,
                                          errortype == errortypehere,
                                          year == yearhere)
-
-evalsforbinding.filtered <- group_by(evalsforbinding.filtered1,
-           scale,
-           species) %>%
-  summarize(errornum = mean(errornum))
-
-
 boxplot(errornum ~ scale,
         data = evalsforbinding.filtered1,
         notch = TRUE,
@@ -141,48 +136,49 @@ boxplot(errornum ~ scale,
                      sep = ", "),
         xlab = "Scale")
 
+
+
+evalsforbinding.filtered <- group_by(evalsforbinding.filtered1,
+           scale,
+           species) %>%
+  summarize(errornum = mean(errornum))
+
 joined <- left_join(x = evalsforbinding.filtered,
                          y = mb.summed,
                          by = c("scale" = "scale",
                                 "species" = "Species"))
 
 #eliminate statewide for this because all in ratios
-#joined <- dplyr::filter(joined,
-#                 scale != "statewide")
-joined$pch <- gsub("statewide", "o",
-                   joined$scale,
-                   fixed = TRUE)
-joined$pch <- gsub("large", "l",
-                   joined$scale,
-                                     fixed = TRUE)
-joined$pch <- gsub("medium", "m",
-                   joined$scale,
-                                     fixed = TRUE)
-joined$pch <- gsub("small", "s",
-                   joined$scale,
-                                     fixed = TRUE)
-
+joined <- dplyr::filter(joined,
+                 scale != "statewide")
 
 #levels for appropriate graphs
 joined$scale <- factor(joined$scale,
-                            levels = c("statewide",
+                            levels = c(
                                        "large",
                                        "medium",
                                        "small"))
   
-plot(errornum ~ ratio,
-     data = joined,
-     xlab = "Ratio of scale to statewide runtime",
-     ylab = paste(errortypehere,
-                  yearhere,
-                  sep = ", "),
-     pch = joined$pch)
-
-error.model <- lmer(ratio ~ scale + (1|species),
+runtime.model <- lmer(ratio ~ scale + (1|species),
                    data = joined)
+
+plot(runtime.model)
+summary(runtime.model)
+return(anova(error.model))
+
+boxplot(ratio ~ scale,
+        data = joined)
+
+
+error.model <- lmer(errornum ~ scale + (1|species),
+                    data = joined)
 
 plot(error.model)
 summary(error.model)
+return(anova(error.model))
+
+boxplot(ratio ~ scale,
+        data = joined)
 
 }
 
