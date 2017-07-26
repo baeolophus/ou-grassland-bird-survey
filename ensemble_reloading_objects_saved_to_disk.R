@@ -4,13 +4,13 @@ setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassla
 
 SPECIES <- "NOBO"
 SPECIES <- "UPSA"
+SPECIES <- "EAME"
 SPECIES <- "HOLA"
 SPECIES <- "CASP"
 SPECIES <- "FISP"
 SPECIES <- "LASP"
 SPECIES <- "GRSP"
 SPECIES <- "DICK"
-SPECIES <- "EAME"
 SPECIES <- "WEME"
 SPECIES <- "BHCO"
 
@@ -145,3 +145,49 @@ for (i in 1:10) {
 }
 
 dev.off()
+
+
+#threshold calculations
+source("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/threshold_calculations.R")
+
+rasterOptions()$tmpdir
+rasterOptions(tmpdir="F:/temp")
+
+small.area <- thresholds(SPECIES,
+                         paste0("/",
+                                SPECIES,
+                                "_small_products_ensembleweightedmosaic.tif"),
+                         0.5)
+
+medium.area <- thresholds(SPECIES,
+                          paste0("/",
+                                 SPECIES,
+                                 "_medium_products_ensembleweightedmosaic.tif"),
+                          0.5)
+
+large.area <- thresholds(SPECIES,
+                         paste0("/",
+                                SPECIES,
+                                "_large_products_ensembleweightedmosaic.tif"),
+                         0.5)
+
+statewide.area <- thresholds(SPECIES,
+                             paste0("/",
+                                    SPECIES,
+                                    "_products_statewide.raster.prediction.prob.tif"),
+                             0.5)
+
+current.areas <- data.frame("areakm2" = rbind(small.area,
+                                             medium.area,
+                                             large.area,
+                                             statewide.area))
+
+current.areas$Species <- SPECIES
+current.areas$model <- "current"
+current.areas$threshold <- 0.5
+
+write.csv(current.areas,
+          file = paste0(SPECIES,
+                        "/",
+                        SPECIES,
+                        "_products_current_map_areas.csv"))
