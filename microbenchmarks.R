@@ -5,6 +5,7 @@ library(lme4)
 library(lmerTest)
 
 #now the microbenchmarks
+setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
 
 #list of species
 specieslist <- c("NOBO",
@@ -36,13 +37,18 @@ mb.df.sep <- separate(mb.df,
                                    "runtype"),
                           model,
                       sep = -2)
+
+mb.df.sep$scale <- factor(mb.df.sep$scale,
+                          levels = c("statewide",
+                                     "large",
+                                     "medium",
+                                     "small"))
+
 boxplot(time ~ runtype, data = mb.df.sep)
 mb.summed <- group_by(mb.df.sep,
                       scale,
                       Species) %>%
   summarize("runtime" = sum(time)*1000000000) #convert from default nanoseconds to seconds
-
-
 
 statewide.values <-filter (mb.summed,
                             scale == "statewide") %>%
@@ -54,7 +60,6 @@ mb.summed$statewide <- rep(statewide.values$runtime, 4)
 mb.summed$ratio <- mb.summed$runtime/mb.summed$statewide
 
 boxplot(mb.summed$ratio~mb.summed$scale)
-boxplot()
 
 #add in evaluation results
 
@@ -96,11 +101,12 @@ eval.df.sep <- gather_(eval.df,
                      "errortype",
                      "year"))
 
-eval.df.sep$scale <- as.factor(eval.df.sep$scale)
-levels(eval.df.sep$scale) <- c("statewide",
-                               "large",
-                               "medium",
-                               "small")
+eval.df.sep$scale <- factor(eval.df.sep$scale,
+                          levels = c("statewide",
+                                     "large",
+                                     "medium",
+                                     "small"))
+
 eval.df.sep$species <- SPECIES
 return(eval.df.sep)
 }
@@ -112,38 +118,86 @@ evalsforbinding <- do.call(rbind,
                                data.frame, 
                                stringsAsFactors=FALSE))
 
-evalsforbinding.sameyear.rmse <- filter (evalsforbinding,
-                                         errortype == "auc",
-                                         year == "sameyear") %>%
-  group_by(species,
-           scale)%>%
-  summarize(mean_rmse = mean(errornum))
+
+final.models.and.plots <- function (errortypehere,
+                                    yearhere) {
+  
+  #filter to get the year and error (auc or rmse)
+evalsforbinding.filtered1 <- dplyr::filter(evalsforbinding,
+                                         errortype == errortypehere,
+                                         year == yearhere)
+
+evalsforbinding.filtered <- group_by(evalsforbinding.filtered1,
+           scale,
+           species) %>%
+  summarize(errornum = mean(errornum))
 
 
-joined.rmse <- left_join(x = evalsforbinding.sameyear.rmse,
+boxplot(errornum ~ scale,
+        data = evalsforbinding.filtered1,
+        notch = TRUE,
+        ylab = paste(errortypehere,
+                     yearhere,
+                     sep = ", "),
+        xlab = "Scale")
+
+joined <- left_join(x = evalsforbinding.filtered,
                          y = mb.summed,
                          by = c("scale" = "scale",
                                 "species" = "Species"))
 
-joined.rmse$scale <- as.factor(joined.rmse$scale)
+#eliminate statewide for this because all in ratios
+#joined <- dplyr::filter(joined,
+#                 scale != "statewide")
+joined$pch <- gsub("statewide", "o",
+                   joined$scale,
+                   fixed = TRUE)
+joined$pch <- gsub("large", "l",
+                   joined$scale,
+                                     fixed = TRUE)
+joined$pch <- gsub("medium", "m",
+                   joined$scale,
+                                     fixed = TRUE)
+joined$pch <- gsub("small", "s",
+                   joined$scale,
+                                     fixed = TRUE)
 
-levels(joined.rmse$scale) <- c("statewide",
-                               "large",
-                               "medium",
-                               "small")
 
-plot(ratio ~ scale,
-     data = joined.rmse)
+#levels for appropriate graphs
+joined$scale <- factor(joined$scale,
+                            levels = c("statewide",
+                                       "large",
+                                       "medium",
+                                       "small"))
+  
+plot(errornum ~ ratio,
+     data = joined,
+     xlab = "Ratio of scale to statewide runtime",
+     ylab = paste(errortypehere,
+                  yearhere,
+                  sep = ", "),
+     pch = joined$pch)
 
-rmse.model <- lmer(mean_rmse ~ ratio + (1|species),
-                   data = joined.rmse)
-summary(rmse.model)
-plot(rmse.model)
+error.model <- lmer(ratio ~ scale + (1|species),
+                   data = joined)
 
-runtime.model <- lmer(ratio ~ scale + (1|species),
-                   data = joined.rmse)
-summary(runtime.model)
-plot(runtime.model)
+plot(error.model)
+summary(error.model)
 
+}
+
+(auc.same <- final.models.and.plots("auc",
+                       "sameyear"))
+
+(auc.diff <- final.models.and.plots("auc",
+                                "diffyear"))
+
+
+(rmse.same <- final.models.and.plots("rmse",
+                                "sameyear"))
+
+
+(rmse.diff <- final.models.and.plots("rmse",
+                                "diffyear"))
 
                          
