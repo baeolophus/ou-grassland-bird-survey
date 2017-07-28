@@ -4,13 +4,13 @@ setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassla
 
 SPECIES <- "NOBO"
 SPECIES <- "UPSA"
-SPECIES <- "EAME"
 SPECIES <- "HOLA"
 SPECIES <- "CASP"
 SPECIES <- "FISP"
 SPECIES <- "LASP"
 SPECIES <- "GRSP"
 SPECIES <- "DICK"
+SPECIES <- "EAME"
 SPECIES <- "WEME"
 SPECIES <- "BHCO"
 
