@@ -48,7 +48,10 @@ boxplot(time ~ runtype, data = mb.df.sep)
 mb.summed <- group_by(mb.df.sep,
                       scale,
                       Species) %>%
-  summarize("runtime" = sum(time)*1000000000) #convert from default nanoseconds to seconds
+  summarize("runtime" = sum(time/1000000000)) #convert to seconds
+
+mb.summed$runtimehrs <- mb.summed$runtime/(60*60)
+mb.summed$runtimedays <- mb.summed$runtimehrs/24
 
 statewide.values <-filter (mb.summed,
                             scale == "statewide") %>%
@@ -59,7 +62,29 @@ mb.summed$statewide <- rep(statewide.values$runtime, 4)
 
 mb.summed$ratio <- mb.summed$runtime/mb.summed$statewide
 
-boxplot(mb.summed$ratio~mb.summed$scale)
+#are runtimes different?
+mb.summed$scale <- factor(mb.summed$scale,
+                       levels = c("statewide",
+                         "large",
+                         "medium",
+                         "small"))
+
+runtime.model <- lmer(runtimehrs ~ scale+(1|Species),
+                      data = mb.summed)
+plot(runtime.model)
+summary(runtime.model)
+anova(runtime.model)
+
+boxplot(runtimehrs ~ scale,
+        data = mb.summed,
+        ylab = "Runtime in hours",
+        xlab = "Scale",
+        lwd = 2,
+        cex.axis = 2)
+
+hist(resid(runtime.model))
+
+summary(mb.summed[mb.summed$scale != "statewide", "ratio"])
 
 #add in evaluation results
 
@@ -118,9 +143,6 @@ evalsforbinding <- do.call(rbind,
                                data.frame, 
                                stringsAsFactors=FALSE))
 
-errortypehere <- "auc"
-yearhere <- "sameyear"
-
 final.models.and.plots <- function (errortypehere,
                                     yearhere) {
   
@@ -128,14 +150,6 @@ final.models.and.plots <- function (errortypehere,
 evalsforbinding.filtered1 <- dplyr::filter(evalsforbinding,
                                          errortype == errortypehere,
                                          year == yearhere)
-boxplot(errornum ~ scale,
-        data = evalsforbinding.filtered1,
-        notch = TRUE,
-        ylab = paste(errortypehere,
-                     yearhere,
-                     sep = ", "),
-        xlab = "Scale")
-
 
 
 evalsforbinding.filtered <- group_by(evalsforbinding.filtered1,
@@ -148,37 +162,34 @@ joined <- left_join(x = evalsforbinding.filtered,
                          by = c("scale" = "scale",
                                 "species" = "Species"))
 
-#eliminate statewide for this because all in ratios
-joined <- dplyr::filter(joined,
-                 scale != "statewide")
 
-#levels for appropriate graphs
-joined$scale <- factor(joined$scale,
-                            levels = c(
-                                       "large",
-                                       "medium",
-                                       "small"))
-  
-runtime.model <- lmer(ratio ~ scale + (1|species),
-                   data = joined)
+#run models
 
-plot(runtime.model)
-summary(runtime.model)
-return(anova(error.model))
-
-boxplot(ratio ~ scale,
-        data = joined)
-
-
-error.model <- lmer(errornum ~ scale + (1|species),
+error.runtime <- lmer(errornum ~ runtimehrs + (1|species),
                     data = joined)
 
-plot(error.model)
-summary(error.model)
-return(anova(error.model))
+plot(error.runtime)
+summary(error.runtime)
+hist(resid(error.runtime))
+runtimeplot <- plot(errornum ~runtimehrs,
+     data = joined, 
+     xlab = "Runtime (hrs)",
+     ylab = paste(errortypehere,
+                  yearhere,
+                  sep = " "))
 
-boxplot(ratio ~ scale,
-        data = joined)
+
+error.scale <- lmer(errornum ~ scale + (1|species),
+                    data = joined)
+plot(error.scale)
+summary(error.scale)
+hist(resid(error.scale))
+
+#levels for appropriate graphs
+
+return(list(error.runtime,
+            error.scale,
+            joined))
 
 }
 
@@ -195,5 +206,96 @@ boxplot(ratio ~ scale,
 
 (rmse.diff <- final.models.and.plots("rmse",
                                 "diffyear"))
+
+
+library(car)
+Anova(auc.same[[2]], type = "II")
+Anova(auc.diff[[2]], type = "II")
+Anova(rmse.same[[2]], type = "II")
+Anova(rmse.diff[[2]], type = "II")
+
+summary(auc.same[[2]])
+summary(auc.diff[[2]])
+summary(rmse.same[[2]])
+summary(rmse.diff[[2]])
+
+summary(auc.same[[1]])
+summary(auc.diff[[1]])
+summary(rmse.same[[1]])
+summary(rmse.diff[[1]])
+
+par(mfrow=c(2,2),
+    mar=c(5, 6, 4, 2))
+boxplot(errornum ~ scale,
+                     data = auc.same[[3]],
+                     ylab = "AUC",
+                     main = "Same year",
+        ylim = c(0.4, 1))
+abline(h=0.5,
+       lty = "dashed")
+boxplot(errornum ~ scale,
+        data = auc.diff[[3]],
+        main = "Different year",
+        ylim = c(0.4, 1))
+abline(h=0.5,
+       lty = "dashed")
+boxplot(errornum ~ scale,
+        data = rmse.same[[3]],
+        ylab = "RMSE",
+        ylim = c(0.1, 0.5))
+boxplot(errornum ~ scale,
+        data = rmse.diff[[3]],
+        ylim = c(0.1, 0.5))
+
+#Function to get prediction lines for figure.
+prediction.function<-function(behaviormerModobject,
+                              dataname){
+  nd<-data.frame("runtimehrs"=seq(min(dataname[[3]]$runtimehrs,
+                                    na.rm=TRUE),
+                                max(dataname[[3]]$runtimehrs,
+                                    na.rm=TRUE),
+                                length.out=length(dataname[[3]]$runtimehrs)))
+  predicted<-data.frame("y"=predict(behaviormerModobject,
+                                    newdata=nd,
+                                    type="response",
+                                    re.form=NA),#do not condition on random effects
+                        nd) 
+}
+
+#runtime vs error
+par(mfrow=c(2,2),
+    mar=c(5, 6, 4, 2))
+plot(errornum ~ runtimehrs,
+        data = auc.same[[3]],
+        ylab = "AUC",
+        main = "Same year",
+     xlab="",
+        ylim = c(0.4, 1))
+abline(h=0.5,
+       lty = "dashed")
+plot(errornum ~ runtimehrs,
+        data = auc.diff[[3]],
+        main = "Different year",
+     
+     ylab = "",
+     xlab="",
+        ylim = c(0.4, 1))
+abline(h=0.5,
+       lty = "dashed")
+plot(errornum ~ runtimehrs,
+        data = rmse.same[[3]],
+        ylab = "RMSE",
+     xlab="Runtime hours")
+plot(errornum ~ runtimehrs,
+        data = rmse.diff[[3]],
+     xlab="Runtime hours",
+     ylab = "",
+     main = expression(paste(beta==0.00026, ",", ~p==0.0068)))
+rmse.diff.line <- prediction.function(rmse.diff[[1]],
+                    rmse.diff)
+graphics::lines(x = rmse.diff.line$runtimehrs,
+                y = rmse.diff.line$y,
+                lty = "solid")
+
 
                          
