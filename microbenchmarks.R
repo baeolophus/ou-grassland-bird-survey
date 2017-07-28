@@ -209,16 +209,6 @@ return(list(error.runtime,
 
 
 library(car)
-Anova(auc.same[[2]], type = "II")
-Anova(auc.diff[[2]], type = "II")
-Anova(rmse.same[[2]], type = "II")
-Anova(rmse.diff[[2]], type = "II")
-
-summary(auc.same[[2]])
-summary(auc.diff[[2]])
-summary(rmse.same[[2]])
-summary(rmse.diff[[2]])
-
 summary(auc.same[[1]])
 summary(auc.diff[[1]])
 summary(rmse.same[[1]])
@@ -297,5 +287,28 @@ graphics::lines(x = rmse.diff.line$runtimehrs,
                 y = rmse.diff.line$y,
                 lty = "solid")
 
+#showing that different years are less predicted than same years.
 
-                         
+auc.same[[3]]$year <- "same"
+auc.diff[[3]]$year <- "diff"
+
+auc.years <- data.frame(rbind(auc.same[[3]],
+                              auc.diff[[3]]))
+
+years.auc <- lmer(errornum ~ year + (1|species), 
+                  data = auc.years)
+
+Anova(years.auc, type = 2)
+
+
+
+rmse.same[[3]]$year <- "same"
+rmse.diff[[3]]$year <- "diff"
+
+rmse.years <- data.frame(rbind(rmse.same[[3]],
+                              rmse.diff[[3]]))
+
+years.rmse <- lmer(errornum ~ year + (1|species), 
+                  data = rmse.years)
+
+summary(years.rmse, type = 2)
