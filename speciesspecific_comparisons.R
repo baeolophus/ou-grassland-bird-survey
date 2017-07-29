@@ -1,8 +1,9 @@
 #This file calculates whether sig diffs occur
+library(tidyr)
+library(dplyr)
 
 setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
 
-p.adjust
 #list of species
 specieslist <- c("NOBO",
                  "UPSA",
@@ -80,9 +81,13 @@ errormodel <- lm(errornum ~ scale, data = evalsforbinding[evalsforbinding$errort
                                                             evalsforbinding$year==yearhere&
                                                             evalsforbinding$species==SPECIES,])
 Anova(errormodel, type = 2)
-plot(errornum ~ scale, data = evalsforbinding[evalsforbinding$errortype==errortypehere&
+plot(errornum ~ scale, 
+     data = evalsforbinding[evalsforbinding$errortype==errortypehere&
                                             evalsforbinding$year==yearhere&
-                                              evalsforbinding$species==SPECIES,])
+                                              evalsforbinding$species==SPECIES,],
+     main = SPECIES,
+     ylab = errortypehere,
+     xlab = yearhere)
 
 
 summary.extracted <- data.frame(summary(errormodel)[[4]])
@@ -90,28 +95,209 @@ summary.extracted <- data.frame(summary(errormodel)[[4]])
 beta <- summary.extracted$Estimate
 SE <- summary.extracted$Std..Error
 P <- summary.extracted$Pr...t..
+summary.extracted$species <- SPECIES
+summary.extracted$var <- c("intercept",
+                           "large",
+                           "medium",
+                           "small")
 
-return(list(beta,
-            SE,
-            P,
-            summary.extracted,
-            errormodel))
+return(summary.extracted)
 }
 
-sumanova <- anova.for.species.error("NOBO",
-                        "auc",
-                        "sameyear")
+list.auc.sameyear <- lapply (specieslist,
+                      FUN = anova.for.species.error,
+                      "auc",
+                      "sameyear")
 
-str(sumanova)
+df.auc.sameyear <- do.call(rbind,
+                           lapply(list.auc.sameyear, 
+                                  data.frame, 
+                                  stringsAsFactors=FALSE))
+
+df.auc.sameyear$padjust <- p.adjust(df.auc.sameyear$Pr...t..,
+                                    method = "holm")
+
+df.auc.sameyear.filter <- df.auc.sameyear %>%
+  filter(var != "intercept")
+
+df.auc.sameyear.filter$pastedfortable <- paste0(round(df.auc.sameyear.filter$Estimate, 3),
+                                               "\u00b1",
+                                               round(df.auc.sameyear.filter$Std..Error, 3),
+                                               " (",
+                                               round(df.auc.sameyear.filter$padjust, 4),
+                                               ")"
+                                               )
+
+df.auc.sameyear.filter$pastedfortable <- gsub(pattern = "(0)",
+                                              replacement = "(<0.0001)",
+                                              df.auc.sameyear.filter$pastedfortable,
+                                              fixed = TRUE)
+
+df.auc.sameyear.filter$sign <- sign(df.auc.sameyear.filter$Estimate)
+df.auc.sameyear.filter$whichbest <- ifelse(df.auc.sameyear.filter$sign == 1 &
+                                             df.auc.sameyear.filter$padjust>=0.05,
+                                           yes = "scale",
+                                           no = "statewide")
+
+spread.auc.sameyear <- df.auc.sameyear.filter %>%
+  select(var,
+         pastedfortable,
+         species) 
+
+spread.auc.sameyear$species <- factor(spread.auc.sameyear$species,
+                                    levels=specieslist) 
+spread.auc.sameyear<- spread.auc.sameyear[do.call(order,
+                            spread.auc.sameyear[c('species')]),] 
+write.csv(spread.auc.sameyear,
+          "table3_auc_sameyear.csv")
+
+#rmse
+list.rmse.sameyear <- lapply (specieslist,
+                             FUN = anova.for.species.error,
+                             "rmse",
+                             "sameyear")
+
+df.rmse.sameyear <- do.call(rbind,
+                           lapply(list.rmse.sameyear, 
+                                  data.frame, 
+                                  stringsAsFactors=FALSE))
+
+df.rmse.sameyear$padjust <- p.adjust(df.rmse.sameyear$Pr...t..,
+                                    method = "holm")
+
+df.rmse.sameyear.filter <- df.rmse.sameyear %>%
+  filter(var != "intercept")
+
+df.rmse.sameyear.filter$pastedfortable <- paste0(round(df.rmse.sameyear.filter$Estimate, 3),
+                                                "\u00b1",
+                                                round(df.rmse.sameyear.filter$Std..Error, 3),
+                                                " (",
+                                                round(df.rmse.sameyear.filter$padjust, 4),
+                                                ")"
+)
+
+df.rmse.sameyear.filter$pastedfortable <- gsub(pattern = "(0)",
+                                              replacement = "(<0.0001)",
+                                              df.rmse.sameyear.filter$pastedfortable,
+                                              fixed = TRUE)
+
+df.rmse.sameyear.filter$sign <- sign(df.rmse.sameyear.filter$Estimate)
+df.rmse.sameyear.filter$whichbest <- ifelse(df.rmse.sameyear.filter$sign == 1 &
+                                             df.rmse.sameyear.filter$padjust>=0.05,
+                                           yes = "scale",
+                                           no = "statewide")
+
+spread.rmse.sameyear <- df.rmse.sameyear.filter %>%
+  select(var,
+         pastedfortable,
+         species) 
+
+spread.rmse.sameyear$species <- factor(spread.rmse.sameyear$species,
+                                      levels=specieslist) 
+spread.rmse.sameyear<- spread.rmse.sameyear[do.call(order,
+                                                  spread.rmse.sameyear[c('species')]),] 
+write.csv(spread.rmse.sameyear,
+          "table3_rmse_sameyear.csv")
 
 
+#diff year auc
+#diff year rmse
 
+list.auc.diffyear <- lapply (specieslist,
+                             FUN = anova.for.species.error,
+                             "auc",
+                             "diffyear")
 
+df.auc.diffyear <- do.call(rbind,
+                           lapply(list.auc.diffyear, 
+                                  data.frame, 
+                                  stringsAsFactors=FALSE))
 
-#Then combine elements 1, 2, 3 into a data frame
-#get adjusted p-value column
-#paste
-#spread
+df.auc.diffyear$padjust <- p.adjust(df.auc.diffyear$Pr...t..,
+                                    method = "holm")
 
-p.adjust(sumanova[[1]]$Pr...t..,
-         method = "holm")
+df.auc.diffyear.filter <- df.auc.diffyear %>%
+  filter(var != "intercept")
+
+df.auc.diffyear.filter$pastedfortable <- paste0(round(df.auc.diffyear.filter$Estimate, 3),
+                                                "\u00b1",
+                                                round(df.auc.diffyear.filter$Std..Error, 3),
+                                                " (",
+                                                round(df.auc.diffyear.filter$padjust, 4),
+                                                ")"
+)
+
+df.auc.diffyear.filter$pastedfortable <- gsub(pattern = "(0)",
+                                              replacement = "(<0.0001)",
+                                              df.auc.diffyear.filter$pastedfortable,
+                                              fixed = TRUE)
+
+df.auc.diffyear.filter$sign <- sign(df.auc.diffyear.filter$Estimate)
+df.auc.diffyear.filter$whichbest <- ifelse(df.auc.diffyear.filter$sign == 1 &
+                                             df.auc.diffyear.filter$padjust>=0.05,
+                                           yes = "scale",
+                                           no = "statewide")
+
+spread.auc.diffyear <- df.auc.diffyear.filter %>%
+  select(var,
+         pastedfortable,
+         species) 
+
+spread.auc.diffyear$species <- factor(spread.auc.diffyear$species,
+                                      levels=specieslist) 
+spread.auc.diffyear<- spread.auc.diffyear[do.call(order,
+                                                  spread.auc.diffyear[c('species')]),] 
+write.csv(spread.auc.diffyear,
+          "table3_auc_diffyear.csv")
+
+#rmse
+list.rmse.diffyear <- lapply (specieslist,
+                              FUN = anova.for.species.error,
+                              "rmse",
+                              "diffyear")
+
+df.rmse.diffyear <- do.call(rbind,
+                            lapply(list.rmse.diffyear, 
+                                   data.frame, 
+                                   stringsAsFactors=FALSE))
+
+df.rmse.diffyear$padjust <- p.adjust(df.rmse.diffyear$Pr...t..,
+                                     method = "holm")
+
+df.rmse.diffyear.filter <- df.rmse.diffyear %>%
+  filter(var != "intercept")
+
+df.rmse.diffyear.filter$pastedfortable <- paste0(round(df.rmse.diffyear.filter$Estimate, 3),
+                                                 "\u00b1",
+                                                 round(df.rmse.diffyear.filter$Std..Error, 3),
+                                                 " (",
+                                                 round(df.rmse.diffyear.filter$padjust, 4),
+                                                 ")"
+)
+
+df.rmse.diffyear.filter$pastedfortable <- gsub(pattern = "(0)",
+                                               replacement = "(<0.0001)",
+                                               df.rmse.diffyear.filter$pastedfortable,
+                                               fixed = TRUE)
+
+df.rmse.diffyear.filter$sign <- sign(df.rmse.diffyear.filter$Estimate)
+df.rmse.diffyear.filter$whichbest <- ifelse(df.rmse.diffyear.filter$sign == 1 &
+                                              df.rmse.diffyear.filter$padjust>=0.05,
+                                            yes = "scale",
+                                            no = "statewide")
+
+spread.rmse.diffyear <- df.rmse.diffyear.filter %>%
+  select(var,
+         pastedfortable,
+         species) 
+
+spread.rmse.diffyear$species <- factor(spread.rmse.diffyear$species,
+                                       levels=specieslist) 
+spread.rmse.diffyear<- spread.rmse.diffyear[do.call(order,
+                                                    spread.rmse.diffyear[c('species')]),] 
+write.csv(spread.rmse.diffyear,
+          "table3_rmse_diffyear.csv")
+
+#doublecheck directions
+
+plot()
