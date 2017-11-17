@@ -1,8 +1,10 @@
 #This file calculates whether sig diffs occur
 library(tidyr)
 library(dplyr)
+library(car)
 
 setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
+setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current")
 
 #list of species
 specieslist <- c("NOBO",
@@ -149,7 +151,7 @@ spread.auc.sameyear$species <- factor(spread.auc.sameyear$species,
 spread.auc.sameyear<- spread.auc.sameyear[do.call(order,
                             spread.auc.sameyear[c('species')]),] 
 write.csv(spread.auc.sameyear,
-          "table3_auc_sameyear.csv")
+          "table3_auc_sameyear_downscale.csv")
 
 #rmse
 list.rmse.sameyear <- lapply (specieslist,
@@ -197,7 +199,7 @@ spread.rmse.sameyear$species <- factor(spread.rmse.sameyear$species,
 spread.rmse.sameyear<- spread.rmse.sameyear[do.call(order,
                                                   spread.rmse.sameyear[c('species')]),] 
 write.csv(spread.rmse.sameyear,
-          "table3_rmse_sameyear.csv")
+          "table3_rmse_sameyear_downscale.csv")
 
 
 #diff year auc
@@ -248,7 +250,7 @@ spread.auc.diffyear$species <- factor(spread.auc.diffyear$species,
 spread.auc.diffyear<- spread.auc.diffyear[do.call(order,
                                                   spread.auc.diffyear[c('species')]),] 
 write.csv(spread.auc.diffyear,
-          "table3_auc_diffyear.csv")
+          "table3_auc_diffyear_downscale.csv")
 
 #rmse
 list.rmse.diffyear <- lapply (specieslist,
@@ -296,8 +298,6 @@ spread.rmse.diffyear$species <- factor(spread.rmse.diffyear$species,
 spread.rmse.diffyear<- spread.rmse.diffyear[do.call(order,
                                                     spread.rmse.diffyear[c('species')]),] 
 write.csv(spread.rmse.diffyear,
-          "table3_rmse_diffyear.csv")
+          "table3_rmse_diffyear_downscale.csv")
 
-#doublecheck directions
 
-plot()
