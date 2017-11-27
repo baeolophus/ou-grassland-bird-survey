@@ -5,7 +5,7 @@ library(lme4)
 library(lmerTest)
 
 #now the microbenchmarks
-setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
+setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current")
 
 #list of species
 specieslist <- c("NOBO",
@@ -298,9 +298,9 @@ auc.years <- data.frame(rbind(auc.same[[3]],
 years.auc <- lmer(errornum ~ year + (1|species), 
                   data = auc.years)
 
-Anova(years.auc, type = 2)
+summary(years.auc, type = 2)
 
-
+plot(rmse.years$errornum ~ as.factor(rmse.years$year))
 
 rmse.same[[3]]$year <- "same"
 rmse.diff[[3]]$year <- "diff"
@@ -312,3 +312,4 @@ years.rmse <- lmer(errornum ~ year + (1|species),
                   data = rmse.years)
 
 summary(years.rmse, type = 2)
+
