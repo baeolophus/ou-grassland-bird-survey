@@ -298,6 +298,6 @@ spread.rmse.diffyear$species <- factor(spread.rmse.diffyear$species,
 spread.rmse.diffyear<- spread.rmse.diffyear[do.call(order,
                                                     spread.rmse.diffyear[c('species')]),] 
 write.csv(spread.rmse.diffyear,
-          "table3_rmse_diffyear_downscale.csv")
+          "table4_rmse_diffyear_downscale.csv")
 
 
