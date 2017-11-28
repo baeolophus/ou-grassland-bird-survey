@@ -1,15 +1,8 @@
 #libraries needed
-#library(beepr)
-#library(dplyr)
 library(microbenchmark)
-#library(randomForest)
 library(raster)
-#library(rgdal)
-#library(ROCR)
-#library(rpart)
-#library(sp)
 
-setwd("/data/grassland_ensemble")
+setwd("/data/grassland_ensemble") #change as necessary for your computer.
 
 #create temporary raster files on large drive because they occupy 10-30 GB
 rasterOptions()$tmpdir
@@ -31,9 +24,6 @@ complete.dataset.for.sdm <- read.csv(file = "oklahomadatasetforsdm_naomit_utm.cs
 effort_length <- raster("effort/effort_length.tif")
 effort_time <- raster("effort/effort_time.tif")
 time_of_day <- raster("effort/time_of_day.tif")
-#local computer
-#effort_length_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_length_ok_census_mask.tif")
-#effort_time_ok_census_mask <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/effort_time_ok_census_mask.tif")
 
 #Create predictors_stack_with_all_variables to include a raster version of effort time and and effort length
 predictors_stack_with_all_variables <- addLayer(predictors_stack,
@@ -104,9 +94,9 @@ source("source_ensemble_complete_ensemble_model.R")
 
 send.mail(from = sender,
           to = recipients,
-          subject = paste0("Downgrade to free tier!!  Quick!",
+          subject = paste0("All models complete",
                            SPECIES),
-          body = "Downgrade server type to free tier.  Download all EBS data.  Terminate all!",
+          body = "Save all your data and results now.",
           smtp = list(host.name = "smtp.gmail.com", port = 465, 
                       user.name = "curryclairem.mail@gmail.com",            
                       passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
