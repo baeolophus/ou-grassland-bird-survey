@@ -12,6 +12,8 @@ beginCluster()
   complete.dataset.for.sdm.SPECIES<-dplyr::filter(complete.dataset.for.sdm,
                                                   SPEC==SPECIES,
                                                   !is.na(ebird.time))
+  #show how many checklists from each data source type (ebird, pointcount, or transect)
+  complete.dataset.for.sdm.SPECIES %>% group_by(datasource) %>%dplyr::summarize(n_distinct(SAMPLING_EVENT_ID))
   
   #make it spatial, remembering these values were converted from lat/long to UTM already in data manipulation file.
   coordinates(complete.dataset.for.sdm.SPECIES)<-c("Longitude", "Latitude")
@@ -35,6 +37,8 @@ beginCluster()
   #land covers are factors.
   latlong.predictors.SPECIES.unsplit$nlcd_ok_utm14_okmask <- as.factor(latlong.predictors.SPECIES.unsplit$nlcd_ok_utm14_okmask)
 
+  #Run this line only to trim responses if predictor maps do not match up with response data.
+  #latlong.predictors.SPECIES.unsplit <- na.omit(latlong.predictors.SPECIES.unsplit)
   set.seed(78)
   train <- createDataPartition(y = latlong.predictors.SPECIES.unsplit$presence,
                               times = 1,
