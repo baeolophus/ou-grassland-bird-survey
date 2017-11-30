@@ -1,5 +1,5 @@
 
-
+#Functions to reload and run predictions with new predictors, already created trees.
 
 
 #statewide
@@ -209,7 +209,7 @@ future_small <- future_processing (predictor_stack = future_predictors_stack_wit
 
 
 #threshold calculations
-source("threshold_calculations.R")
+source("source_function_threshold_calculations.R")
 stateraster <- raster(paste0(
   SPECIES,
   "_products_future_statewide_raster_prediction_prob.tif"))
