@@ -1,9 +1,8 @@
-#Ensemble function
 library(raster)
 
 ############################
-#assemble the support set lists into a model prediction surface.
-#Mosaic function
+#Assemble the support set lists into a model prediction surface.
+#=Mosaic function
 ensemble.function <- function (list.of.rasters) {
   weights<-lapply(list.of.rasters,
                   "[",
