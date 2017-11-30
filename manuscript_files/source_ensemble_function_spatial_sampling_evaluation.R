@@ -9,7 +9,7 @@ spatial.sampling.evaluation <- function (evaluation.spatial,
                                          prediction.raster) { #the model full prediction map
   
   list.of.object.spdf.and.grid <- sample.grid(evaluation.spatial, #spatial dataframe
-                                              cell.size, #maybe 10 or 100 km?
+                                              cell.size, #in meters
                                               n) #maximum number of samples per grid cell
   
   iteration.testing.spatial <- list.of.object.spdf.and.grid[[1]]
