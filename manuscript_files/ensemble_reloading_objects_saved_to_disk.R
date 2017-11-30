@@ -1,7 +1,9 @@
 #This file reloads all the objects saved in the course of the ensemble.
+#It then creates all the map figures for current-day prediction models.
 
 setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
 
+#Run this file once for each species below.
 SPECIES <- "NOBO"
 SPECIES <- "UPSA"
 SPECIES <- "HOLA"
@@ -14,6 +16,7 @@ SPECIES <- "EAME"
 SPECIES <- "WEME"
 SPECIES <- "BHCO"
 
+#load required libraries.
 library(dplyr)
 library(ggplot2)
 library(randomForest)
@@ -147,8 +150,8 @@ for (i in 1:10) {
 dev.off()
 
 
-#threshold calculations
-source("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ou-grassland-bird-survey/threshold_calculations.R")
+#threshold calculations for current-day maps.  Same source file as used in future threshold calculations.
+source("source_function_threshold_calculations.R")
 
 rasterOptions()$tmpdir
 rasterOptions(tmpdir="F:/temp")
