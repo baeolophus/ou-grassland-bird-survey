@@ -1,11 +1,16 @@
-#Future bioclim using current models on futurestack raster predictions.
+#Future predictions using current models.
+#Take future bioclim/worldclim or other climate rasters that match your original climate rasters
+#Replace them in predictor dataset using same names.
+#Predict future maps using the modern-day base models/trees.
+#It requires these slightly different files because it has to load the trees before prediction.
+
 setwd("/data/grassland_ensemble")
 library(randomForest)
 library(raster)
 library(mailR)
 library(microbenchmark)
 
-#create temporary raster files on large drive because they occupy 10-30 GB
+#create temporary raster files on large drive because they can occupy 10-30 GB
 rasterOptions()$tmpdir
 rasterOptions(tmpdir=paste0(getwd(),
                             "/rastertemp"))

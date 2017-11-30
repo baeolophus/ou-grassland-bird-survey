@@ -247,7 +247,7 @@ future.areas <- data.frame("areakm2" = rbind(small.area,
 
 future.areas$Species <- SPECIES
 future.areas$model <- "future"
-future.areas$threshold <- 0.5
+future.areas$threshold <- 0.5 #0.5 = top 50% of range.
 
 write.csv(future.areas,
           file = paste0(SPECIES,
