@@ -1,10 +1,11 @@
-#This file calculates whether sig diffs occur
+#This file calculates whether sig diffs occur between AUC and RMSE values.
 library(tidyr)
 library(dplyr)
 library(car)
 
-setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
-setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current")
+#One of the working directories
+setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current") #table 3 results
+#setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current") #table 4 results
 
 #list of species
 specieslist <- c("NOBO",
@@ -298,6 +299,6 @@ spread.rmse.diffyear$species <- factor(spread.rmse.diffyear$species,
 spread.rmse.diffyear<- spread.rmse.diffyear[do.call(order,
                                                     spread.rmse.diffyear[c('species')]),] 
 write.csv(spread.rmse.diffyear,
-          "table4_rmse_diffyear_downscale.csv")
+          "table3_rmse_diffyear_downscale.csv")
 
 
