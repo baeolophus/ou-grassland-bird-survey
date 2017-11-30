@@ -9,13 +9,17 @@ library(microbenchmark)
 library(party)
 
 beginCluster()
+#user raster beginCluster() to make processing faster.
+
+  #Import dataset and filter by species and having time of day.
   complete.dataset.for.sdm.SPECIES<-dplyr::filter(complete.dataset.for.sdm,
                                                   SPEC==SPECIES,
                                                   !is.na(ebird.time))
+  
   #show how many checklists from each data source type (ebird, pointcount, or transect)
   complete.dataset.for.sdm.SPECIES %>% group_by(datasource) %>%dplyr::summarize(n_distinct(SAMPLING_EVENT_ID))
   
-  #make it spatial, remembering these values were converted from lat/long to UTM already in data manipulation file.
+  #make it spatial and set coordinate system appropriately.
   coordinates(complete.dataset.for.sdm.SPECIES)<-c("Longitude", "Latitude")
   #make it spatial
   proj4string(complete.dataset.for.sdm.SPECIES)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
@@ -24,8 +28,10 @@ beginCluster()
   #extract values for analysis
   predictors_stack.SPECIES<-extract(x = predictors_stack,
                                     y = complete.dataset.for.sdm.SPECIES)
+  #convert to data frame
   predictors_stack.SPECIES.df <- as.data.frame(predictors_stack.SPECIES)
   
+  #add in effort, time of day, and presence/absence.
   latlong.predictors.SPECIES.unsplit<-cbind(
                                               "presence" = complete.dataset.for.sdm.SPECIES$presence,
                                     coordinates(complete.dataset.for.sdm.SPECIES),
@@ -39,25 +45,26 @@ beginCluster()
 
   #Run this line only to trim responses if predictor maps do not match up with response data.
   #latlong.predictors.SPECIES.unsplit <- na.omit(latlong.predictors.SPECIES.unsplit)
+  
+  #set seed for reproducible split
   set.seed(78)
   train <- createDataPartition(y = latlong.predictors.SPECIES.unsplit$presence,
                               times = 1,
                               p = 0.5,
                               list = FALSE)
   
- 
+  #split into training and evaluation (.eval) sets. 
   latlong.predictors.SPECIES <- latlong.predictors.SPECIES.unsplit[train,]
   latlong.predictors.SPECIES.eval <- latlong.predictors.SPECIES.unsplit[-train,]
   
   
-  #spatial versions
+  #spatial version of training dataset
   latlong.predictors.SPECIES.spatial <- latlong.predictors.SPECIES
   #has to be spatial for function to work so re-add that
   coordinates(latlong.predictors.SPECIES.spatial) <- c("Longitude", "Latitude")
   proj4string(latlong.predictors.SPECIES.spatial)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
-  #eval
+  #do the same for the evaluation dataset
   latlong.predictors.SPECIES.eval.spatial <- latlong.predictors.SPECIES.eval
-  #has to be spatial for function to work so re-add that
   coordinates(latlong.predictors.SPECIES.eval.spatial) <- c("Longitude", "Latitude")
   proj4string(latlong.predictors.SPECIES.eval.spatial)<-CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
   
@@ -91,7 +98,7 @@ beginCluster()
                                                  "small",
                                                  "backup_microbenchmark2",
                                                  sep = "_"))
-                                   
+  #medium                                 
   support.medium.ensemble <- create_support_set(numberofpoints = numberofpoints.medium,
                                                radius = radius.medium,
                                                sizename = "medium")
@@ -103,7 +110,7 @@ beginCluster()
                                                  "medium",
                                                  "backup_microbenchmark2",
                                                  sep = "_"))
-  
+  #large
   support.large.ensemble <- create_support_set(numberofpoints = numberofpoints.large,
                                                radius = radius.large,
                                                sizename = "large")
@@ -115,7 +122,7 @@ beginCluster()
                                                  "large",
                                                  "backup_microbenchmark2",
                                                  sep = "_"))
-  
+  #clean memory
   gc()
   
   ############################
@@ -130,16 +137,19 @@ beginCluster()
                               "/rastertemp/",
                               SPECIES,
                               "/statewide"))
+  #notify email address of your choice that model begins.
   send.mail(from = sender,
             to = recipients,
             subject = paste0("Your statewide model is starting for ",
                              SPECIES),
-            body = "Save the before and after in case microbenchmark crashes.",
+            body = "Your statewide model is starting.",
             smtp = list(host.name = "smtp.gmail.com", port = 465, 
                         user.name = "curryclairem.mail@gmail.com",            
                         passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
             authenticate = TRUE,
             send = TRUE)
+  #wrap tree and prediction with microbenchmark to get time to run. 
+  #wrapping with microbenchmark is not needed if you are not comparing runtimes.
   microbenchmark.statewide1 <- microbenchmark (tree.statewide <- randomForest(presence ~ ., 
                                    data = statewide.data,
                                    ntree = ntree,
@@ -158,6 +168,8 @@ beginCluster()
                                                            overwrite = TRUE),
   times = 1)
   endCluster()
+  
+  #bind together microbenchmarks and save to file for later use.
   microbenchmark.statewide1$model <- "statewide1"
   microbenchmark.statewide2$model <- "statewide2"
   microbenchmarks.statewide <- rbind(microbenchmark.statewide1,
@@ -256,21 +268,11 @@ beginCluster()
                         SPECIES,
                         "_statewide_products_tree_and_varimp"))
   
-  #http://stats.stackexchange.com/questions/93202/odds-ratio-from-decision-tree-and-random-forest
-  #http://r.789695.n4.nabble.com/randomForest-PartialPlot-reg-td2551372.html shoudl not do the logit thing actually
-  #Just go for target class (I want presence ie "1") and interpret higher as more likely.
-  
-  #http://stackoverflow.com/questions/32606375/rmse-calculation-for-random-forest-in-r
-  
-  #for spatially uniform test data
-  #http://stackoverflow.com/questions/32862606/taking-random-point-from-list-of-points-per-grid-square
-  #Do this sampling n times (200?  250?)
-
   send.mail(from = sender,
             to = recipients,
             subject = paste0("Your statewide model is complete for ",
                              SPECIES),
-            body = "Go download files!  Onward!",
+            body = "Statewide model is complete.",
             smtp = list(host.name = "smtp.gmail.com", port = 465, 
                         user.name = "curryclairem.mail@gmail.com",            
                         passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
@@ -286,7 +288,6 @@ beginCluster()
   #http://www.stat.wisc.edu/~larget/stat302/chap3.pdf #bootstrapping/sampling
   
   
-  ###############################
   ###############################
   #evaluate then plot bootstrap distributions and calculation mean and sd for AUC and RMSE
   statewide.sampling.rmse.diffyear <- replicate(50,
@@ -493,6 +494,7 @@ beginCluster()
             file = paste0(SPECIES,
                           "_products_microbenchmarks.csv"))
   #####################
+  #save all results for processing.
   eval.results <- list(statewide.sampling.rmse.sameyear,
                   statewide.sampling.auc.sameyear,
                   small.sampling.rmse.sameyear,
@@ -516,7 +518,7 @@ beginCluster()
             to = recipients,
             subject = paste0("Everything is complete for ",
                              SPECIES),
-            body = "Go download any remaining files!  Onward!",
+            body = "This species' models are complete and saved!",
             smtp = list(host.name = "smtp.gmail.com", port = 465, 
                         user.name = "curryclairem.mail@gmail.com",            
                         passwd = "J9YgBkY5wxJhu5h90rKu", ssl = TRUE),
