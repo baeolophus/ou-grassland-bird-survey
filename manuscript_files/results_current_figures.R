@@ -1,5 +1,5 @@
 #This file reloads all the objects saved in the course of the ensemble.
-#It then creates all the map figures for current-day prediction models.
+#It then creates all the figures for current-day prediction models.
 
 setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
 
@@ -23,6 +23,7 @@ library(randomForest)
 library(raster)
 library(tidyr)
 
+#Load rasters.
 stateraster <- raster(paste0(SPECIES,
                              "/",
                              SPECIES,
@@ -39,7 +40,14 @@ largeraster <- raster(paste0(SPECIES,
                              "/",
                              SPECIES,
                              "_large_products_ensembleweightedmosaic.tif"))
+
+#Ensure UTM coordinates are not abbreviated.
 options(scipen=999)
+
+#Write a pdf for each species containing four figure panels.
+#i.e. section "Current Distribution" in Results.
+#Figs. 1-4 and Figs. S1-7.  
+
 pdf(file = paste0(SPECIES,
                   "/",
                   SPECIES,
@@ -59,14 +67,17 @@ plot(smallraster,
 
 dev.off()
 options(scipen=0)
+#Return number abbreviation to normal.
 
-#loading Rdata gets the rest!
+
+#loading Rdata.
 load(paste0("~/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current/",
             SPECIES,
             "/",
             SPECIES,
             "_rdata.RData"))
 
+#loading evaluation (RMSE/AUC) results.
 evalresults <- readRDS(file.path(
   SPECIES,
   paste0(
@@ -76,6 +87,7 @@ evalresults <- readRDS(file.path(
 #contains AUC/RMSE for all.
 eval.df <- data.frame(evalresults)
 
+#Types of accuracy measures available in a list.
 listerrornames <- c("statewide.sampling.rmse.sameyear",
                     "statewide.sampling.auc.sameyear",
                     "small.sampling.rmse.sameyear",
@@ -94,6 +106,7 @@ listerrornames <- c("statewide.sampling.rmse.sameyear",
                     "large.sampling.auc.diffyear")
 colnames(eval.df) <- listerrornames
 
+#Sort the accuracy measures and give them columns to filter by.
 eval.df.sep <- gather_(eval.df,
                       key_col = "errordescriptor",
                      value_col = "errornum",
@@ -110,6 +123,7 @@ levels(eval.df.sep$scale) <- c("statewide",
                        "medium",
                        "small")
 
+#Create figure of accuracy measures.
 pdf(file = paste0(SPECIES,
                   "/",
                   SPECIES,
@@ -129,6 +143,7 @@ dev.off()
 
 
 #Create file of top 10 important variables.
+#Figures S8-S18.
 pdf(file = paste0(SPECIES,
                   "/",
                   SPECIES,
@@ -194,3 +209,6 @@ write.csv(current.areas,
                         "/",
                         SPECIES,
                         "_products_current_map_areas.csv"))
+
+#Combine these files per species with the future map areas per species to create a file called thresholds.csv.
+#thresholds.csv is used in "results_area_changes_with_climate_change.R" to calculate area changes.
