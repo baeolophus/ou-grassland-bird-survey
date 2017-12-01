@@ -1,6 +1,7 @@
 #microbenchmark (runtime) vs accuracy comparisons between statewide and spatially explicit models
 
 #required libraries
+library(car)
 library(dplyr)
 library(lme4)
 library(lmerTest)
@@ -85,7 +86,6 @@ mb.summed$ratio <- mb.summed$runtime/mb.summed$statewide
 summary(mb.summed[mb.summed$scale != "statewide", "ratio"])
 
 #add in evaluation results
-
 eval.function <- function(SPECIES) {
 evalresults <- readRDS(file.path(
   SPECIES,
@@ -162,7 +162,6 @@ joined <- left_join(x = evalsforbinding.filtered,
 
 
 #run models
-
 error.runtime <- lmer(errornum ~ runtimehrs + (1|species),
                     data = joined)
 
@@ -191,6 +190,8 @@ return(list(error.runtime,
 
 }
 
+
+#Run for all year comparisons and accuracy types.
 (auc.same <- final.models.and.plots("auc",
                        "sameyear"))
 
@@ -206,34 +207,11 @@ return(list(error.runtime,
                                 "diffyear"))
 
 
-library(car)
+
 summary(auc.same[[1]])
 summary(auc.diff[[1]])
 summary(rmse.same[[1]])
 summary(rmse.diff[[1]])
-
-par(mfrow=c(2,2),
-    mar=c(5, 6, 4, 2))
-boxplot(errornum ~ scale,
-                     data = auc.same[[3]],
-                     ylab = "AUC",
-                     main = "Same year",
-        ylim = c(0.4, 1))
-abline(h=0.5,
-       lty = "dashed")
-boxplot(errornum ~ scale,
-        data = auc.diff[[3]],
-        main = "Different year",
-        ylim = c(0.4, 1))
-abline(h=0.5,
-       lty = "dashed")
-boxplot(errornum ~ scale,
-        data = rmse.same[[3]],
-        ylab = "RMSE",
-        ylim = c(0.1, 0.5))
-boxplot(errornum ~ scale,
-        data = rmse.diff[[3]],
-        ylim = c(0.1, 0.5))
 
 #Function to get prediction lines for figure.
 prediction.function<-function(behaviormerModobject,
@@ -278,15 +256,18 @@ plot(errornum ~ runtimehrs,
         data = rmse.diff[[3]],
      xlab="Runtime hours",
      ylab = "",
-     main = expression(paste(beta==0.00026, ",", ~p==0.0068)))
+     main = expression(paste(beta==0.00026, ",", ~p==0.0068
+                             )
+                       )
+     )
 rmse.diff.line <- prediction.function(rmse.diff[[1]],
                     rmse.diff)
 graphics::lines(x = rmse.diff.line$runtimehrs,
                 y = rmse.diff.line$y,
                 lty = "solid")
 
-#showing that different years are less predicted than same years.
 
+#Tests showing that different years are less well predicted than same years.
 auc.same[[3]]$year <- "same"
 auc.diff[[3]]$year <- "diff"
 
@@ -296,9 +277,8 @@ auc.years <- data.frame(rbind(auc.same[[3]],
 years.auc <- lmer(errornum ~ year + (1|species), 
                   data = auc.years)
 
-summary(years.auc, type = 2)
+summary(years.auc)
 
-plot(rmse.years$errornum ~ as.factor(rmse.years$year))
 
 rmse.same[[3]]$year <- "same"
 rmse.diff[[3]]$year <- "diff"
@@ -309,5 +289,5 @@ rmse.years <- data.frame(rbind(rmse.same[[3]],
 years.rmse <- lmer(errornum ~ year + (1|species), 
                   data = rmse.years)
 
-summary(years.rmse, type = 2)
+summary(years.rmse)
 
