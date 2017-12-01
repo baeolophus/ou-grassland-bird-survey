@@ -228,7 +228,7 @@ prediction.function<-function(behaviormerModobject,
                         nd) 
 }
 
-#Fig. 5, runtime vs error
+#Fig. 5, runtime vs error (use for CURRENT MODELS ONLY).
 par(mfrow=c(2,2),
     mar=c(5, 6, 4, 2))
 plot(errornum ~ runtimehrs,
@@ -257,6 +257,8 @@ plot(errornum ~ runtimehrs,
      xlab="Runtime hours",
      ylab = "",
      main = expression(paste(beta==0.00026, ",", ~p==0.0068
+                             #This line is why fig 5 is current model only specific.
+                             #These values and prediction lines need to be moved if you want to make downscaled figures.
                              )
                        )
      )
