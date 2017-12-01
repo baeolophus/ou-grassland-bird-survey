@@ -77,7 +77,7 @@ evalsforbinding <- do.call(rbind,
                                   data.frame, 
                                   stringsAsFactors=FALSE))
 
-
+#Function to calculate table values.
 anova.for.species.error <- function (SPECIES,
                                      errortypehere,
                                      yearhere) {
@@ -85,6 +85,9 @@ errormodel <- lm(errornum ~ scale, data = evalsforbinding[evalsforbinding$errort
                                                             evalsforbinding$year==yearhere&
                                                             evalsforbinding$species==SPECIES,])
 Anova(errormodel, type = 2)
+
+#generates plots for each species for visualizing which scale is best,
+#but these figures are not used in the manuscript.
 plot(errornum ~ scale, 
      data = evalsforbinding[evalsforbinding$errortype==errortypehere&
                                             evalsforbinding$year==yearhere&
@@ -108,6 +111,9 @@ summary.extracted$var <- c("intercept",
 return(summary.extracted)
 }
 
+
+#Generate all parts of Table 3.
+#Repeat all with downscaled model folder (and rename outputs) to get table 4.
 list.auc.sameyear <- lapply (specieslist,
                       FUN = anova.for.species.error,
                       "auc",
@@ -144,7 +150,7 @@ df.auc.sameyear.filter$whichbest <- ifelse(df.auc.sameyear.filter$sign == 1 &
                                            no = "statewide")
 
 spread.auc.sameyear <- df.auc.sameyear.filter %>%
-  select(var,
+  dplyr::select(var,
          pastedfortable,
          species) 
 
@@ -153,7 +159,7 @@ spread.auc.sameyear$species <- factor(spread.auc.sameyear$species,
 spread.auc.sameyear<- spread.auc.sameyear[do.call(order,
                             spread.auc.sameyear[c('species')]),] 
 write.csv(spread.auc.sameyear,
-          "table3_auc_sameyear_downscale.csv")
+          "table3_auc_sameyear.csv")
 
 #rmse
 list.rmse.sameyear <- lapply (specieslist,
@@ -192,7 +198,7 @@ df.rmse.sameyear.filter$whichbest <- ifelse(df.rmse.sameyear.filter$sign == 1 &
                                            no = "statewide")
 
 spread.rmse.sameyear <- df.rmse.sameyear.filter %>%
-  select(var,
+  dplyr::select(var,
          pastedfortable,
          species) 
 
@@ -201,12 +207,10 @@ spread.rmse.sameyear$species <- factor(spread.rmse.sameyear$species,
 spread.rmse.sameyear<- spread.rmse.sameyear[do.call(order,
                                                   spread.rmse.sameyear[c('species')]),] 
 write.csv(spread.rmse.sameyear,
-          "table3_rmse_sameyear_downscale.csv")
+          "table3_rmse_sameyear.csv")
 
 
 #diff year auc
-#diff year rmse
-
 list.auc.diffyear <- lapply (specieslist,
                              FUN = anova.for.species.error,
                              "auc",
@@ -243,7 +247,7 @@ df.auc.diffyear.filter$whichbest <- ifelse(df.auc.diffyear.filter$sign == 1 &
                                            no = "statewide")
 
 spread.auc.diffyear <- df.auc.diffyear.filter %>%
-  select(var,
+  dplyr::select(var,
          pastedfortable,
          species) 
 
@@ -252,9 +256,9 @@ spread.auc.diffyear$species <- factor(spread.auc.diffyear$species,
 spread.auc.diffyear<- spread.auc.diffyear[do.call(order,
                                                   spread.auc.diffyear[c('species')]),] 
 write.csv(spread.auc.diffyear,
-          "table3_auc_diffyear_downscale.csv")
+          "table3_auc_diffyear.csv")
 
-#rmse
+#diff year rmse
 list.rmse.diffyear <- lapply (specieslist,
                               FUN = anova.for.species.error,
                               "rmse",
@@ -291,7 +295,7 @@ df.rmse.diffyear.filter$whichbest <- ifelse(df.rmse.diffyear.filter$sign == 1 &
                                             no = "statewide")
 
 spread.rmse.diffyear <- df.rmse.diffyear.filter %>%
-  select(var,
+  dplyr::select(var,
          pastedfortable,
          species) 
 
@@ -300,6 +304,6 @@ spread.rmse.diffyear$species <- factor(spread.rmse.diffyear$species,
 spread.rmse.diffyear<- spread.rmse.diffyear[do.call(order,
                                                     spread.rmse.diffyear[c('species')]),] 
 write.csv(spread.rmse.diffyear,
-          "table3_rmse_diffyear_downscale.csv")
+          "table3_rmse_diffyear.csv")
 
 
