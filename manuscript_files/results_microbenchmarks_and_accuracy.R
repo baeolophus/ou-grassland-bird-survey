@@ -1,11 +1,18 @@
-#microbenchmark comparisons between statewide and spatially explicit models.
+#microbenchmark (runtime) vs accuracy comparisons between statewide and spatially explicit models
 
+#required libraries
 library(dplyr)
 library(lme4)
 library(lmerTest)
 
 #set working directory as appropriate.
+
+setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
+#original models
+
 setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current")
+#downscaled models
+
 
 #list of species
 specieslist <- c("NOBO",
@@ -38,7 +45,7 @@ mb.df <- do.call(rbind, lapply(listofmb,
                                data.frame, 
                                stringsAsFactors=FALSE))
 
-#Separate out the scale (statewide, spatially explicit ones) and runtype (tree vs raster prediction)
+#Separate out the scale (statewide, spatially explicit ones) and runtype (tree == 2 vs raster==1 prediction)
 mb.df.sep <- separate(mb.df,
                           into = c("scale",
                                    "runtype"),
@@ -51,9 +58,6 @@ mb.df.sep$scale <- factor(mb.df.sep$scale,
                                      "large",
                                      "medium",
                                      "small"))
-
-#For illustration, not included in manuscript. 
-boxplot(time ~ runtype, data = mb.df.sep)
 
 #group and summarize runtime.
 mb.summed <- group_by(mb.df.sep,
@@ -78,13 +82,6 @@ mb.summed$statewide <- rep(statewide.values$runtime, 4)
 mb.summed$ratio <- mb.summed$runtime/mb.summed$statewide
 
 #are runtimes different?
-#convert to factor again.
-mb.summed$scale <- factor(mb.summed$scale,
-                       levels = c("statewide",
-                         "large",
-                         "medium",
-                         "small"))
-
 runtime.model <- lmer(runtimehrs ~ scale+(1|Species),
                       data = mb.summed)
 plot(runtime.model)
