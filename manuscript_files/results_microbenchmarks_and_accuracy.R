@@ -81,22 +81,7 @@ mb.summed$statewide <- rep(statewide.values$runtime, 4)
 #create ratio of spatially explicit model runtime to statewide model runtime.
 mb.summed$ratio <- mb.summed$runtime/mb.summed$statewide
 
-#are runtimes different?
-runtime.model <- lmer(runtimehrs ~ scale+(1|Species),
-                      data = mb.summed)
-plot(runtime.model)
-summary(runtime.model)
-anova(runtime.model)
-
-boxplot(runtimehrs ~ scale,
-        data = mb.summed,
-        ylab = "Runtime in hours",
-        xlab = "Scale",
-        lwd = 2,
-        cex.axis = 2)
-
-hist(resid(runtime.model))
-
+#summary of ratios of how long statewide to spatially explicit models.
 summary(mb.summed[mb.summed$scale != "statewide", "ratio"])
 
 #add in evaluation results
