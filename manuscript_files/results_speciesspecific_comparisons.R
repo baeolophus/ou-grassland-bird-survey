@@ -1,4 +1,5 @@
-#This file calculates whether sig diffs occur between AUC and RMSE values and outputs them into files for a table.
+#This file calculates whether significant differences
+#occur between AUC/RMSE values for each scale, then outputs them into files for a table.
 library(tidyr)
 library(dplyr)
 library(car)
