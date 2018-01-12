@@ -48,8 +48,7 @@ options(scipen=999)
 #i.e. section "Current Distribution" in Results.
 #Figs. 1-4 and Figs. S1-7.  
 
-pdf(file = paste0(SPECIES,
-                  "/",
+pdf(file = paste0("figures/",
                   SPECIES,
                   "_maps.pdf"),
     width = 18,
@@ -57,13 +56,21 @@ pdf(file = paste0(SPECIES,
 par(mfrow = c(2,2))
 
 plot(stateraster,
-     main = "statewide")
+     main = "statewide",
+     xlab = "UTM easting",
+     ylab = "UTM northing")
 plot(largeraster,
-     main = "large")
+     main = "large",
+     xlab = "UTM easting",
+     ylab = "UTM northing")
 plot(mediumraster,
-     main = "medium")
+     main = "medium",
+     xlab = "UTM easting",
+     ylab = "UTM northing")
 plot(smallraster,
-     main = "small")
+     main = "small",
+     xlab = "UTM easting",
+     ylab = "UTM northing")
 
 dev.off()
 options(scipen=0)
@@ -76,28 +83,6 @@ load(paste0("~/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/en
             "/",
             SPECIES,
             "_rdata.RData"))
-
-#Create file of top 10 important variables.
-#Figures S8-S18.
-pdf(file = paste0(SPECIES,
-                  "/",
-                  SPECIES,
-                  "_statewide_partialplots-cforest",
-                  ".pdf"),
-    width = 7, #plot.width,
-    height = 10)#plot.height*2)
-
-par(mfrow = c(5,2))
-for (i in 1:10) {
-  partialPlot(tree.statewide,
-              statewide.data, 
-              varnames.cforest[i],
-              xlab=varnames.cforest[i],
-              main = "",
-              ylab = "partial dependence")
-}
-
-dev.off()
 
 
 #threshold calculations for current-day maps.  Same source file as used in future threshold calculations.
