@@ -228,7 +228,12 @@ prediction.function<-function(behaviormerModobject,
                         nd) 
 }
 
-#Fig. 5, runtime vs error (use for CURRENT MODELS ONLY).
+#Fig. 5, runtime vs error (used for current models only).
+
+pdf(file = "Figure_5.pdf",
+    width = 8,
+    height = 6)
+
 par(mfrow=c(2,2),
     mar=c(5, 6, 4, 2))
 plot(errornum ~ runtimehrs,
@@ -239,6 +244,10 @@ plot(errornum ~ runtimehrs,
         ylim = c(0.4, 1))
 abline(h=0.5,
        lty = "dashed")
+mtext("a",
+      side = 3,
+      line = 2,
+      adj = 0)
 plot(errornum ~ runtimehrs,
         data = auc.diff[[3]],
         main = "Different year",
@@ -248,10 +257,18 @@ plot(errornum ~ runtimehrs,
         ylim = c(0.4, 1))
 abline(h=0.5,
        lty = "dashed")
+mtext("b",
+      side = 3,
+      line = 2,
+      adj = 0)
 plot(errornum ~ runtimehrs,
         data = rmse.same[[3]],
         ylab = "RMSE",
      xlab="Runtime hours")
+mtext("c",
+      side = 3,
+      line = 2,
+      adj = 0)
 plot(errornum ~ runtimehrs,
         data = rmse.diff[[3]],
      xlab="Runtime hours",
@@ -268,6 +285,11 @@ graphics::lines(x = rmse.diff.line$runtimehrs,
                 y = rmse.diff.line$y,
                 lty = "solid")
 
+mtext("d",
+      side = 3,
+      line = 2,
+      adj = 0)
+dev.off()
 
 #Tests showing that different years are less well predicted than same years.
 auc.same[[3]]$year <- "same"
