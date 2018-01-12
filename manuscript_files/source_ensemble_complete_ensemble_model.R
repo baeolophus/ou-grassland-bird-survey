@@ -56,7 +56,9 @@ beginCluster()
   #split into training and evaluation (.eval) sets. 
   latlong.predictors.SPECIES <- latlong.predictors.SPECIES.unsplit[train,]
   latlong.predictors.SPECIES.eval <- latlong.predictors.SPECIES.unsplit[-train,]
-  
+  #count presences for this species in the training dataset
+  count <- latlong.predictors.SPECIES$presence==1
+  length(count[count==TRUE])
   
   #spatial version of training dataset
   latlong.predictors.SPECIES.spatial <- latlong.predictors.SPECIES
