@@ -2,7 +2,7 @@ library(dplyr) # data manipulation
 library(geosphere) #distances between transects
 library(lubridate) #dates for year
 
-#transect polishing and finishing up columns used in species distribution models and in distance sampling.
+#transect polishing and finishing up columns used in species distribution models.
 #######################
 #Polishing up data formats and combining the different sources.
 #then merge with sightings and do all data checks as for point counts.

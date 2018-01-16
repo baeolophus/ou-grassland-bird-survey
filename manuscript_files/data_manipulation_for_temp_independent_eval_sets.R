@@ -23,8 +23,8 @@ names.i.have<-dplyr::distinct(data.frame(all.species)) #view to see what correct
 colnames(names.i.have)<-"SPEC"
 #combine list for no duplicates
 #get scientific names for all
-aou.codes<-foreign::read.dbf(file="AOUcodes2016.dbf")
-#this file has codes, scientific names (presumably will match ebird), and common names.
+aou.codes<-foreign::read.dbf(file="AOUcodes2016.dbf") #source: https://www.birdpop.org/pages/birdSpeciesCodes.php
+#this file has codes, scientific names (will match ebird), and common names.
 does.it.have.match<-dplyr::left_join(names.i.have, aou.codes)
 
 #select only those columns from ebird
