@@ -83,7 +83,7 @@ microbenchmark(countoverlapping.large <- clusterR(nlcd_ok_utm14, #raster
                                                               updateValue = '!NA')),
                times = 1)
 plot(countoverlapping.large)
-plot(state)
+plot(state, add = TRUE)
 
 sampling.overlaps <- spsample(state,
                               type = "regular",
@@ -92,9 +92,10 @@ plot(sampling.overlaps, add= TRUE)
 
 overlaps.small.sample <- as.data.frame(extract(x = countoverlapping.small,
                                                y = sampling.overlaps))
+
+colnames(overlaps.small.sample) <- c("overlapsperpixel", "set")
 overlaps.small.sample$set <- "small"
 summary(overlaps.small.sample$overlapsperpixel)
-colnames(overlaps.small.sample) <- c("overlapsperpixel", "set")
 overlaps.medium.sample <- as.data.frame(extract(x = countoverlapping.medium,
                                                 y = sampling.overlaps))
 overlaps.medium.sample$set <- "medium"
