@@ -13,11 +13,14 @@ library(sp)
 #create temporary raster files on large drive because they occupy 10-30 GB
 rasterOptions()$tmpdir
 rasterOptions(tmpdir="E:/Documents/R/temp")
+rasterOptions(tmpdir="/media/Data/Documents/R/temp")
 
 #This file tests whether the support sets in the ensemble are significantly different in pixel coverage.
 #Generate support sets
 #start by generating random points within the study area.
 state<-readOGR(dsn="E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
+               layer="ok_state_vector_smallest_pdf_3158")
+state<-readOGR(dsn="/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
                layer="ok_state_vector_smallest_pdf_3158")
 
 state<-spTransform(x = state,
@@ -53,6 +56,7 @@ polys.large.df <- unlist(polys.large[[2]])
 
 #This file is used to rasterize the polygons at its resolution.  Any of the predictors would have worked.
 nlcd_ok_utm14 <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/nlcd_processing/nlcd_cropped_to_ok_census/nlcd_ok_utm14_okmask.tif")
+nlcd_ok_utm14 <- raster("/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/nlcd_processing/nlcd_cropped_to_ok_census/nlcd_ok_utm14_okmask.tif")
 
 beginCluster()
 microbenchmark(countoverlapping.small <- clusterR(nlcd_ok_utm14, #raster
@@ -62,8 +66,7 @@ microbenchmark(countoverlapping.small <- clusterR(nlcd_ok_utm14, #raster
                                                               update = TRUE,
                                                               updateValue = '!NA')),
                times = 1)
-plot(countoverlapping.small)
-plot(state, add = TRUE)
+
 
 microbenchmark(countoverlapping.medium <- clusterR(nlcd_ok_utm14, #raster
                                                    fun = rasterize,
@@ -72,8 +75,6 @@ microbenchmark(countoverlapping.medium <- clusterR(nlcd_ok_utm14, #raster
                                                                update = TRUE,
                                                                updateValue = '!NA')),
                times = 1)
-plot(countoverlapping.medium)
-plot(state, add = TRUE)
 
 microbenchmark(countoverlapping.large <- clusterR(nlcd_ok_utm14, #raster
                                                   fun = rasterize,
@@ -82,8 +83,15 @@ microbenchmark(countoverlapping.large <- clusterR(nlcd_ok_utm14, #raster
                                                               update = TRUE,
                                                               updateValue = '!NA')),
                times = 1)
+
+par(mfrow=c(1,3))
+plot(countoverlapping.small)
+plot(state, add = TRUE)
+plot(countoverlapping.medium)
+plot(state, add = TRUE)
 plot(countoverlapping.large)
 plot(state, add = TRUE)
+par(mfrow=c(1,1))
 
 sampling.overlaps <- spsample(state,
                               type = "regular",
