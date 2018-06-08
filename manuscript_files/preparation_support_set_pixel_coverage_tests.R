@@ -81,6 +81,7 @@ microbenchmark(countoverlapping.large <- clusterR(nlcd_ok_utm14, #raster
                                                               fun = 'count')),
                times = 1)
 
+#plot rasterized
 par(mfrow=c(1,3))
 plot(countoverlapping.small)
 plot(state, add = TRUE)
@@ -88,8 +89,28 @@ plot(countoverlapping.medium)
 plot(state, add = TRUE)
 plot(countoverlapping.large)
 plot(state, add = TRUE)
-par(mfrow=c(1,1))
 
+#plot polygons
+
+svg(filename = "Claire/support_set_illustrations.svg",
+    width = 7,
+    height = 5)
+par(mfrow=c(1,3))
+plot(polys.small.p,
+     ylab = "Small support sets")
+plot(state, 
+     add = TRUE)
+plot(polys.medium.p,
+     ylab = "Medium support sets")
+plot(state,
+     add = TRUE)
+plot(polys.large.p,
+     ylab = "Large support sets")
+plot(state,
+     add = TRUE)
+
+par(mfrow=c(1,1))
+dev.off()
 sampling.overlaps <- spsample(state,
                               type = "regular",
                               n = 50)
