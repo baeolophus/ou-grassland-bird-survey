@@ -1,9 +1,37 @@
-library(dplyr)
-library(caret)
-#load trees
-SPECIES <- "BHCO"
-size <- "large"
 
+library(caret)
+library(data.table)
+library(dplyr)
+library(GSIF)
+library(randomForest)
+library(ROCR)
+
+#load spatial dataframe that contains all predictors extracted from predictors stack, 
+#plus the actual presence/absence data
+#Bring in predictor data.
+source("manuscript_files/source_ensemble_predictor_import.R")
+#Responses
+#Bring in whole response data set (with NA lat/long already removed) as a spatial object including presence/absence.
+#Is already in utm
+#bring in evaluation dataset and make it spatial object
+complete.dataset.for.sdm <- read.csv(file = "manuscript_files/oklahomadatasetforsdm_naomit_utm.csv")
+
+#load list of species to use
+specieslist <- c("NOBO",
+                 "UPSA",
+                 "HOLA",
+                 "CASP",
+                 "FISP",
+                 "LASP",
+                 "GRSP",
+                 "DICK",
+                 "EAME",
+                 "WEME",
+                 "BHCO")
+
+predict_from_done_trees <- function (SPECIES, size, typeofeval) {
+  
+  #load trees
 trees <- readRDS(file = paste0(#filepath here
   "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current/",
   "/",
@@ -25,17 +53,6 @@ polys <- readRDS(file = paste0(#filepath here
 polys.df <- polys[[2]]
 
 ########################
-#load spatial dataframe that contains all predictors extracted from predictors stack, 
-#plus the actual presence/absence data
-
-#Bring in predictor data.
-source("manuscript_files/source_ensemble_predictor_import.R")
-
-#Responses
-#Bring in whole response data set (with NA lat/long already removed) as a spatial object including presence/absence.
-#Is already in utm
-#bring in evaluation dataset and make it spatial object
-complete.dataset.for.sdm <- read.csv(file = "manuscript_files/oklahomadatasetforsdm_naomit_utm.csv")
 
 #Import dataset and filter by species and having time of day.
 complete.dataset.for.sdm.SPECIES<-dplyr::filter(complete.dataset.for.sdm,
@@ -103,8 +120,6 @@ replicate(50, expr = {
 ########################
 #Subsample evaluation dataset by whole-area grid
 #Spatial sampling function
-library(GSIF)
-library(ROCR)
 
 #evaluation grid size
 cell.size <- c(10000, 10000)
@@ -131,7 +146,10 @@ iteration.testing.spatial <- list.of.object.spdf.and.grid[[1]]
 ########################
 #Then cycle through each support set and predict.
 #loop or function here
-library(randomForest)
+print(paste(SPECIES,
+            size,
+            typeofeval,
+            "loop"))
 tree.prediction <- list()
 for (whichrandombox in 1:length(polys.df)) {
   #crop the spatial dataframe to the extent of each support set
@@ -159,22 +177,72 @@ tree.prediction[[whichrandombox]] <- support.df
 
 #Merge all predictions (which should perhaps go in a list?)
 #Any spatially identical predictions are averaged between columns.
-library(data.table)
-model.predictions <- rbindlist(tree.prediction) %>% dplyr::filter(use == 1)%>%
+
+model.predictions <- rbindlist(tree.prediction) %>% 
+  dplyr::filter(use == 1)%>%
   group_by(rownums)%>%
   arrange(rownums) %>%
-  summarize(mean_pixel_pred = mean(pred))
+  summarize(mean_pixel_pred = mean(pred, 
+                                   na.rm = TRUE))
 
 ########################
 #Take final model predictions and label with actual/presence absence.
+#If predictions don't cover entire area, need to only check for labels at the rows where it exists.
+it.test <- iteration.testing.spatial@data[, c("presence", "rownums")]
+it.test$rownums <- as.numeric(it.test$rownums)
+eval_combined_set <- left_join(model.predictions,
+          it.test,
+          by = c("rownums"))
 
-pred <- prediction(predictions = model.predictions$mean_pixel_pred,#model.predictions.presence,
-                   labels = iteration.testing.spatial$presence) #evaluation.dataset$presence)
+pred <- prediction(predictions = eval_combined_set$mean_pixel_pred,#model.predictions.presence,
+                   labels = eval_combined_set$presence) #evaluation.dataset$presence)
 
-typeofeval = "auc"
+
 perf <- performance(pred,
                     typeofeval)
-perf@y.values[[1]]
+
+df <- data.frame("evalue" = perf@y.values[[1]],
+                 "species" = SPECIES,
+                 "scale" = size,
+                 "errortype" = typeofeval,
+                 stringsAsFactors = FALSE)
+print(paste(SPECIES,
+            size,
+            typeofeval,
+            "made it to data frame at end"))
+return(df)
 ################################
 #end 50x repeat
 })
+}
+
+listofeval.small.rmse <- lapply (specieslist,
+                      FUN = predict_from_done_trees,
+                      size = "small",
+                      typeofeval = "rmse")
+
+listofeval.medium.rmse <- lapply (specieslist,
+                      FUN = predict_from_done_trees,
+                      size = "medium",
+                      typeofeval = "rmse")
+
+listofeval.large.rmse <- lapply (specieslist,
+                      FUN = predict_from_done_trees,
+                      size = "large",
+                      typeofeval = "rmse")
+
+
+listofeval.small.auc <- lapply (specieslist,
+                                 FUN = predict_from_done_trees,
+                                 size = "small",
+                                 typeofeval = "auc")
+
+listofeval.medium.auc <- lapply (specieslist,
+                                  FUN = predict_from_done_trees,
+                                  size = "medium",
+                                  typeofeval = "auc")
+
+listofeval.large.auc <- lapply (specieslist,
+                                 FUN = predict_from_done_trees,
+                                 size = "large",
+                                 typeofeval = "auc")
