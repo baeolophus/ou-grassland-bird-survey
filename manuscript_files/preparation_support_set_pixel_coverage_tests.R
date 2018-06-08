@@ -14,6 +14,7 @@ library(sp)
 rasterOptions()$tmpdir
 rasterOptions(tmpdir="E:/Documents/R/temp")
 rasterOptions(tmpdir="/media/Data/Documents/R/temp")
+rasterOptions(tmpdir="/home/rifa1/Claire/temp")
 
 #This file tests whether the support sets in the ensemble are significantly different in pixel coverage.
 #Generate support sets
@@ -22,7 +23,8 @@ state<-readOGR(dsn="E:/Documents/college/OU-postdoc/research/grassland_bird_surv
                layer="ok_state_vector_smallest_pdf_3158")
 state<-readOGR(dsn="/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
                layer="ok_state_vector_smallest_pdf_3158")
-
+state<-readOGR(dsn="/home/rifa1/Claire",
+               layer="ok_state_vector_smallest_pdf_3158")
 state<-spTransform(x = state,
                    CRS(as.character("+proj=utm +zone=14 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
 )
@@ -57,31 +59,26 @@ polys.large.df <- unlist(polys.large[[2]])
 #This file is used to rasterize the polygons at its resolution.  Any of the predictors would have worked.
 nlcd_ok_utm14 <- raster("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/nlcd_processing/nlcd_cropped_to_ok_census/nlcd_ok_utm14_okmask.tif")
 nlcd_ok_utm14 <- raster("/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed/nlcd_processing/nlcd_cropped_to_ok_census/nlcd_ok_utm14_okmask.tif")
+nlcd_ok_utm14 <- raster("/home/rifa1/Claire/nlcd_ok_utm14_okmask.tif")
 
 beginCluster()
 microbenchmark(countoverlapping.small <- clusterR(nlcd_ok_utm14, #raster
                                                   fun = rasterize,
                                                   args = list(x = polys.small.p,
-                                                              fun = 'count',
-                                                              update = TRUE,
-                                                              updateValue = '!NA')),
+                                                              fun = 'count')),
                times = 1)
 
 
 microbenchmark(countoverlapping.medium <- clusterR(nlcd_ok_utm14, #raster
                                                    fun = rasterize,
                                                    args = list(x = polys.medium.p,
-                                                               fun = 'count',
-                                                               update = TRUE,
-                                                               updateValue = '!NA')),
+                                                               fun = 'count')),
                times = 1)
 
 microbenchmark(countoverlapping.large <- clusterR(nlcd_ok_utm14, #raster
                                                   fun = rasterize,
                                                   args = list(x = polys.large.p,
-                                                              fun = 'count',
-                                                              update = TRUE,
-                                                              updateValue = '!NA')),
+                                                              fun = 'count')),
                times = 1)
 
 par(mfrow=c(1,3))
@@ -137,3 +134,4 @@ library(multcomp)
 anova.tukey<-glht(overlaps.lm,
                   linfct=mcp(set="Tukey"))
 summary(anova.tukey)
+
