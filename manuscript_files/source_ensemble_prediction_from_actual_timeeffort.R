@@ -1,4 +1,3 @@
-
 library(caret)
 library(data.table)
 library(dplyr)
@@ -9,7 +8,9 @@ library(ROCR)
 #load spatial dataframe that contains all predictors extracted from predictors stack, 
 #plus the actual presence/absence data
 #Bring in predictor data.
+#downscaled ones
 source("manuscript_files/source_ensemble_predictor_import.R")
+
 #Responses
 #Bring in whole response data set (with NA lat/long already removed) as a spatial object including presence/absence.
 #Is already in utm
