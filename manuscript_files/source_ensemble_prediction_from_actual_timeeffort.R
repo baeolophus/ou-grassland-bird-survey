@@ -37,8 +37,8 @@ predict_from_done_trees <- function (SPECIES, size, typeofeval) {
   
   #load trees
 trees <- readRDS(file = paste0(#filepath here
-#  "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current/",
-  "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current/",
+  "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current/",
+  #  "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current/",
   "/",
   SPECIES,
   "/",
@@ -47,8 +47,8 @@ trees <- readRDS(file = paste0(#filepath here
   size,
   "_intermediates_support_list"))
 polys <- readRDS(file = paste0(#filepath here
-#  "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current/",
-  "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current/",
+  "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current/",
+  #  "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current/",
   "/",
   SPECIES,
   "/",
@@ -229,39 +229,93 @@ listofeval.small.rmse <- lapply (specieslist,
                       FUN = predict_from_done_trees,
                       size = "small",
                       typeofeval = "rmse")
-small.rmse <- rbindlist(listofeval.small.rmse)
+small.rmse <- data.frame(matrix(unlist(listofeval.small.rmse),
+                     nrow = 550,
+                     ncol = 4, 
+                     byrow = TRUE),
+                     stringsAsFactors = FALSE)
+colnames(small.rmse) <- c("evalue",
+                          "species",
+                          "scale",
+                          "errortype")
+small.rmse$evalue <-as.numeric(small.rmse$evalue)
+
 
 listofeval.medium.rmse <- lapply (specieslist,
                       FUN = predict_from_done_trees,
                       size = "medium",
                       typeofeval = "rmse")
-medium.rmse <- rbindlist(listofeval.medium.rmse)
+medium.rmse <- data.frame(matrix(unlist(listofeval.medium.rmse),
+                                nrow = 550,
+                                ncol = 4, 
+                                byrow = TRUE),
+                          stringsAsFactors = FALSE)
+colnames(medium.rmse) <- c("evalue",
+                          "species",
+                          "scale",
+                          "errortype")
+medium.rmse$evalue <-as.numeric(medium.rmse$evalue)
 
 listofeval.large.rmse <- lapply (specieslist,
                       FUN = predict_from_done_trees,
                       size = "large",
                       typeofeval = "rmse")
-large.rmse <- rbindlist(listofeval.large.rmse)
-
+large.rmse <- data.frame(matrix(unlist(listofeval.large.rmse),
+                                 nrow = 550,
+                                 ncol = 4, 
+                                 byrow = TRUE),
+                         stringsAsFactors = FALSE)
+colnames(large.rmse) <- c("evalue",
+                           "species",
+                           "scale",
+                           "errortype")
+large.rmse$evalue <-as.numeric(large.rmse$evalue)
 
 listofeval.small.auc <- lapply (specieslist,
                                  FUN = predict_from_done_trees,
                                  size = "small",
                                  typeofeval = "auc")
-small.auc <- rbindlist(listofeval.small.auc)
+small.auc <- data.frame(matrix(unlist(listofeval.small.auc),
+                                nrow = 550,
+                                ncol = 4, 
+                                byrow = TRUE),
+                        stringsAsFactors = FALSE)
+colnames(small.auc) <- c("evalue",
+                          "species",
+                          "scale",
+                          "errortype")
+small.auc$evalue <-as.numeric(small.auc$evalue)
 
 listofeval.medium.auc <- lapply (specieslist,
                                   FUN = predict_from_done_trees,
                                   size = "medium",
                                   typeofeval = "auc")
-medium.auc <- rbindlist(listofeval.medium.auc)
+medium.auc <- data.frame(matrix(unlist(listofeval.medium.auc),
+                               nrow = 550,
+                               ncol = 4, 
+                               byrow = TRUE),
+                         stringsAsFactors = FALSE)
+colnames(medium.auc) <- c("evalue",
+                         "species",
+                         "scale",
+                         "errortype")
+
+medium.auc$evalue <-as.numeric(medium.auc$evalue)
 
 listofeval.large.auc <- lapply (specieslist,
                                  FUN = predict_from_done_trees,
                                  size = "large",
                                  typeofeval = "auc")
-large.auc <- rbindlist(listofeval.large.auc)
-
+large.auc <- data.frame(matrix(unlist(listofeval.large.auc),
+                                nrow = 550,
+                                ncol = 4, 
+                                byrow = TRUE),
+                        stringsAsFactors = FALSE)
+colnames(large.auc) <- c("evalue",
+                          "species",
+                          "scale",
+                          "errortype")
+large.auc$evalue <-as.numeric(large.auc$evalue)
 ################################
 ################################
 #New evaluations from statewide
@@ -274,8 +328,8 @@ predict_from_done_state_trees <- function (SPECIES, size, typeofeval) {
   
   #load trees
   trees <- readRDS(file = paste0(#filepath here
-    #  "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current/",
-    "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current/",
+      "/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Downscale_current/",
+    #"/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current/",
     "/",
     SPECIES,
     "/",
@@ -441,15 +495,27 @@ statewise.auc <- rbindlist(listofeval.statewide.auc)
 ###################################
 #Combine all lists into one dataframe per eval type
 
-rmse <- rbind(listofeval.statewide.rmse,
-              listofeval.small.rmse,
-              listofeval.medium.rmse,
-              listofeval.large.rmse)
+rmse <- rbind(statewise.rmse,
+              small.rmse,
+              medium.rmse,
+              large.rmse)
 
-auc <- rbind(listofeval.statewide.auc,
-              listofeval.small.auc,
-              listofeval.medium.auc,
-              listofeval.large.auc)
+auc <- rbind(statewise.auc,
+              small.auc,
+              medium.auc,
+              large.auc)
 
 
 #Save RDS files
+
+saveRDS(rmse,
+        "manuscript_files/rmse_downscale.rds")
+saveRDS(auc,
+        "manuscript_files/auc_downscale.rds")
+
+
+saveRDS(rmse,
+        "manuscript_files/rmse_current.rds")
+saveRDS(auc,
+        "manuscript_files/auc_current.rds")
+
