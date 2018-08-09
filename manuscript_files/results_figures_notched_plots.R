@@ -5,10 +5,10 @@ auc_downscale <- readRDS("manuscript_files/auc_downscale.rds")
 rmse_current <- readRDS("manuscript_files/rmse_current.rds")
 auc_current <- readRDS("manuscript_files/auc_current.rds")
 
-rmse_current$predictor_res <- "high"
-auc_current$predictor_res <- "high"
-rmse_downscale$predictor_res <- "low"
-auc_downscale$predictor_res <- "low"
+rmse_current$predictor_res <- "fine"
+auc_current$predictor_res <- "fine"
+rmse_downscale$predictor_res <- "coarse"
+auc_downscale$predictor_res <- "coarse"
 
 errors <- rbind(auc_current,
                 auc_downscale,
@@ -53,7 +53,7 @@ svg(file = "manuscript_files/Figure6.svg",
 fig6 <- ggplot()+
   geom_boxplot(data = subset(errors, errortype == "auc"),
                aes(x = scale,
-                   y = evalue,
+                   y = (1-evalue),
                    fill = predictor_res),
                notch = TRUE)+
   facet_wrap(~species,
@@ -66,7 +66,7 @@ fig6 <- ggplot()+
   scale_fill_manual(values=c("white", "darkgray"),
                     name = "Predictor resolution")+
   labs( x = "Model scale",
-        y = "AUC")
+        y = "1 - AUC")
 
 #Get panel name for lower rightmost panel.
 gtable_show_names(fig6)
