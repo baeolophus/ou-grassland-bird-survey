@@ -15,6 +15,19 @@ errors <- rbind(auc_current,
                 rmse_current,
                 rmse_downscale)
 
+#Non-banding-code names for species
+species_names <- c("BHCO" = "Brown-headed Cowbird",
+                   "CASP" = "Cassin's Sparrow",
+                   "DICK" = "Dickcissel",
+                   "EAME" = "Eastern Meadowlark",
+                   "FISP" = "Field Sparrow",
+                   "GRSP" = "Grasshopper Sparrow",
+                   "HOLA" = "Horned Lark",
+                   "LASP" = "Lark Sparrow",
+                   "NOBO" = "Northern Bobwhite",
+                   "UPSA" = "Upland Sandpiper",
+                   "WEME" = "Western Meadowlark")
+
 library(ggplot2)
 library(lemon)
 svg(file = "manuscript_files/Figure5.svg",
@@ -29,7 +42,8 @@ fig5 <- ggplot()+
   facet_wrap(~species,
              scales = "free",
              nrow = 4,
-             ncol = 3
+             ncol = 3,
+             labeller = as_labeller(species_names)
              )+
   theme_bw()+
   scale_y_continuous(minor_breaks = seq(0, 1, 0.0025))+
