@@ -38,7 +38,7 @@ plot(state, add = TRUE)
 
 statedf <- fortify(state) #turns it into a data frame
 
-svg("manuscript_files/data_distribution_figure.svg",
+svg("manuscript_files/figures/data_distribution_figure.svg",
     width = 5, 
     height = 5)
 ggplot() +

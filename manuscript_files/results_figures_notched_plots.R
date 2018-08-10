@@ -30,10 +30,10 @@ species_names <- c("BHCO" = "Brown-headed Cowbird",
 
 library(ggplot2)
 library(lemon)
-svg(file = "manuscript_files/Figure5.svg",
+pdf(file = "manuscript_files/figures/Figure6.pdf",
     width = 8.5,
     height = 11)
-fig5 <- ggplot()+
+fig6 <- ggplot()+
   geom_boxplot(data = subset(errors, errortype == "rmse"),
                aes(x = scale,
                    y = evalue,
@@ -53,18 +53,18 @@ fig5 <- ggplot()+
           y = "RMSE")
 
 #Get panel name for lower rightmost panel.
-gtable_show_names(fig5)
+#gtable_show_names(fig6)
 #put legend in that empty facet panel.
-reposition_legend(fig5,
+reposition_legend(fig6,
                   position = "center",
                   panel = "panel-3-4")
 dev.off()
 
 #AUC
-svg(file = "manuscript_files/Figure6.svg",
+pdf(file = "manuscript_files/figures/Figure7.pdf",
     width = 8.5,
     height = 11)
-fig6 <- ggplot()+
+fig7 <- ggplot()+
   geom_boxplot(data = subset(errors, errortype == "auc"),
                aes(x = scale,
                    y = (1-evalue),
@@ -73,7 +73,8 @@ fig6 <- ggplot()+
   facet_wrap(~species,
              scales = "free",
              nrow = 4,
-             ncol = 3
+             ncol = 3,
+             labeller = as_labeller(species_names)
   )+
   theme_bw()+
   scale_y_continuous(minor_breaks = seq(0, 1, 0.0025))+
@@ -83,9 +84,9 @@ fig6 <- ggplot()+
         y = "1 - AUC")
 
 #Get panel name for lower rightmost panel.
-gtable_show_names(fig6)
+#gtable_show_names(fig7)
 #put legend in that empty facet panel.
-reposition_legend(fig6,
+reposition_legend(fig7,
                   position = "center",
                   panel = "panel-3-4")
 dev.off()
