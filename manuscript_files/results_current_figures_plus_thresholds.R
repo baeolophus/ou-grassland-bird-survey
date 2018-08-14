@@ -1,7 +1,8 @@
 #This file reloads all the objects saved in the course of the ensemble.
 #It then creates all the figures for current-day prediction models.
 
-setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
+#setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
+setwd("F:/Rhubarb/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current")
 
 #Run this file once for each species below.
 SPECIES <- "NOBO"
@@ -17,11 +18,10 @@ SPECIES <- "WEME"
 SPECIES <- "BHCO"
 
 #load required libraries.
-library(dplyr)
-library(ggplot2)
-library(randomForest)
+library(rgdal)
 library(raster)
-library(tidyr)
+library(rasterVis)
+library(sp)
 
 #Load rasters.
 stateraster <- raster(paste0(SPECIES,
@@ -41,6 +41,16 @@ largeraster <- raster(paste0(SPECIES,
                              SPECIES,
                              "_large_products_ensembleweightedmosaic.tif"))
 
+rasterStack <- stack(stateraster,
+                     smallraster,
+                     mediumraster,
+                     largeraster)
+
+#Load state outline
+state<-readOGR(dsn="F:/Rhubarb/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
+               layer="ok_state_vector_smallest_pdf_3158")
+
+  
 #Ensure UTM coordinates are not abbreviated.
 options(scipen=999)
 
@@ -53,82 +63,16 @@ pdf(file = paste0("figures/",
                   "_maps.pdf"),
     width = 18,
     height = 9)
-par(mfrow = c(2,2))
 
-plot(stateraster,
-     main = "statewide",
-     xlab = "UTM easting",
-     ylab = "UTM northing")
-plot(largeraster,
-     main = "large",
-     xlab = "UTM easting",
-     ylab = "UTM northing")
-plot(mediumraster,
-     main = "medium",
-     xlab = "UTM easting",
-     ylab = "UTM northing")
-plot(smallraster,
-     main = "small",
-     xlab = "UTM easting",
-     ylab = "UTM northing")
+levelplot(rasterStack,
+          xlab = "UTM easting",
+          ylab = "UTM northing",
+          names.attr = c("statewide",
+                         "small",
+                         "medium",
+                         "large"))+
+  layer(sp.polygons(state))
 
 dev.off()
 options(scipen=0)
 #Return number abbreviation to normal.
-
-
-#loading Rdata.
-load(paste0("~/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/ensemble_results/Current/",
-            SPECIES,
-            "/",
-            SPECIES,
-            "_rdata.RData"))
-
-
-#threshold calculations for current-day maps.  Same source file as used in future threshold calculations.
-source("source_function_threshold_calculations.R")
-
-rasterOptions()$tmpdir
-rasterOptions(tmpdir="F:/temp")
-
-small.area <- thresholds(SPECIES,
-                         paste0("/",
-                                SPECIES,
-                                "_small_products_ensembleweightedmosaic.tif"),
-                         0.5)
-
-medium.area <- thresholds(SPECIES,
-                          paste0("/",
-                                 SPECIES,
-                                 "_medium_products_ensembleweightedmosaic.tif"),
-                          0.5)
-
-large.area <- thresholds(SPECIES,
-                         paste0("/",
-                                SPECIES,
-                                "_large_products_ensembleweightedmosaic.tif"),
-                         0.5)
-
-statewide.area <- thresholds(SPECIES,
-                             paste0("/",
-                                    SPECIES,
-                                    "_products_statewide.raster.prediction.prob.tif"),
-                             0.5)
-
-current.areas <- data.frame("areakm2" = rbind(small.area,
-                                             medium.area,
-                                             large.area,
-                                             statewide.area))
-
-current.areas$Species <- SPECIES
-current.areas$model <- "current"
-current.areas$threshold <- 0.5
-
-write.csv(current.areas,
-          file = paste0(SPECIES,
-                        "/",
-                        SPECIES,
-                        "_products_current_map_areas.csv"))
-
-#Combine these files per species with the future map areas per species to create a file called thresholds.csv.
-#thresholds.csv is used in "results_area_changes_with_climate_change.R" to calculate area changes.
