@@ -1,6 +1,10 @@
-setwd("E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ebird_data/")
-
-#ebird.extradata<-read.csv(file="srd_point_data_3km_us48_v2014.csv")
+setwd(paste0(getwd(),
+            "/ebird_data/"))
+#download data via request from ebird.org
+#Full citation 
+# Munson, M.A., Webb, K., Sheldon, D., Fink, D., Hochachka, W.M., Iliff, M., Riedewald, M., Sorokina, D., Sullivan, B., Wood, C. & Kelling, S.
+# (2014) The eBird Reference Dataset, Version 2014.
+# Cornell Lab of Ornithology, Ithaca, NY.
 
 year<-2014
 
@@ -103,68 +107,4 @@ points(studyarea.ebird2013.df$LONGITUDE,
 
 delete(checklist2013)
 rm(checklist2013) #these two lines delete from memory.  is okay because have subset data to get what I need.
-
-
-############
-#2011 and 2012
-
-year2012<-2012
-
-checklist2012<-read.csv.ffdf(file=paste(year2012, "/", "checklists.csv", sep=""),
-                             colClasses=c(
-                               rep('factor', 2),
-                               rep('numeric', 6),
-                               rep('factor', 4),
-                               rep('numeric', 3),
-                               rep('factor', 1),
-                               rep('numeric', 1),
-                               rep('factor', 2),
-                               rep('factor', 933)),
-                             na.strings="?")
-
-oklahoma.ebird2012<-subset(checklist2012,
-                           STATE_PROVINCE=="Oklahoma")
-write.csv.ffdf(oklahoma.ebird2012,
-               file="oklahoma_ebird2012.csv")
-oklahoma.ebird2012.df<-as.data.frame(oklahoma.ebird2012)
-
-plot(oklahoma.ebird2012.df$LONGITUDE,
-     oklahoma.ebird2012.df$LATITUDE)
-
-
-
-delete(checklist2012)
-rm(checklist2012) #these two lines delete from memory.  is okay because have subset data to get what I need.
-
-delete(oklahoma.ebird2012)
-rm(oklahoma.ebird2012) #these two lines delete from memory.  is okay because have subset data to get what I need.
-
-
-year2011<-2011
-
-checklist2011<-read.csv.ffdf(file=paste(year2011, "/", "checklists.csv", sep=""),
-                             colClasses=c(
-                               rep('factor', 2),
-                               rep('numeric', 6),
-                               rep('factor', 4),
-                               rep('numeric', 3),
-                               rep('factor', 1),
-                               rep('numeric', 1),
-                               rep('factor', 2),
-                               rep('factor', 933)),
-                             na.strings="?")
-
-oklahoma.ebird2011<-subset(checklist2011,
-                           STATE_PROVINCE=="Oklahoma")
-write.csv.ffdf(oklahoma.ebird2011,
-               file="oklahoma_ebird2011.csv")
-oklahoma.ebird2011.df<-as.data.frame(oklahoma.ebird2011)
-
-plot(oklahoma.ebird2011.df$LONGITUDE,
-     oklahoma.ebird2011.df$LATITUDE)
-
-
-
-delete(checklist2011)
-rm(checklist2011) #these two lines delete from memory.  is okay because have subset data to get what I need.
 
