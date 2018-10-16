@@ -56,7 +56,7 @@ options(scipen=999)
 
 #Write a pdf for each species containing four figure panels.
 #i.e. section "Current Distribution" in Results.
-#Figs. 1-4 and Figs. S1-7.  
+#Figs. 3-6 and Figs. S1-7.  
 
 pdf(file = paste0("figures/",
                   SPECIES,

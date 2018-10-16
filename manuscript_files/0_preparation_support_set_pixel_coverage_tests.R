@@ -94,6 +94,7 @@ plot(state, add = TRUE)
 
 #plot polygons
 
+#Fig. 2
 svg(filename = "Claire/support_set_illustrations.svg",
     width = 7,
     height = 5)

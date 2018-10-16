@@ -1,4 +1,4 @@
-#Figure of data distribution
+#Fig. 1 of data distribution
 library(ggplot2)
 library(rgdal)
 library(sp)

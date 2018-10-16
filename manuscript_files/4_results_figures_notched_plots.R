@@ -30,7 +30,8 @@ species_names <- c("BHCO" = "Brown-headed Cowbird",
 
 library(ggplot2)
 library(lemon)
-pdf(file = "manuscript_files/figures/Figure6.pdf",
+#Fig. 7
+pdf(file = "manuscript_files/figures/Figure7.pdf",
     width = 8.5,
     height = 11)
 fig6 <- ggplot()+
@@ -60,8 +61,8 @@ reposition_legend(fig6,
                   panel = "panel-3-4")
 dev.off()
 
-#AUC
-pdf(file = "manuscript_files/figures/Figure7.pdf",
+#AUC, Fig. 8
+pdf(file = "manuscript_files/figures/Figure8.pdf",
     width = 8.5,
     height = 11)
 fig7 <- ggplot()+
