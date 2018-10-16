@@ -12,6 +12,7 @@ library(sp)
 
 #create temporary raster files on large drive because they occupy 10-30 GB
 rasterOptions()$tmpdir
+#three locations depending on computer I'm using
 rasterOptions(tmpdir="E:/Documents/R/temp")
 rasterOptions(tmpdir="/media/Data/Documents/R/temp")
 rasterOptions(tmpdir="/home/rifa1/Claire/temp")
@@ -19,6 +20,7 @@ rasterOptions(tmpdir="/home/rifa1/Claire/temp")
 #This file tests whether the support sets in the ensemble are significantly different in pixel coverage.
 #Generate support sets
 #start by generating random points within the study area.
+#pull from different paths depending on computer (lines 24-29)
 state<-readOGR(dsn="E:/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",
                layer="ok_state_vector_smallest_pdf_3158")
 state<-readOGR(dsn="/media/Data/Documents/college/OU-postdoc/research/grassland_bird_surveys/ougrassland/gis_layers_processed",

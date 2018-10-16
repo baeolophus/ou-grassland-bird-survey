@@ -4,6 +4,8 @@ setwd("/data/grassland_ensemble")
 library(raster)
 library(rgdal)
 
+#See manuscript for raster and vector data source citations.
+
 #create temporary raster files on large drive because they occupy 10-30 GB
 rasterOptions()$tmpdir
 rasterOptions(tmpdir=paste0(getwd(),
